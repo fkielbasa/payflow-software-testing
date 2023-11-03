@@ -1,10 +1,10 @@
 import React from 'react';
-import Logo from './Logo';
+import Logo from '../logo/Logo';
 
 function HomePage() {
     return (
         <div className="HomePage">
-            <a href="/"><Logo /></a>
+            {/*<a href="http://localhost:3000/"><Logo /></a>*/}
         </div>
     );
 }
