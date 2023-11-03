@@ -4,7 +4,7 @@ import './css/Logo.css';
 
 function Logo() {
     return (
-        <div className="Logo">
+        <div>
             <img src={mainImage} alt="Company logo" />
         </div>
     );

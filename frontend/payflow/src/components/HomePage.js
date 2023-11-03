@@ -1,11 +1,10 @@
 import React from 'react';
-import mainImage from '../assets/payflow.png';
 import Logo from './Logo';
 
 function HomePage() {
     return (
         <div className="HomePage">
-            <Logo />
+            <a href="/"><Logo /></a>
         </div>
     );
 }

@@ -1,13 +1,11 @@
-/* VerticalNavbar.css */
-
-.vertical-navbar {
+.verticalNavbar {
     position: fixed;
     top: 15%;
     left: 0;
-    width: 10%;
-    height: 30%;
-    /*background: rgba(0, 0, 0, 0.7); !* Przeźroczyste tło *!*/
-    padding: 20px;
+    width: 15%;
+    height: 50%;
+    /*background: rgba(0, 0, 0, 0.7);*/
+    padding: 10px;
 }
 
 ul {
@@ -16,10 +14,19 @@ ul {
 }
 
 li {
-    margin-bottom: 10px;
+    margin-bottom: -10px;
 }
 
 a {
     text-decoration: none;
     color: black;
+    font-size: 120%;
+    /*margin-left: -10px;*/
+}
+
+.navImages {
+    width: 10%;
+    vertical-align: middle;
+    margin-left: -10px;
+    margin-top: -3%;
 }

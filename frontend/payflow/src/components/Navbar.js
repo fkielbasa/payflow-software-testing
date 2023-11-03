@@ -1,16 +1,32 @@
 import React from 'react';
 import './css/Navbar.css';
+import image1 from "../assets/houses.svg"
 
 function Navbar() {
     return (
-        <div className="vertical-navbar">
+        <div className="verticalNavbar">
             <nav>
                 <ul>
-                    <li><a href="/">Strona główna</a></li>
-                    <li><a href="/">Transakcje</a></li>
-                    <li><a href="/">Przelewy</a></li>
-                    <li><a href="/">Kredyty</a></li>
-                    <li><a href="/">Karty</a></li>
+                    <li>
+                        <img className="navImages" src={image1} alt="home"/>
+                        <a href="/">Strona główna</a>
+                    </li>
+                    <li>
+                        <img className="navImages" src={image1} alt="home"/>
+                        <a href="/">Transakcje</a>
+                    </li>
+                    <li>
+                        <img className="navImages" src={image1} alt="home"/>
+                        <a href="/">Przelewy</a>
+                    </li>
+                    <li>
+                        <img className="navImages" src={image1} alt="home"/>
+                        <a href="/">Kredyty</a>
+                    </li>
+                    <li>
+                        <img className="navImages" src={image1} alt="home"/>
+                        <a href="/">Karty</a><
+                    /li>
                 </ul>
             </nav>
         </div>
