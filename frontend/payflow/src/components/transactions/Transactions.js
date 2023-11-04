@@ -4,6 +4,7 @@ function Transactions() {
     return (
         <div>
             <h2>Strona z transakcjami</h2>
+            {console.log('trans')}
         </div>
     );
 }

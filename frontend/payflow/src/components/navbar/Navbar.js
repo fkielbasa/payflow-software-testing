@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import './Navbar.css';
 import image1 from "../../assets/houses.svg"
 import image2 from "../../assets/houses-fill.svg"
@@ -7,7 +7,7 @@ import image2 from "../../assets/houses-fill.svg"
 function Navbar() {
     const location = useLocation();
 
-    const isHomePage = location.pathname === '/';
+    const isHomePage = location.pathname === '/homePage';
     const isTransactionsPage = location.pathname === '/transactions';
 
     return (
@@ -15,16 +15,16 @@ function Navbar() {
             <nav>
                 <ul>
                     <li>
-                        <a href="http://localhost:3000/">
-                            <img className="navImages" src={isHomePage  ? image2 : image1} alt="home"/>
+                        <Link to='/homePage'>
+                            <img className="navImages" src={isHomePage ? image2 : image1} alt="home"/>
                             Strona główna
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/transactions">
-                            <img className="navImages" src={isTransactionsPage  ? image2 : image1} alt="home"/>
+                        <Link to='/transactions'>
+                            <img className="navImages" src={isTransactionsPage ? image2 : image1} alt="home"/>
                             Transakcje
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a href="/">
