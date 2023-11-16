@@ -1,8 +1,8 @@
 .verticalNavbar {
     position: fixed;
-    top: 15%;
+    top: 1%;
     left: 0;
-    width: 15%;
+    width: 200px;
     height: 50%;
     /*background: rgba(0, 0, 0, 0.7);*/
     padding: 10px;
@@ -11,16 +11,19 @@
 ul {
     list-style: none;
     padding: 0;
+
 }
 
 li {
     margin-bottom: -10px;
+
 }
 
 a {
     text-decoration: none;
     color: black;
     font-size: 120%;
+
 }
 
 .navImages {
@@ -28,4 +31,5 @@ a {
     vertical-align: middle;
     margin-left: -10px;
     margin-top: -2%;
+
 }

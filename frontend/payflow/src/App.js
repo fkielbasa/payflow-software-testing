@@ -1,16 +1,15 @@
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/Navbar";
 import React from "react";
-import Logo from "./components/logo/Logo";
+import Logo from "./components/Logo";
 import {Link} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function App() {
     return (
-        <div className="App">
+        <div className="container-fluid">
             <Navbar />
-            <div className="HomePage">
-                <Link to="/homePage">
-                    <Logo />
-                </Link>
+            <div className="container">
+                <Outlet />
             </div>
         </div>
     );

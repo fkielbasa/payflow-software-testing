@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../logo/Logo';
+import './HomePage.css';
 
 function HomePage() {
     return (

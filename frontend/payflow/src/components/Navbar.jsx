@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import './Navbar.css';
-import image1 from "../../assets/houses.svg"
-import image2 from "../../assets/houses-fill.svg"
+import image1 from "../assets/houses.svg"
+import image2 from "../assets/houses-fill.svg"
+import Logo from "./Logo";
 
 function Navbar() {
     const location = useLocation();
@@ -12,6 +13,11 @@ function Navbar() {
 
     return (
         <div className="verticalNavbar">
+            <div className="container">
+                <Link to="/homePage">
+                    <Logo />
+                </Link>
+            </div>
             <nav>
                 <ul>
                     <li>
