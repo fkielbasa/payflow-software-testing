@@ -31,6 +31,9 @@ public class User implements UserDetails {
             allocationSize = 1
     )
     private Long id;
+    private String firstname;
+    private String lastname;
+    private String email;
     private String login;
     private String password;
 
