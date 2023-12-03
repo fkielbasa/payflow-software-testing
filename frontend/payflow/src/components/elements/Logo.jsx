@@ -1,6 +1,6 @@
 import React from 'react';
-import mainImage from '../assets/payflow.png';
-import './Logo.css';
+import mainImage from '../../assets/payflow.png';
+import '../styles/Logo.css';
 
 function Logo() {
     return (
