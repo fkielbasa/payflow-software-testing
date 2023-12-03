@@ -1,0 +1,37 @@
+/*home*/
+.usdBalance {
+    position: absolute;
+    background-color: #D3E0EA;
+    width: 300px;
+    height: 120px;
+    margin-top: 170px;
+    margin-left: 250px;
+    border-radius: 8px;
+}
+
+.eurBalance {
+    position: absolute;
+    background-color: #D3E0EA;
+    width: 300px;
+    height: 120px;
+    margin-top: 170px;
+    margin-left: 580px;
+    border-radius: 8px;
+}
+
+.balanceText {
+    margin: 10px;
+    padding: 0px;
+    color: black;
+    font-family: Bahnschrift;
+    font-size: 17px;
+}
+
+.textDecoration {
+    margin: 0px;
+}
+
+.fontSize {
+    font-size: 22px;
+    margin: -1px;
+}
