@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, useLocation} from 'react-router-dom';
-import '../styles/Navbar.css';
+import '../styles/NavbarStyles.css';
 
 import house from "../../assets/houses.svg";
 import houseFill from "../../assets/houses-fill.svg";

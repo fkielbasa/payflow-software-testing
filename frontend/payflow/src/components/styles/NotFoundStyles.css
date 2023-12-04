@@ -1,0 +1,24 @@
+.notFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+    width: 55vw;
+}
+
+hr {
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.notFoundBtn {
+    border-radius: 4px;
+    background-color: #1687A7;
+    color: white;
+    width: 50px;
+    height: 25px;
+    text-align: center;
+    line-height: 26px;
+}

@@ -2,7 +2,6 @@
     font-family: Bahnschrift;
 }
 /*Home*/
-
 .homePage {
     display: flex;
     flex-direction: column;
@@ -54,46 +53,5 @@
 
 
 /*NotFound*/
-.notFound {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px;
-    align-items: center;
-    width: 55vw;
-}
 
-hr {
-    width: 100%;
-    margin-top: -10px;
-    margin-bottom: -10px;
-}
 
-.notFoundBtn {
-    border-radius: 4px;
-    background-color: #1687A7;
-    color: white;
-    width: 50px;
-    height: 25px;
-    text-align: center;
-    line-height: 26px;
-}
-
-/*TopNavbar*/
-.topNavbar {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    padding: 10px;
-    background-color: #1687A7;
-    height: 10vh;
-}
-
-.topNavbar a {
-    text-decoration: none;
-    margin-right: 5%;
-}
-
-.topNavbar a:hover {
-    font-weight: bold;
-}

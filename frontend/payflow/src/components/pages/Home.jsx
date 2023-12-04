@@ -1,15 +1,12 @@
 import React from 'react';
-import '../styles/PagesCSS.css';
+import '../styles/HomeStyles.css';
 import Balance from "../elements/Balance";
+import TopNavbar from "../elements/TopNavbar";
 
 function Home() {
     return (
         <div className="homePage">
-            <div className="topNavbar">
-                <p>test</p>
-                <a href="/">Link 1</a>
-                <a href="/">Link 2</a>
-            </div>
+            <TopNavbar/>
             <div className="balancePosition">
                 <Balance currency = {'USD'} balance = {21.37} accountNumber={'3423870000441246075444'}/>
                 <Balance currency = {'EUR'} balance = {69.42} accountNumber={'3124150000843646841238'}/>

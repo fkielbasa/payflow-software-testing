@@ -1,0 +1,12 @@
+.topNavbar {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 10px;
+    background-color: #1687A7;
+    height: 10vh;
+}
+
+.topNavbar p {
+    margin-left: 5%;
+}
