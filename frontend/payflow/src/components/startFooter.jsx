@@ -7,7 +7,7 @@ const StartFooter = () => {
     return (
         <div className={StartFooterCss.container}>
             <div className={StartFooterCss.wrapperInfo}>
-                <p>© 2023 Payflow Bank Akademicki</p>
+                <p>© 2023 PayFlow Bank Akademicki</p>
                 <p>IBAN Kod BIC (Swift): ATARPL</p>
             </div>
             <div >
