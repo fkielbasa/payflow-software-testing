@@ -10,6 +10,7 @@ import credits from "../../assets/money-bill-fill.svg";
 import cards from "../../assets/credit-card.svg";
 
 import settings from "../../assets/gear.svg";
+import settingsFill from "../../assets/gear-fill.svg";
 import logOut from "../../assets/door-open.svg";
 
 import Logo from "./Logo";
@@ -71,7 +72,7 @@ function Navbar() {
                 <ul>
                     <li>
                         <Link to='/settings'>
-                            <img className="navImages" src={settings} alt="settings"/>
+                            <img className="navImages" src={isSettings ? settingsFill : settings} alt="settings"/>
                             Ustawienia
                         </Link>
                     </li>
