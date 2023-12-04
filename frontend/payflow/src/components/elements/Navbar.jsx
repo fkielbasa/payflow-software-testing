@@ -21,46 +21,50 @@ function Navbar() {
     const isTransactionsPage = location.pathname === '/transactions';
 
     return (
-        <div className="verticalNavbar">
-            <div className="container">
-                <Link to="/homePage">
-                    <Logo />
-                </Link>
+        <div className="test">
+
+            <div className="verticalNavbar">
+                <div className="container">
+                    <Link to="/homePage">
+                        <Logo/>
+                    </Link>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to='/homePage'>
+                                <img className="navImages" src={isHomePage ? houseFill : house} alt="HomePage"/>
+                                Strona główna
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/transactions'>
+                                <img className="navImages" src={transactions} alt="transactions"/>
+                                Transakcje
+                            </Link>
+                        </li>
+                        <li>
+                            <a href="/transfers">
+                                <img className="navImages" src={transfers} alt="transfers"/>
+                                Przelewy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/credits">
+                                <img className="navImages" src={credits} alt="credits"/>
+                                Kredyty
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/cards">
+                                <img className="navImages" src={cards} alt="cards"/>
+                                Karty
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to='/homePage'>
-                            <img className="navImages" src={isHomePage ? houseFill : house} alt="HomePage"/>
-                            Strona główna
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to='/transactions'>
-                            <img className="navImages" src={transactions} alt="transactions"/>
-                            Transakcje
-                        </Link>
-                    </li>
-                    <li>
-                        <a href="/transfers">
-                            <img className="navImages" src={transfers} alt="transfers"/>
-                            Przelewy
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/credits">
-                            <img className="navImages" src={credits} alt="credits"/>
-                            Kredyty
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/cards">
-                            <img className="navImages" src={cards} alt="cards"/>
-                            Karty
-                        </a>
-                    </li>
-                </ul>
-            </nav>
             <nav className="space">
                 <ul>
                     <li>

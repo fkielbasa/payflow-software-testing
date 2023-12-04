@@ -1,29 +1,32 @@
+* {
+    font-family: Bahnschrift;
+}
 /*home*/
 .usdBalance {
-    position: absolute;
     background-color: #D3E0EA;
     width: 300px;
     height: 120px;
-    margin-top: 170px;
-    margin-left: 250px;
     border-radius: 8px;
+    display: flex;
+    margin-right: 10px;
 }
 
 .eurBalance {
-    position: absolute;
     background-color: #D3E0EA;
     width: 300px;
     height: 120px;
-    margin-top: 170px;
-    margin-left: 580px;
     border-radius: 8px;
+}
+
+.balancePosition {
+    display: flex;
 }
 
 .balanceText {
     margin: 10px;
     padding: 0px;
     color: black;
-    font-family: Bahnschrift;
+
     font-size: 16px;
 }
 
@@ -35,6 +38,11 @@
     font-size: 21px;
     margin: -1px;
 }
+
+.transaction {
+    display: flex;
+}
+
 
 
 .notFound {

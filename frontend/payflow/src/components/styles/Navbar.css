@@ -1,11 +1,7 @@
 .verticalNavbar {
-    position: fixed;
-    top: 1%;
-    left: 0;
-    width: 200px;
-    height: 50%;
-    /*background: rgba(0, 0, 0, 0.7);*/
-    padding: 10px;
+    /*width: 30%;*/
+    display: flex;
+    flex-direction: column;
 }
 
 ul {
@@ -15,25 +11,30 @@ ul {
 }
 
 li {
-    margin-bottom: -8%;
-    font-family: Bahnschrift;
+    /*padding: 10px;*/
+    /*font-family: Bahnschrift;*/
 }
 
 a {
     text-decoration: none;
     color: black;
-    font-size: 120%;
+    font-size: 16px;
 
 }
 
 .navImages {
-    width: 10%;
+    width: 40px;
     vertical-align: middle;
-    margin-left: -8%;
-    margin-top: -2%;
 
 }
 
+
+.test {
+    /*background-color: red;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+}
 .space {
-    margin-top: 60%;
 }

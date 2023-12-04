@@ -3,6 +3,7 @@ import React from "react";
 import Logo from "./components/elements/Logo";
 import {Link, useLocation} from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import './App.css'
 
 function App() {
     const location = useLocation();
@@ -11,7 +12,8 @@ function App() {
 
     return (
         <div className="container-fluid">
-            {(isHomePage || isTransactionsPage) && <Navbar />}
+            {/*{(isHomePage || isTransactionsPage) && <Navbar />}*/}
+            <Navbar />
             <div className="container">
                 <Outlet />
             </div>

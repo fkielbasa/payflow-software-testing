@@ -6,9 +6,15 @@ import EurBalance from "../elements/EurBalance";
 function HomePage() {
     return (
         <div className="HomePage">
-            <UsdBalance/>
-            <EurBalance/>
-
+            <div className="balancePosition">
+                <UsdBalance/>
+                <EurBalance/>
+            </div>
+            <div>
+                <div className="transaction">
+                    <p>Transactions</p>
+                </div>
+            </div>
         </div>
     );
 }
