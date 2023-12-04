@@ -1,13 +1,17 @@
 import StartNavbar from "./startNavbar";
-import pic from '../assets/bank.jpg'
+import {Outlet} from "react-router-dom";
+import StartPageCss from './startPage.module.css'
+import StartFooter from "./startFooter";
+
 const StartPage = () => {
 
     return(
-        <div>
+        <div className={StartPageCss.containerFluid}>
             <StartNavbar />
-            <div>
-                <img src={pic} alt="" style={{width: '200px'}}/>
+            <div className={StartPageCss.container}>
+                <Outlet />
             </div>
+            <StartFooter />
         </div>
     )
 }
