@@ -1,12 +1,12 @@
 import React from 'react';
 import '../styles/PagesCSS.css';
 
-function UsdBalance() {
-    let balance = 27.37;
-    let accountNumber = '3423870000441246075444';
+function Balance(props) {
+    let balanceUSD = 27.37;
+    let accountNumberUSD = '3423870000441246075444';
 
     // account number formatting
-    const formattedAccountNumber = formatAccountNumber(accountNumber);
+    const formattedAccountNumber = formatAccountNumber(accountNumberUSD);
 
     function formatAccountNumber(accountNumber) {
         const chunks = [];
@@ -20,8 +20,8 @@ function UsdBalance() {
         <div className="usdBalance">
             <div className="balanceText">
                 <div>
-                    <p className="textDecoration">Saldo USD</p>
-                    <p className="textDecoration, fontSize">USD ${balance}</p>
+                    <p className="textDecoration">Saldo {props.currency}</p>
+                    <p className="textDecoration, fontSize">USD ${balanceUSD}</p>
                 </div>
                 <br />
                 <div>
@@ -33,4 +33,4 @@ function UsdBalance() {
     );
 }
 
-export default UsdBalance;
+export default Balance;

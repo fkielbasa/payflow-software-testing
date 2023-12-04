@@ -2,11 +2,11 @@ import React from 'react';
 import '../styles/PagesCSS.css';
 
 function EurBalance() {
-    let balance = 69.42;
-    let accountNumber = '3124150000843646841238';
+    let balanceEUR = 69.42;
+    let accountNumberEUR = '3124150000843646841238';
 
     // account number formatting
-    const formattedAccountNumber = formatAccountNumber(accountNumber);
+    const formattedAccountNumber = formatAccountNumber(accountNumberEUR);
 
     function formatAccountNumber(accountNumber) {
         const chunks = [];
@@ -21,7 +21,7 @@ function EurBalance() {
             <div className="balanceText">
                 <div>
                     <p className="textDecoration">Sadlo EUR</p>
-                    <p className="textDecoration, fontSize">USD ${balance}</p>
+                    <p className="textDecoration, fontSize">USD ${balanceEUR}</p>
                 </div>
                 <br/>
                 <div>

@@ -1,13 +1,13 @@
 import React from 'react';
 import '../styles/PagesCSS.css';
-import UsdBalance from "../elements/UsdBalance";
+import Balance from "../elements/Balance";
 import EurBalance from "../elements/EurBalance";
 
 function HomePage() {
     return (
         <div className="HomePage">
             <div className="balancePosition">
-                <UsdBalance/>
+                <Balance currency = {'USD'}/>
                 <EurBalance/>
             </div>
             <div>
