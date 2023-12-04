@@ -6,7 +6,7 @@ import house from "../../assets/houses.svg";
 import houseFill from "../../assets/houses-fill.svg";
 import transactions from "../../assets/money-bill-transfer.svg";
 import transfers from "../../assets/arrow-right-arrow-left.svg";
-import credits from "../../assets/money-bill-wave.svg";
+import credits from "../../assets/money-bill-fill.svg";
 import cards from "../../assets/credit-card.svg";
 
 import settings from "../../assets/gear.svg";
@@ -21,9 +21,9 @@ function Navbar() {
     const isTransactionsPage = location.pathname === '/transactions';
 
     return (
-        <div className="test">
+        <div className="verticalNavbar">
 
-            <div className="verticalNavbar">
+            <div className="firstSection">
                 <div className="container">
                     <Link to="/homePage">
                         <Logo/>
@@ -65,7 +65,7 @@ function Navbar() {
                     </ul>
                 </nav>
             </div>
-            <nav className="space">
+            <nav>
                 <ul>
                     <li>
                         <Link to='/settings'>

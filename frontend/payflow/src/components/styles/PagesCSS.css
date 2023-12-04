@@ -1,14 +1,20 @@
 * {
     font-family: Bahnschrift;
 }
-/*home*/
+/*Home*/
+
+.homePage {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+}
 .balance {
     background-color: #D3E0EA;
     width: 300px;
     height: 130px;
     border-radius: 8px;
     margin-right: 10px;
-    margin-top: 20vh;
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
 }
@@ -43,10 +49,11 @@
 
 .transaction {
     display: flex;
+    flex-direction: row;
 }
 
 
-/*notFound*/
+/*NotFound*/
 .notFound {
     display: flex;
     flex-direction: column;
@@ -70,4 +77,23 @@ hr {
     height: 25px;
     text-align: center;
     line-height: 26px;
+}
+
+/*TopNavbar*/
+.topNavbar {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 10px;
+    background-color: #1687A7;
+    height: 10vh;
+}
+
+.topNavbar a {
+    text-decoration: none;
+    margin-right: 5%;
+}
+
+.topNavbar a:hover {
+    font-weight: bold;
 }
