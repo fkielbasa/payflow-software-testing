@@ -15,8 +15,8 @@ ul {
 }
 
 li {
-    margin-bottom: -10px;
-
+    margin-bottom: -8%;
+    font-family: Bahnschrift;
 }
 
 a {
@@ -29,11 +29,11 @@ a {
 .navImages {
     width: 10%;
     vertical-align: middle;
-    margin-left: -10px;
+    margin-left: -8%;
     margin-top: -2%;
 
 }
 
 .space {
-    margin-top: 120px;
+    margin-top: 60%;
 }
