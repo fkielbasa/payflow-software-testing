@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import StartPage from "./components/startPage";
 import DefaultPage from "./components/defaultPage";
 import StartAccounts from "./components/startAccounts";
+import StartCredits from "./components/startCredits";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
                 <Route path="/" element={<StartPage />}>
                     <Route path="/" element={<DefaultPage />} />
                     <Route path="/accounts" element={<StartAccounts />} />
+                    <Route path="/credits" element={<StartCredits />} />
                 </Route>
 
                     {/*<Route path="*" element={<NotFound/>}/>*/}
