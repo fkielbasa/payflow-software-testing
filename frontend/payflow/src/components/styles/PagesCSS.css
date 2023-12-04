@@ -11,13 +11,6 @@
     margin-right: 10px;
 }
 
-.eurBalance {
-    background-color: #D3E0EA;
-    width: 300px;
-    height: 120px;
-    border-radius: 8px;
-}
-
 .balancePosition {
     display: flex;
 }
