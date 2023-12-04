@@ -17,7 +17,7 @@ const StartNavbar = () => {
                     <li><Link className={StartNavBar.link} to="credits">kredyty</Link></li>
                     <li><Link className={StartNavBar.link} to="cards">karty</Link></li>
                     <li><Link className={StartNavBar.link} to="accounts">usługi</Link></li>
-                    <li><Link className={StartNavBar.link} to="accounts">bezpieczeństwo</Link></li>
+                    <li><Link className={StartNavBar.link} to="secure">bezpieczeństwo</Link></li>
                 </ul>
             </div>
             <div className={StartNavBar.signWrapper}>

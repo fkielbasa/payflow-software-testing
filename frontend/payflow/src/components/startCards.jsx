@@ -12,14 +12,14 @@ const StartCards = () => {
                 <div >
                     <p>Karty kredytowe podstawowe</p>
                     <div className={StartCardsCss.wrapperCards}>
-                        <InfoCard title={"Konto dla młodych"} icon={<CiCreditCard1 />} description={"Konto od 13 do 24 lat z kartą, która wygląda tak, jak chcesz"} />
+                        <InfoCard title={"Podstawowa karta kredytowa"} icon={<CiCreditCard1 />} description={"Najniższe oprocentowanie przez 3 miesiące oraz 0 zł za wydanie karty"} />
 
                     </div>
                 </div>
                 <div>
                     <p>Karta kredytowa do mKonta Intensive</p>
                     <div className={StartCardsCss.wrapperCards}>
-                        <InfoCard title={"Konto dla młodych"} icon={<CiCreditCard1 />} description={"Konto od 13 do 24 lat z kartą, która wygląda tak, jak chcesz"} />
+                        <InfoCard title={"Karta kredytowa Mastercard Intensive"} icon={<CiCreditCard1 />} description={"Program Mastercard Intensive oraz limit do 100 tys. zł"} />
                     </div>
                 </div>
                 </div>
