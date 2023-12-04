@@ -8,6 +8,7 @@ import StartPage from "./components/startPage";
 import DefaultPage from "./components/defaultPage";
 import StartAccounts from "./components/startAccounts";
 import StartCredits from "./components/startCredits";
+import StartCards from "./components/startCards";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
                     <Route path="/" element={<DefaultPage />} />
                     <Route path="/accounts" element={<StartAccounts />} />
                     <Route path="/credits" element={<StartCredits />} />
+                    <Route path="/cards" element={<StartCards />} />
                 </Route>
 
                     {/*<Route path="*" element={<NotFound/>}/>*/}

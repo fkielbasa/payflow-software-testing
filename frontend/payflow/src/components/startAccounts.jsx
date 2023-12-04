@@ -1,7 +1,7 @@
 
 import StartAccountsCss from './startAccounts.module.css'
-import AccountInfoCard from "./accountInfoCard";
 import { CiWallet, CiGlobe, CiCreditCard1 } from "react-icons/ci";
+import InfoCard from "./infoCard";
 const StartAccounts = () => {
     return (
         <div>
@@ -21,9 +21,9 @@ const StartAccounts = () => {
             <div>
                 <p className={StartAccountsCss.text}>Sprawdź nasze korzyści!</p>
                 <div className={StartAccountsCss.cards}>
-                    <AccountInfoCard title={"Konto dla młodych"} icon={<CiCreditCard1 />} description={"Konto od 13 do 24 lat z kartą, która wygląda tak, jak chcesz"} />
-                    <AccountInfoCard title={"Konto osobiste w promocji"} icon={<CiWallet />} description={"0zł za konto, kartę i aplikację"} />
-                    <AccountInfoCard title={"Konto premium"} icon={<CiGlobe />} description={"Konto premium z dostępem do pakietu narzędzi Intensive i premią"} />
+                    <InfoCard title={"Konto dla młodych"} icon={<CiCreditCard1 />} description={"Konto od 13 do 24 lat z kartą, która wygląda tak, jak chcesz"} />
+                    <InfoCard title={"Konto osobiste w promocji"} icon={<CiWallet />} description={"0zł za konto, kartę i aplikację"} />
+                    <InfoCard title={"Konto premium"} icon={<CiGlobe />} description={"Konto premium z dostępem do pakietu narzędzi Intensive i premią"} />
                 </div>
             </div>
         </div>
