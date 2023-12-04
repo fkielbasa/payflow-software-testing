@@ -5,10 +5,10 @@ const NotFound = () => {
     return (
         <div className="jumbotron, notFound">
             <h1 className="display-4">404 - Not found!</h1>
-            <p className="lead">Page you are looking for does not exist.</p>
+            <p className="lead">Strona na której się znajdujesz nie istnieje!</p>
             <hr className="my-4"/>
-            <p>Go back to Home</p>
-            <Link className="btn btn-primary btn-lg" to="/homePage" role="button">Home</Link>
+            <p>Przejdź do strony głównej.</p>
+            <Link className="btn btn-primary btn-lg notFoundBtn" to="/home" role="button">Home</Link>
         </div>
     );
 };

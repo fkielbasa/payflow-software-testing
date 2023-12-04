@@ -2,9 +2,12 @@ import React from 'react';
 import '../styles/PagesCSS.css';
 import Balance from "../elements/Balance";
 
-function HomePage() {
+function Home() {
     return (
         <div className="HomePage">
+            <div className="topNavbar">
+                
+            </div>
             <div className="balancePosition">
                 <Balance currency = {'USD'} balance = {21.37} accountNumber={'3423870000441246075444'}/>
                 <Balance currency = {'EUR'} balance = {69.42} accountNumber={'3124150000843646841238'}/>
@@ -18,4 +21,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default Home;

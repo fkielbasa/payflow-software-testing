@@ -17,7 +17,7 @@ import Logo from "./Logo";
 function Navbar() {
     const location = useLocation();
 
-    const isHomePage = location.pathname === '/homePage';
+    const isHomePage = location.pathname === '/home';
     const isTransactionsPage = location.pathname === '/transactions';
 
     return (
@@ -33,8 +33,8 @@ function Navbar() {
                 <nav>
                     <ul>
                         <li>
-                            <Link to='/homePage'>
-                                <img className="navImages" src={isHomePage ? houseFill : house} alt="HomePage"/>
+                            <Link to='/home'>
+                                <img className="navImages" src={isHomePage ? houseFill : house} alt="Home"/>
                                 Strona główna
                             </Link>
                         </li>

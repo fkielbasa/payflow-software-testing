@@ -21,7 +21,7 @@ function Balance(props) {
 
 
     return (
-        <div className="usdBalance">
+        <div className="balance">
             <div className="balanceText">
                 <div>
                     <p className="textDecoration">Saldo {props.currency}</p>
@@ -31,6 +31,9 @@ function Balance(props) {
                 <div>
                     <p className="textDecoration">Nr. rachunku:</p>
                     <p className="textDecoration">{accountNumberConst}</p>
+                </div>
+                <div>
+                    <p className="accountDetails">Szczegóły konta >></p>
                 </div>
             </div>
         </div>

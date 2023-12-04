@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/Transactions.css';
 
 function Transactions() {
     return (
@@ -10,3 +9,4 @@ function Transactions() {
 }
 
 export default Transactions;
+

@@ -2,13 +2,15 @@
     font-family: Bahnschrift;
 }
 /*home*/
-.usdBalance {
+.balance {
     background-color: #D3E0EA;
     width: 300px;
-    height: 120px;
+    height: 130px;
     border-radius: 8px;
-    display: flex;
     margin-right: 10px;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .balancePosition {
@@ -32,12 +34,40 @@
     margin: -1px;
 }
 
+.accountDetails {
+    margin-top: 2px;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 13px;
+}
+
 .transaction {
     display: flex;
 }
 
 
-
+/*notFound*/
 .notFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 15px;
+    align-items: center;
+    width: 55vw;
+}
+
+hr {
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.notFoundBtn {
+    border-radius: 4px;
+    background-color: #1687A7;
+    color: white;
+    width: 50px;
+    height: 25px;
+    text-align: center;
+    line-height: 26px;
 }
