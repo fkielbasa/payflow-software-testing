@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/TopNavbar.css';
+import '../styles/TopNavbarStyles.css';
 
 function Home() {
     return (

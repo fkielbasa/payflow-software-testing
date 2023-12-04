@@ -17,15 +17,17 @@ import Logo from "./Logo";
 function Navbar() {
     const location = useLocation();
 
-    const isHomePage = location.pathname === '/home';
-    const isTransactionsPage = location.pathname === '/transactions';
+    const isHome = location.pathname === '/home';
+
+    const isSettings = location.pathname === '/settings';
+
 
     return (
         <div className="verticalNavbar">
 
             <div className="firstSection">
                 <div className="container">
-                    <Link to="/homePage">
+                    <Link to="/home">
                         <Logo/>
                     </Link>
                 </div>
@@ -34,7 +36,7 @@ function Navbar() {
                     <ul>
                         <li>
                             <Link to='/home'>
-                                <img className="navImages" src={isHomePage ? houseFill : house} alt="Home"/>
+                                <img className="navImages" src={isHome ? houseFill : house} alt="Home"/>
                                 Strona główna
                             </Link>
                         </li>
