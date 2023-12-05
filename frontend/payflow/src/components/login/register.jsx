@@ -4,6 +4,7 @@ import {useState} from "react";
 import AccountCard from "../cards/accountCard";
 import bank from '../../assets/banking.png'
 import card from '../../assets/debit-card.png'
+import RegisterForm from "./registerForm";
 
 const Register = () => {
     const [account, setAccount] = useState(true)
@@ -17,8 +18,13 @@ const Register = () => {
 
     const selectAccount = (choice) => {
         setIsNormalAccount(choice)
+        changePage()
+        setDataAccount(true)
     }
 
+    const changePage = () => {
+        setCurrentPage((currentPage) => currentPage + 1)
+    }
 
     const renderAccounts = () => {
         return (
@@ -30,7 +36,11 @@ const Register = () => {
     }
 
     const renderDataForm = () => {
-        
+        return(
+            <div className={styles.dataWrapper}>
+                <RegisterForm />
+            </div>
+        )
     }
 
     const renderNotFound = () => {
@@ -50,7 +60,7 @@ const Register = () => {
         }
     }
     return (
-        <div>
+        <div className={styles.container}>
             <h1>Otwieram konto</h1>
             <div className={styles.choiceWrapper}>
                 <ChoiceCard filled={account} title={"Wybór konta"}/>
@@ -59,7 +69,10 @@ const Register = () => {
                 <ChoiceCard filled={summary} title={"Podsumowanie"} />
             </div>
             <hr/>
-            {renderPage()}
+            <div className={styles.data}>
+                {renderPage()}
+            </div>
+
         </div>
     )
 }
