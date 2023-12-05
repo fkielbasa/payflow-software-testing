@@ -5,14 +5,11 @@ import '../styles/NavbarStyles.css';
 import house from "../../assets/home/houses.svg";
 import houseFill from "../../assets/home/houses-fill.svg";
 
-import transactions from "../../assets/money-bill-transfer.svg";
-import { IoCashOutline } from "react-icons/io5";
-import { IoCash } from "react-icons/io5";
+import transactions from "../../assets/transactions/briefcase.svg";
+import transactionsFill from "../../assets/transactions/briefcase-fill.svg";
 
-
-
-
-import transfers from "../../assets/arrow-right-arrow-left.svg";
+import transfers from "../../assets/transfers/arrow-right.svg";
+import transfersFill from "../../assets/transfers/arrow-right-arrow-left.svg";
 
 import credits from "../../assets/credits/money-bill.svg";
 import creditsFill from "../../assets/credits/money-bill-fill.svg";
@@ -37,7 +34,7 @@ function Navbar() {
 
     const isCredits = location.pathname === '/credits';
     const isCards = location.pathname === '/cards';
-
+    const isTransfers = location.pathname === '/transfers';
     const isSettings = location.pathname === '/settings';
     const isLogOut = location.pathname === '/logOut';
 
@@ -62,14 +59,13 @@ function Navbar() {
                         </li>
                         <li>
                             <Link to='/transactions'>
-                                {/*<img className="navImages" img={<IoCashOutline />} alt="transactions" />*/}
-                                <IoCashOutline />
+                                <img className="navImages" src={isTransactions ? transactionsFill : transactions} alt="transactions" />
                                 Transakcje
                             </Link>
                         </li>
                         <li>
                             <a href="/transfers">
-                                <img className="navImages" src={transfers} alt="transfers"/>
+                                <img className="navImages" src={isTransfers ? transfersFill : transfers} alt="transfers"/>
                                 Przelewy
                             </a>
                         </li>
