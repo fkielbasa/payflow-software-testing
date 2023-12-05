@@ -1,58 +1,28 @@
 * {
     font-family: Bahnschrift;
 }
-/*Home*/
+
 .homePage {
     display: flex;
     flex-direction: column;
-    width: 80vw;
     background-color: green;
 }
-.balance {
-    background-color: #D3E0EA;
-    width: 300px;
-    height: 130px;
-    border-radius: 8px;
-    margin-right: 10px;
-    margin-top: 10vh;
+
+.contentWrapper {
     display: flex;
-    flex-direction: column;
 }
 
 .balancePosition {
-    display: flex;
-}
-
-.balanceText {
-    margin: 10px;
-    padding: 0px;
-    color: black;
-
-    font-size: 16px;
-}
-
-.textDecoration {
-    margin: 0px;
-}
-
-.fontSize {
-    font-size: 21px;
-    margin: -1px;
-}
-
-.accountDetails {
-    margin-top: 2px;
-    display: flex;
-    flex-direction: row-reverse;
-    font-size: 13px;
-}
-
-.transaction {
+    width: 40vw;
     display: flex;
     flex-direction: row;
+    margin-right: 10px;
 }
 
-
-/*NotFound*/
-
+.transactionPosition {
+    width: 40vw;
+    background-color: magenta;
+    display: flex;
+    flex-direction: column;
+}
 

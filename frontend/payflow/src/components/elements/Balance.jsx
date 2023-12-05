@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/HomeStyles.css';
+import '../styles/BalanceStyles.css';
 
 function Balance(props) {
     // account number formatting
