@@ -8,5 +8,16 @@
 }
 
 .topNavbar p {
-    margin-left: 5%;
+    margin-right: 3%;
+    font-weight: bold;
+}
+
+.topNavImages {
+    width: 32px;
+    vertical-align: middle;
+}
+
+.topNavImagesSmall {
+    width: 26px;
+    vertical-align: middle;
 }
