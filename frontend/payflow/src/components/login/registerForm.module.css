@@ -59,6 +59,7 @@
     background-color: var(--blue);
     border-radius: 5px;
     border: var(--blue);
+    cursor: pointer;
 }
 
 .radio {
@@ -73,4 +74,10 @@
     accent-color: var(--darkBlue);
 }
 
+.btnToRight{
+    margin: 30px;
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+}
 

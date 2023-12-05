@@ -14,6 +14,7 @@ const Register = () => {
     const [currentPage, setCurrentPage] = useState(0)
 
     const [isNormalAccount, setIsNormalAccount] = useState(true)
+    const [dataForm, setDataForm] = useState({})
 
 
     const selectAccount = (choice) => {
@@ -22,8 +23,15 @@ const Register = () => {
         setDataAccount(true)
     }
 
+
     const changePage = () => {
         setCurrentPage((currentPage) => currentPage + 1)
+    }
+
+    const saveDataForm = (data) => {
+        setDataForm(data)
+        changePage()
+        console.log(data)
     }
 
     const renderAccounts = () => {
@@ -38,7 +46,7 @@ const Register = () => {
     const renderDataForm = () => {
         return(
             <div className={styles.dataWrapper}>
-                <RegisterForm />
+                <RegisterForm saveDataForm={saveDataForm} />
             </div>
         )
     }
