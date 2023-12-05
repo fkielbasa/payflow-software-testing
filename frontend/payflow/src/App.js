@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import StartPage from "./components/startPage";
+import StartPage from "./components/startFrontPages/startPage";
 import {Outlet} from "react-router-dom";
 
 function App() {

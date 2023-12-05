@@ -4,12 +4,13 @@ import './index.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import StartPage from "./components/startPage";
-import DefaultPage from "./components/defaultPage";
-import StartAccounts from "./components/startAccounts";
-import StartCredits from "./components/startCredits";
-import StartCards from "./components/startCards";
-import StartSecure from "./components/startSecure";
+import StartPage from "./components/startFrontPages/startPage";
+import DefaultPage from "./components/startFrontPages/defaultPage";
+import StartAccounts from "./components/startFrontPages/startAccounts";
+import StartCredits from "./components/startFrontPages/startCredits";
+import StartCards from "./components/startFrontPages/startCards";
+import StartSecure from "./components/startFrontPages/startSecure";
+import StartServices from "./components/startServices";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.render(
                     <Route path="/accounts" element={<StartAccounts />} />
                     <Route path="/credits" element={<StartCredits />} />
                     <Route path="/cards" element={<StartCards />} />
+                    <Route path="/services" element={<StartServices />} />
                     <Route path="/secure" element={<StartSecure />} />
                 </Route>
 
