@@ -1,5 +1,7 @@
 package com.example.payflow.user;
 
+import com.example.payflow.address.Address;
+import com.example.payflow.user_details.UserDetails;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,8 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
-
+public class User implements org.springframework.security.core.userdetails.UserDetails {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
@@ -39,6 +39,19 @@ public class User implements UserDetails {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
+    @ManyToOne
+    @JoinColumn(name = "residential_address_id")
+    private Address residentialAddress;
+
+    @ManyToOne
+    @JoinColumn(name = "correspondence_address_id")
+    private Address correspondenceAddress;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private UserDetails userDetails;
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
