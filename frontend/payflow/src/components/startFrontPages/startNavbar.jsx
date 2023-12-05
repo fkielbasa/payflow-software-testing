@@ -22,10 +22,12 @@ const StartNavbar = () => {
             </div>
             <div className={StartNavBar.signWrapper}>
                 <div className={StartNavBar.log}>
-                    <CiLogin />
-                    <p>Zaloguj się</p>
+                    <Link to="login">
+                        <CiLogin />
+                        <p>Zaloguj się</p>
+                    </Link>
                 </div>
-                <div className={StartNavBar.newAcc}><p>Otwórz konto</p></div>
+                <div className={StartNavBar.newAcc}><Link to="register">Otwórz konto</Link></div>
             </div>
         </div>
     )

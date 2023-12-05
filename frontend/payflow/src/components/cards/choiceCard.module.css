@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+.wrapper{
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--black);
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fill {
+    width: 90%;
+    height: 90%;
+    background-color: var(--blue);
+    border-radius: 50%;
+}

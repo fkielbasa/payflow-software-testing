@@ -1,0 +1,54 @@
+.container {
+    width: 200px;
+    height: 300px;
+    border-radius: 5px;
+    border: 2px solid var(--black);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.container:hover{
+    border: 2px solid var(--darkBlue);
+}
+
+.container p {
+    margin: 0;
+}
+.container div {
+    /*padding: 10px;*/
+}
+
+.logo p{
+    text-align: center;
+}
+.logo {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+
+    padding: 0;
+}
+
+.logo div{
+    width: 100%;
+    text-align: center;
+}
+
+.container div img {
+    width: 50%;
+}
+
+.info {
+    /*padding: 5px;*/
+    margin-top: 10px;
+}
+.info div {
+    padding: 5px;
+}
+
+.info b {
+    font-size: 14px;
+    padding: 5px;
+}

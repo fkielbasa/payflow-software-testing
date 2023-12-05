@@ -1,0 +1,17 @@
+
+.choiceWrapper{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+
+}
+
+.accountWrapper{
+    padding: 15px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+

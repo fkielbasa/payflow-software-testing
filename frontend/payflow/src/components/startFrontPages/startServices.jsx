@@ -1,10 +1,10 @@
 import styles from './startServices.module.css'
-import PaymentPic from '../assets/payment.jpg'
-import PaymentWeb from '../assets/web_payment.jpg'
-import ServiceCard from "./cards/serviceCard";
+import PaymentPic from '../../assets/payment.jpg'
+import PaymentWeb from '../../assets/web_payment.jpg'
+import ServiceCard from "../cards/serviceCard";
 import {CiCreditCard1} from "react-icons/ci";
 import { MdCurrencyExchange, MdOutlineSecurity } from "react-icons/md";
-import InfoCard from "./cards/infoCard";
+import InfoCard from "../cards/infoCard";
 
 const StartServices = () => {
 

@@ -60,6 +60,7 @@
 
 .signWrapper {
     display: flex;
+    align-items: center;
 }
 .signWrapper div {
     padding: 15px;
@@ -74,12 +75,21 @@
     display: flex;
     align-content: center;
 }
+
+.log a{
+    color: var(--black);
+    display: flex;
+    align-content: center;
+    text-decoration: none;
+}
+.log a:hover{
+    color: var(--blue);
+}
+
 .log p {
     padding: 10px 15px;
 }
-.log:hover {
-    color: var(--blue);
-}
+
 
 .log svg {
     color: var(--blue);
@@ -87,13 +97,19 @@
     align-self: center;
 }
 
-.newAcc p {
+.newAcc{
+
+}
+
+.newAcc a {
     border-radius: 10px;
     border: 1px solid var(--darkBlue);
     padding: 10px 30px;
+    color: var(--black);
+    text-decoration: none;
 
 }
-.newAcc p:hover {
+.newAcc a:hover {
     border-radius: 15px;
     background-color: var(--darkBlue);
     color: var(--white);
