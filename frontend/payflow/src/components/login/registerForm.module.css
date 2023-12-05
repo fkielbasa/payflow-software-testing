@@ -81,3 +81,17 @@
     justify-content: flex-start;
 }
 
+.wrongData {
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+
+.select {
+    margin: 10px;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 210px;
+}
