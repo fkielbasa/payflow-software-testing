@@ -18,15 +18,11 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_transaction")
     private Long idTransaction;
-
     private BigDecimal amount;
-
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "transaction_date")
     private Date transactionDate;
-
-    private String type;
-
+    @Enumerated(EnumType.STRING)
+    private Type type;
     @ManyToOne
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumberTransaction;
