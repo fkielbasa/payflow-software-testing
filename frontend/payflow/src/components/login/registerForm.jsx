@@ -7,7 +7,7 @@ const RegisterForm = ({saveDataForm}) => {
     const [lastName, setLastName] = useState('')
     const [dateOfBirth, setDateOfBirth] = useState('')
     const [email, setEmail] = useState('')
-    const [country, setCountry] = useState('')
+    const [country, setCountry] = useState('Polska')
     const [phoneNumber, setPhoneNumber] = useState('')
     const [zipCode, setZipCode] = useState('')
     const [city, setCity] = useState('')
@@ -83,7 +83,7 @@ const RegisterForm = ({saveDataForm}) => {
         return regex.test(number);
     };
     const isString = (s) => {
-        const regex = /^[a-zA-Z]+$/;
+        const regex = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/;
         return regex.test(s);
     };
 

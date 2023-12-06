@@ -68,10 +68,56 @@ const Register = () => {
         )
     }
 
+    const handleOpenAccount = () => {
+      console.log("DONE")
+    }
+
+    const renderSummary = () => {
+        return(
+            <div className={styles.summaryContainer}>
+                <div className={styles.wrapperPrint}>{isNormalAccount ? <AccountCard title={"Zwykłe konto "}  img={bank} /> : <AccountCard title={"Konto Intensive "}  img={card}/>}</div>
+                <div>
+                    <div className={styles.horiz}>
+                        <div className={styles.wrapperPrint}>
+                            <p><b>Dane osobiste</b></p>
+                            <p>Imię: <b>{dataForm.firstName}</b></p>
+                            <p>Nazwisko: <b>{dataForm.lastName}</b></p>
+                            <p>Data urodzenia: <b>{dataForm.dateOfBirth}</b></p>
+                            <p>Kraj: <b>{dataForm.country}</b></p>
+                            <p>E-mail: <b>{dataForm.email}</b></p>
+                            <p>Nr telefonu: <b>{dataForm.phoneNumber}</b></p>
+                        </div>
+                        <div className={styles.wrapperPrint}>
+                            <p><b>Adres zamieszkania</b></p>
+                            <p>Kod pocztowy: <b>{dataForm.zipCode}</b></p>
+                            <p>Miejscowość: <b>{dataForm.city}</b></p>
+                            <p>Ulica: <b>{dataForm.street}</b></p>
+                            <p>Nr domu: <b>{dataForm.homeNumber}</b></p>
+                            <p>Nr mieszkania: <b>{dataForm.flatNumber}</b></p>
+                        </div>
+                        <div className={styles.wrapperPrint}>
+                            <p><b>Adres korespondencyjny</b></p>
+                            <p>Kod pocztowy: <b>{dataForm.zipCodeCorrespondence}</b></p>
+                            <p>Miejscowość: <b>{dataForm.cityCorrespondence}</b></p>
+                            <p>Ulica: <b>{dataForm.streetCorrespondence}</b></p>
+                            <p>Nr domu: <b>{dataForm.homeNumberCorrespondence}</b></p>
+                            <p>Nr mieszkania: <b>{dataForm.flatNumberCorrespondence}</b></p>
+                        </div>
+                    </div>
+                    <div className={styles.horiz}>
+                        <button onClick={handleOpenAccount} className={styles.applyBtn}>Potwierdź dane i otwórz konto</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     const renderNotFound = () => {
-        return (<div>
-            er
-        </div>)
+        return (
+            <div>
+
+        </div>
+        )
     }
 
     const renderPage = () => {
@@ -82,6 +128,8 @@ const Register = () => {
                 return renderDataForm()
             case 2:
                 return renderSecurity()
+            case 3:
+                return renderSummary()
             default:
                 return renderNotFound()
         }

@@ -31,3 +31,28 @@
 }
 
 
+.summaryContainer {
+    display: flex;
+    /*align-items: center;*/
+}
+
+.wrapperPrint{
+    padding: 15px;
+    margin: 10px;
+}
+
+
+.horiz {
+    display: flex;
+    justify-content: center;
+}
+
+.applyBtn {
+    font-size: 16px;
+    padding: 15px 30px;
+    background-color: var(--darkBlue);
+    color: var(--black);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}

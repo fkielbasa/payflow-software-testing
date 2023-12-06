@@ -24,7 +24,6 @@ const PasswordForm = ({savePassword}) => {
         // Sprawdzanie siły hasła po każdej zmianie
         const passwordIsStrong = checkPasswordStrength(newPassword);
         setIsStrong(passwordIsStrong);
-        console.log(newPassword)
         if (newPassword.length < 4){
             document.getElementById("bad").style.backgroundColor = "red"
             document.getElementById("medium").style.backgroundColor ="transparent"
