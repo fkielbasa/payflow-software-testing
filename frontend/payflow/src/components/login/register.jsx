@@ -5,6 +5,7 @@ import AccountCard from "../cards/accountCard";
 import bank from '../../assets/banking.png'
 import card from '../../assets/debit-card.png'
 import RegisterForm from "./registerForm";
+import PasswordForm from "./passwordForm";
 
 const Register = () => {
     const [account, setAccount] = useState(true)
@@ -15,6 +16,7 @@ const Register = () => {
 
     const [isNormalAccount, setIsNormalAccount] = useState(true)
     const [dataForm, setDataForm] = useState({})
+    const [password, setPassword] = useState('')
 
 
     const selectAccount = (choice) => {
@@ -32,6 +34,13 @@ const Register = () => {
         setDataForm(data)
         changePage()
         console.log(data)
+        setLogAccount(true)
+    }
+
+    const savePassword = (pass) => {
+        setPassword(pass)
+        changePage()
+        setSummary(true)
     }
 
     const renderAccounts = () => {
@@ -51,6 +60,14 @@ const Register = () => {
         )
     }
 
+    const renderSecurity = () => {
+        return(
+            <div>
+                <PasswordForm savePassword={savePassword} />
+            </div>
+        )
+    }
+
     const renderNotFound = () => {
         return (<div>
             er
@@ -63,6 +80,8 @@ const Register = () => {
                 return renderAccounts()
             case 1:
                 return renderDataForm()
+            case 2:
+                return renderSecurity()
             default:
                 return renderNotFound()
         }

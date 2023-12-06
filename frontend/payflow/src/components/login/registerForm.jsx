@@ -97,9 +97,9 @@ const RegisterForm = ({saveDataForm}) => {
                 <div className={styles.dataWrapper}>
                     <p>Dane osobiste</p>
                     <label>Imie</label>
-                    <input  type="text" onChange={(event) => setFirstName(event.target.value)} required/>
+                    <input  type="text" maxLength="50" onChange={(event) => setFirstName(event.target.value)} required/>
                     <label>Nazwisko</label>
-                    <input  type="text" onChange={(event) => setLastName(event.target.value)} required/>
+                    <input  type="text" maxLength="50" onChange={(event) => setLastName(event.target.value)} required/>
                     <label>Data urodzenia</label>
                     <input  type="date" onChange={(event) => setDateOfBirth(event.target.value)} required/>
                     <label>Kraj</label>
@@ -293,22 +293,22 @@ const RegisterForm = ({saveDataForm}) => {
                         <option value="Saint Kitts i Nevis">Saint Kitts i Nevis</option>
                     </select>
                     <label>E-mail</label>
-                    <input  type="email" onChange={(event) => setEmail(event.target.value)} required/>
+                    <input  type="email"  maxLength="100" onChange={(event) => setEmail(event.target.value)} required/>
                     <label>Nr telefonu</label>
-                    <input  type="text" maxLength="9" onChange={(event) => setPhoneNumber(event.target.value)} required/>
+                    <input type="text" minLength="9" maxLength="9" onChange={(event) => setPhoneNumber(event.target.value)} required/>
                 </div>
                 <div className={styles.dataWrapper}>
                     <p>Adres zamieszkania</p>
                     <label>Kod pocztowy</label>
-                    <input  type="tel" pattern="[0-9]*" onChange={(event) => setZipCode(event.target.value)}  maxLength="5"  required/>
+                    <input  type="text" pattern="[0-9]*" onChange={(event) => setZipCode(event.target.value)} minLength="5"  maxLength="5"  required/>
                     <label>Miejscowość</label>
-                    <input  type="text" onChange={(event) => setCity(event.target.value)} required/>
+                    <input  type="text" maxLength="50" onChange={(event) => setCity(event.target.value)} required/>
                     <label>Ulica</label>
-                    <input  type="text" onChange={(event) => setStreet(event.target.value)} required/>
+                    <input  type="text" maxLength="50" onChange={(event) => setStreet(event.target.value)} required/>
                     <label>Nr domu</label>
-                    <input  type="text" onChange={(event) => setHomeNumber(event.target.value)} required/>
+                    <input  type="text" maxLength="10" onChange={(event) => setHomeNumber(event.target.value)} required/>
                     <label>Nr mieszkania</label>
-                    <input  onChange={(event) => setFlatNumber(event.target.value)} type="text" />
+                    <input  type="text" maxLength="10" onChange={(event) => setFlatNumber(event.target.value)}  />
                 </div>
                     <div className={styles.dataWrapper}>
                         <p>Adres zamieszkania korespondencyjny</p>
@@ -319,13 +319,13 @@ const RegisterForm = ({saveDataForm}) => {
                         <label>Kod pocztowy</label>
                         <input  disabled={sameAddress} onChange={(event) => setZipCodeCorrespondence(event.target.value)} type="tel" pattern="[0-9]*"  maxLength="5"  required/>
                         <label>Miejscowość</label>
-                        <input  disabled={sameAddress} onChange={(event) => setCityCorrespondence(event.target.value)} type="text" required/>
+                        <input  maxLength="50" disabled={sameAddress} onChange={(event) => setCityCorrespondence(event.target.value)} type="text" required/>
                         <label>Ulica</label>
-                        <input  disabled={sameAddress} onChange={(event) => setStreetCorrespondence(event.target.value)} type="text" required/>
+                        <input  maxLength="50" disabled={sameAddress} onChange={(event) => setStreetCorrespondence(event.target.value)} type="text" required/>
                         <label>Nr domu</label>
-                        <input  disabled={sameAddress} onChange={(event) => setHomeNumberCorrespondence(event.target.value)}  type="text" required/>
+                        <input  maxLength="10" disabled={sameAddress} onChange={(event) => setHomeNumberCorrespondence(event.target.value)}  type="text" required/>
                         <label>Nr mieszkania</label>
-                        <input  disabled={sameAddress} onChange={(event) => setFlatNumberCorrespondence(event.target.value)}   type="text" />
+                        <input  maxLength="10" disabled={sameAddress} onChange={(event) => setFlatNumberCorrespondence(event.target.value)}   type="text" />
                     </div>
                 </div>
                 <p id="wrong" className={styles.wrongData} >Dane są nieprawidłowe! Sprwadź je i prześlij jeszcze raz.</p>
