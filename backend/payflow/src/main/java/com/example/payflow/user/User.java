@@ -1,7 +1,6 @@
 package com.example.payflow.user;
 
 import com.example.payflow.address.Address;
-import com.example.payflow.user_details.UserDetails;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,6 +29,7 @@ public class User implements org.springframework.security.core.userdetails.UserD
             sequenceName = "user_sequence",
             allocationSize = 1
     )
+    @Column(name="id_user")
     private Long id;
     private String firstname;
     private String lastname;
@@ -46,11 +46,6 @@ public class User implements org.springframework.security.core.userdetails.UserD
     @ManyToOne
     @JoinColumn(name = "correspondence_address_id")
     private Address correspondenceAddress;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    private UserDetails userDetails;
-
 
 
     @Override

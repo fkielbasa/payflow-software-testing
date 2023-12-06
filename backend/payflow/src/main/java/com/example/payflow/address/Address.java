@@ -1,9 +1,12 @@
 package com.example.payflow.address;
 
+import com.example.payflow.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -11,17 +14,24 @@ import lombok.Data;
 @Entity
 @Table(name = "address")
 public class Address {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_address")
-    private Long idAddress;
-
+    private Long id;
     private String street;
+    @Column(name = "house_number")
     private String houseNumber;
+    @Column(name = "apartment_number")
+    private String apartmentNumber;
+    @Column(name = "zip_code")
     private String zipCode;
     private String city;
     private String country;
+    @OneToMany(mappedBy = "residentialAddress")
+    private List<User> residentialAddress;
+
+    @OneToMany(mappedBy = "correspondenceAddress")
+    private List<User> correspondenceAddress;
 
     public Address() {
     }
@@ -35,11 +45,11 @@ public class Address {
     }
 
     public Long getIdAddress() {
-        return idAddress;
+        return id;
     }
 
     public void setIdAddress(Long idAddress) {
-        this.idAddress = idAddress;
+        this.id = idAddress;
     }
 
     public String getStreet() {

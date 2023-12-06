@@ -14,14 +14,17 @@ import lombok.Data;
 public class UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
-    private Long idUser;
+    @Column(name = "id_user_details")
+    private Long id;
 
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @OneToOne(mappedBy = "userDetails")
-    private User user;
+
+    @OneToOne
+    @JoinColumn(name = "id_user")
+    private User id_user;
+
     public UserDetails() {
     }
 
@@ -31,11 +34,11 @@ public class UserDetails {
     }
 
     public Long getIdUser() {
-        return idUser;
+        return id;
     }
 
     public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+        this.id = idUser;
     }
 
     public String getEmail() {
