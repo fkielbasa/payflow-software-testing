@@ -26,3 +26,28 @@
     flex-direction: column;
 }
 
+.minusSymbol {
+    width: 60px;
+}
+
+.transactionCircleMinus {
+    width: 60px;
+
+}
+
+.shortPayment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.shortPaymentText {
+    display: flex;
+    flex-direction: row;
+}
+
+.paymentTextPosition{
+    display: flex;
+    flex-direction: column;
+}
