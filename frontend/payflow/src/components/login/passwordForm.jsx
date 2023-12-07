@@ -56,9 +56,9 @@ const PasswordForm = ({savePassword}) => {
             <p className={styles.headline}>Utwórz hasło</p>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label>Podaj hasło</label>
-                <input type="password" onChange={handlePasswordChange} required />
+                <input type="password" maxLength="50" onChange={handlePasswordChange} required />
                 <label>Powtórz hasło</label>
-                <input type="password" onChange={(event) => setPasswordRepeated(event.target.value)} required />
+                <input type="password" maxLength="50" onChange={(event) => setPasswordRepeated(event.target.value)} required />
 
                 <div>
                     <p className={styles.strongText}>Siła hasła</p>
