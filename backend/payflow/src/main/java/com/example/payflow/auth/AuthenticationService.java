@@ -1,6 +1,5 @@
 package com.example.payflow.auth;
 
-
 import com.example.payflow.config.JwtService;
 import com.example.payflow.user.Role;
 import com.example.payflow.user.User;
@@ -27,7 +26,6 @@ public class AuthenticationService {
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .login(request.getLogin())
-                .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();

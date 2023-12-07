@@ -26,11 +26,14 @@ public class Transfer {
     private BigDecimal amount;
 
     @ManyToOne
-    @JoinColumn(name = "id_sender")
+    @JoinColumn(name = "sender_number")
     private AccountNumber senderAccount;
 
     @ManyToOne
-    @JoinColumn(name = "id_receiver")
+    @JoinColumn(name = "receiver_number")
     private AccountNumber receiverAccount;
 
+    public Transfer(){
+
+    }
 }

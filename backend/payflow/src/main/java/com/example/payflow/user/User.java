@@ -33,7 +33,6 @@ public class User implements org.springframework.security.core.userdetails.UserD
     private Long id;
     private String firstname;
     private String lastname;
-    private String email;
     private String login;
     private String password;
 

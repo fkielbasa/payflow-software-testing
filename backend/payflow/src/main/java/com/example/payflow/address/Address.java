@@ -1,12 +1,9 @@
 package com.example.payflow.address;
 
-import com.example.payflow.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @Builder
@@ -27,11 +24,7 @@ public class Address {
     private String zipCode;
     private String city;
     private String country;
-    @OneToMany(mappedBy = "residentialAddress")
-    private List<User> residentialAddress;
 
-    @OneToMany(mappedBy = "correspondenceAddress")
-    private List<User> correspondenceAddress;
 
     public Address() {
     }

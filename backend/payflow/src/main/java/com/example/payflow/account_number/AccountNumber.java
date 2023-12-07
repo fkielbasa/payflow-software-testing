@@ -1,7 +1,6 @@
 package com.example.payflow.account_number;
 
 import com.example.payflow.loan.Loan;
-import com.example.payflow.transaction.Transaction;
 import com.example.payflow.transfer.Transfer;
 import com.example.payflow.user.User;
 import jakarta.persistence.*;
@@ -33,10 +32,10 @@ public class AccountNumber {
     private User user;
     @OneToMany(mappedBy = "senderAccount")
     private List<Transfer> transfersSent;
-    @OneToMany(mappedBy = "receiverAccount")
-    private List<Transfer> transfersReceived;
-    @OneToMany(mappedBy = "accountNumberTransaction")
-    private List<Transaction> accountNumberTransaction;
+//    @OneToMany(mappedBy = "receiverAccount")
+//    private List<Transfer> transfersReceived;
+//    @OneToMany(mappedBy = "accountNumberTransaction")
+//    private List<Transaction> accountNumberTransaction;
     @OneToMany(mappedBy = "accountNumberLoan")
     private List<Loan> accountNumberLoan;
 
@@ -47,6 +46,9 @@ public class AccountNumber {
         this.currency = currency;
         this.number = number;
         this.user = user;
+    }
+    public AccountNumber(){
+
     }
 
     public Long getIdAccountNumber() {
