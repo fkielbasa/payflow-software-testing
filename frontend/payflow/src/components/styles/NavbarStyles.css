@@ -22,6 +22,12 @@ a {
 
 }
 
+a:hover {
+    font-weight: bold;
+    /*transform: scale(2);*/
+    font-size: 18px;
+}
+
 .navImages {
     width: 32px;
     vertical-align: middle;
