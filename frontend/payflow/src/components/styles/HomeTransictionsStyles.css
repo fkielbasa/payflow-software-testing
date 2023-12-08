@@ -1,0 +1,30 @@
+.transactionCircleMinus {
+    width: 60px;
+}
+
+.shortPayment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 20px;
+    align-items: center;
+}
+
+.shortPaymentText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.paymentTextPosition{
+    display: flex;
+    flex-direction: column;
+}
+
+.transactionTextDecoration {
+    margin: 0;
+}
+
+.paymentTextSize {
+    font-size: 22px;
+}

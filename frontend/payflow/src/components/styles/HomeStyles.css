@@ -5,7 +5,7 @@
 .homePage {
     display: flex;
     flex-direction: column;
-    background-color: green;
+    /*background-color: green;*/
 }
 
 .contentWrapper {
@@ -13,41 +13,23 @@
 }
 
 .balancePosition {
-    width: 40vw;
+    width: 50vw;
     display: flex;
     flex-direction: row;
     margin-right: 10px;
 }
 
 .transactionPosition {
-    width: 40vw;
-    background-color: magenta;
+    width: 30vw;
+    /*background-color: magenta;*/
     display: flex;
     flex-direction: column;
 }
 
-.minusSymbol {
-    width: 60px;
+.marginL {
+    margin-left: 20px;
 }
 
-.transactionCircleMinus {
-    width: 60px;
-
-}
-
-.shortPayment {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-right: 20px;
-}
-
-.shortPaymentText {
-    display: flex;
-    flex-direction: row;
-}
-
-.paymentTextPosition{
-    display: flex;
-    flex-direction: column;
+.smallLetters {
+    font-size: 13px;
 }
