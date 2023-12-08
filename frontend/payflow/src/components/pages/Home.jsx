@@ -4,7 +4,7 @@ import Balance from "../elements/Balance";
 import TopNavbar from "../elements/TopNavbar";
 
 import HomeTransactionsMinus from "../elements/HomeTransactionsMinus";
-import HomeTransictionsPlus from "../elements/HomeTransictionsPlus";
+import HomeTransactionsPlus from "../elements/HomeTransictionsPlus";
 
 function Home() {
     return (
@@ -22,7 +22,7 @@ function Home() {
                     </div>
                     <HomeTransactionsMinus balance={11.19}/>
                     <HomeTransactionsMinus balance={23.18}/>
-                    <HomeTransictionsPlus balance={11.65}/>
+                    <HomeTransactionsPlus balance={11.65}/>
                     <HomeTransactionsMinus balance={21.37}/>
                 </div>
             </div>

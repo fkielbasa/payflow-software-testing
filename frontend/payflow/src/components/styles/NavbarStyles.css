@@ -1,5 +1,4 @@
 .firstSection {
-    /*width: 30%;*/
     display: flex;
     flex-direction: column;
 }
@@ -8,7 +7,6 @@ ul {
     margin-top: -8px;
     list-style: none;
     padding: 0;
-
 }
 
 li {
@@ -19,12 +17,11 @@ a {
     text-decoration: none;
     color: black;
     font-size: 16px;
-
+    transition: all 0.3s ease;
 }
 
 a:hover {
     font-weight: bold;
-    /*transform: scale(2);*/
     font-size: 18px;
 }
 
