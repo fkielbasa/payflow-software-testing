@@ -12,11 +12,24 @@
     display: flex;
 }
 
+.leftSidePosition {
+    display: flex;
+    flex-direction: column;
+}
+
 .balancePosition {
     width: 50vw;
     display: flex;
     flex-direction: row;
-    margin-right: 10px;
+    /*margin-right: 10px;*/
+    justify-content: center;
+}
+
+.chartPosition {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
 }
 
 .transactionPosition {
@@ -33,3 +46,4 @@
 .smallLetters {
     font-size: 13px;
 }
+
