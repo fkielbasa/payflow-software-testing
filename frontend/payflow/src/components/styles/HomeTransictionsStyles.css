@@ -25,6 +25,10 @@
     margin: 0;
 }
 
+.transactionTextSmall {
+    font-size: 13px;
+}
+
 .paymentTextSize {
     font-size: 22px;
 }
