@@ -1,7 +1,6 @@
 package com.example.payflow.account_number;
 
 import com.example.payflow.loan.Loan;
-import com.example.payflow.transfer.Transfer;
 import com.example.payflow.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,8 +29,8 @@ public class AccountNumber {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
-    @OneToMany(mappedBy = "senderAccount")
-    private List<Transfer> transfersSent;
+//    @OneToMany(mappedBy = "senderAccount")
+//    private List<Transfer> transfersSent;
 //    @OneToMany(mappedBy = "receiverAccount")
 //    private List<Transfer> transfersReceived;
 //    @OneToMany(mappedBy = "accountNumberTransaction")

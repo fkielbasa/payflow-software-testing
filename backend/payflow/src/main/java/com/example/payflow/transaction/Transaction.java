@@ -26,4 +26,8 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumberTransaction;
+
+    public Transaction(){
+
+    }
 }
