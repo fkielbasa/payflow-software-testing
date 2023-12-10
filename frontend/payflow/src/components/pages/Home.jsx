@@ -5,6 +5,7 @@ import TopNavbar from "../elements/TopNavbar";
 import '../styles/ElementsPositionDebug.css';
 
 import HomeTransactions from "../elements/HomeTransactions";
+import ChartComponent from "../elements/ChartComponent";
 
 function Home() {
     return (
@@ -18,6 +19,7 @@ function Home() {
                     </div>
                     <div className="chartPosition">
                         <p>test</p>
+                        <ChartComponent />
                     </div>
                 </div>
                 <div className="transactionPosition">
