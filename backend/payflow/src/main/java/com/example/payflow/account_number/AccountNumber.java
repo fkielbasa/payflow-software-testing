@@ -1,17 +1,13 @@
 package com.example.payflow.account_number;
 
-import com.example.payflow.loan.Loan;
 import com.example.payflow.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.List;
 @Data
 @Builder
-@AllArgsConstructor
 @Entity
 @Table(name = "account_number")
 public class AccountNumber {
@@ -35,8 +31,8 @@ public class AccountNumber {
 //    private List<Transfer> transfersReceived;
 //    @OneToMany(mappedBy = "accountNumberTransaction")
 //    private List<Transaction> accountNumberTransaction;
-    @OneToMany(mappedBy = "accountNumberLoan")
-    private List<Loan> accountNumberLoan;
+//    @OneToMany(mappedBy = "accountNumberLoan")
+//    private List<Loan> accountNumberLoan;
 
     public AccountNumber(Long idAccountNumber, BigDecimal balance, Type type, Currency currency, String number, User user) {
         this.id = idAccountNumber;

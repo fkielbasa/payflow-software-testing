@@ -33,4 +33,8 @@ public class Loan {
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumberLoan;
 
+    public Loan(){
+
+    }
+
 }
