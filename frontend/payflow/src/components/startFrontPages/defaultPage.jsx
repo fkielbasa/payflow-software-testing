@@ -1,5 +1,6 @@
 import pic from "../../assets/1.jpg";
 import DefaultPageCss from './defaultPage.module.css'
+import {Link} from "react-router-dom";
 const DefaultPage = () => {
 
     return (
@@ -15,7 +16,9 @@ const DefaultPage = () => {
                         <li>premię za polecenie konta znajomym</li>
                     </ul>
                     <div>
-                        <button>Sprawdź ofertę</button>
+                        <Link to="login">
+                            <button>Sprawdź ofertę</button>
+                        </Link>
                     </div>
 
                 </div>
