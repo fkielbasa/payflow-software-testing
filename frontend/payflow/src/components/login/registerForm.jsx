@@ -1,5 +1,5 @@
 import styles from './registerForm.module.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const RegisterForm = ({saveDataForm}) => {
     const [sameAddress, setSameAddress] = useState(false)
@@ -25,24 +25,63 @@ const RegisterForm = ({saveDataForm}) => {
     }
 
     const validate = () => {
-        return checkPhoneNumber(phoneNumber) && checkEmail(email) && checkZipCode(zipCode) && checkZipCode(zipCodeCorrespondence) && checkHomeNumber(homeNumber) && checkHomeNumber(flatNumber) && checkHomeNumber(homeNumberCorrespondence) && checkHomeNumber(flatNumberCorrespondence) && isString(firstName) && isString(lastName) && isString(city) && isString(cityCorrespondence)
+        if (!checkPhoneNumber(phoneNumber))
+            return false
+        if (!checkEmail(email))
+            return false
+        if (!checkZipCode(zipCode))
+            return false
+        if (!checkZipCode(zipCodeCorrespondence))
+            return false
+        if (!checkHomeNumber(homeNumber))
+            return false
+        if (!checkHomeNumber(homeNumberCorrespondence))
+            return false
+        if (!checkHomeNumber(flatNumber))
+            return false
+        if (!checkHomeNumber(flatNumberCorrespondence))
+            return false
+        if (!isString(firstName))
+            return false
+        if (!isString(lastName))
+            return false
+        if (!isString(city))
+            return false
+        if (!isString(cityCorrespondence))
+            return false
+
+        return true
+        // return checkPhoneNumber(phoneNumber) &&
+        //     checkEmail(email) &&
+        //     checkZipCode(zipCode) &&
+        //     checkZipCode(zipCodeCorrespondence) &&
+        //     checkHomeNumber(homeNumber) &&
+        //     checkHomeNumber(flatNumber) &&
+        //     checkHomeNumber(homeNumberCorrespondence) &&
+        //     checkHomeNumber(flatNumberCorrespondence) &&
+        //     isString(firstName) && isString(lastName) &&
+        //     isString(city) && isString(cityCorrespondence)
+    }
+    useEffect(() => {
+        handlerSameAddress()
+        console.log("address changed")
+    }, [sameAddress]);
+
+    const handlerSameAddress = () => {
+        setZipCodeCorrespondence((prevState )=> zipCode);
+        setCityCorrespondence((prevState) =>city)
+        setStreetCorrespondence(prevState => street)
+        setHomeNumberCorrespondence(prevState => homeNumber)
+        setFlatNumberCorrespondence(prevState => flatNumber)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
 
-
-
-        if (sameAddress){
-            setZipCodeCorrespondence(zipCode)
-            setCityCorrespondence(city)
-            setStreetCorrespondence(street)
-            setHomeNumberCorrespondence(homeNumber)
-            setFlatNumberCorrespondence(flatNumber)
-        }
         if (!validate()){
             document.getElementById("wrong").style.display='block';
         }else {
+
             let form = {
                 firstName: firstName,
                 lastName: lastName,
@@ -50,12 +89,12 @@ const RegisterForm = ({saveDataForm}) => {
                 country: country,
                 email: email,
                 phoneNumber: phoneNumber,
-                zipCode: zipCode,
+                zipCode: zipCode.substring(0,2)+"-"+zipCode.substring(2),
                 city: city,
                 street: street,
                 homeNumber: homeNumber,
                 flatNumber: flatNumber,
-                zipCodeCorrespondence: zipCodeCorrespondence,
+                zipCodeCorrespondence: zipCodeCorrespondence.substring(0,2)+"-"+zipCodeCorrespondence.substring(2),
                 cityCorrespondence: cityCorrespondence,
                 streetCorrespondence: streetCorrespondence,
                 homeNumberCorrespondence: homeNumberCorrespondence,
@@ -63,7 +102,6 @@ const RegisterForm = ({saveDataForm}) => {
             }
             saveDataForm(form)
         }
-
     }
 
     const checkPhoneNumber = (number) => {
@@ -95,7 +133,7 @@ const RegisterForm = ({saveDataForm}) => {
             <form id="form" className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.horz}>
                 <div className={styles.dataWrapper}>
-                    <p>Dane osobiste</p>
+                    <p>Dane osobowe</p>
                     <label>Imie</label>
                     <input  type="text" maxLength="50" onChange={(event) => setFirstName(event.target.value)} required/>
                     <label>Nazwisko</label>
@@ -300,15 +338,15 @@ const RegisterForm = ({saveDataForm}) => {
                 <div className={styles.dataWrapper}>
                     <p>Adres zamieszkania</p>
                     <label>Kod pocztowy</label>
-                    <input  type="text" pattern="[0-9]*" onChange={(event) => setZipCode(event.target.value)} minLength="5"  maxLength="5"  required/>
+                    <input  type="text" id="postalCode"  disabled={sameAddress} pattern="[0-9]*" onChange={(event) => setZipCode(event.target.value)} minLength="5"  maxLength="5"  required/>
                     <label>Miejscowość</label>
-                    <input  type="text" maxLength="50" onChange={(event) => setCity(event.target.value)} required/>
+                    <input  type="text" disabled={sameAddress} maxLength="50" onChange={(event) => setCity(event.target.value)} required/>
                     <label>Ulica</label>
-                    <input  type="text" maxLength="50" onChange={(event) => setStreet(event.target.value)} required/>
+                    <input  type="text" disabled={sameAddress} maxLength="50" onChange={(event) => setStreet(event.target.value)} required/>
                     <label>Nr domu</label>
-                    <input  type="text" maxLength="10" onChange={(event) => setHomeNumber(event.target.value)} required/>
+                    <input  type="text" disabled={sameAddress} maxLength="10" onChange={(event) => setHomeNumber(event.target.value)} required/>
                     <label>Nr mieszkania</label>
-                    <input  type="text" maxLength="10" onChange={(event) => setFlatNumber(event.target.value)}  />
+                    <input  type="text" disabled={sameAddress} maxLength="10" onChange={(event) => setFlatNumber(event.target.value)}  />
                 </div>
                     <div className={styles.dataWrapper}>
                         <p>Adres zamieszkania korespondencyjny</p>
@@ -317,7 +355,7 @@ const RegisterForm = ({saveDataForm}) => {
                             <p>Taki sam jak adres zamieszkania</p>
                         </div>
                         <label>Kod pocztowy</label>
-                        <input  disabled={sameAddress} onChange={(event) => setZipCodeCorrespondence(event.target.value)} type="tel" pattern="[0-9]*"  maxLength="5"  required/>
+                        <input  disabled={sameAddress} onChange={(event) => setZipCodeCorrespondence(event.target.value)} type="text" pattern="[0-9]*"  maxLength="5"  required/>
                         <label>Miejscowość</label>
                         <input  maxLength="50" disabled={sameAddress} onChange={(event) => setCityCorrespondence(event.target.value)} type="text" required/>
                         <label>Ulica</label>

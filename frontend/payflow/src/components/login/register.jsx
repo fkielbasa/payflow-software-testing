@@ -92,7 +92,7 @@ const Register = () => {
                             <p>Kod pocztowy: <b>{dataForm.zipCode}</b></p>
                             <p>Miejscowość: <b>{dataForm.city}</b></p>
                             <p>Ulica: <b>{dataForm.street}</b></p>
-                            <p>Nr domu: <b>{dataForm.homeNumber}</b></p>
+                            <p>Nr domu/lokalu: <b>{dataForm.homeNumber}</b></p>
                             <p>Nr mieszkania: <b>{dataForm.flatNumber}</b></p>
                         </div>
                         <div className={styles.wrapperPrint}>
@@ -100,7 +100,7 @@ const Register = () => {
                             <p>Kod pocztowy: <b>{dataForm.zipCodeCorrespondence}</b></p>
                             <p>Miejscowość: <b>{dataForm.cityCorrespondence}</b></p>
                             <p>Ulica: <b>{dataForm.streetCorrespondence}</b></p>
-                            <p>Nr domu: <b>{dataForm.homeNumberCorrespondence}</b></p>
+                            <p>Nr domu/lokalu: <b>{dataForm.homeNumberCorrespondence}</b></p>
                             <p>Nr mieszkania: <b>{dataForm.flatNumberCorrespondence}</b></p>
                         </div>
                     </div>
