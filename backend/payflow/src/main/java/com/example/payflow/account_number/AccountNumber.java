@@ -12,7 +12,15 @@ import java.math.BigDecimal;
 @Table(name = "account_number")
 public class AccountNumber {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "account_number"
+    )
+    @SequenceGenerator(
+            name = "account_number",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
     @Column(name = "id_account_number")
     private Long id;
     private BigDecimal balance;

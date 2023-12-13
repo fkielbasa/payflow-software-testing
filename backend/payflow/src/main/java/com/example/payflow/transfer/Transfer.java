@@ -16,7 +16,15 @@ import java.util.Date;
 @Table(name = "transfer")
 public class Transfer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "transfer"
+    )
+    @SequenceGenerator(
+            name = "transfer",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
     @Column(name = "id_transfer")
     private Long id;
 

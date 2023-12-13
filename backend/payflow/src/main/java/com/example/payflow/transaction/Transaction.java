@@ -15,7 +15,15 @@ import java.util.Date;
 @Table(name = "transaction")
 public class Transaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "transaction"
+    )
+    @SequenceGenerator(
+            name = "transaction",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
     @Column(name = "id_transaction")
     private Long idTransaction;
     private BigDecimal amount;
