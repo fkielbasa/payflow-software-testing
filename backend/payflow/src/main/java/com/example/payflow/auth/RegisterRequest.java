@@ -12,9 +12,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest {
-    private String firstname;
-    private String lastname;
-    private LocalDate dateOfBirth;
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
     private String country;
     private String email;
     private String phoneNumber;
@@ -23,11 +23,13 @@ public class RegisterRequest {
     private String street;
     private String homeNumber;
     private String apartmentNumber;
+    private String countryAddress;
     private String zipCodeCorrespondence;
     private String cityCorrespondence;
     private String streetCorrespondence;
     private String homeNumberCorrespondence;
     private String apartmentNumberCorrespondence;
+    private String countryAddressCorrespondence;
     private String accountType;
 //    private String login;
     private String password;

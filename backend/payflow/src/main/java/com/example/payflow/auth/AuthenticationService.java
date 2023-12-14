@@ -19,12 +19,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Random;
+import java.util.TimeZone;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-    
+
     private final UserRepository userRepository;
 
     private final AddressRepository addressRepository;
@@ -42,15 +46,18 @@ public class AuthenticationService {
 
     private final BigDecimal STARTER_BALANCE = new BigDecimal(0);
     private final Currency STARTER_CURRENCY = Currency.PLN;
+    private final String STARTER_ACCOUNT_TYPE = "STANDARD";
 
-    public AuthenticationRespone register(RegisterRequest request) {
+    public AuthenticationRespone register(RegisterRequest request) throws ParseException {
 
+        System.out.println(request.toString());
         var residentalAddress = Address.builder()
                 .zipCode(request.getZipCode())
                 .city(request.getCity())
                 .street(request.getStreet())
                 .houseNumber(request.getHomeNumber())
                 .apartmentNumber(request.getApartmentNumber())
+                .country(request.getCountryAddress())
                 .build();
 
         var correspondenceAddress = Address.builder()
@@ -59,12 +66,17 @@ public class AuthenticationService {
                 .street(request.getStreetCorrespondence())
                 .houseNumber(request.getHomeNumberCorrespondence())
                 .apartmentNumber(request.getApartmentNumberCorrespondence())
+                .country(request.getCountryAddressCorrespondence())
                 .build();
 
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        formatter.setTimeZone(TimeZone.getTimeZone("Poland/Warsaw"));
         var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
                 .login(generateLogin())
+                .dateOfBirth(formatter.parse(request.getDateOfBirth()))
+                .country(request.getCountry())
                 .residentialAddress(residentalAddress)
                 .correspondenceAddress(correspondenceAddress)
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -76,14 +88,14 @@ public class AuthenticationService {
         addressRepository.save(residentalAddress);
         addressRepository.save(correspondenceAddress);
         var userDetails = UserDetails.builder()
-                .id_user(user)
+                .userId(user)
                 .email(request.getEmail())
                 .phoneNumber(request.getPhoneNumber())
                 .build();
         userDetailsRepository.save(userDetails);
 
         Type typeAccount;
-        if (request.getAccountType().equals("standard"))
+        if (request.getAccountType().equals(STARTER_ACCOUNT_TYPE))
             typeAccount = Type.STANDARD;
         else
             typeAccount = Type.INTENSIVE;
@@ -93,6 +105,7 @@ public class AuthenticationService {
                 .balance(STARTER_BALANCE)
                 .type(typeAccount)
                 .currency(STARTER_CURRENCY)
+                .userId(user)
                 .build();
         accountNumberRepository.save(accountNumber);
 

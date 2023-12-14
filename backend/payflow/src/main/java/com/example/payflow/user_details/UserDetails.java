@@ -12,26 +12,20 @@ import lombok.Data;
 @Entity
 @Table(name = "user_details")
 public class UserDetails {
+
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_details"
-    )
-    @SequenceGenerator(
-            name = "user_details",
-            sequenceName = "user_details_sequence",
-            allocationSize = 1
-    )
-    @Column(name = "id_user_details")
+    @Column(name = "user_id")
     private Long id;
 
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
 
+
     @OneToOne
-    @JoinColumn(name = "id_user")
-    private User id_user;
+    @MapsId
+    @JoinColumn(name = "user_id")
+    private User userId;
 
     public UserDetails() {
     }

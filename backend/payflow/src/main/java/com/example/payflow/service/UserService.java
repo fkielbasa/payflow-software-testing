@@ -20,8 +20,8 @@ public class UserService {
 
     public void saveUser(UserDTO userDTO) {
         User user = new User();
-        user.setFirstname(userDTO.getFirstname());
-        user.setLastname(userDTO.getLastname());
+        user.setFirstName(userDTO.getFirstname());
+        user.setLastName(userDTO.getLastname());
         user.setLogin(userDTO.getLogin());
         user.setPassword(userDTO.getPassword());
         user.setRole(userDTO.getRole());
