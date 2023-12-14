@@ -12,5 +12,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAll();
 
     @Query("SELECT EXISTS (SELECT 1 FROM User WHERE login = ?1)")
-    Boolean isUserExists(String login);
+    boolean isUserExists(String login);
+
+    Long getUserIdByLogin(String login);
 }

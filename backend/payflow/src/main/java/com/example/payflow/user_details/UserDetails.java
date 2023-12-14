@@ -19,7 +19,7 @@ public class UserDetails {
     )
     @SequenceGenerator(
             name = "user_details",
-            sequenceName = "user_sequence",
+            sequenceName = "user_details_sequence",
             allocationSize = 1
     )
     @Column(name = "id_user_details")
