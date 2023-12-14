@@ -18,7 +18,7 @@ public class Address {
     )
     @SequenceGenerator(
             name = "address",
-            sequenceName = "user_sequence",
+            sequenceName = "address_sequence",
             allocationSize = 1
     )
     @Column(name = "id_address")

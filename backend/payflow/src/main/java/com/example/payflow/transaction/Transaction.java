@@ -21,7 +21,7 @@ public class Transaction {
     )
     @SequenceGenerator(
             name = "transaction",
-            sequenceName = "user_sequence",
+            sequenceName = "transaction_sequence",
             allocationSize = 1
     )
     @Column(name = "id_transaction")

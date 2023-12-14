@@ -21,7 +21,7 @@ public class Loan {
     )
     @SequenceGenerator(
             name = "loan",
-            sequenceName = "user_sequence",
+            sequenceName = "loan_sequence",
             allocationSize = 1
     )
     @Column(name = "id_loan")

@@ -22,7 +22,7 @@ public class Transfer {
     )
     @SequenceGenerator(
             name = "transfer",
-            sequenceName = "user_sequence",
+            sequenceName = "transfer_sequence",
             allocationSize = 1
     )
     @Column(name = "id_transfer")

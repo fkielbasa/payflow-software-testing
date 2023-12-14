@@ -1,5 +1,6 @@
 package com.example.payflow.auth;
 
+import com.example.payflow.address.Address;
 import com.example.payflow.config.JwtService;
 import com.example.payflow.user.Role;
 import com.example.payflow.user.User;
@@ -9,6 +10,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -22,13 +25,35 @@ public class AuthenticationService {
 
     private final AuthenticationManager manager;
     public AuthenticationRespone register(RegisterRequest request) {
+
+        var residentalAddress = Address.builder()
+                .zipCode(request.getZipCode())
+                .city(request.getCity())
+                .street(request.getStreet())
+                .houseNumber(request.getHomeNumber())
+                .apartmentNumber(request.getApartmentNumber())
+                .build();
+
+        var correspondenceAddress = Address.builder()
+                .zipCode(request.getZipCodeCorrespondence())
+                .city(request.getCityCorrespondence())
+                .street(request.getStreetCorrespondence())
+                .houseNumber(request.getHomeNumberCorrespondence())
+                .apartmentNumber(request.getApartmentNumberCorrespondence())
+                .build();
+
+
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
-                .login(request.getLogin())
+                .login(generateLogin())
+                .residentialAddress(residentalAddress)
+                .correspondenceAddress(correspondenceAddress)
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
+
+
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationRespone.builder()
@@ -53,5 +78,23 @@ public class AuthenticationService {
         return AuthenticationRespone.builder()
                 .token(jwtToken)
                 .build();
+    }
+
+    private String generateLogin(){
+        Random random = new Random();
+        StringBuilder login = new StringBuilder();
+
+        for (int i = 0; i < 8; i++) {
+            int randomNumber = random.nextInt(10); // 0-9
+            login.append(randomNumber);
+        }
+        if (isLoginValid(login.toString())){
+            generateLogin();
+        }
+        return login.toString();
+    }
+
+    private boolean isLoginValid(String login){
+        return !repository.isUserExists(login);
     }
 }
