@@ -24,7 +24,7 @@ import java.util.Random;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-
+    
     private final UserRepository userRepository;
 
     private final AddressRepository addressRepository;
@@ -41,6 +41,8 @@ public class AuthenticationService {
     private StringBuilder stringBuilder;
 
     private final BigDecimal STARTER_BALANCE = new BigDecimal(0);
+    private final Currency STARTER_CURRENCY = Currency.PLN;
+
     public AuthenticationRespone register(RegisterRequest request) {
 
         var residentalAddress = Address.builder()
@@ -90,7 +92,7 @@ public class AuthenticationService {
                 .number(generateAccountNumber())
                 .balance(STARTER_BALANCE)
                 .type(typeAccount)
-                .currency(Currency.PLN)
+                .currency(STARTER_CURRENCY)
                 .build();
         accountNumberRepository.save(accountNumber);
 
@@ -131,7 +133,7 @@ public class AuthenticationService {
     private boolean isLoginValid(String login){
         return !userRepository.isUserExists(login);
     }
-    private boolean isAcountNumberValid(String accountNumber){
+    private boolean isAccountNumberValid(String accountNumber){
         return !accountNumberRepository.existsByNumber(accountNumber);
     }
 
@@ -146,7 +148,7 @@ public class AuthenticationService {
             int randomNumber = random.nextInt(10);
             stringBuilder.append(randomNumber);
         }
-        if (!isAcountNumberValid(stringBuilder.toString())){
+        if (!isAccountNumberValid(stringBuilder.toString())){
             generateAccountNumber();
         }
         return stringBuilder.toString();
