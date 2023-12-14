@@ -14,13 +14,13 @@ const Register = () => {
     const [summary, setSummary] = useState(false)
     const [currentPage, setCurrentPage] = useState(0)
 
-    const [isNormalAccount, setIsNormalAccount] = useState(true)
+    const [isStandardAccount, setIsStandardAccount] = useState(true)
     const [dataForm, setDataForm] = useState({})
     const [password, setPassword] = useState('')
 
 
     const selectAccount = (choice) => {
-        setIsNormalAccount(choice)
+        setIsStandardAccount(choice)
         changePage()
         setDataAccount(true)
     }
@@ -46,7 +46,7 @@ const Register = () => {
     const renderAccounts = () => {
         return (
             <div className={styles.accountWrapper}>
-                <div onClick={() => selectAccount(true)}><AccountCard title={"Zwykłe konto "}  img={bank} /></div>
+                <div onClick={() => selectAccount(true)}><AccountCard title={"Standardowe konto "}  img={bank} /></div>
                 <div onClick={() => selectAccount(false)}><AccountCard title={"Konto Intensive "}  img={card}/></div>
             </div>
         )
@@ -75,7 +75,7 @@ const Register = () => {
     const renderSummary = () => {
         return(
             <div className={styles.summaryContainer}>
-                <div className={styles.wrapperPrint}>{isNormalAccount ? <AccountCard title={"Zwykłe konto "}  img={bank} /> : <AccountCard title={"Konto Intensive "}  img={card}/>}</div>
+                <div className={styles.wrapperPrint}>{isStandardAccount ? <AccountCard title={"Zwykłe konto "}  img={bank} /> : <AccountCard title={"Konto Intensive "}  img={card}/>}</div>
                 <div>
                     <div className={styles.horiz}>
                         <div className={styles.wrapperPrint}>
@@ -94,6 +94,7 @@ const Register = () => {
                             <p>Ulica: <b>{dataForm.street}</b></p>
                             <p>Nr domu/lokalu: <b>{dataForm.homeNumber}</b></p>
                             <p>Nr mieszkania: <b>{dataForm.flatNumber}</b></p>
+                            <p>Kraj: <b>{dataForm.countryAddress}</b></p>
                         </div>
                         <div className={styles.wrapperPrint}>
                             <p><b>Adres korespondencyjny</b></p>
@@ -102,6 +103,7 @@ const Register = () => {
                             <p>Ulica: <b>{dataForm.streetCorrespondence}</b></p>
                             <p>Nr domu/lokalu: <b>{dataForm.homeNumberCorrespondence}</b></p>
                             <p>Nr mieszkania: <b>{dataForm.flatNumberCorrespondence}</b></p>
+                            <p>Kraj: <b>{dataForm.countryAddressCorrespondence}</b></p>
                         </div>
                     </div>
                     <div className={styles.horiz}>
