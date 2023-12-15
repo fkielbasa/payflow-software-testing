@@ -12,15 +12,7 @@ import lombok.Data;
 @Table(name = "address")
 public class Address {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "address"
-    )
-    @SequenceGenerator(
-            name = "address",
-            sequenceName = "address_sequence",
-            allocationSize = 1
-    )
+    @GeneratedValue
     @Column(name = "id_address")
     private Long id;
     private String street;
