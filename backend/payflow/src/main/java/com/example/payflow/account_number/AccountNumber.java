@@ -1,5 +1,6 @@
 package com.example.payflow.account_number;
 
+import com.example.payflow.loan.Loan;
 import com.example.payflow.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,9 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -16,15 +20,7 @@ import java.math.BigDecimal;
 @Table(name = "account_number")
 public class AccountNumber {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "account_number"
-    )
-    @SequenceGenerator(
-            name = "account_number",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-    )
+    @GeneratedValue
     @Column(name = "id_account_number")
     private Long id;
     private BigDecimal balance;
@@ -37,4 +33,9 @@ public class AccountNumber {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User userId;
+
+    @OneToMany(mappedBy = "accountNumberLoan",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private List<Loan> loans = new ArrayList<>();
 }
