@@ -1,24 +1,33 @@
 import React, {useState} from 'react';
 import BarChart from "./BarChart";
-import {UserData} from './Data';
+import {UserDataUSD} from './Data';
+import {UserDataEUR} from './Data';
 
-const ChartComponent = () => {
+const ChartComponent = (props) => {
+    const type = props.type;
 
-    const [userData, setUserData] = useState({
-        labels: UserData.map((data) => data.year),
+    let chart;
+
+    if (type === 'USD') {
+        chart = UserDataUSD;
+    } else if (type === 'EUR') {
+        chart = UserDataEUR;
+    }
+
+    const [userData] = useState({
+        labels: chart.map((data) => data.year),
         datasets: [{
-            label: "Środki USD na koncie w szczytowym momencie",
-            data: UserData.map((data) => data.topBalanceUSD),
+            label: `Środki ${type} na koncie w szczytowym momencie`,
+            data: chart.map((data) => data.topBalance),
             backgroundColor: ["#1687A7"]
         }]
     })
-   return (
-       <div>
-           <div style={{width: 700}}>
-                <BarChart chartData={userData} />
-           </div>
-       </div>
-   );
+    return (
+        <div>
+            <BarChart chartData={userData}/>
+
+        </div>
+    );
 };
 
 export default ChartComponent;

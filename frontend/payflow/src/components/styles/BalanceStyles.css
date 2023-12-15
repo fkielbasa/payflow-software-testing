@@ -1,7 +1,7 @@
 .balance {
     background-color: #D3E0EA;
-    width: 325px;
-    height: 140px;
+    width: 23vw;
+    height: 150px;
     border-radius: 8px;
     margin-right: 10px;
     margin-top: 10vh;
@@ -21,12 +21,12 @@
 }
 
 .fontSize {
-    font-size: 21px;
+    font-size: 22px;
     margin: -1px;
 }
 
 .accountDetails {
-    margin-top: 7px;
+    margin-top: 10px;
     display: flex;
     flex-direction: row-reverse;
     font-size: 13px;

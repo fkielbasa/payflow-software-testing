@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/HomeStyles.css';
 import '../styles/BalanceStyles.css';
+import ChartComponent from "./ChartComponent";
 
 function Balance(props) {
     // account number formatting
@@ -31,11 +32,14 @@ function Balance(props) {
                 <br />
                 <div>
                     <p className="textDecoration">Nr. rachunku:</p>
-                    <p className="textDecoration">{accountNumberConst}</p>
+                    <p className="textDecoration fontSize">{accountNumberConst}</p>
                 </div>
                 <div>
                     <p className="accountDetails">Szczegóły konta >></p>
                 </div>
+            </div>
+            <div className="chartPosition">
+                    <ChartComponent type={props.currency}/>
             </div>
         </div>
     );
