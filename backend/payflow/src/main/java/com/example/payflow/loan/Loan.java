@@ -31,7 +31,7 @@ public class Loan {
     private BigDecimal interestRate;
 
     @ManyToOne(fetch =  FetchType.LAZY)
-    @JoinColumn(name = "id_account_number")
+    @JoinColumn(name = "id_account_number",referencedColumnName = "id_account_number")
     private AccountNumber accountNumberLoan;
 
 }

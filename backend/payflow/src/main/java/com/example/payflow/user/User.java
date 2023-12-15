@@ -1,7 +1,6 @@
 package com.example.payflow.user;
 
 import com.example.payflow.address.Address;
-import com.example.payflow.user_details.UserDetails;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,9 +9,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -46,17 +42,24 @@ public class User implements org.springframework.security.core.userdetails.UserD
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "residential_address_id")
     private Address residentialAddress;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "correspondence_address_id")
     private Address correspondenceAddress;
 
-    @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private UserDetails userDetails;
+//    @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
+//    @PrimaryKeyJoinColumn
+//    private UserDetails userDetails;
+//    @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
+//    private UserDetails userDetails;
+
+//    @OneToMany(mappedBy = "userId",
+//            cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY)
+//    private List<AccountNumber> accountNumbers = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

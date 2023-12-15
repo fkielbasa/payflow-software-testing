@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Random;
 import java.util.TimeZone;
 
@@ -83,10 +82,9 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
 
-
-        userRepository.save(user);
         addressRepository.save(residentalAddress);
         addressRepository.save(correspondenceAddress);
+        userRepository.save(user);
         var userDetails = UserDetails.builder()
                 .userId(user)
                 .email(request.getEmail())
