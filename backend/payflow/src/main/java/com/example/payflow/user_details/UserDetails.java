@@ -14,10 +14,8 @@ import lombok.Data;
 public class UserDetails {
 
     @Id
-    @Column(name = "user_id")
     @GeneratedValue
     @Column(name = "id_user_details")
-
     private Long id;
 
     private String email;
