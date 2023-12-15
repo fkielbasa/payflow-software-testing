@@ -5,12 +5,13 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Date;
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "loan")
 public class Loan {
@@ -21,20 +22,16 @@ public class Loan {
     private BigDecimal amount;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private String startDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private String endDate;
 
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
 
-    @ManyToOne
+    @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumberLoan;
-
-    public Loan(){
-
-    }
 
 }

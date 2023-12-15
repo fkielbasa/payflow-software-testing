@@ -5,10 +5,7 @@ import com.example.payflow.loan.LoanRepository;
 import com.example.payflow.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +29,11 @@ public class LoanController {
     @GetMapping("/loan/{id}")
     public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
         Loan loan = loanService.getLoanById(id);
+        return ResponseEntity.ok(loan);
+    }
+    @PostMapping("/loan/add")
+    public ResponseEntity<Loan> addLoan(@RequestBody Loan loan) {
+        loanService.addLoan(loan);
         return ResponseEntity.ok(loan);
     }
 }

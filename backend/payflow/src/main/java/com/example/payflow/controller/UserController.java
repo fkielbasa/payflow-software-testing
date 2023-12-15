@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
 public class UserController {
     private final UserRepository userRepository;
     private final UserService userService;
@@ -44,7 +44,6 @@ public class UserController {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
     public AuthenticationService service;
 
     @PostMapping("/createUser")
