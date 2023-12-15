@@ -3,7 +3,7 @@ import '../styles/TopNavbarStyles.css';
 
 import person from '../../assets/topNavbar/icon/person.svg';
 import bell from '../../assets/topNavbar/notification/bell.svg';
-import bellRing from '../../assets/topNavbar/notification/bell-slash.svg';
+// import bellRing from '../../assets/topNavbar/notification/bell-slash.svg';
 
 
 function Home() {

@@ -5,7 +5,7 @@ import TopNavbar from "../elements/TopNavbar";
 import '../styles/ElementsPositionDebug.css';
 
 import HomeTransactions from "../elements/HomeTransactions";
-//import ChartComponent from "../elements/ChartComponent";
+import ChartComponent from "../elements/ChartComponent";
 
 function Home() {
     return (
@@ -18,8 +18,7 @@ function Home() {
                         <Balance currency={'EUR'} balance={69.42} accountNumber={'3124150000843646841238'}/>
                     </div>
                     <div className="chartPosition">
-                        <p>test</p>
-                        {/*<ChartComponent />*/}
+                        <ChartComponent />
                     </div>
                 </div>
                 <div className="transactionPosition">
