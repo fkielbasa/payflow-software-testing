@@ -31,11 +31,9 @@ public class AccountNumber {
     private String number;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "id")
     private User userId;
 
-    @OneToMany(mappedBy = "accountNumberLoan",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "accountNumberLoan", cascade = CascadeType.ALL)
     private List<Loan> loans = new ArrayList<>();
 }

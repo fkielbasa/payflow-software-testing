@@ -31,9 +31,19 @@ public class LoanController {
         Loan loan = loanService.getLoanById(id);
         return ResponseEntity.ok(loan);
     }
+
+//    @GetMapping("loan/get")
+//    public List<Loan> getLoans(){
+//        return loanService.getLoan().stream()
+//                .map(loanService.ln())
+//                .collect(Collectors.toList());
+//    }
+
+
     @PostMapping("/loan/add")
     public ResponseEntity<Loan> addLoan(@RequestBody Loan loan) {
         loanService.addLoan(loan);
         return ResponseEntity.ok(loan);
     }
+
 }

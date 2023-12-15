@@ -23,8 +23,11 @@ public class UserDetails {
     private String phoneNumber;
 
 
-    @OneToOne
-    @MapsId
+//    @OneToOne
+//    @MapsId
+//    @JoinColumn(name = "user_id")
+//    private User userId;
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User userId;
 
