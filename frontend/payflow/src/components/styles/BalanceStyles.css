@@ -1,7 +1,9 @@
 .balance {
-    background-color: #D3E0EA;
-    width: 23vw;
-    height: 150px;
+    /*background-color: #D3E0EA;*/
+    /*background: rgb(22,135,167);*/
+    /*background: linear-gradient(65deg, rgba(22,135,167,1) 10%, rgba(39,102,120,1) 90%);*/
+    width: 24vw;
+    height: 170px;
     border-radius: 8px;
     margin-right: 10px;
     margin-top: 10vh;
@@ -14,6 +16,48 @@
     padding: 0px;
     color: black;
     font-size: 16px;
+    color: white;
+}
+
+.directionText {
+    display: flex;
+    flex-direction: row;
+}
+
+.textRight {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    width: 50%;
+}
+
+.paddingRight {
+    padding: 10px;
+}
+
+
+.marginLeft {
+    margin-left: 15px;
+}
+
+
+.textLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 50%;
+}
+
+.chipPlace {
+    display: flex;
+    flex-direction: row;
+    width: 40px;
+}
+
+.chipPlace img {
+    margin: -15px;
 }
 
 .textDecoration {
@@ -21,7 +65,7 @@
 }
 
 .fontSize {
-    font-size: 22px;
+    font-size: 21px;
     margin: -1px;
 }
 
@@ -30,5 +74,10 @@
     display: flex;
     flex-direction: row-reverse;
     font-size: 13px;
+    color: white;
+}
+
+.chartPosition {
+    margin-top: 30px;
 }
 

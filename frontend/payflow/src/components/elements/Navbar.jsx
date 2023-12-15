@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useLocation} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/NavbarStyles.css';
 
 import house from "../../assets/navbar/home/houses.svg";
@@ -31,13 +31,11 @@ function Navbar() {
     const isHome = location.pathname === '/home';
     const isTransactions = location.pathname === '/transactions';
 
-
     const isCredits = location.pathname === '/credits';
     const isCards = location.pathname === '/cards';
     const isTransfers = location.pathname === '/transfers';
     const isSettings = location.pathname === '/settings';
     const isLogOut = location.pathname === '/logOut';
-
 
     return (
         <div className="verticalNavbar">
@@ -45,39 +43,39 @@ function Navbar() {
             <div className="firstSection">
                 <div className="container">
                     <Link to="/home">
-                        <Logo/>
+                        <Logo />
                     </Link>
                 </div>
 
                 <nav>
                     <ul>
                         <li>
-                            <Link to='/home'>
-                                <img className="navImages" src={isHome ? houseFill : house} alt="Home"/>
+                            <Link to='/home' className={isHome ? 'active' : ''}>
+                                <img className="navImages" src={isHome ? houseFill : house} alt="Home" />
                                 Strona główna
                             </Link>
                         </li>
                         <li>
-                            <Link to='/transactions'>
+                            <Link to='/transactions' className={isTransactions ? 'active' : ''}>
                                 <img className="navImages" src={isTransactions ? transactionsFill : transactions} alt="transactions" />
                                 Transakcje
                             </Link>
                         </li>
                         <li>
-                            <a href="/transfers">
-                                <img className="navImages" src={isTransfers ? transfersFill : transfers} alt="transfers"/>
+                            <a href="/transfers" className={isTransfers ? 'active' : ''}>
+                                <img className="navImages" src={isTransfers ? transfersFill : transfers} alt="transfers" />
                                 Przelewy
                             </a>
                         </li>
                         <li>
-                            <a href="/credits">
-                                <img className="navImages" src={isCredits ? creditsFill : credits} alt="credits"/>
+                            <a href="/credits" className={isCredits ? 'active' : ''}>
+                                <img className="navImages" src={isCredits ? creditsFill : credits} alt="credits" />
                                 Kredyty
                             </a>
                         </li>
                         <li>
-                            <a href="/cards">
-                                <img className="navImages" src={isCards ? cardsFill : cards} alt="cards"/>
+                            <a href="/cards" className={isCards ? 'active' : ''}>
+                                <img className="navImages" src={isCards ? cardsFill : cards} alt="cards" />
                                 Karty
                             </a>
                         </li>
@@ -87,14 +85,14 @@ function Navbar() {
             <nav>
                 <ul>
                     <li>
-                        <Link to='/settings'>
-                            <img className="navImages" src={isSettings ? settingsFill : settings} alt="settings"/>
+                        <Link to='/settings' className={isSettings ? 'active' : ''}>
+                            <img className="navImages" src={isSettings ? settingsFill : settings} alt="settings" />
                             Ustawienia
                         </Link>
                     </li>
                     <li>
-                        <Link to='/logOut'>
-                            <img className="navImages" src={isLogOut ? logOutFill : logOut} alt="logOut"/>
+                        <Link to='/logOut' className={isLogOut ? 'active' : ''}>
+                            <img className="navImages" src={isLogOut ? logOutFill : logOut} alt="logOut" />
                             Wyloguj
                         </Link>
                     </li>

@@ -38,3 +38,8 @@ a:hover {
     justify-content: space-between;
     width: 20%;
 }
+
+.active {
+    font-weight: bold;
+    font-size: 18px;
+}

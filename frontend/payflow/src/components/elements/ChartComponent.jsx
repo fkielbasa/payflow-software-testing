@@ -17,7 +17,7 @@ const ChartComponent = (props) => {
     const [userData] = useState({
         labels: chart.map((data) => data.year),
         datasets: [{
-            label: `Środki ${type} na koncie w szczytowym momencie`,
+            label: `${type} na koncie w zenicie finansowej`,
             data: chart.map((data) => data.topBalance),
             backgroundColor: ["#1687A7"]
         }]

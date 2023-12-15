@@ -16,7 +16,7 @@ function HomeTransictions(props) {
 
     if (type === 'negative'){
         source = circleMinus;
-        symbol = '—';
+        symbol = '-';
     } else if (type === 'positive') {
         source = circlePlus;
         symbol = '+';
