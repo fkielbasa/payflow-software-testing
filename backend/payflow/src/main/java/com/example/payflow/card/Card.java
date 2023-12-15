@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.sql.Date;
 
 @Data
 @Builder
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "card")
 public class Card {
