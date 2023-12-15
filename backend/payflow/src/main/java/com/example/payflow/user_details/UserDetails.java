@@ -13,15 +13,7 @@ import lombok.Data;
 @Table(name = "user_details")
 public class UserDetails {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_details"
-    )
-    @SequenceGenerator(
-            name = "user_details",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-    )
+    @GeneratedValue
     @Column(name = "id_user_details")
     private Long id;
 
