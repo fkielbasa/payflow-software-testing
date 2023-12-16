@@ -43,3 +43,26 @@ export const UserDataEUR = [
         topBalance: 2183,
     }
 ]
+
+export const UserDataPLN = [
+    {
+        id: 1,
+        year: 2019,
+        topBalance: 1856,
+    },
+    {
+        id: 2,
+        year: 2020,
+        topBalance: 2813,
+    },
+    {
+        id: 3,
+        year: 2021,
+        topBalance: 1869,
+    },
+    {
+        id: 4,
+        year: 2022,
+        topBalance: 3896,
+    }
+]

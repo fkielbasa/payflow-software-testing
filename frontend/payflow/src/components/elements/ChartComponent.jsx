@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import BarChart from "./BarChart";
-import {UserDataUSD} from './Data';
+import {UserDataPLN, UserDataUSD} from './Data';
 import {UserDataEUR} from './Data';
 
 const ChartComponent = (props) => {
@@ -12,6 +12,8 @@ const ChartComponent = (props) => {
         chart = UserDataUSD;
     } else if (type === 'EUR') {
         chart = UserDataEUR;
+    } else if (type === 'PLN') {
+        chart = UserDataPLN;
     }
 
     const [userData] = useState({
