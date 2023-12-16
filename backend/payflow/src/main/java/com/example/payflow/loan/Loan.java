@@ -33,5 +33,4 @@ public class Loan {
     @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "id_account_number",referencedColumnName = "id_account_number")
     private AccountNumber accountNumberLoan;
-
 }

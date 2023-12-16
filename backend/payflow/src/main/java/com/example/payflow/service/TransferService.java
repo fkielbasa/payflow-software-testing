@@ -5,6 +5,8 @@ import com.example.payflow.transfer.TransferRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TransferService {
@@ -13,6 +15,10 @@ public class TransferService {
 
     public Transfer getTransferById(Long transferId) {
         return transferRepository.findById(transferId).orElse(null);
+    }
+
+    public List<Transfer> getTransfer(){
+        return transferRepository.findAll();
     }
 
 //    public boolean makeTransfer(TransferRequest transferRequest) {
@@ -33,5 +39,13 @@ public class TransferService {
 //            return false;
 //        }
 //    }
-
+    public Transfer addTransfer(Transfer transfer){
+        var newTransfer = Transfer.builder()
+                .transferDate(transfer.getTransferDate())
+                .amount(transfer.getAmount())
+                .senderAccount(transfer.getSenderAccount())
+                .receiverAccount(transfer.getReceiverAccount())
+                .build();
+        return transferRepository.save(newTransfer);
+    }
 }
