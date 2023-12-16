@@ -30,7 +30,7 @@ function CreditCard(props) {
         background: 'linear-gradient(55deg, rgba(22,135,167,1) 10%, rgba(39,102,120,1) 90%)'
     };
     const backgroundStyles2 = {
-        background: 'linear-gradient(144deg, rgba(4,104,132,1) 10%, rgba(90,190,219,1) 90%)'
+        background: 'linear-gradient(225deg, rgba(22,135,167,1) 5%, rgba(29,41,50,1) 95%)'
     };
     const backgroundStyles3 = {
         background: 'linear-gradient(326deg, rgba(39,102,120,1) 5%, rgba(0,198,255,1) 95%)'
@@ -81,8 +81,9 @@ function CreditCard(props) {
                 <div className="chipPlace">
                     <img src={chip} alt="chip"/>
                 </div>
-                <div className="">
+                <div>
                     <p className="textDecoration fontSize">{accountNumberConst}</p>
+                    <div className="marginTop">
                     <div className="directionText">
                         <div className="textLeft">
                             <p className="textDecoration">{props.Owner}</p>
@@ -91,9 +92,12 @@ function CreditCard(props) {
                             <p className="textDecoration">{props.expirationMonth}/{props.expirationYear}</p>
                         </div>
                     </div>
+                    </div>
                 </div>
                 <div>
-                    <Link className="accountDetails" to="/cards">Szczegóły konta >></Link>
+                    {props.details ? (
+                        <Link className="accountDetails" to="/cards">Szczegóły konta >></Link>
+                    ) : null}
                 </div>
             </div>
             <div className="chartPosition">

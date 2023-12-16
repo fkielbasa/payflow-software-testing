@@ -1,9 +1,6 @@
 .balance {
-    /*background-color: #D3E0EA;*/
-    /*background: rgb(22,135,167);*/
-    /*background: linear-gradient(65deg, rgba(22,135,167,1) 10%, rgba(39,102,120,1) 90%);*/
     width: 24vw;
-    height: 170px;
+    height: 175px;
     border-radius: 8px;
     margin-right: 10px;
     margin-top: 10vh;
@@ -23,6 +20,10 @@
 .directionText {
     display: flex;
     flex-direction: row;
+}
+
+.marginTop {
+    margin-top: 5px;
 }
 
 .textRight {
