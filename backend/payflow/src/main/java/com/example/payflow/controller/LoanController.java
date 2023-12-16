@@ -42,8 +42,7 @@ public class LoanController {
 
     @PostMapping("/loan/add")
     public ResponseEntity<Loan> addLoan(@RequestBody Loan loan) {
-        loanService.addLoan(loan);
-        return ResponseEntity.ok(loan);
+        return loanService.addLoan(loan);
     }
 
 }

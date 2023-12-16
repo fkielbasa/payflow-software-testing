@@ -1,6 +1,7 @@
 package com.example.payflow.loan;
 
 import com.example.payflow.account_number.AccountNumber;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,8 +31,10 @@ public class Loan {
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
 
-    @ManyToOne(fetch =  FetchType.LAZY)
-    @JoinColumn(name = "id_account_number",referencedColumnName = "id_account_number")
+
+//    @JsonIgnore
+    @ManyToOne()
+    @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumberLoan;
 
 }

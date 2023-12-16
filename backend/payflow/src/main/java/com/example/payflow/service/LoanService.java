@@ -3,6 +3,7 @@ package com.example.payflow.service;
 import com.example.payflow.loan.Loan;
 import com.example.payflow.loan.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,15 +26,20 @@ public class LoanService {
         return loanRepository.findAll();
     }
 
-    public Loan addLoan(Loan loan)  {
-        var makeLoan = Loan.builder()
-                .amount(loan.getAmount())
-                .startDate(loan.getStartDate())
-                .endDate(loan.getEndDate())
-                .interestRate(loan.getInterestRate())
-                .accountNumberLoan(loan.getAccountNumberLoan())
-                .build();
-        return loanRepository.save(makeLoan);
+    public ResponseEntity<Loan> addLoan(Loan loan) {
+        loanRepository.save(loan);
+        return ResponseEntity.ok(loan);
     }
+
+//    public Loan addLoan(Loan loan)  {
+//        var makeLoan = Loan.builder()
+//                .amount(loan.getAmount())
+//                .startDate(loan.getStartDate())
+//                .endDate(loan.getEndDate())
+//                .interestRate(loan.getInterestRate())
+//                .accountNumberLoan(loan.getAccountNumberLoan())
+//                .build();
+//        return loanRepository.save(makeLoan);
+//    }
 
 }

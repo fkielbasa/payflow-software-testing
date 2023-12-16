@@ -42,9 +42,8 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userService.getAllUsers();
     }
-    public AuthenticationService service;
 
     @PostMapping("/createUser")
     public ResponseEntity<String> createUser(@RequestBody UserDTO userDTO,

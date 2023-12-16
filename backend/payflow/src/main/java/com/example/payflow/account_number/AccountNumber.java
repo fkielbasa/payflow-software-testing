@@ -2,6 +2,8 @@ package com.example.payflow.account_number;
 
 import com.example.payflow.loan.Loan;
 import com.example.payflow.user.User;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,9 +32,11 @@ public class AccountNumber {
     private Currency currency;
     private String number;
 
+//    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     private User userId;
+
 
     @OneToMany(mappedBy = "accountNumberLoan", cascade = CascadeType.ALL)
     private List<Loan> loans = new ArrayList<>();
