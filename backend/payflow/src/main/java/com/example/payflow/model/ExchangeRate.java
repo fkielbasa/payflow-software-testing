@@ -27,10 +27,13 @@ public class ExchangeRate {
     private Long id;
     private LocalDate date;
     @Column(name = "PLN")
-    private CurrencyType pln;
+    private Double pln;
     @Column(name = "EUR")
-    private CurrencyType eur;
+    private Double eur;
     @Column(name = "USD")
-    private CurrencyType usd;
+    private Double usd;
+
+    @OneToOne
+    private AccountNumber accountNumber;
 
 }

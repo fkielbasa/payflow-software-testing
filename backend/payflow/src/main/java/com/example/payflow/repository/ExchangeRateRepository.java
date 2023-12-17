@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ExchangeRateRepository extends JpaRepository<ExchangeRate, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM e ORDER BY e.date DESC LIMIT ?1")
+    @Query(nativeQuery = true, value = "SELECT * FROM ExchangeRate ORDER BY date DESC LIMIT ?1")
     List<ExchangeRate> findAllOrderByDateDesc(int last);
 }
 
