@@ -14,13 +14,13 @@ const RegisterForm = ({saveDataForm}) => {
     const [city, setCity] = useState('')
     const [street, setStreet] = useState('')
     const [homeNumber, setHomeNumber] = useState('')
-    const [flatNumber, setFlatNumber] = useState('')
+    const [apartmentNumber, setApartmentNumber] = useState('')
     const [countryAddress, setCountryAddress] = useState('Polska')
     const [zipCodeCorrespondence, setZipCodeCorrespondence] = useState('')
     const [cityCorrespondence, setCityCorrespondence] = useState('')
     const [streetCorrespondence, setStreetCorrespondence] = useState('')
     const [homeNumberCorrespondence, setHomeNumberCorrespondence] = useState('')
-    const [flatNumberCorrespondence, setFlatNumberCorrespondence] = useState('')
+    const [apartmentNumberCorrespondence, setApartmentNumberCorrespondence] = useState('')
     const [countryAddressCorrespondence, setCountryAddressCorrespondence] = useState('Polska')
 
     const selectSameAddress = () => {
@@ -33,9 +33,9 @@ const RegisterForm = ({saveDataForm}) => {
             checkZipCode(zipCode) &&
             checkZipCode(zipCodeCorrespondence) &&
             checkHomeNumber(homeNumber) &&
-            // checkHomeNumber(flatNumber) &&
+            // checkHomeNumber(apartmentNumber) &&
             checkHomeNumber(homeNumberCorrespondence) &&
-            // checkHomeNumber(flatNumberCorrespondence) &&
+            // checkHomeNumber(apartmentNumberCorrespondence) &&
             isString(firstName) &&
             isString(lastName) &&
             isString(city) &&
@@ -53,7 +53,7 @@ const RegisterForm = ({saveDataForm}) => {
         setCityCorrespondence((prevState) =>city)
         setStreetCorrespondence(prevState => street)
         setHomeNumberCorrespondence(prevState => homeNumber)
-        setFlatNumberCorrespondence(prevState => flatNumber)
+        setApartmentNumberCorrespondence(prevState => apartmentNumber)
         setCountryAddressCorrespondence(prev => countryAddress)
     }
 
@@ -75,13 +75,13 @@ const RegisterForm = ({saveDataForm}) => {
                 city: city,
                 street: street,
                 homeNumber: homeNumber,
-                flatNumber: flatNumber,
+                apartmentNumber: apartmentNumber,
                 countryAddress: countryAddress,
                 zipCodeCorrespondence: zipCodeCorrespondence.substring(0,2)+"-"+zipCodeCorrespondence.substring(2),
                 cityCorrespondence: cityCorrespondence,
                 streetCorrespondence: streetCorrespondence,
                 homeNumberCorrespondence: homeNumberCorrespondence,
-                flatNumberCorrespondence: flatNumberCorrespondence,
+                apartmentNumberCorrespondence: apartmentNumberCorrespondence,
                 countryAddressCorrespondence: countryAddressCorrespondence
             }
             saveDataForm(form)
@@ -141,7 +141,7 @@ const RegisterForm = ({saveDataForm}) => {
                     <label>Nr domu</label>
                     <input  type="text" disabled={sameAddress} maxLength="10" onChange={(event) => setHomeNumber(event.target.value)} required/>
                     <label>Nr mieszkania</label>
-                    <input  type="text" disabled={sameAddress} maxLength="10" onChange={(event) => setFlatNumber(event.target.value)}  />
+                    <input  type="text" disabled={sameAddress} maxLength="10" onChange={(event) => setApartmentNumber(event.target.value)}  />
                     <SelectCountry disabled={sameAddress} setCountry={setCountryAddress} />
 
                 </div>
@@ -157,7 +157,7 @@ const RegisterForm = ({saveDataForm}) => {
                         <label>Nr domu</label>
                         <input  maxLength="10" disabled={sameAddress} onChange={(event) => setHomeNumberCorrespondence(event.target.value)}  type="text" required/>
                         <label>Nr mieszkania</label>
-                        <input  maxLength="10" disabled={sameAddress} onChange={(event) => setFlatNumberCorrespondence(event.target.value)}   type="text" />
+                        <input  maxLength="10" disabled={sameAddress} onChange={(event) => setApartmentNumberCorrespondence(event.target.value)}   type="text" />
                         <SelectCountry disabled={sameAddress} setCountry={setCountryAddressCorrespondence} />
                         <div className={styles.radio}>
                             <input type="checkbox"  onClick={() => selectSameAddress()} />

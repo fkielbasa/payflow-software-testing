@@ -17,11 +17,19 @@ const Register = () => {
     const [logAccount, setLogAccount] = useState(false)
     const [summary, setSummary] = useState(false)
     const [currentPage, setCurrentPage] = useState(0)
+    const [pending,setPending] = useState(false)
 
     const [isStandardAccount, setIsStandardAccount] = useState(true)
     const [dataForm, setDataForm] = useState({})
     const [password, setPassword] = useState('')
 
+    const registerData = {
+        dataForm : {
+            ...dataForm,
+            accountType: isStandardAccount ? 'STANDARD' : 'INTENSIVE',
+            password: password
+        }
+    }
 
     const selectAccount = (choice) => {
         setIsStandardAccount(choice)
@@ -75,12 +83,17 @@ const Register = () => {
 
 
     const handleOpenAccount = () => {
+        console.log(JSON.stringify(registerData))
 
         fetch(REGISTER_URL, {
-            method: ' POST',
+            method: 'POST',
             headers: {"Content-Type": "application/json"},
-
-        })
+            body: JSON.stringify(registerData.dataForm)
+        }).then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+            })
+            .catch(er => console.log(er))
     }
 
     const renderSummary = () => {
