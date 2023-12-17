@@ -1,12 +1,13 @@
 .balance {
-    width: 24vw;
+    width: 320px;
     height: 175px;
     border-radius: 8px;
-    margin-right: 10px;
-    margin-top: 10vh;
+    margin-right: 18px;
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
     margin-bottom: 150px;
+    transition: transform 0.3s ease, z-index 0.3s ease;
 }
 
 .balanceText {
@@ -20,6 +21,12 @@
 .directionText {
     display: flex;
     flex-direction: row;
+}
+
+.balance.hovered {
+    transform: scale(1.1); /* Możesz dostosować wartość skali do własnych preferencji */
+    /*transition: transform 0.3s ease; !* Dodaj płynne przejście *!*/
+    z-index: 1;
 }
 
 .marginTop {
@@ -38,11 +45,9 @@
     padding: 10px;
 }
 
-
 .marginLeft {
     margin-left: 15px;
 }
-
 
 .textLeft {
     display: flex;

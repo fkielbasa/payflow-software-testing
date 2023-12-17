@@ -13,31 +13,23 @@
 }
 
 .leftSidePosition {
+    width: 50vw;
     display: flex;
     flex-direction: column;
 }
 
-/*.balancePosition {*/
-/*    width: 50vw;*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    !*margin-right: 10px;*!*/
-/*    justify-content: center;*/
-/*}*/
-
 .balancePosition {
-    width: 50vw;
     display: flex;
+    /*flex-direction: row;*/
     flex-wrap: wrap;
-    justify-content: center;
+    position: absolute;
+    width: 50vw;
+    /*background-color: red;*/
 }
 
-
-.chartPosition {
-    /*justify-content: center;*/
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*margin-top: 20px;*/
+.properMargin {
+    margin-left: 22%;
+    margin-top: 17%;
 }
 
 .transactionPosition {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../styles/HomeStyles.css';
 import '../styles/CreditCardsStyles.css';
 import ChartComponent from "./ChartComponent";
@@ -6,6 +6,8 @@ import {Link} from "react-router-dom";
 import chip from "../../assets/transations/chip.png";
 
 function CreditCard(props) {
+    const [isHovered, setIsHovered] = useState(false);
+
     let symbol;
     let currentBalanceText;
     let backgroundStyles;
@@ -25,6 +27,7 @@ function CreditCard(props) {
 
         return `${firstTwoDigits} ${chunks.join(' ')}`;
     }
+
 
     const backgroundStyles1 = {
         background: 'linear-gradient(55deg, rgba(22,135,167,1) 10%, rgba(39,102,120,1) 90%)'
@@ -63,11 +66,13 @@ function CreditCard(props) {
 
     }
 
-
-
-
     return (
-        <div style={backgroundStyles} className="balance">
+        <div style={backgroundStyles}
+             // className="balance"
+             className={`balance ${isHovered ? 'hovered' : ''}`}
+             onMouseEnter={() => setIsHovered(true)}
+             onMouseLeave={() => setIsHovered(false)}
+        >
             <div className="balanceText">
                 <div className="directionText">
                     <div className="textLeft">
@@ -84,14 +89,14 @@ function CreditCard(props) {
                 <div>
                     <p className="textDecoration fontSize">{accountNumberConst}</p>
                     <div className="marginTop">
-                    <div className="directionText">
-                        <div className="textLeft">
-                            <p className="textDecoration">{props.Owner}</p>
+                        <div className="directionText">
+                            <div className="textLeft">
+                                <p className="textDecoration">{props.Owner}</p>
+                            </div>
+                            <div className="marginLeft">
+                                <p className="textDecoration">{props.expirationMonth}/{props.expirationYear}</p>
+                            </div>
                         </div>
-                        <div className="marginLeft">
-                            <p className="textDecoration">{props.expirationMonth}/{props.expirationYear}</p>
-                        </div>
-                    </div>
                     </div>
                 </div>
                 <div>
@@ -101,7 +106,7 @@ function CreditCard(props) {
                 </div>
             </div>
             <div className="chartPosition">
-                <ChartComponent type={props.currency}/>
+                {props.graph && <ChartComponent type={props.currency}/>}
             </div>
         </div>
     );
