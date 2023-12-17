@@ -5,9 +5,6 @@ import com.example.payflow.account_number.AccountNumberRepository;
 import com.example.payflow.loan.Loan;
 import com.example.payflow.loan.LoanRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +14,8 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 public class LoanService {
-
     private final LoanRepository loanRepository;
     private final AccountNumberRepository accountNumberRepository;
-
-
 
     public Loan getLoanById(Long id) {
         return loanRepository.findById(id)
@@ -48,7 +42,6 @@ public class LoanService {
         // todo check it later
         return (ResponseEntity<Loan>) ResponseEntity.badRequest();
     }
-
 
     public List<Loan> getLoansByAccountNumberId(Long id) {
         List<Loan> results = loanRepository.findAll()

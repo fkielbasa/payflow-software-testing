@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class TransferController {
     private final TransferService transferService;
-
     @GetMapping("/transfer/{transferId}")
     public ResponseEntity<Transfer> getTransferById(@PathVariable Long transferId) {
         Transfer transfer = transferService.getTransferById(transferId);

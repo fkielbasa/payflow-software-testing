@@ -53,12 +53,6 @@ public class User implements org.springframework.security.core.userdetails.UserD
     @JoinColumn(name = "correspondence_address_id")
     private Address correspondenceAddress;
 
-//    @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
-//    @PrimaryKeyJoinColumn
-//    private UserDetails userDetails;
-//    @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
-//    private UserDetails userDetails;
-
     @JsonIgnore
     @OneToMany(mappedBy = "userId"
 //            ,
