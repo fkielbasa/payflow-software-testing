@@ -17,7 +17,6 @@ const Register = () => {
     const [logAccount, setLogAccount] = useState(false)
     const [summary, setSummary] = useState(false)
     const [currentPage, setCurrentPage] = useState(0)
-    const [pending,setPending] = useState(false)
 
     const [isStandardAccount, setIsStandardAccount] = useState(true)
     const [dataForm, setDataForm] = useState({})
@@ -85,6 +84,7 @@ const Register = () => {
     const handleOpenAccount = () => {
         console.log(JSON.stringify(registerData))
 
+
         fetch(REGISTER_URL, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
@@ -92,6 +92,7 @@ const Register = () => {
         }).then((response) => response.json())
             .then((data) => {
                 console.log(data)
+                changePage()
             })
             .catch(er => console.log(er))
     }
@@ -101,7 +102,7 @@ const Register = () => {
             <div className={styles.summaryContainer}>
                 <div className={styles.wrapperPrint}>{isStandardAccount ? <AccountCard title={"Zwykłe konto "}  img={bank} /> : <AccountCard title={"Konto Intensive "}  img={card}/>}</div>
                 <div>
-                    <div className={styles.horiz}>
+                    <div className={styles.vertical}>
                         <div className={styles.wrapperPrint}>
                             <p><b>Dane osobiste</b></p>
                             <p>Imię: <b>{dataForm.firstName}</b></p>
@@ -117,7 +118,7 @@ const Register = () => {
                             <p>Miejscowość: <b>{dataForm.city}</b></p>
                             <p>Ulica: <b>{dataForm.street}</b></p>
                             <p>Nr domu/lokalu: <b>{dataForm.homeNumber}</b></p>
-                            <p>Nr mieszkania: <b>{dataForm.flatNumber}</b></p>
+                            <p>Nr mieszkania: <b>{dataForm.apartmentNumber}</b></p>
                             <p>Kraj: <b>{dataForm.countryAddress}</b></p>
                         </div>
                         <div className={styles.wrapperPrint}>
@@ -126,7 +127,7 @@ const Register = () => {
                             <p>Miejscowość: <b>{dataForm.cityCorrespondence}</b></p>
                             <p>Ulica: <b>{dataForm.streetCorrespondence}</b></p>
                             <p>Nr domu/lokalu: <b>{dataForm.homeNumberCorrespondence}</b></p>
-                            <p>Nr mieszkania: <b>{dataForm.flatNumberCorrespondence}</b></p>
+                            <p>Nr mieszkania: <b>{dataForm.apartmentNumberCorrespondence}</b></p>
                             <p>Kraj: <b>{dataForm.countryAddressCorrespondence}</b></p>
                         </div>
                     </div>
@@ -146,6 +147,15 @@ const Register = () => {
         )
     }
 
+    const renderRegistered =() =>{
+        return (
+            <div className={styles.registered}>
+                <h3>Twoje konto zostało utworzone!</h3>
+                <p>Na adres <b>{dataForm.email}</b> wysłaliśmy ci potrzebne do logowania dane, proszę sprawdź swoją skrzynkę.</p>
+            </div>
+        )
+    }
+
     const renderPage = () => {
         switch (currentPage){
             case 0:
@@ -156,6 +166,8 @@ const Register = () => {
                 return renderSecurity()
             case 3:
                 return renderSummary()
+            case 4:
+                return renderRegistered()
             default:
                 return renderNotFound()
         }
