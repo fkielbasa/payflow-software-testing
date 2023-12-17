@@ -6,6 +6,10 @@ import bank from '../../assets/banking.png'
 import card from '../../assets/debit-card.png'
 import RegisterForm from "./registerForm";
 import PasswordForm from "./passwordForm";
+import axios from "axios";
+
+
+const REGISTER_URL = "http://localhost:8080/api/auth/register"
 
 const Register = () => {
     const [account, setAccount] = useState(true)
@@ -68,8 +72,15 @@ const Register = () => {
         )
     }
 
+
+
     const handleOpenAccount = () => {
-      console.log("DONE")
+
+        fetch(REGISTER_URL, {
+            method: ' POST',
+            headers: {"Content-Type": "application/json"},
+
+        })
     }
 
     const renderSummary = () => {
@@ -106,7 +117,7 @@ const Register = () => {
                             <p>Kraj: <b>{dataForm.countryAddressCorrespondence}</b></p>
                         </div>
                     </div>
-                    <div className={styles.horiz}>
+                    <div className={styles.btnWrapper}>
                         <button onClick={handleOpenAccount} className={styles.applyBtn}>Potwierdź dane i otwórz konto</button>
                     </div>
                 </div>
@@ -117,7 +128,7 @@ const Register = () => {
     const renderNotFound = () => {
         return (
             <div>
-
+                <p>Ups... Nie znaleziono</p>
         </div>
         )
     }

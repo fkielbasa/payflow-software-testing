@@ -166,7 +166,7 @@ const RegisterForm = ({saveDataForm}) => {
                     </div>
                 </div>
                 <p id="wrong" className={styles.wrongData} >Dane są nieprawidłowe! Sprwadź je i prześlij jeszcze raz.</p>
-                <div className={styles.btnToRight}><input type="submit" className={styles.submit}/></div>
+                <div className={styles.btnToCenter}><input type="submit" className={styles.submit}/></div>
             </form>
         </div>
     )
