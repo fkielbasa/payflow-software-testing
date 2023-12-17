@@ -53,7 +53,7 @@ public class LoanService {
     public List<Loan> getLoansByAccountNumberId(Long id) {
         List<Loan> results = loanRepository.findAll()
                 .stream()
-                .filter(l -> l.getAccountNumber().equals(id))
+                .filter(l -> l.getAccountNumber().getId().equals(id))
                 .toList();
         return results;
     }
