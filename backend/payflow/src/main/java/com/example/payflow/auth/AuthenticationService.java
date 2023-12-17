@@ -82,8 +82,8 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
 
-//        addressRepository.save(residentalAddress);
-//        addressRepository.save(correspondenceAddress);
+        addressRepository.save(residentalAddress);
+        addressRepository.save(correspondenceAddress);
         userRepository.save(user);
         var userDetails = UserDetails.builder()
                 .userId(user)
