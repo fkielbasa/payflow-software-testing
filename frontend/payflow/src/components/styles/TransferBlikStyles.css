@@ -12,3 +12,12 @@
     border-width: 2px;
     height: 40px;
 }
+
+.blik {
+    display: flex;
+    flex-direction: column;
+    background-color: #D3E0EA;
+    border-radius: 15px;
+    width: 150px;
+    align-items: center;
+}

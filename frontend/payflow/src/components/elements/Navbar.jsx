@@ -39,65 +39,68 @@ function Navbar() {
 
     return (
         <div className="verticalNavbar">
+            <div className="navbarFixed">
+                <div className="firstSection">
+                    <div className="container">
+                        <Link to="/home">
+                            <Logo/>
+                        </Link>
+                    </div>
 
-            <div className="firstSection">
-                <div className="container">
-                    <Link to="/home">
-                        <Logo />
-                    </Link>
+                    <nav>
+                        <ul>
+                            <li>
+                                <Link to='/home' className={isHome ? 'active' : ''}>
+                                    <img className="navImages" src={isHome ? houseFill : house} alt="Home"/>
+                                    Strona główna
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/transactions' className={isTransactions ? 'active' : ''}>
+                                    <img className="navImages" src={isTransactions ? transactionsFill : transactions}
+                                         alt="transactions"/>
+                                    Transakcje
+                                </Link>
+                            </li>
+                            <li>
+                                <a href="/transfers" className={isTransfers ? 'active' : ''}>
+                                    <img className="navImages" src={isTransfers ? transfersFill : transfers}
+                                         alt="transfers"/>
+                                    Przelewy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/credits" className={isCredits ? 'active' : ''}>
+                                    <img className="navImages" src={isCredits ? creditsFill : credits} alt="credits"/>
+                                    Kredyty
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/cards" className={isCards ? 'active' : ''}>
+                                    <img className="navImages" src={isCards ? cardsFill : cards} alt="cards"/>
+                                    Karty
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-
                 <nav>
                     <ul>
                         <li>
-                            <Link to='/home' className={isHome ? 'active' : ''}>
-                                <img className="navImages" src={isHome ? houseFill : house} alt="Home" />
-                                Strona główna
+                            <Link to='/settings' className={isSettings ? 'active' : ''}>
+                                <img className="navImages" src={isSettings ? settingsFill : settings} alt="settings"/>
+                                Ustawienia
                             </Link>
                         </li>
                         <li>
-                            <Link to='/transactions' className={isTransactions ? 'active' : ''}>
-                                <img className="navImages" src={isTransactions ? transactionsFill : transactions} alt="transactions" />
-                                Transakcje
+                            <Link to='/logOut' className={isLogOut ? 'active' : ''}>
+                                <img className="navImages" src={isLogOut ? logOutFill : logOut} alt="logOut"/>
+                                Wyloguj
                             </Link>
-                        </li>
-                        <li>
-                            <a href="/transfers" className={isTransfers ? 'active' : ''}>
-                                <img className="navImages" src={isTransfers ? transfersFill : transfers} alt="transfers" />
-                                Przelewy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/credits" className={isCredits ? 'active' : ''}>
-                                <img className="navImages" src={isCredits ? creditsFill : credits} alt="credits" />
-                                Kredyty
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/cards" className={isCards ? 'active' : ''}>
-                                <img className="navImages" src={isCards ? cardsFill : cards} alt="cards" />
-                                Karty
-                            </a>
                         </li>
                     </ul>
                 </nav>
             </div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to='/settings' className={isSettings ? 'active' : ''}>
-                            <img className="navImages" src={isSettings ? settingsFill : settings} alt="settings" />
-                            Ustawienia
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to='/logOut' className={isLogOut ? 'active' : ''}>
-                            <img className="navImages" src={isLogOut ? logOutFill : logOut} alt="logOut" />
-                            Wyloguj
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
         </div>
     );
 }

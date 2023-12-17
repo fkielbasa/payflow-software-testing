@@ -28,6 +28,7 @@
     background-color: #D3E0EA;
     color: black;
     border-color: #276678;
+    border-radius: 15px;
 }
 
 
@@ -51,6 +52,15 @@
     color: #1687A7;
     background-color: #F6F5F5;
     border-color: #276678;
-    border-width: 2px;
+    border-width: 1px;
     height: 40px;
+    border-radius: 15px;
+}
+
+.btn {
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
 }

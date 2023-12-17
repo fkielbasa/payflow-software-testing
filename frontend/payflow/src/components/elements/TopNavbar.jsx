@@ -9,9 +9,11 @@ import bell from '../../assets/topNavbar/notification/bell.svg';
 function Home() {
     return (
         <div className="topNavbar">
+            <div className="topNavPositionFixed">
             <p>John</p>
             <img className="topNavImages" src={person} alt="person-icon" />
             <img className="topNavImagesSmall" src={bell} alt="person-icon" />
+        </div>
         </div>
     );
 }
