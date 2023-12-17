@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import BarChart from "./BarChart";
-import {UserDataPLN, UserDataUSD} from './Data';
-import {UserDataEUR} from './Data';
+import {UserDataPLN, UserDataUSD} from '../API/GraphData';
+import {UserDataEUR} from '../API/GraphData';
 
 const ChartComponent = (props) => {
     const type = props.type;

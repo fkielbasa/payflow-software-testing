@@ -1,4 +1,4 @@
-.transactionCircleMinus {
+.transactionCircle {
     width: 60px;
 }
 
@@ -14,11 +14,24 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 30vw;
+
+    /*background-color: red;*/
 }
 
 .paymentTextPosition{
     display: flex;
     flex-direction: column;
+}
+
+.nextPaymentTextPosition {
+    display: flex;
+    flex-direction: column;
+    width: 18vw;
+    align-items: flex-start;
+    margin-left: 10px;
+
+    /*background-color: aqua;*/
 }
 
 .transactionTextDecoration {

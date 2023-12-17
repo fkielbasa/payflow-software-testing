@@ -29,7 +29,7 @@
 .textRight {
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
     justify-content: center;
     width: 50%;
 }
@@ -47,7 +47,7 @@
 .textLeft {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     width: 50%;
 }

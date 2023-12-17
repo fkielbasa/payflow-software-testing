@@ -4,8 +4,8 @@ import circleMinus from "../../assets/transations/circleMinus.png";
 import circlePlus from "../../assets/transations/circlePlus.png";
 import { TransactionData } from '../API/TransactionData';
 
-function HomeTransictions(props) {
-    const reversedTransactions = [...TransactionData].reverse().slice(0, props.maxPerPage);
+function WholeTransactions() {
+    const reversedTransactions = [...TransactionData].reverse();
 
     return (
         <div>
@@ -17,12 +17,13 @@ function HomeTransictions(props) {
 }
 
 function TransactionItem({ transaction }) {
-    const { amount, type, name, location, currency } = transaction;
+    const { amount, type, currency, name, location, cardUsed, referenceNumber } = transaction;
     const symbol = getCurrencySymbol(currency);
     const source = type === 'negative' ? circleMinus : circlePlus;
-    const formattedBalance = formatBalance(amount, symbol, currency);
+    const formattedAmount = formatAmount(amount, symbol, currency);
 
     return (
+        <div>
         <div className="shortPayment">
             <div className="shortPaymentText">
                 <img className="transactionCircle" src={source} alt="circle"/>
@@ -31,7 +32,15 @@ function TransactionItem({ transaction }) {
                     <p className="transactionTextDecoration transactionTextSmall">{location}</p>
                 </div>
             </div>
-            <p className="paymentTextSize">{formattedBalance}</p>
+            <div className="nextPaymentTextPosition">
+                <p className="transactionTextDecoration">{cardUsed}</p>
+                <p className="transactionTextDecoration transactionTextSmall">{referenceNumber}</p>
+            </div>
+            <div className="nextPaymentTextPosition">
+            <p className="paymentTextSize">{formattedAmount}</p>
+            </div>
+        </div>
+            <hr/>
         </div>
     );
 }
@@ -49,7 +58,7 @@ function getCurrencySymbol(currency) {
     }
 }
 
-function formatBalance(amount, symbol, currency) {
+function formatAmount(amount, symbol, currency) {
     if (currency === 'PLN') {
         return `${amount.toFixed(2)}${symbol}`;
     } else {
@@ -57,4 +66,4 @@ function formatBalance(amount, symbol, currency) {
     }
 }
 
-export default HomeTransictions;
+export default WholeTransactions;
