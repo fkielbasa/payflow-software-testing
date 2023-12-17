@@ -9,9 +9,9 @@ function App() {
 
     const paths = ['/home', '/transactions', '/transfers', '/credits', '/cards', '/settings', '/logOut'];
     return (
+        // do not change anything here
         <div className="container-fluid">
             {paths.includes(location.pathname) && <Navbar />}
-
             <div className="container">
                 <div className="app-top">
                     {paths.includes(location.pathname) && <TopNavbar />}
