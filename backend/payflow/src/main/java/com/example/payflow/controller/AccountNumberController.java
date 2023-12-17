@@ -2,10 +2,12 @@ package com.example.payflow.controller;
 
 
 import com.example.payflow.account_number.AccountNumber;
+import com.example.payflow.loan.Loan;
 import com.example.payflow.service.AccountNumberService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +21,13 @@ public class AccountNumberController {
     private final AccountNumberService service;
 
 
+
+
     @GetMapping
     public List<AccountNumber> getAccountNumbers() {
         return service.getAccountNumbers();
     }
+
+
+
 }

@@ -38,6 +38,4 @@ public class AccountNumber {
     private User userId;
 
 
-    @OneToMany(mappedBy = "accountNumberLoan", cascade = CascadeType.ALL)
-    private List<Loan> loans = new ArrayList<>();
 }

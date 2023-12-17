@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api")
 public class LoanController {
 
     private final LoanService loanService;
@@ -30,6 +30,11 @@ public class LoanController {
     public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
         Loan loan = loanService.getLoanById(id);
         return ResponseEntity.ok(loan);
+    }
+
+    @GetMapping("/account_numbers/{id}/loans")
+    public List<Loan> getLoansByAccountNumberId(@PathVariable Long id){
+        return loanService.getLoansByAccountNumberId(id);
     }
 
 //    @GetMapping("loan/get")

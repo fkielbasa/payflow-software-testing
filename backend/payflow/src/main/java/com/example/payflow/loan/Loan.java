@@ -32,9 +32,8 @@ public class Loan {
     private BigDecimal interestRate;
 
 
-//    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "id_account_number")
-    private AccountNumber accountNumberLoan;
+    private AccountNumber accountNumber;
 
 }
