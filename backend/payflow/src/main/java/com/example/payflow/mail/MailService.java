@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MailService {
 
-    public static final String NEW_USER_ACCOUNT_REGISTERING = "New User Account Registering";
+    public static final String NEW_USER_ACCOUNT_REGISTERING = "Twoje konto zostało zarejestrowane!";
     private final JavaMailSender mailSender;
 
     @Value("${spring.mail.username}")
