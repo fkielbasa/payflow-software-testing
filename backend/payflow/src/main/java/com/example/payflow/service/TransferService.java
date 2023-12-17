@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 public class TransferService {
 
     private final TransferRepository transferRepository;
-
     public Transfer getTransferById(Long transferId) {
         return transferRepository.findById(transferId).orElse(null);
     }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "transfer")
 public class Transfer {
@@ -41,7 +43,4 @@ public class Transfer {
     @JoinColumn(name = "receiver_number")
     private AccountNumber receiverAccount;
 
-    public Transfer(){
-
-    }
 }

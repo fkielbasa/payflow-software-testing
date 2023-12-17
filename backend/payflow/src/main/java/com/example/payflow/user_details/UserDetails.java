@@ -5,14 +5,15 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "user_details")
 public class UserDetails {
-
     @Id
     @GeneratedValue
     @Column(name = "id_user_details")
@@ -22,7 +23,6 @@ public class UserDetails {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-
 //    @OneToOne
 //    @MapsId
 //    @JoinColumn(name = "user_id")
@@ -30,38 +30,5 @@ public class UserDetails {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User userId;
-
-    public UserDetails() {
-    }
-
-    public UserDetails(String email, String phoneNumber) {
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Long getIdUser() {
-        return id;
-    }
-
-    public void setIdUser(Long idUser) {
-        this.id = idUser;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
 
 }

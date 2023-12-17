@@ -1,29 +1,22 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.loan.Loan;
-import com.example.payflow.loan.LoanRepository;
 import com.example.payflow.service.LoanService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
 public class LoanController {
 
     private final LoanService loanService;
-    private final LoanRepository loanRepository;
 
-    @Autowired
-    public LoanController(LoanService loanService, LoanRepository loanRepository) {
-        this.loanService = loanService;
-        this.loanRepository = loanRepository;
-    }
     @GetMapping("/loans")
     public List<Loan> getAllLoans() {
-        return loanRepository.findAll();
+        return loanService.getLoan();
     }
 
     @GetMapping("/loan/{id}")
@@ -43,7 +36,6 @@ public class LoanController {
 //                .map(loanService.ln())
 //                .collect(Collectors.toList());
 //    }
-
 
     @PostMapping("/loan/add")
     public ResponseEntity<Loan> addLoan(@RequestBody Loan loan) {
