@@ -15,7 +15,7 @@ public class UserDetailsController {
 
     private final UserDetailsServices userDetailsService;
 
-    @GetMapping("/users/details/{id}")
+    @GetMapping("/users/{id}/details")
     public ResponseEntity<UserDetails> getUserDetailsById(@PathVariable Long id) {
         UserDetails userDetails = userDetailsService.getUserDetailsById(id);
         return ResponseEntity.ok(userDetails);
