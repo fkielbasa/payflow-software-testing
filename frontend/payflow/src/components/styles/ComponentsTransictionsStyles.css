@@ -8,6 +8,13 @@
     justify-content: space-between;
     margin-right: 20px;
     align-items: center;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+}
+
+.shortPayment.hovered {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    z-index: 1;
 }
 
 .shortPaymentText {
@@ -15,23 +22,28 @@
     flex-direction: row;
     align-items: center;
     width: 30vw;
-
-    /*background-color: red;*/
 }
 
 .paymentTextPosition{
     display: flex;
     flex-direction: column;
+    /*width: 200px;*/
 }
 
 .nextPaymentTextPosition {
     display: flex;
     flex-direction: column;
-    width: 18vw;
+    width: 170px;
     align-items: flex-start;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
+}
 
-    /*background-color: aqua;*/
+.balanceTextPosition {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    align-items: flex-end;
+    /*margin-left: 10px;*/
 }
 
 .transactionTextDecoration {

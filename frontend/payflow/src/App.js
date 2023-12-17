@@ -1,17 +1,20 @@
 import Navbar from "./components/elements/Navbar";
 import React from "react";
-import { Outlet } from "react-router-dom";
+import {Outlet, useLocation} from "react-router-dom";
 import './components/styles/AppStyles.css'
 import TopNavbar from "./components/elements/TopNavbar";
 
 function App() {
+    const location = useLocation();
+
+    const paths = ['/home', '/transactions', '/transfers', '/credits', '/cards', '/settings', '/logOut'];
     return (
         <div className="container-fluid">
-            <Navbar />
+            {paths.includes(location.pathname) && <Navbar />}
 
             <div className="container">
                 <div className="app-top">
-                    <TopNavbar/>
+                    {paths.includes(location.pathname) && <TopNavbar />}
                 </div>
                 <Outlet/>
             </div>

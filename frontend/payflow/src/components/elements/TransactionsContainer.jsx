@@ -1,30 +1,34 @@
-import React from 'react';
-import '../styles/HomeTransictionsStyles.css';
+import React, { useState } from 'react';
+import '../styles/ComponentsTransictionsStyles.css';
 import circleMinus from "../../assets/transations/circleMinus.png";
 import circlePlus from "../../assets/transations/circlePlus.png";
 import { TransactionData } from '../API/TransactionData';
 
-function WholeTransactions() {
-    const reversedTransactions = [...TransactionData].reverse();
+function TransactionsContainer({ screenName, maxPerPage }) {
+    const reversedTransactions = [...TransactionData].reverse().slice(0, maxPerPage);
 
     return (
         <div>
             {reversedTransactions.map(transaction => (
-                <TransactionItem key={transaction.id} transaction={transaction} />
+                <TransactionItem key={transaction.id} transaction={transaction} screenName={screenName} />
             ))}
         </div>
     );
 }
 
-function TransactionItem({ transaction }) {
+function TransactionItem({ transaction, screenName }) {
     const { amount, type, currency, name, location, cardUsed, referenceNumber } = transaction;
     const symbol = getCurrencySymbol(currency);
     const source = type === 'negative' ? circleMinus : circlePlus;
     const formattedAmount = formatAmount(amount, symbol, currency);
+    const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <div>
-        <div className="shortPayment">
+        <div
+            className={`shortPayment ${isHovered ? 'hovered' : ''}`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <div className="shortPaymentText">
                 <img className="transactionCircle" src={source} alt="circle"/>
                 <div className="paymentTextPosition">
@@ -32,15 +36,15 @@ function TransactionItem({ transaction }) {
                     <p className="transactionTextDecoration transactionTextSmall">{location}</p>
                 </div>
             </div>
-            <div className="nextPaymentTextPosition">
-                <p className="transactionTextDecoration">{cardUsed}</p>
-                <p className="transactionTextDecoration transactionTextSmall">{referenceNumber}</p>
+            {screenName === 'transactions' && (
+                <div className="nextPaymentTextPosition">
+                    <p className="transactionTextDecoration">{cardUsed}</p>
+                    <p className="transactionTextDecoration transactionTextSmall">{referenceNumber}</p>
+                </div>
+            )}
+            <div className="balanceTextPosition">
+                <p className="paymentTextSize">{formattedAmount}</p>
             </div>
-            <div className="nextPaymentTextPosition">
-            <p className="paymentTextSize">{formattedAmount}</p>
-            </div>
-        </div>
-            <hr/>
         </div>
     );
 }
@@ -66,4 +70,4 @@ function formatAmount(amount, symbol, currency) {
     }
 }
 
-export default WholeTransactions;
+export default TransactionsContainer;

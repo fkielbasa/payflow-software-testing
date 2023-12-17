@@ -1,11 +1,11 @@
 import React from 'react';
 import '../styles/TransactionsStyles.css';
-import WholeTransactions from "../elements/WholeTransactions";
+import TransactionsContainer from "../elements/TransactionsContainer";
 
 function Transactions() {
     return (
         <div className="transactionsContainer">
-            <WholeTransactions/>
+            <TransactionsContainer screenName={'transactions'}/>
         </div>
     );
 }

@@ -3,7 +3,7 @@ import '../styles/HomeStyles.css';
 import CreditCard from "../elements/CreditCard";
 import '../styles/aaaElementsPositionDebug.css';
 
-import HomeTransactions from "../elements/HomeTransactions";
+import TransactionsContainer from "../elements/TransactionsContainer";
 import {Link} from "react-router-dom";
 
 function Home() {
@@ -36,7 +36,7 @@ function Home() {
                         <p className="marginL">Ostatnie transakcje</p>
                         <Link to="/transactions" className="smallLetters">Pokaż więcej</Link>
                     </div>
-                    <HomeTransactions maxPerPage={4}/>
+                    <TransactionsContainer maxPerPage={4} screenName={'home'}/>
                 </div>
             </div>
         </div>
