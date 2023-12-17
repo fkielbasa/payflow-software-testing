@@ -19,16 +19,13 @@ public class MailService {
     private String sender;
 
     public void sendRegistrationMail(String name, String to, String login){
-        System.out.println("name " + name + " to " + to+ " login "+ login  );
         try{
             SimpleMailMessage message = new SimpleMailMessage();
             message.setSubject(NEW_USER_ACCOUNT_REGISTERING);
             message.setFrom(sender);
             message.setTo(to);
             message.setText(MailUtils.getEmailMessage(name, login));
-            System.out.println("MAIL sending");
             mailSender.send(message);
-            System.out.println("SENT");
         }catch (Exception e) {
             System.out.println(e.getMessage());
             throw new RuntimeException(e.getMessage());
