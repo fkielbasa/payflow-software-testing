@@ -1,9 +1,9 @@
 package com.example.payflow.service;
 
-import com.example.payflow.account_number.AccountNumber;
-import com.example.payflow.account_number.AccountNumberRepository;
-import com.example.payflow.loan.Loan;
-import com.example.payflow.loan.LoanRepository;
+import com.example.payflow.model.AccountNumber;
+import com.example.payflow.repository.AccountNumberRepository;
+import com.example.payflow.model.Loan;
+import com.example.payflow.repository.LoanRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

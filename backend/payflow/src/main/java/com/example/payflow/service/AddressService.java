@@ -1,8 +1,8 @@
 package com.example.payflow.service;
 
 import com.example.payflow.DTO.AddressDTO;
-import com.example.payflow.address.Address;
-import com.example.payflow.address.AddressRepository;
+import com.example.payflow.model.Address;
+import com.example.payflow.repository.AddressRepository;
 import org.springframework.stereotype.Service;
 
 @Service

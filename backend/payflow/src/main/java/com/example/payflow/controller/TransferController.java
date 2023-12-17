@@ -1,7 +1,7 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.service.TransferService;
-import com.example.payflow.transfer.Transfer;
+import com.example.payflow.model.Transfer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

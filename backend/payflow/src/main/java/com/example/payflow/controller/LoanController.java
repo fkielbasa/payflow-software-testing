@@ -1,6 +1,6 @@
 package com.example.payflow.controller;
 
-import com.example.payflow.loan.Loan;
+import com.example.payflow.model.Loan;
 import com.example.payflow.service.LoanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

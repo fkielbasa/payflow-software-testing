@@ -1,7 +1,7 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.service.UserService;
-import com.example.payflow.user.User;
+import com.example.payflow.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

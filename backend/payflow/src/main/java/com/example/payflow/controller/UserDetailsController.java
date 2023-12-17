@@ -1,7 +1,7 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.service.UserDetailsServices;
-import com.example.payflow.user_details.UserDetails;
+import com.example.payflow.model.UserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

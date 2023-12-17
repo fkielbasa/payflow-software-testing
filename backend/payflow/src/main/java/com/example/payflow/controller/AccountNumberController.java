@@ -1,7 +1,7 @@
 package com.example.payflow.controller;
 
 
-import com.example.payflow.account_number.AccountNumber;
+import com.example.payflow.model.AccountNumber;
 import com.example.payflow.service.AccountNumberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

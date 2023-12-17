@@ -1,6 +1,6 @@
 package com.example.payflow.DTO;
 
-import com.example.payflow.user.Role;
+import com.example.payflow.model.Role;
 
 public class UserDTO {
     private String firstname;

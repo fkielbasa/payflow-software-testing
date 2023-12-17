@@ -1,7 +1,7 @@
 package com.example.payflow.service;
 
-import com.example.payflow.transfer.Transfer;
-import com.example.payflow.transfer.TransferRepository;
+import com.example.payflow.model.Transfer;
+import com.example.payflow.repository.TransferRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

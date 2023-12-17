@@ -1,6 +1,6 @@
 package com.example.payflow.config;
 
-import com.example.payflow.user.UserRepository;
+import com.example.payflow.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
