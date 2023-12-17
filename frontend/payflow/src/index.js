@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./components/pages/Home";
 import Transactions from "./components/pages/Transactions";
-import NotFound from "./components/pages/notFound";
+import NotFound from "./components/pages/NotFound";
 import Transfers from "./components/pages/Transfers";
 import Credits from "./components/pages/Credits";
 import Cards from "./components/pages/Cards";

@@ -1,6 +1,7 @@
 import React from 'react';
-import "../styles/Transfers.css";
+import "../styles/TransfersStyles.css";
 import TransferAccountNumber from "../elements/TransferAccountNumber";
+import TransferBlik from "../elements/TransferBlik";
 
 function Transfers() {
     return (
@@ -10,6 +11,7 @@ function Transfers() {
             </div>
             <div className="transfer-show-fields">
                 <TransferAccountNumber />
+                <TransferBlik />
             </div>
         </div>
     );

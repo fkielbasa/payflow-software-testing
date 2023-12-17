@@ -13,5 +13,6 @@
 }
 
 .transfer-show-fields {
-
+    display: flex;
+    flex-direction: row;
 }
