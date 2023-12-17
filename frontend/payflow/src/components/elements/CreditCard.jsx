@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import '../styles/HomeStyles.css';
-import '../styles/CreditCardsStyles.css';
+import '../styles/home/HomeStyles.css';
+import '../styles/cards/CreditCardsStyles.css';
 import ChartComponent from "./ChartComponent";
 import {Link} from "react-router-dom";
 import chip from "../../assets/transations/chip.png";

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/TransfersStyles.css";
+import "../styles/transfers/TransfersStyles.css";
 import TransferAccountNumber from "../elements/TransferAccountNumber";
 import TransferBlik from "../elements/TransferBlik";
 

@@ -1,7 +1,7 @@
 import Navbar from "./components/elements/Navbar";
 import React from "react";
 import {Outlet, useLocation} from "react-router-dom";
-import './components/styles/AppStyles.css'
+import './components/styles/app/AppStyles.css'
 import TopNavbar from "./components/elements/TopNavbar";
 
 function App() {

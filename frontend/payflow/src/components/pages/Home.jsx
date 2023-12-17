@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/HomeStyles.css';
+import '../styles/home/HomeStyles.css';
 import CreditCard from "../elements/CreditCard";
-import '../styles/aaaElementsPositionDebug.css';
+import '../styles/PositionDebug.css';
 
 import TransactionsContainer from "../elements/TransactionsContainer";
 import {Link} from "react-router-dom";

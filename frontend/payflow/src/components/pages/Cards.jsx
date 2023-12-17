@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/CardsStyles.css';
+import '../styles/cards/CardsStyles.css';
 import CreditCard from "../elements/CreditCard";
 
 function Cards() {

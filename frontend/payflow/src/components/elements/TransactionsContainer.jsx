@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/ComponentsTransictionsStyles.css';
+import '../styles/transactions/ComponentsTransictionsStyles.css';
 import circleMinus from "../../assets/transations/circleMinus.png";
 import circlePlus from "../../assets/transations/circlePlus.png";
 import { TransactionData } from '../API/TransactionData';

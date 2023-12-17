@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/TransactionsStyles.css';
+import '../styles/transactions/TransactionsStyles.css';
 import TransactionsContainer from "../elements/TransactionsContainer";
 
 function Transactions() {

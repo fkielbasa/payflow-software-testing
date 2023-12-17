@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/TopNavbarStyles.css';
+import '../styles/navbars/TopNavbarStyles.css';
 
 import person from '../../assets/topNavbar/icon/person.svg';
 import bell from '../../assets/topNavbar/notification/bell.svg';

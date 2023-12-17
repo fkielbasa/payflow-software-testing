@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/TransferAccountNumberStyles.css";
+import "../styles/transfers/TransfersAccountNumberStyles.css";
 
 
 function TransferAccountNumber() {

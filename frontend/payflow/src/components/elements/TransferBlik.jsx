@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../styles/TransferBlikStyles.css";
+import "../styles/transfers/TransfesBlikStyles.css";
 
 function TransferBlik() {
     const [blikCode, setBlikCode] = useState(null);
