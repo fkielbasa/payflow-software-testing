@@ -7,6 +7,7 @@ import com.example.payflow.account_number.Type;
 import com.example.payflow.address.Address;
 import com.example.payflow.address.AddressRepository;
 import com.example.payflow.config.JwtService;
+import com.example.payflow.mail.MailService;
 import com.example.payflow.user.Role;
 import com.example.payflow.user.User;
 import com.example.payflow.user.UserRepository;
@@ -33,6 +34,8 @@ public class AuthenticationService {
     private final AddressRepository addressRepository;
     private final UserDetailsRepository userDetailsRepository;
     private final AccountNumberRepository accountNumberRepository;
+
+    private final MailService mailService;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -68,12 +71,17 @@ public class AuthenticationService {
                 .country(request.getCountryAddressCorrespondence())
                 .build();
 
+
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         formatter.setTimeZone(TimeZone.getTimeZone("Poland/Warsaw"));
+
+        String userLogin = generateLogin();
+
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .login(generateLogin())
+                .login(userLogin)
                 .dateOfBirth(formatter.parse(request.getDateOfBirth()))
                 .country(request.getCountry())
                 .residentialAddress(residentalAddress)
@@ -107,10 +115,15 @@ public class AuthenticationService {
                 .build();
         accountNumberRepository.save(accountNumber);
 
+        // Mail sending with login
+        mailService.sendRegistrationMail(user.getFirstName(), userDetails.getEmail(), userLogin);
+
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationRespone.builder()
                 .token(jwtToken)
                 .build();
+
+
     }
 
     public AuthenticationRespone authenticate(AuthenticationRequest request) {
