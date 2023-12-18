@@ -30,7 +30,7 @@ public class ExchangeRateService {
 
     public List<ExchangeRate> getExchangeRates(int last) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        List<ExchangeRate> ratesSorted = repository.findAll()
+        return repository.findAll()
                 .stream()
                 .sorted(Comparator.nullsLast((r1, r2) -> {
                     try {
@@ -38,8 +38,7 @@ public class ExchangeRateService {
                     } catch (ParseException e) {
                         throw new RuntimeException(e.getMessage());
                     }
-                })).toList();
-        return ratesSorted;
+                })).limit(last).toList();
     }
 
 }

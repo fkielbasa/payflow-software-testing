@@ -23,9 +23,8 @@ public class ExchangeRateRepository {
             ExchangeRate[] rates = mapper.readValue(new File(EXCHANGE_RATES_DB), ExchangeRate[].class);
             return Arrays.stream(rates).toList();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
-        return List.of();
     }
 }
 
