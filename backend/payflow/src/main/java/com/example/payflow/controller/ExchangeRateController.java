@@ -21,9 +21,9 @@ public class ExchangeRateController {
         return service.getExchangeRates(last);
     }
 
-    @PostMapping
-    public ResponseEntity<ExchangeRate> addExchangeRate(@RequestBody ExchangeRate exchangeRate){
-        return service.addExchangeRate(exchangeRate);
-    }
+//    @PostMapping
+//    public ResponseEntity<ExchangeRate> addExchangeRate(@RequestBody ExchangeRate exchangeRate){
+//        return service.addExchangeRate(exchangeRate);
+//    }
 
 }
