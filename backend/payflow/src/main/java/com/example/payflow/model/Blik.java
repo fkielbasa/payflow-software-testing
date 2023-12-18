@@ -1,20 +1,16 @@
 package com.example.payflow.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalTime;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @RequiredArgsConstructor
 @Data
+@Builder
 public class Blik {
 
-    private Long id;
     private String code;
     private LocalTime expirationTime;
 }
