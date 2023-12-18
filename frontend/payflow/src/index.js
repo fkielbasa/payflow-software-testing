@@ -14,6 +14,14 @@ import StartSecure from "./components/startFrontPages/startSecure";
 import StartServices from "./components/startFrontPages/startServices";
 import Login from "./components/login/login";
 import Register from "./components/login/register";
+import Home from "./components/pages/Home";
+import Transactions from "./components/pages/Transactions";
+import Transfers from "./components/pages/Transfers";
+import Credits from "./components/pages/Credits";
+import Settings from "./components/pages/Settings";
+import LogOut from "./components/pages/LogOut";
+import NotFound from "./components/pages/NotFound";
+import Cards from "./components/pages/Cards";
 
 
 //import {BrowserRouter, Route, Routes} from "react-router-dom";
@@ -46,16 +54,16 @@ ReactDOM.render(
 
                     {/*<Route path="*" element={<NotFound/>}/>*/}
 
-            //    <Route path="/" element={<App/>}>
-             //       <Route path="home" element={<Home/>} />
-             //       <Route path="transactions" element={<Transactions/>} />
-              //      <Route path="transfers" element={<Transfers/>} />
-             //       <Route path="credits" element={<Credits/>} />
-              //      <Route path="cards" element={<Cards/>} />
-               //     <Route path="settings" element={<Settings/>} />
-               //     <Route path="logOut" element={<LogOut/>} />
-               //     <Route path="*" element={<NotFound/>}/>
-                //</Route>
+                <Route path="/home" element={<App/>}>
+                    <Route path="/home" element={<Home/>} />
+                    <Route path="transactions" element={<Transactions/>} />
+                    <Route path="transfers" element={<Transfers/>} />
+                    <Route path="credits" element={<Credits/>} />
+                    <Route path="cards" element={<Cards/>} />
+                    <Route path="settings" element={<Settings/>} />
+                    <Route path="logOut" element={<LogOut/>} />
+                    <Route path="*" element={<NotFound/>}/>
+                </Route>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>,

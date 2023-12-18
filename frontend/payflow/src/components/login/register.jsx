@@ -6,7 +6,7 @@ import bank from '../../assets/banking.png'
 import card from '../../assets/debit-card.png'
 import RegisterForm from "./registerForm";
 import PasswordForm from "./passwordForm";
-import axios from "axios";
+
 
 
 const REGISTER_URL = "http://localhost:8080/api/auth/register"
