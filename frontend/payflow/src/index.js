@@ -4,6 +4,7 @@ import './index.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
 import StartPage from "./components/startFrontPages/startPage";
 import DefaultPage from "./components/startFrontPages/defaultPage";
 import StartAccounts from "./components/startFrontPages/startAccounts";
@@ -13,6 +14,19 @@ import StartSecure from "./components/startFrontPages/startSecure";
 import StartServices from "./components/startFrontPages/startServices";
 import Login from "./components/login/login";
 import Register from "./components/login/register";
+
+
+//import {BrowserRouter, Route, Routes} from "react-router-dom";
+//import Home from "./components/pages/Home";
+//import Transactions from "./components/pages/Transactions";
+//import NotFound from "./components/pages/NotFound";
+//import Transfers from "./components/pages/Transfers";
+//import Credits from "./components/pages/Credits";
+//import Cards from "./components/pages/Cards";
+//import Settings from "./components/pages/Settings";
+//import LogOut from "./components/pages/LogOut";
+
+
 
 ReactDOM.render(
     <React.StrictMode>
@@ -32,13 +46,20 @@ ReactDOM.render(
 
                     {/*<Route path="*" element={<NotFound/>}/>*/}
 
+            //    <Route path="/" element={<App/>}>
+             //       <Route path="home" element={<Home/>} />
+             //       <Route path="transactions" element={<Transactions/>} />
+              //      <Route path="transfers" element={<Transfers/>} />
+             //       <Route path="credits" element={<Credits/>} />
+              //      <Route path="cards" element={<Cards/>} />
+               //     <Route path="settings" element={<Settings/>} />
+               //     <Route path="logOut" element={<LogOut/>} />
+               //     <Route path="*" element={<NotFound/>}/>
+                //</Route>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

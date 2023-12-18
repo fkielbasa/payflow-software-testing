@@ -1,0 +1,49 @@
+* {
+    font-family: Bahnschrift;
+}
+
+.homePage {
+    display: flex;
+    flex-direction: column;
+    /*background-color: green;*/
+}
+
+.contentWrapper {
+    display: flex;
+}
+
+.leftSidePosition {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.balancePosition {
+    display: flex;
+    /*flex-direction: row;*/
+    flex-wrap: wrap;
+    position: absolute;
+    width: 50vw;
+    /*background-color: red;*/
+}
+
+.properMargin {
+    margin-left: 22%;
+    margin-top: 17%;
+}
+
+.transactionPosition {
+    width: 30vw;
+    /*background-color: magenta;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.marginL {
+    margin-left: 20px;
+}
+
+.smallLetters {
+    font-size: 13px;
+}
+

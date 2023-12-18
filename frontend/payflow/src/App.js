@@ -1,17 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-import StartPage from "./components/startFrontPages/startPage";
-import {Outlet} from "react-router-dom";
+import Navbar from "./components/elements/Navbar";
+import React from "react";
+import {Outlet, useLocation} from "react-router-dom";
+import './components/styles/app/AppStyles.css'
+import TopNavbar from "./components/elements/TopNavbar";
 
 function App() {
-  return (
-    <div className="App">
-        {/*<StartPage />*/}
-        <div>
-            {/*<Outlet />*/}
+    const location = useLocation();
+
+    const paths = ['/home', '/transactions', '/transfers', '/credits', '/cards', '/settings', '/logOut'];
+    return (
+        // do not change anything here
+        <div className="container-fluid">
+            {paths.includes(location.pathname) && <Navbar />}
+            <div className="container">
+                <div className="app-top">
+                    {paths.includes(location.pathname) && <TopNavbar />}
+                </div>
+                <Outlet/>
+            </div>
         </div>
-    </div>
-  );
+    );
 }
 
 export default App;
