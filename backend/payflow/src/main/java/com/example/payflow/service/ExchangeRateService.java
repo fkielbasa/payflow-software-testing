@@ -1,6 +1,8 @@
 package com.example.payflow.service;
 
 
+import com.example.payflow.model.AccountNumber;
+import com.example.payflow.model.CurrencyType;
 import com.example.payflow.model.ExchangeRate;
 import com.example.payflow.repository.ExchangeRateRepository;
 import lombok.AllArgsConstructor;
@@ -41,4 +43,19 @@ public class ExchangeRateService {
                 })).limit(last).toList();
     }
 
+
+    public Double getExchangeRateBetweenCurrency(AccountNumber sender, AccountNumber receiver) {
+        double senderCurrency = getExchangeRateByCurrency(sender.getCurrencyType());
+        double receiverCurrency = getExchangeRateByCurrency(receiver.getCurrencyType());
+        return receiverCurrency/senderCurrency;
+    }
+
+    public Double getExchangeRateByCurrency(CurrencyType currency){
+        ExchangeRate rate = getExchangeRates(1).get(0);
+        return switch (currency) {
+            case PLN -> rate.getPln();
+            case EUR -> rate.getEur();
+            case USD -> rate.getUsd();
+        };
+    }
 }
