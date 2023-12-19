@@ -13,8 +13,6 @@ import java.util.Arrays;
 
 @EnableSwagger2
 public class SwaggerConfiguration {
-
-
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()

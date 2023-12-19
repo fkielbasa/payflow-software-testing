@@ -12,6 +12,7 @@ import com.example.payflow.model.User;
 import com.example.payflow.repository.UserRepository;
 import com.example.payflow.model.UserDetails;
 import com.example.payflow.repository.UserDetailsRepository;
+import com.example.payflow.util.NumberGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,7 +22,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Random;
 import java.util.TimeZone;
 
 @Service
@@ -42,12 +42,10 @@ public class AuthenticationService {
 
     private final AuthenticationManager manager;
 
-    private Random random;
-    private StringBuilder stringBuilder;
-
-    private final BigDecimal STARTER_BALANCE = new BigDecimal(0);
-    private final CurrencyType STARTER_CURRENCYType = CurrencyType.PLN;
-    private final String STARTER_ACCOUNT_TYPE = "STANDARD";
+    // TODO check it later and change it to 0 in production
+    private static final BigDecimal STARTER_BALANCE = new BigDecimal(100);
+    private static final CurrencyType STARTER_CURRENCYTYPE = CurrencyType.PLN;
+    private static final String STARTER_ACCOUNT_TYPE = "STANDARD";
 
     public AuthenticationRespone register(RegisterRequest request) throws ParseException {
 
@@ -75,7 +73,7 @@ public class AuthenticationService {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         formatter.setTimeZone(TimeZone.getTimeZone("Poland/Warsaw"));
 
-        String userLogin = generateLogin();
+        String userLogin = NumberGenerator.generateLogin();
 
         var user = User.builder()
                 .firstName(request.getFirstName())
@@ -106,10 +104,10 @@ public class AuthenticationService {
             accountNumberTypeAccount = AccountNumberType.INTENSIVE;
 
         var accountNumber = AccountNumber.builder()
-                .number(generateAccountNumber())
+                .number(NumberGenerator.generateAccountNumber())
                 .balance(STARTER_BALANCE)
-                .accountNumberType(accountNumberTypeAccount)
-                .currencyType(STARTER_CURRENCYType)
+                .accountType(accountNumberTypeAccount)
+                .currency(STARTER_CURRENCYTYPE)
                 .userId(user)
                 .build();
         accountNumberRepository.save(accountNumber);
@@ -140,40 +138,4 @@ public class AuthenticationService {
                 .build();
     }
 
-    private String generateLogin(){
-        random = new Random();
-        stringBuilder = new StringBuilder();
-        for (int i = 0; i < 8; i++) {
-            int randomNumber = random.nextInt(10); // 0-9
-            stringBuilder.append(randomNumber);
-        }
-        if (!isLoginValid(stringBuilder.toString())){
-            generateLogin();
-        }
-        return stringBuilder.toString();
-    }
-
-    private boolean isLoginValid(String login){
-        return !userRepository.isUserExists(login);
-    }
-    private boolean isAccountNumberValid(String accountNumber){
-        return !accountNumberRepository.existsByNumber(accountNumber);
-    }
-
-    private String generateAccountNumber(){
-        random = new Random();
-        stringBuilder = new StringBuilder();
-
-        int firstDigit = random.nextInt(9) + 1;
-        stringBuilder.append(firstDigit);
-
-        for (int i = 0; i < 25; i++) {
-            int randomNumber = random.nextInt(10);
-            stringBuilder.append(randomNumber);
-        }
-        if (!isAccountNumberValid(stringBuilder.toString())){
-            generateAccountNumber();
-        }
-        return stringBuilder.toString();
-    }
 }

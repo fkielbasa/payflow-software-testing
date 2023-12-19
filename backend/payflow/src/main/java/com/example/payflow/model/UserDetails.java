@@ -1,6 +1,5 @@
 package com.example.payflow.model;
 
-import com.example.payflow.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,18 +14,20 @@ import lombok.NoArgsConstructor;
 @Table(name = "user_details")
 public class UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_details"
+    )
+    @SequenceGenerator(
+            name = "user_details",
+            sequenceName = "user_details_sequence",
+            allocationSize = 1
+    )
     @Column(name = "id_user_details")
     private Long id;
-
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
-
-//    @OneToOne
-//    @MapsId
-//    @JoinColumn(name = "user_id")
-//    private User userId;
     @MapsId
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")

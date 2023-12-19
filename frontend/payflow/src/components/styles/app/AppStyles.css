@@ -1,0 +1,9 @@
+.container-fluid {
+    display: flex;
+    height: 100vh;
+}
+
+.app-top {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,66 @@
+.transferAccountNumber-container {
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    align-items: center
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+
+    /*background-color: red;*/
+}
+
+.add-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    /*background-color: #1687A7;*/
+}
+
+.form-control {
+    width: 60%;
+    height: 30px;
+    background-color: #D3E0EA;
+    color: black;
+    border-color: #276678;
+    border-radius: 15px;
+}
+
+
+.form-control:focus {
+    background-color: #F6F5F5;
+    color: #1687A7;
+    border-color: #276678;
+}
+
+.form-control::placeholder {
+    color: #1687A7;
+    border-color: #276678;
+}
+
+
+.add-margin {
+    margin-left: 5px;
+}
+
+.btn-color {
+    color: #1687A7;
+    background-color: #F6F5F5;
+    border-color: #276678;
+    border-width: 1px;
+    height: 40px;
+    border-radius: 15px;
+}
+
+.btn {
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}

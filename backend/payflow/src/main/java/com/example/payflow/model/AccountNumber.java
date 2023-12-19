@@ -16,20 +16,29 @@ import java.math.BigDecimal;
 @Table(name = "account_number")
 public class AccountNumber {
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "account_number"
+    )
+    @SequenceGenerator(
+            name = "account_number",
+            sequenceName = "account_number_sequence",
+            allocationSize = 1
+    )
     @Column(name = "id_account_number")
     private Long id;
     private BigDecimal balance;
     @Enumerated(EnumType.STRING)
-    private AccountNumberType accountNumberType;
+    private AccountNumberType accountType;
     @Enumerated(EnumType.STRING)
-    private CurrencyType currencyType;
+    private CurrencyType currency;
     private String number;
+<<<<<<< Updated upstream
 
-//    @JsonIgnore
+
+=======
+>>>>>>> Stashed changes
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
-
-
 }

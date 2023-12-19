@@ -1,0 +1,50 @@
+.firstSection {
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    margin-top: -8px;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-top: -7px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navImages {
+    width: 32px;
+    vertical-align: middle;
+
+}
+
+.verticalNavbar {
+    /*background-color: red;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.active {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navbarFixed {
+    position: fixed;
+    width: 20%;
+}
