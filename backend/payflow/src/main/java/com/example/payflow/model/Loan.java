@@ -15,7 +15,15 @@ import java.math.BigDecimal;
 @Table(name = "loan")
 public class Loan {
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "loan"
+    )
+    @SequenceGenerator(
+            name = "loan",
+            sequenceName = "loan_sequence",
+            allocationSize = 1
+    )
     @Column(name = "id_loan")
     private Long id;
     private BigDecimal amount;
