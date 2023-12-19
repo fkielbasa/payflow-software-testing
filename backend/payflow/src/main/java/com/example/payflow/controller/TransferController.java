@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class TransferController {
     private final TransferService transferService;
-    @GetMapping("/transfer/{transferId}")
-    public ResponseEntity<Transfer> getTransferById(@PathVariable Long transferId) {
+    @GetMapping("/transfers/{transfer-id}")
+    public ResponseEntity<Transfer> getTransferById(@PathVariable(name = "transfer-id") Long transferId) {
         Transfer transfer = transferService.getTransferById(transferId);
         if (transfer != null) {
             return ResponseEntity.ok(transfer);
@@ -23,7 +23,7 @@ public class TransferController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/transfers/phone-number")
     public ResponseEntity<Transfer> addTransferByPhoneNumber(@RequestBody PhoneTransferDTO phoneTransfer){
         Transfer t = transferService.addTransferByPhoneNumber(phoneTransfer);
         if (t != null) {
