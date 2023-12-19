@@ -1,12 +1,15 @@
 .containerFluid {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     /*width: 80%;*/
     /*margin: 0 auto;*/
 }
 
 .container {
     width: 80%;
-    margin: 0 auto 70px auto;
+    margin: 0 auto;
+    flex-grow: 1;
 }
 
 

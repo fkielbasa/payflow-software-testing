@@ -7,6 +7,10 @@ import card from '../../assets/debit-card.png'
 import RegisterForm from "./registerForm";
 import PasswordForm from "./passwordForm";
 
+
+
+const REGISTER_URL = "http://localhost:8080/api/auth/register"
+
 const Register = () => {
     const [account, setAccount] = useState(true)
     const [dataAccount, setDataAccount] = useState(false)
@@ -18,6 +22,13 @@ const Register = () => {
     const [dataForm, setDataForm] = useState({})
     const [password, setPassword] = useState('')
 
+    const registerData = {
+        dataForm : {
+            ...dataForm,
+            accountType: isStandardAccount ? 'STANDARD' : 'INTENSIVE',
+            password: password
+        }
+    }
 
     const selectAccount = (choice) => {
         setIsStandardAccount(choice)
@@ -68,8 +79,22 @@ const Register = () => {
         )
     }
 
+
+
     const handleOpenAccount = () => {
-      console.log("DONE")
+        console.log(JSON.stringify(registerData))
+
+
+        fetch(REGISTER_URL, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(registerData.dataForm)
+        }).then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                changePage()
+            })
+            .catch(er => console.log(er))
     }
 
     const renderSummary = () => {
@@ -77,7 +102,7 @@ const Register = () => {
             <div className={styles.summaryContainer}>
                 <div className={styles.wrapperPrint}>{isStandardAccount ? <AccountCard title={"Zwykłe konto "}  img={bank} /> : <AccountCard title={"Konto Intensive "}  img={card}/>}</div>
                 <div>
-                    <div className={styles.horiz}>
+                    <div className={styles.vertical}>
                         <div className={styles.wrapperPrint}>
                             <p><b>Dane osobiste</b></p>
                             <p>Imię: <b>{dataForm.firstName}</b></p>
@@ -93,7 +118,7 @@ const Register = () => {
                             <p>Miejscowość: <b>{dataForm.city}</b></p>
                             <p>Ulica: <b>{dataForm.street}</b></p>
                             <p>Nr domu/lokalu: <b>{dataForm.homeNumber}</b></p>
-                            <p>Nr mieszkania: <b>{dataForm.flatNumber}</b></p>
+                            <p>Nr mieszkania: <b>{dataForm.apartmentNumber}</b></p>
                             <p>Kraj: <b>{dataForm.countryAddress}</b></p>
                         </div>
                         <div className={styles.wrapperPrint}>
@@ -102,11 +127,11 @@ const Register = () => {
                             <p>Miejscowość: <b>{dataForm.cityCorrespondence}</b></p>
                             <p>Ulica: <b>{dataForm.streetCorrespondence}</b></p>
                             <p>Nr domu/lokalu: <b>{dataForm.homeNumberCorrespondence}</b></p>
-                            <p>Nr mieszkania: <b>{dataForm.flatNumberCorrespondence}</b></p>
+                            <p>Nr mieszkania: <b>{dataForm.apartmentNumberCorrespondence}</b></p>
                             <p>Kraj: <b>{dataForm.countryAddressCorrespondence}</b></p>
                         </div>
                     </div>
-                    <div className={styles.horiz}>
+                    <div className={styles.btnWrapper}>
                         <button onClick={handleOpenAccount} className={styles.applyBtn}>Potwierdź dane i otwórz konto</button>
                     </div>
                 </div>
@@ -117,8 +142,17 @@ const Register = () => {
     const renderNotFound = () => {
         return (
             <div>
-
+                <p>Ups... Nie znaleziono</p>
         </div>
+        )
+    }
+
+    const renderRegistered =() =>{
+        return (
+            <div className={styles.registered}>
+                <h3>Twoje konto zostało utworzone!</h3>
+                <p>Na adres <b>{dataForm.email}</b> wysłaliśmy ci potrzebne do logowania dane, proszę sprawdź swoją skrzynkę.</p>
+            </div>
         )
     }
 
@@ -132,6 +166,8 @@ const Register = () => {
                 return renderSecurity()
             case 3:
                 return renderSummary()
+            case 4:
+                return renderRegistered()
             default:
                 return renderNotFound()
         }

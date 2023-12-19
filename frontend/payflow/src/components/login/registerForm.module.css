@@ -20,7 +20,7 @@
     flex-wrap: wrap;
 
 }
-.form input:disabled {
+.form input[type="text"]:disabled {
     background-color: rgba(127,127,127,0.5);
     color: black;
     opacity: 1;
@@ -74,11 +74,11 @@
     accent-color: var(--darkBlue);
 }
 
-.btnToRight{
+.btnToCenter{
     margin: 30px;
     width: 90%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .wrongData {

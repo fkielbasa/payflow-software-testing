@@ -1,21 +1,18 @@
 package com.example.payflow.service;
 
 import com.example.payflow.DTO.UserDTO;
-import com.example.payflow.user.User;
-import com.example.payflow.user.UserRepository;
+import com.example.payflow.model.User;
+import com.example.payflow.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
     public User getUserById(Long userId) {
         return userRepository.findById(userId).orElse(null);
     }

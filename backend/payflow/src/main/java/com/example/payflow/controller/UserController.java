@@ -1,26 +1,17 @@
 package com.example.payflow.controller;
 
-import com.example.payflow.DTO.AddressDTO;
-import com.example.payflow.DTO.UserDTO;
-import com.example.payflow.DTO.UserDetailsDTO;
-import com.example.payflow.auth.AuthenticationService;
-import com.example.payflow.service.AddressService;
-import com.example.payflow.service.UserDetailsServices;
 import com.example.payflow.service.UserService;
-import com.example.payflow.user.User;
-import com.example.payflow.user.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.payflow.model.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+@RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api")
 public class UserController {
-    private final UserRepository userRepository;
+
     private final UserService userService;
-    private final AddressService addressService;
-    private final UserDetailsServices userDetailsService;
 
     @GetMapping("/users/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable Long userId) {
@@ -32,26 +23,18 @@ public class UserController {
         }
     }
 
-    @Autowired
-    public UserController(UserRepository userRepository, UserService userService, AddressService addressService, UserDetailsServices userDetailsService) {
-        this.userRepository = userRepository;
-        this.userService = userService;
-        this.addressService = addressService;
-        this.userDetailsService = userDetailsService;
-    }
-
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/createUser")
-    public ResponseEntity<String> createUser(@RequestBody UserDTO userDTO,
-                                                            @RequestBody AddressDTO addressDTO,
-                                                            @RequestBody UserDetailsDTO userDetailsDTO) {
-        userService.saveUser(userDTO);
-        addressService.saveAddress(addressDTO);
-        userDetailsService.saveUserDetails(userDetailsDTO);
-        return ResponseEntity.ok("OK");
-    }
+//    @PostMapping("/createUser")
+//    public ResponseEntity<String> createUser(@RequestBody UserDTO userDTO,
+//                                                            @RequestBody AddressDTO addressDTO,
+//                                                            @RequestBody UserDetailsDTO userDetailsDTO) {
+//        userService.saveUser(userDTO);
+//        addressService.saveAddress(addressDTO);
+//        userDetailsService.saveUserDetails(userDetailsDTO);
+//        return ResponseEntity.ok("OK");
+//    }
 }
