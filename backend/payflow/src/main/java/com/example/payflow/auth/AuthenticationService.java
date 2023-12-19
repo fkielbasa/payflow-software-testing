@@ -40,11 +40,17 @@ public class AuthenticationService {
 
     private final AuthenticationManager manager;
 
+
     private Random random;
     private StringBuilder stringBuilder;
 
     private final BigDecimal STARTER_BALANCE = new BigDecimal(0);
     private final Currency STARTER_CURRENCY = Currency.PLN;
+
+//    // TODO change it to 0 in production
+//    private final BigDecimal STARTER_BALANCE = new BigDecimal(100);
+//    private final CurrencyType STARTER_CURRENCYTYPE = CurrencyType.PLN;
+
     private final String STARTER_ACCOUNT_TYPE = "STANDARD";
 
     public AuthenticationRespone register(RegisterRequest request) throws ParseException {
@@ -103,6 +109,8 @@ public class AuthenticationService {
                 .balance(STARTER_BALANCE)
                 .type(typeAccount)
                 .currency(STARTER_CURRENCY)
+//                .accountNumberType(accountNumberTypeAccount)
+//                .currencyType(STARTER_CURRENCYTYPE)
                 .userId(user)
                 .build();
         accountNumberRepository.save(accountNumber);

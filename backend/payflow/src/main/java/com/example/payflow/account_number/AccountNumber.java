@@ -30,9 +30,15 @@ public class AccountNumber {
     private Type type;
     @Enumerated(EnumType.STRING)
     private Currency currency;
+
+//    @Column(name = "type")
+//    private AccountNumberType accountNumberType;
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "currency")
+//    private CurrencyType currencyType;
+
     private String number;
 
-//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
