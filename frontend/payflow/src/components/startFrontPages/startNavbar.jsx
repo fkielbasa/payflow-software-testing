@@ -14,8 +14,8 @@ const StartNavbar = () => {
                 </div>
                 <ul className={StartNavBar.ul}>
                     <li><Link className={StartNavBar.link} to="accounts">konta</Link></li>
-                    <li><Link className={StartNavBar.link} to="credits">kredyty</Link></li>
-                    <li><Link className={StartNavBar.link} to="cards">karty</Link></li>
+                    <li><Link className={StartNavBar.link} to="loans">kredyty</Link></li>
+                    <li><Link className={StartNavBar.link} to="bankCards">karty</Link></li>
                     <li><Link className={StartNavBar.link} to="services">usługi</Link></li>
                     <li><Link className={StartNavBar.link} to="secure">bezpieczeństwo</Link></li>
                 </ul>
