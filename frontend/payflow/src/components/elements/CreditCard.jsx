@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../styles/home/HomeStyles.css';
+import '../styles/home/Home.module.css';
 import '../styles/cards/CreditCardsStyles.css';
 import ChartComponent from "./ChartComponent";
 import {Link} from "react-router-dom";

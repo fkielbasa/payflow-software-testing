@@ -7,13 +7,14 @@
     flex-direction: row;
     justify-content: space-between;
     margin-right: 20px;
+    margin-bottom: 10px;
     align-items: center;
     transition: transform 0.3s ease, z-index 0.3s ease;
 }
 
 .shortPayment.hovered {
     transform: scale(1.1);
-    transition: transform 0.3s ease;
+    /*transition: transform 0.3s ease;*/
     z-index: 1;
 }
 
@@ -27,7 +28,7 @@
 .paymentTextPosition{
     display: flex;
     flex-direction: column;
-    /*width: 200px;*/
+    margin-left: 10px;
 }
 
 .nextPaymentTextPosition {
@@ -35,7 +36,6 @@
     flex-direction: column;
     width: 170px;
     align-items: flex-start;
-    /*margin-left: 10px;*/
 }
 
 .balanceTextPosition {

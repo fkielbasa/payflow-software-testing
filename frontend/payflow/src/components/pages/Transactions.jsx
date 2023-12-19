@@ -1,10 +1,10 @@
 import React from 'react';
-import '../styles/transactions/TransactionsStyles.css';
+import styles from '../styles/transactions/Transactions.module.css';
 import TransactionsContainer from "../elements/TransactionsContainer";
 
 function Transactions() {
     return (
-        <div className="transactionsContainer">
+        <div className={styles.transactionsContainer}>
             <TransactionsContainer screenName={'transactions'}/>
         </div>
     );

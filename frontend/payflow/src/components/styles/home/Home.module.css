@@ -18,19 +18,19 @@
     flex-direction: column;
 }
 
-.balancePosition {
-    display: flex;
-    /*flex-direction: row;*/
-    flex-wrap: wrap;
-    position: absolute;
-    width: 50vw;
-    /*background-color: red;*/
-}
+/*.balancePosition {*/
+/*    display: flex;*/
+/*    !*flex-direction: row;*!*/
+/*    flex-wrap: wrap;*/
+/*    position: absolute;*/
+/*    width: 50vw;*/
+/*    !*background-color: red;*!*/
+/*}*/
 
-.properMargin {
-    margin-left: 22%;
-    margin-top: 17%;
-}
+/*.properMargin {*/
+/*    margin-left: 22%;*/
+/*    margin-top: 17%;*/
+/*}*/
 
 .transactionPosition {
     width: 30vw;

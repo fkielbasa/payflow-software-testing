@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import '../styles/transactions/ComponentsTransictionsStyles.css';
+import styles from '../styles/transactions/TransictionsContainer.module.css';
 import circleMinus from "../../assets/transations/circleMinus.png";
 import circlePlus from "../../assets/transations/circlePlus.png";
-import { TransactionData } from '../API/TransactionData';
-
+import {TransactionData} from "../API/TransactionData";
 function TransactionsContainer({ screenName, maxPerPage }) {
     const reversedTransactions = [...TransactionData].reverse().slice(0, maxPerPage);
 
@@ -25,25 +24,25 @@ function TransactionItem({ transaction, screenName }) {
 
     return (
         <div
-            className={`shortPayment ${isHovered ? 'hovered' : ''}`}
+            className={`${styles.shortPayment} ${isHovered ? styles.hovered : ''}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="shortPaymentText">
-                <img className="transactionCircle" src={source} alt="circle"/>
-                <div className="paymentTextPosition">
-                    <p className="transactionTextDecoration">{name}</p>
-                    <p className="transactionTextDecoration transactionTextSmall">{location}</p>
+            <div className={styles.shortPaymentText}>
+                <img className={styles.transactionCircle} src={source} alt="circle" />
+                <div className={styles.paymentTextPosition}>
+                    <p className={styles.transactionTextDecoration}>{name}</p>
+                    <p className={`${styles.transactionTextDecoration} ${styles.transactionTextSmall}`}>{location}</p>
                 </div>
             </div>
             {screenName === 'transactions' && (
-                <div className="nextPaymentTextPosition">
-                    <p className="transactionTextDecoration">{cardUsed}</p>
-                    <p className="transactionTextDecoration transactionTextSmall">{referenceNumber}</p>
+                <div className={styles.nextPaymentTextPosition}>
+                    <p className={styles.transactionTextDecoration}>{cardUsed}</p>
+                    <p className={`${styles.transactionTextDecoration} ${styles.transactionTextSmall}`}>{referenceNumber}</p>
                 </div>
             )}
-            <div className="balanceTextPosition">
-                <p className="paymentTextSize">{formattedAmount}</p>
+            <div className={styles.balanceTextPosition}>
+                <p className={styles.paymentTextSize}>{formattedAmount}</p>
             </div>
         </div>
     );
