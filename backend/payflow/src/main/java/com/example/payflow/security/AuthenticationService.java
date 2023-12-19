@@ -80,7 +80,7 @@ public class AuthenticationService {
                 .lastName(request.getLastName())
                 .login(userLogin)
                 .dateOfBirth(formatter.parse(request.getDateOfBirth()))
-                .country(request.getCountry())
+                .nationality(request.getNationality())
                 .residentialAddress(residentalAddress)
                 .correspondenceAddress(correspondenceAddress)
                 .password(passwordEncoder.encode(request.getPassword()))
