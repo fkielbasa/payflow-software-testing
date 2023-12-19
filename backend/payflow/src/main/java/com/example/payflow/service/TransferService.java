@@ -38,7 +38,7 @@ public class TransferService {
         List<AccountNumber> receiverAccounts = accountNumberRepository.findAllByUserId(searchedUser);
         AccountNumber receiver =
                 receiverAccounts.stream()
-                        .filter(r -> r.getCurrencyType().equals(CurrencyType.PLN)).toList().get(0);
+                        .filter(r -> r.getCurrency().equals(CurrencyType.PLN)).toList().get(0);
         // searching for sender
         AccountNumber sender = accountNumberRepository.findById(phoneTransfer.senderId()).orElseThrow(EntityNotFoundException::new);
 

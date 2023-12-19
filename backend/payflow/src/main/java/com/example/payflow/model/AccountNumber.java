@@ -33,11 +33,6 @@ public class AccountNumber {
     @Enumerated(EnumType.STRING)
     private CurrencyType currency;
     private String number;
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
