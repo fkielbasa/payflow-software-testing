@@ -35,11 +35,14 @@ public class User implements org.springframework.security.core.userdetails.UserD
     private Long id;
     private String firstName;
     private String lastName;
-    private String country;
+    private String nationality;
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     private String login;
     private String password;
+//    private String pesel;
+    @OneToOne(mappedBy = "userId")
+    private UserDetails userDetails ;
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
