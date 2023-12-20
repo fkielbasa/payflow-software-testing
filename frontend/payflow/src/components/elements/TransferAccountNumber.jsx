@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/transfers/TransfersAccountNumberStyles.css";
+import styles from "../styles/transfers/TransfersAccountNumber.module.css";
 
 
 function TransferAccountNumber() {
@@ -10,73 +10,66 @@ function TransferAccountNumber() {
     };
 
     return (
-        <div className="transferAccountNumber-container">
+        <div className={styles.transferAccountNumberContainer}>
             <h3>Na numer konta</h3>
-            <form className="add-form" onSubmit={handleSubmit}>
-                <label className="add-label">
+            <form className={styles.addForm} onSubmit={handleSubmit}>
+                <label className={styles.addLabel}>
                     Na numer konta:
                     <input
-                        className="form-control me-2 add-margin"
+                        className={`${styles.formControl} ${styles.addMargin}`}
                         type="text"
                         name=""
                     />
                 </label>
-                <br/>
-                <label className="add-label">
+                <label className={styles.addLabel}>
                     Odbiorca:
                     <input
-                        className="form-control me-2 add-margin"
+                        className={`${styles.formControl} ${styles.addMargin}`}
                         type="text"
                         name=""
                     />
                 </label>
-                <br/>
-                <label className="add-label">
+                <label className={styles.addLabel}>
                     Numer konta odbiorcy:
                     <input
-                        className="form-control me-2 add-margin"
+                        className={`${styles.formControl} ${styles.addMargin}`}
                         type="text"
                         name=""
                     />
                 </label>
-                <br/>
-                <label className="add-label">
+                <label className={styles.addLabel}>
                     Tytuł:
                     <input
-                        className="form-control me-2 add-margin"
+                        className={`${styles.formControl} ${styles.addMargin}`}
                         type="text"
                         name=""
                     />
                 </label>
-                <br/>
-                <label className="add-label">
+                <label className={styles.addLabel}>
                     Kwota:
                     <input
-                        className="form-control me-2 add-margin"
+                        className={`${styles.formControl} ${styles.addMargin}`}
                         type="text"
                         name=""
                     />
                 </label>
-                <br/>
-                <label className="add-label">
+                <label className={styles.addLabel}>
                     Waluta:
                     <input
-                        className="form-control me-2 add-margin"
+                        className={`${styles.formControl} ${styles.addMargin}`}
                         type="text"
                         name=""
                     />
                 </label>
-                <br/>
-                <label className="add-label">
+                <label className={styles.addLabel}>
                     Data przelewu:
                     <input
-                        className="form-control me-2 add-margin"
+                        className={`${styles.formControl} ${styles.addMargin}`}
                         type="text"
                         name=""
                     />
                 </label>
-                <br/>
-                <button className="btn btn-color" type="submit">Wyślij</button>
+                <button className={`${styles.btn} ${styles.btnColor}`} type="submit">Wyślij</button>
             </form>
         </div>
     );

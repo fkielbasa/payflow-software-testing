@@ -1,11 +1,11 @@
 import React from 'react';
-import '../styles/cards/CardsStyles.css';
+import styles from '../styles/cards/Cards.module.css';
 import CreditCard from "../elements/CreditCard";
 
 function Cards() {
     return (
         <div>
-            <div className="cardsContainer">
+            <div className={styles.cardsContainer}>
                 <CreditCard currency={'USD'} type={'Karta bankomatowa'} balance={21.37}
                             accountNumber={'3423870000441246075444'} Owner={'Johnny Johinnson'} expirationMonth={4}
                             expirationYear={24} cardStyle={1} details={true} graph={true}/>

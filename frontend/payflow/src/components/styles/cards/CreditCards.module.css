@@ -60,6 +60,12 @@
 .chipPlace {
     display: flex;
     flex-direction: row;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    margin-top: 17px;
+}
+
+.chip {
     width: 40px;
 }
 

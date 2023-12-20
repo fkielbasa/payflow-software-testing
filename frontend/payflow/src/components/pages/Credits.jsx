@@ -1,9 +1,9 @@
 import React from 'react';
-import "../styles/credits/CreditsStyles.css";
+import styles from "../styles/credits/Credits.module.css";
 
 function Credits() {
     return (
-        <div className="credits-container">
+        <div className={styles.creditsContainer}>
             <h2>Weź se kurwa kredyt</h2>
             <h4>spierdalaj</h4>
             <h2>kredyt przyznano na 30tyś złotych, z poważaniem IPKO</h2>

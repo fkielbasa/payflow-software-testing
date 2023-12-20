@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../styles/notFound/NotFoundStyles.css';
+import styles from '../styles/notFound/NotFound.module.css';
 
 const NotFound = () => {
     return (
-        <div className="jumbotron, notFound">
-            <h1 className="display-4">404 - Not found!</h1>
-            <p className="lead">Strona na której się znajdujesz nie istnieje!</p>
-            <hr className="my-4"/>
+        <div className={styles.notFound}>
+            <h1>404 - Not found!</h1>
+            <p>Strona na której się znajdujesz nie istnieje!</p>
+            <hr className={styles.hr}/>
             <p>Przejdź do strony głównej.</p>
-            <Link className="btn btn-primary btn-lg notFoundBtn" to="/home" role="button">Home</Link>
+            <Link className={styles.notFoundBtn} to="/home" role="button">Home</Link>
         </div>
     );
 };
