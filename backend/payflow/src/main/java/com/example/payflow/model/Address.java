@@ -14,7 +14,15 @@ import lombok.NoArgsConstructor;
 @Table(name = "address")
 public class Address {
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "address"
+    )
+    @SequenceGenerator(
+            name = "address",
+            sequenceName = "address_sequence",
+            allocationSize = 1
+    )
     @Column(name = "id_address")
     private Long id;
     private String street;

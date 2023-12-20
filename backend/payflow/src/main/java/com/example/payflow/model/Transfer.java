@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -30,7 +31,7 @@ public class Transfer {
     private Long id;
 
     @Column(name = "transfer_date")
-    private Date transferDate;
+    private LocalDate transferDate;
 
     private BigDecimal amount;
 

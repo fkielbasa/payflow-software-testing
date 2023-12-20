@@ -16,7 +16,15 @@ import java.sql.Date;
 @Table(name = "card")
 public class Card {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "card"
+    )
+    @SequenceGenerator(
+            name = "card",
+            sequenceName = "card_sequence",
+            allocationSize = 1
+    )
     private Long id;
     private String cardNumber;
     private String cvv;
