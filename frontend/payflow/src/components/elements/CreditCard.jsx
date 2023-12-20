@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import '../styles/home/Home.module.css';
-import '../styles/cards/CreditCardsStyles.css';
+// import '../styles/home/Home.module.css';
+import styles from '../styles/cards/CreditCards.module.css';
 import ChartComponent from "./ChartComponent";
 import {Link} from "react-router-dom";
 import chip from "../../assets/transations/chip.png";
@@ -68,44 +68,43 @@ function CreditCard(props) {
 
     return (
         <div style={backgroundStyles}
-             // className="balance"
-             className={`balance ${isHovered ? 'hovered' : ''}`}
+             className={`${styles.balance} ${isHovered ? styles.hovered : ''}`}
              onMouseEnter={() => setIsHovered(true)}
              onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="balanceText">
-                <div className="directionText">
-                    <div className="textLeft">
-                        <p className="textDecoration fontSize">{props.currency}</p>
-                        <p className="textDecoration">{props.type}</p>
+            <div className={styles.balanceText}>
+                <div className={styles.directionText}>
+                    <div className={styles.textLeft}>
+                        <p className={`${styles.textDecoration} ${styles.fontSize}`}>{props.currency}</p>
+                        <p className={styles.textDecoration}>{props.type}</p>
                     </div>
-                    <div className="textRight">
-                        <p className="textDecoration fontSize paddingRight">{currentBalanceText}</p>
+                    <div className={styles.textRight}>
+                        <p className={`${styles.textDecoration} ${styles.fontSize} ${styles.paddingRight}`}>{currentBalanceText}</p>
                     </div>
                 </div>
-                <div className="chipPlace">
-                    <img src={chip} alt="chip"/>
+                <div className={styles.chipPlace}>
+                    <img className={styles.chip} src={chip} alt="chip"/>
                 </div>
                 <div>
-                    <p className="textDecoration fontSize">{accountNumberConst}</p>
-                    <div className="marginTop">
-                        <div className="directionText">
-                            <div className="textLeft">
-                                <p className="textDecoration">{props.Owner}</p>
+                    <p className={`${styles.textDecoration} ${styles.fontSize}`}>{accountNumberConst}</p>
+                    <div className={styles.marginTop}>
+                        <div className={styles.directionText}>
+                            <div className={styles.textLeft}>
+                                <p className={styles.textDecoration}>{props.Owner}</p>
                             </div>
-                            <div className="marginLeft">
-                                <p className="textDecoration">{props.expirationMonth}/{props.expirationYear}</p>
+                            <div className={styles.marginLeft}>
+                                <p className={styles.textDecoration}>{props.expirationMonth}/{props.expirationYear}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
                     {props.details ? (
-                        <Link className="accountDetails" to="/cards">Szczegóły konta >></Link>
+                        <Link className={styles.accountDetails} to="/cards">Szczegóły konta >></Link>
                     ) : null}
                 </div>
             </div>
-            <div className="chartPosition">
+            <div className={styles.chartPosition}>
                 {props.graph && <ChartComponent type={props.currency}/>}
             </div>
         </div>

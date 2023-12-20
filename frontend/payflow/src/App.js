@@ -1,7 +1,7 @@
 import Navbar from "./components/elements/Navbar";
 import React from "react";
 import {Outlet, useLocation} from "react-router-dom";
-import './components/styles/app/AppStyles.css'
+import styles from './components/styles/app/App.module.css'
 import TopNavbar from "./components/elements/TopNavbar";
 
 function App() {
@@ -10,10 +10,10 @@ function App() {
     const paths = ['/home', '/transactions', '/transfers', '/credits', '/cards', '/settings', '/logOut'];
     return (
         // do not change anything here
-        <div className="container-fluid">
+        <div className={styles.containerFluid}>
             {paths.includes(location.pathname) && <Navbar />}
-            <div className="container">
-                <div className="app-top">
+            <div>
+                <div className={styles.appTop}>
                     {paths.includes(location.pathname) && <TopNavbar />}
                 </div>
                 <Outlet/>

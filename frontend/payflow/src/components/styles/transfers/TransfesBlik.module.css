@@ -1,15 +1,16 @@
-.transferBlik-container {
+.transferBlikContainer {
     display: flex;
     flex-direction: column;
     width: 35vw;
     align-items: center
 }
 
-.btn-color {
+.btnColor {
     color: #1687A7;
     background-color: #F6F5F5;
     border-color: #276678;
     border-width: 2px;
+    border-radius: 15px;
     height: 40px;
 }
 

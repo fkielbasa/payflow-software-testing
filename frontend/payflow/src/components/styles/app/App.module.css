@@ -1,9 +1,9 @@
-.container-fluid {
+.containerFluid {
     display: flex;
     height: 100vh;
 }
 
-.app-top {
+.appTop {
     display: flex;
     flex-direction: column;
 }

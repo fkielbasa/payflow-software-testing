@@ -1,15 +1,15 @@
 import React from 'react';
-import "../styles/transfers/TransfersStyles.css";
+import styles from "../styles/transfers/Transfers.module.css";
 import TransferAccountNumber from "../elements/TransferAccountNumber";
 import TransferBlik from "../elements/TransferBlik";
 
 function Transfers() {
     return (
-        <div className="transfers-container">
-            <div className="transfer-type">
+        <div className={styles.transfersContainer}>
+            <div className={styles.transferType}>
                 <h2>Wybierz typ przelewu</h2>
             </div>
-            <div className="transfer-show-fields">
+            <div className={styles.transferShowFields}>
                 <TransferAccountNumber />
                 <TransferBlik />
             </div>
