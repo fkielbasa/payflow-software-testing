@@ -12,9 +12,12 @@ function Home() {
                     <p>Tutaj będzie coś jeszcze</p>
                 </div>
                 <div className={styles.transactionPosition}>
-                    <div>
+                    <div className={styles.sameHeight}>
                         <p className={styles.marginL}>Ostatnie transakcje</p>
-                        <Link to="/transactions" className={styles.smallLetters}>Pokaż więcej</Link>
+                        <Link
+                            to="/transactions" className={styles.linkTo}>
+                            Pokaż więcej
+                        </Link>
                     </div>
                     <TransactionsContainer maxPerPage={4} screenName={'home'}/>
                 </div>

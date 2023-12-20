@@ -43,7 +43,25 @@
     margin-left: 20px;
 }
 
-.smallLetters {
+.linkTo {
     font-size: 13px;
+    text-decoration: none;
+    color: black;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+
 }
+
+.linkTo:hover {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.sameHeight {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
 
