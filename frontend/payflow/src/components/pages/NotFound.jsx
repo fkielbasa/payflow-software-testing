@@ -7,7 +7,7 @@ const NotFound = () => {
         <div className={styles.notFound}>
             <h1>404 - Not found!</h1>
             <p>Strona na której się znajdujesz nie istnieje!</p>
-            <hr className={styles.hr}/>
+            <hr className={styles.hrLine}/>
             <p>Przejdź do strony głównej.</p>
             <Link className={styles.notFoundBtn} to="/home" role="button">Home</Link>
         </div>

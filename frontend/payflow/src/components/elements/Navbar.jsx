@@ -48,35 +48,35 @@ function Navbar() {
                     </div>
 
                     <nav>
-                        <ul className={styles.ul}>
-                            <li className={styles.li}>
-                                <Link to='/home' className={`${styles.a} ${isHome ? 'active' : ''}`}>
+                        <ul className={styles.ulList}>
+                            <li className={styles.liList}>
+                                <Link to='/home' className={`${styles.aLink} ${isHome ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isHome ? houseFill : house} alt="Home"/>
                                     Strona główna
                                 </Link>
                             </li>
-                            <li className={styles.li}>
-                                <Link to='/transactions' className={`${styles.a} ${isTransactions ? 'active' : ''}`}>
+                            <li className={styles.liList}>
+                                <Link to='/transactions' className={`${styles.aLink} ${isTransactions ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isTransactions ? transactionsFill : transactions}
                                          alt="transactions"/>
                                     Transakcje
                                 </Link>
                             </li>
-                            <li className={styles.li}>
-                                <Link to='/transfers' className={`${styles.a} ${isTransfers ? 'active' : ''}`}>
+                            <li className={styles.liList}>
+                                <Link to='/transfers' className={`${styles.aLink} ${isTransfers ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isTransfers ? transfersFill : transfers}
                                          alt="transfers"/>
                                     Przelewy
                                 </Link>
                             </li>
-                            <li className={styles.li}>
-                                <Link to="/credits" className={`${styles.a} ${isCredits ? 'active' : ''}`}>
+                            <li className={styles.liList}>
+                                <Link to="/credits" className={`${styles.aLink} ${isCredits ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isCredits ? creditsFill : credits} alt="credits"/>
                                     Kredyty
                                 </Link>
                             </li>
-                            <li className={styles.li}>
-                                <Link to="/cards" className={`${styles.a} ${isCards ? 'active' : ''}`}>
+                            <li className={styles.liList}>
+                                <Link to="/cards" className={`${styles.aLink} ${isCards ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isCards ? cardsFill : cards} alt="cards"/>
                                     Karty
                                 </Link>
@@ -85,15 +85,15 @@ function Navbar() {
                     </nav>
                 </div>
                 <nav>
-                    <ul className={styles.ul}>
-                        <li className={styles.li}>
-                            <Link to='/settings' className={`${styles.a} ${isSettings ? 'active' : ''}`}>
+                    <ul className={styles.ulList}>
+                        <li className={styles.liList}>
+                            <Link to='/settings' className={`${styles.aLink} ${isSettings ? 'active' : ''}`}>
                                 <img className={styles.navImages} src={isSettings ? settingsFill : settings} alt="settings"/>
                                 Ustawienia
                             </Link>
                         </li>
-                        <li className={styles.li}>
-                            <Link to='/logOut' className={`${styles.a} ${isLogOut ? 'active' : ''}`}>
+                        <li className={styles.liList}>
+                            <Link to='/logOut' className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}>
                                 <img className={styles.navImages} src={isLogOut ? logOutFill : logOut} alt="logOut"/>
                                 Wyloguj
                             </Link>

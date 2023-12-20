@@ -3,24 +3,24 @@
     flex-direction: column;
 }
 
-.ul {
+.ulList {
     margin-top: -20px;
     list-style: none;
     padding: 15px;
 }
 
-.li {
+.liList {
     margin-top: 15px;
 }
 
-.a {
+.aLink {
     text-decoration: none;
     color: black;
     font-size: 16px;
     transition: all 0.3s ease;
 }
 
-.a:hover {
+.aLink:hover {
     font-weight: bold;
     font-size: 18px;
 }
