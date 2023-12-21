@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User implements org.springframework.security.core.userdetails.UserDetails {
     @Id
     @GeneratedValue(

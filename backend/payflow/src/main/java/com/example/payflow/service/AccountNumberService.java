@@ -5,10 +5,12 @@ import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.User;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.UserRepository;
+import com.example.payflow.util.NumberGenerator;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +19,9 @@ import java.util.Optional;
 public class AccountNumberService {
     private final AccountNumberRepository accountNumberRepository;
     private final UserRepository userRepository;
+    private static final BigDecimal START_BALANCE = new BigDecimal(0);
+    public static final int ACCOUNT_NUMBER_LENGTH = 26;
+
     public List<AccountNumber> getAccountNumbers() {
         return accountNumberRepository.findAll();
     }
@@ -31,22 +36,17 @@ public class AccountNumberService {
         Optional<User> u = userRepository.findById(accountNumber.getUserId().getId());
         if(u.isPresent()) {
             var a = AccountNumber.builder()
-                    .balance(accountNumber.getBalance())
-                    .number(accountNumber.getNumber())
-                    .currencyType(accountNumber.getCurrencyType())
-                    .accountNumberType(accountNumber.getAccountNumberType())
+                    .balance(START_BALANCE)
+                    .number(NumberGenerator.generateAccountNumber(ACCOUNT_NUMBER_LENGTH))
+                    .currency(accountNumber.getCurrency())
+                    .accountType(accountNumber.getAccountType())
                     .userId(u.get())
                     .build();
-            AccountNumber savedAccount = accountNumberRepository.save(a);
-            AccountNumberDTO accountNumberDTO = convertToDTO(savedAccount);
+             accountNumberRepository.save(a);
+            AccountNumberDTO accountNumberDTO = new AccountNumberDTO(a.getId(),a.getBalance(),a.getAccountType(),
+                    a.getNumber());
             return ResponseEntity.ok(accountNumberDTO);
         }
         return ResponseEntity.badRequest().build();
     }
-    private AccountNumberDTO convertToDTO(AccountNumber accountNumber) {
-        AccountNumberDTO dto = new AccountNumberDTO();
-        dto.setNumber(accountNumber.getNumber());
-        return dto;
-    }
-
 }

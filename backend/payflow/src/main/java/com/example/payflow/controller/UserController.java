@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/users/{userId}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<List<UserDTO>> getUserById(@PathVariable Long userId) {
         List<UserDTO> user = userService.getUserById(userId);
         return ResponseEntity.ok(user);
@@ -28,13 +28,5 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-//    @PostMapping("/createUser")
-//    public ResponseEntity<String> createUser(@RequestBody UserDTO userDTO,
-//                                                            @RequestBody AddressDTO addressDTO,
-//                                                            @RequestBody UserDetailsDTO userDetailsDTO) {
-//        userService.saveUser(userDTO);
-//        addressService.saveAddress(addressDTO);
-//        userDetailsService.saveUserDetails(userDetailsDTO);
-//        return ResponseEntity.ok("OK");
-//    }
+
 }
