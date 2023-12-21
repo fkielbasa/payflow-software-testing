@@ -46,6 +46,7 @@ public class AuthenticationService {
     private static final BigDecimal STARTER_BALANCE = new BigDecimal(100);
     private static final CurrencyType STARTER_CURRENCYTYPE = CurrencyType.PLN;
     private static final String STARTER_ACCOUNT_TYPE = "STANDARD";
+    public static final int ACCOUNT_NUMBER_LENGTH = 26;
 
     public AuthenticationRespone register(RegisterRequest request) throws ParseException {
 
@@ -75,10 +76,11 @@ public class AuthenticationService {
 
         String userLogin = getNewLogin();
 
+
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .login(userLogin)
+                .login("userLogin")
                 .dateOfBirth(formatter.parse(request.getDateOfBirth()))
                 .nationality(request.getNationality())
                 .residentialAddress(residentalAddress)
@@ -113,7 +115,7 @@ public class AuthenticationService {
         accountNumberRepository.save(accountNumber);
 
         // Mail sending with login
-        mailService.sendRegistrationMail(user.getFirstName(), userDetails.getEmail(), userLogin);
+        //mailService.sendRegistrationMail(user.getFirstName(), userDetails.getEmail(), "userLogin");
 
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationRespone.builder()
@@ -158,5 +160,6 @@ public class AuthenticationService {
     boolean isAccountNumberValid(String accountNumber){
         return !accountNumberRepository.existsByNumber(accountNumber);
     }
+
 
 }
