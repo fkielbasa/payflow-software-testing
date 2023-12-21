@@ -6,6 +6,7 @@ import com.example.payflow.security.AuthenticationRespone;
 import com.example.payflow.security.AuthenticationService;
 import com.example.payflow.security.RegisterRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,11 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationRespone> register (
             @RequestBody RegisterRequest request
     ) throws ParseException {
-        return ResponseEntity.ok(service.register(request));
+        AuthenticationRespone auth = service.register(request);
+        if (auth != null)
+            return ResponseEntity.ok(auth);
+        else
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
     }
 
     @PostMapping("/authenticate")

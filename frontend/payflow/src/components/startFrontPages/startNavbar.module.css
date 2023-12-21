@@ -8,7 +8,6 @@
     z-index: 100;
     padding: 10px;
     flex-wrap: wrap;
-    height: 10vh;
 }
 
 
@@ -112,7 +111,7 @@
 
 }
 .newAcc a:hover {
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: var(--darkBlue);
     color: var(--white);
 }

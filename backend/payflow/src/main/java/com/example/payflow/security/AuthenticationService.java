@@ -13,6 +13,7 @@ import com.example.payflow.repository.UserRepository;
 import com.example.payflow.model.UserDetails;
 import com.example.payflow.repository.UserDetailsRepository;
 import com.example.payflow.util.NumberGenerator;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -49,6 +50,8 @@ public class AuthenticationService {
     public static final int ACCOUNT_NUMBER_LENGTH = 26;
 
     public AuthenticationRespone register(RegisterRequest request) throws ParseException {
+        if (userDetailsRepository.isPhoneNumberExists(request.getPhoneNumber()))
+            return null;
 
         System.out.println(request.toString());
         var residentalAddress = Address.builder()
