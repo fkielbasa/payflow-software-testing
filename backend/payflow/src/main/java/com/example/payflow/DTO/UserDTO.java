@@ -1,53 +1,26 @@
-package com.example.payflow.DTO;
+package com.example.payflow.dto;
 
-import com.example.payflow.model.Role;
+import com.example.payflow.model.Address;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-public class UserDTO {
-    private String firstname;
-    private String lastname;
+import java.util.Date;
+
+@AllArgsConstructor
+@RequiredArgsConstructor
+@Data
+public class UserDTO{
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String nationality;
+    private Date dateOfBirth;
     private String login;
-    private String password;
-    private String role;
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Role getRole() {
-        return Role.valueOf(role);
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
+    private String email;
+    private String phoneNumber;
+    private Address correspondenceAddress;
+    private Address residentialAddress;
 }
 
 

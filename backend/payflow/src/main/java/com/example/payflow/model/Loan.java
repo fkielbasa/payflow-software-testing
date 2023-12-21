@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -27,17 +29,14 @@ public class Loan {
     @Column(name = "id_loan")
     private Long id;
     private BigDecimal amount;
-
+    @Temporal(TemporalType.DATE)
     @Column(name = "start_date")
-    private String startDate;
-
+    private Date startDate;
+    @Temporal(TemporalType.DATE)
     @Column(name = "end_date")
-    private String endDate;
-
+    private Date endDate;
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
-
-
     @ManyToOne()
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumber;

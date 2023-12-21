@@ -1,4 +1,4 @@
-package com.example.payflow.DTO;
+package com.example.payflow.dto;
 
 public class AddressDTO {
     private String apartmentNumber;

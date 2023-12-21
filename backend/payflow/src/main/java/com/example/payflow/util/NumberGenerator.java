@@ -34,7 +34,7 @@ public class NumberGenerator {
         return stringBuilder.toString();
     }
 
-    public static String generateAccountNumber(){
+    public static String generateAccountNumber(Integer number){
         random = new Random();
         stringBuilder = new StringBuilder();
         int firstDigit = random.nextInt(9) + 1;

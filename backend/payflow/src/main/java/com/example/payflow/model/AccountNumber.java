@@ -34,10 +34,7 @@ public class AccountNumber {
     private CurrencyType currency;
     private String number;
 
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
-
-
 }

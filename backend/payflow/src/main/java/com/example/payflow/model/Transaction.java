@@ -28,6 +28,7 @@ public class Transaction {
     @Column(name = "id_transaction")
     private Long idTransaction;
     private BigDecimal amount;
+    @Temporal(TemporalType.DATE)
     @Column(name = "transaction_date")
     private Date transactionDate;
     @Enumerated(EnumType.STRING)

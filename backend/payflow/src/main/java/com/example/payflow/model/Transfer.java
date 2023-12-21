@@ -29,7 +29,7 @@ public class Transfer {
     )
     @Column(name = "id_transfer")
     private Long id;
-
+    @Temporal(TemporalType.DATE)
     @Column(name = "transfer_date")
     private LocalDate transferDate;
 

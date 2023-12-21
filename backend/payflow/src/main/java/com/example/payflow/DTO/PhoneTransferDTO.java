@@ -1,7 +1,4 @@
-package com.example.payflow.DTO;
-
-import com.example.payflow.model.AccountNumber;
-
+package com.example.payflow.dto;
 
 import java.math.BigDecimal;
 

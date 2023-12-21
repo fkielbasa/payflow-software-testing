@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "card")
 public class Card {
@@ -28,7 +28,7 @@ public class Card {
     private Long id;
     private String cardNumber;
     private String cvv;
-    private Date valid;
+    private LocalDate validDate;
 
     @ManyToOne
     @JoinColumn(name = "id_account_number")
