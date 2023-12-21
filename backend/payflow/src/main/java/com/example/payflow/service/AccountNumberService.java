@@ -24,7 +24,7 @@ public class AccountNumberService {
         return accountNumberRepository.findAll().stream()
                 .filter(accountNumber -> accountNumber.getUserId().getId().equals(id))
                 .map(accountNumber -> new AccountNumberDTO(accountNumber.getId(),accountNumber.getBalance(),
-                        accountNumber.getAccountNumberType(),accountNumber.getNumber()))
+                        accountNumber.getAccountType(),accountNumber.getNumber()))
                 .toList();
     }
     public ResponseEntity<AccountNumberDTO> addAccount(AccountNumber accountNumber){
@@ -33,8 +33,8 @@ public class AccountNumberService {
             var a = AccountNumber.builder()
                     .balance(accountNumber.getBalance())
                     .number(accountNumber.getNumber())
-                    .currencyType(accountNumber.getCurrencyType())
-                    .accountNumberType(accountNumber.getAccountNumberType())
+                    .currency(accountNumber.getCurrency())
+                    .accountType(accountNumber.getAccountType())
                     .userId(u.get())
                     .build();
             AccountNumber savedAccount = accountNumberRepository.save(a);
