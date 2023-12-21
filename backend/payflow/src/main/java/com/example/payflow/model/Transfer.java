@@ -34,6 +34,7 @@ public class Transfer {
     private LocalDate transferDate;
 
     private BigDecimal amount;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "sender_number")

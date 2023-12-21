@@ -47,6 +47,7 @@ public class TransferService {
                 Transfer.builder()
                         .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
                         .amount(new BigDecimal(phoneTransfer.amount()))
+                        .description(phoneTransfer.description())
                         .senderAccount(sender)
                         .receiverAccount(receiver)
                         .build();
@@ -92,6 +93,7 @@ public class TransferService {
                 Transfer.builder()
                         .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
                         .amount(transferDTO.amount())
+                        .description(transferDTO.description())
                         .senderAccount(sender)
                         .receiverAccount(receiver)
                         .build();
