@@ -1,6 +1,7 @@
 import styles from './registerForm.module.css'
 import {useEffect, useState} from "react";
 import SelectCountry from "./selectCountry";
+import {checkHomeNumber, checkZipCode, checkEmail, checkPhoneNumber, isString} from "../utils/validation";
 
 const RegisterForm = ({saveDataForm}) => {
     const [sameAddress, setSameAddress] = useState(false)
@@ -87,28 +88,6 @@ const RegisterForm = ({saveDataForm}) => {
             saveDataForm(form)
         }
     }
-
-    const checkPhoneNumber = (number) => {
-        const regex = /^\d{9}$/;
-        return regex.test(number);
-    };
-    const checkEmail = (email) => {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regex.test(email);
-    };
-    const checkZipCode = (code) => {
-        const regex = /^\d{5}$/;
-        return regex.test(code);
-    };
-    const checkHomeNumber = (number) => {
-        const regex = /^[a-zA-Z0-9\s]+$/;
-        return regex.test(number);
-    };
-    const isString = (s) => {
-        const regex = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/;
-        return regex.test(s);
-    };
-
 
 
     return(
