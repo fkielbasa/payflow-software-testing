@@ -2,6 +2,7 @@ package com.example.payflow.service;
 
 import com.example.payflow.dto.PhoneTransferDTO;
 import com.example.payflow.dto.TransferDTO;
+import com.example.payflow.dto.TransferDTOMapper;
 import com.example.payflow.model.*;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.TransferRepository;
@@ -27,12 +28,13 @@ public class TransferService {
     private final UserRepository userRepository;
     private final AccountNumberRepository accountNumberRepository;
     private final ExchangeRateService exchangeRateService;
+    private final TransferDTOMapper transferDTOMapper;
 
     public Transfer getTransferById(Long transferId) {
         return transferRepository.findById(transferId).orElse(null);
     }
 
-    public Transfer addTransferByPhoneNumber(PhoneTransferDTO phoneTransfer) {
+    public TransferDTO addTransferByPhoneNumber(PhoneTransferDTO phoneTransfer) {
         // searching for receiver
         UserDetails userDetails = userDetailsRepository.findByPhoneNumber(phoneTransfer.phoneNumber());
         User searchedUser = userRepository.findById(userDetails.getUserId().getId()).orElseThrow(EntityNotFoundException::new);
@@ -55,7 +57,7 @@ public class TransferService {
         return finalizeTransfer(newTransfer);
     }
 
-    public Transfer finalizeTransfer(Transfer transfer){
+    public TransferDTO finalizeTransfer(Transfer transfer){
         Double exchangeRate =
                 exchangeRateService.getExchangeRateBetweenCurrency(
                         transfer.getSenderAccount(),
@@ -80,11 +82,11 @@ public class TransferService {
         accountNumberRepository.save(receiver);
         transferRepository.save(transfer);
 
-        return transfer;
+        return transferDTOMapper.apply(transfer);
     }
 
 
-    public Transfer createTransfer(TransferDTO transferDTO) {
+    public TransferDTO createTransfer(TransferDTO transferDTO) {
         // searching for accounts
         AccountNumber sender = accountNumberRepository.findById(transferDTO.senderAccountId()).orElseThrow(EntityNotFoundException::new);
         AccountNumber receiver = accountNumberRepository.findById(transferDTO.receiverAccountId()).orElseThrow(EntityNotFoundException::new);
@@ -92,7 +94,7 @@ public class TransferService {
         Transfer newTransfer =
                 Transfer.builder()
                         .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
-                        .amount(transferDTO.amount())
+                        .amount(new BigDecimal(transferDTO.amount()))
                         .description(transferDTO.description())
                         .senderAccount(sender)
                         .receiverAccount(receiver)

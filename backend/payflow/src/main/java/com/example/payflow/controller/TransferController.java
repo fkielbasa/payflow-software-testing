@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class TransferController {
     private final TransferService transferService;
@@ -25,8 +25,8 @@ public class TransferController {
     }
 
     @PostMapping("/transfers")
-    public ResponseEntity<Transfer> createTransfer(@RequestBody TransferDTO transferDTO){
-        Transfer transfer = transferService.createTransfer(transferDTO);
+    public ResponseEntity<TransferDTO> createTransfer(@RequestBody TransferDTO transferDTO){
+        TransferDTO transfer = transferService.createTransfer(transferDTO);
         if (transfer != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(transfer);
         } else {
@@ -35,8 +35,8 @@ public class TransferController {
     }
 
     @PostMapping("/transfers/phone-number")
-    public ResponseEntity<Transfer> addTransferByPhoneNumber(@RequestBody PhoneTransferDTO phoneTransfer){
-        Transfer t = transferService.addTransferByPhoneNumber(phoneTransfer);
+    public ResponseEntity<TransferDTO> addTransferByPhoneNumber(@RequestBody PhoneTransferDTO phoneTransfer){
+        TransferDTO t = transferService.addTransferByPhoneNumber(phoneTransfer);
         if (t != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(t);
         } else {
