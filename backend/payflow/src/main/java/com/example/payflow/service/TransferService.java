@@ -1,8 +1,6 @@
 package com.example.payflow.service;
 
-import com.example.payflow.dto.PhoneTransferDTO;
-import com.example.payflow.dto.TransferDTO;
-import com.example.payflow.dto.TransferDTOMapper;
+import com.example.payflow.dto.*;
 import com.example.payflow.model.*;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.TransferRepository;
@@ -10,6 +8,7 @@ import com.example.payflow.repository.UserDetailsRepository;
 import com.example.payflow.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -29,9 +28,21 @@ public class TransferService {
     private final AccountNumberRepository accountNumberRepository;
     private final ExchangeRateService exchangeRateService;
     private final TransferDTOMapper transferDTOMapper;
+    private final TransferResultDTOMapper transferResultDTOMapper;
 
     public Transfer getTransferById(Long transferId) {
         return transferRepository.findById(transferId).orElse(null);
+    }
+
+    public List<TransferResultDTO> getTransfersByAccountNumberId(Long id) {
+        return transferRepository.findAll()
+                .stream()
+                .filter(
+                        transfer -> transfer.getSenderAccount().getId().equals(id) ||
+                                    transfer.getReceiverAccount().getId().equals(id)
+                )
+                .map(transferResultDTOMapper)
+                .toList();
     }
 
     public TransferDTO addTransferByPhoneNumber(PhoneTransferDTO phoneTransfer) {
@@ -102,4 +113,6 @@ public class TransferService {
 
         return finalizeTransfer(newTransfer);
     }
+
+
 }
