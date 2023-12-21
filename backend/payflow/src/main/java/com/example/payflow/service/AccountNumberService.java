@@ -24,7 +24,7 @@ public class AccountNumberService {
         return accountNumberRepository.findAll().stream()
                 .filter(accountNumber -> accountNumber.getUserId().getId().equals(id))
                 .map(accountNumber -> new AccountNumberDTO(accountNumber.getId(),accountNumber.getBalance(),
-                        accountNumber.getAccountNumberType(),accountNumber.getNumber()))
+                        accountNumber.getAccountType(),accountNumber.getNumber()))
                 .toList();
     }
     public ResponseEntity<AccountNumberDTO> addAccount(AccountNumber accountNumber){
