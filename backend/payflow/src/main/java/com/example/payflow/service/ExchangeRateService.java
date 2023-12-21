@@ -45,8 +45,8 @@ public class ExchangeRateService {
 
 
     public Double getExchangeRateBetweenCurrency(AccountNumber sender, AccountNumber receiver) {
-        double senderCurrency = getExchangeRateByCurrency(sender.getCurrencyType());
-        double receiverCurrency = getExchangeRateByCurrency(receiver.getCurrencyType());
+        double senderCurrency = getExchangeRateByCurrency(sender.getCurrency());
+        double receiverCurrency = getExchangeRateByCurrency(receiver.getCurrency());
         return receiverCurrency/senderCurrency;
     }
 

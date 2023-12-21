@@ -1,6 +1,7 @@
 package com.example.payflow.service;
 
 import com.example.payflow.DTO.PhoneTransferDTO;
+import com.example.payflow.DTO.TransferDTO;
 import com.example.payflow.model.*;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.TransferRepository;
@@ -38,13 +39,9 @@ public class TransferService {
         List<AccountNumber> receiverAccounts = accountNumberRepository.findAllByUserId(searchedUser);
         AccountNumber receiver =
                 receiverAccounts.stream()
-                        .filter(r -> r.getCurrencyType().equals(CurrencyType.PLN)).toList().get(0);
+                        .filter(r -> r.getCurrency().equals(CurrencyType.PLN)).toList().get(0);
         // searching for sender
         AccountNumber sender = accountNumberRepository.findById(phoneTransfer.senderId()).orElseThrow(EntityNotFoundException::new);
-
-        // check if the sender has enough balance to finalize transfer
-        if (!(sender.getBalance().subtract(phoneTransfer.amount()).compareTo(new BigDecimal(0)) > 0 ))
-            return null;
 
         Transfer newTransfer =
                 Transfer.builder()
@@ -64,9 +61,14 @@ public class TransferService {
                         transfer.getReceiverAccount()
                 );
 
+
         // searching for accounts
         AccountNumber sender = accountNumberRepository.findById(transfer.getSenderAccount().getId()).orElseThrow(EntityNotFoundException::new);
         AccountNumber receiver = accountNumberRepository.findById(transfer.getReceiverAccount().getId()).orElseThrow(EntityNotFoundException::new);
+
+        // check if the sender has enough balance to finalize transfer
+        if (!(sender.getBalance().subtract(transfer.getAmount()).compareTo(new BigDecimal(0)) > 0 ))
+            return null;
 
         // changing balance after transfer
         sender.setBalance(sender.getBalance().subtract(transfer.getAmount()));
@@ -81,4 +83,19 @@ public class TransferService {
     }
 
 
+    public Transfer createTransfer(TransferDTO transferDTO) {
+        // searching for accounts
+        AccountNumber sender = accountNumberRepository.findById(transferDTO.senderAccountId()).orElseThrow(EntityNotFoundException::new);
+        AccountNumber receiver = accountNumberRepository.findById(transferDTO.receiverAccountId()).orElseThrow(EntityNotFoundException::new);
+
+        Transfer newTransfer =
+                Transfer.builder()
+                        .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
+                        .amount(transferDTO.amount())
+                        .senderAccount(sender)
+                        .receiverAccount(receiver)
+                        .build();
+
+        return finalizeTransfer(newTransfer);
+    }
 }

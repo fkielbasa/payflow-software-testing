@@ -73,7 +73,7 @@ public class AuthenticationService {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         formatter.setTimeZone(TimeZone.getTimeZone("Poland/Warsaw"));
 
-        String userLogin = NumberGenerator.generateLogin();
+        String userLogin = getNewLogin();
 
         var user = User.builder()
                 .firstName(request.getFirstName())
@@ -104,7 +104,7 @@ public class AuthenticationService {
             accountNumberTypeAccount = AccountNumberType.INTENSIVE;
 
         var accountNumber = AccountNumber.builder()
-                .number(NumberGenerator.generateAccountNumber())
+                .number(getNewNumber())
                 .balance(STARTER_BALANCE)
                 .accountType(accountNumberTypeAccount)
                 .currency(STARTER_CURRENCYTYPE)
@@ -119,8 +119,6 @@ public class AuthenticationService {
         return AuthenticationRespone.builder()
                 .token(jwtToken)
                 .build();
-
-
     }
 
     public AuthenticationRespone authenticate(AuthenticationRequest request) {
@@ -136,6 +134,29 @@ public class AuthenticationService {
         return AuthenticationRespone.builder()
                 .token(jwtToken)
                 .build();
+    }
+
+    public String getNewLogin(){
+        String login = NumberGenerator.generateLogin();
+        if (!(isLoginValid(login))){
+            return NumberGenerator.generateLogin();
+        }
+        return  login;
+    }
+
+    public String getNewNumber(){
+        String number = NumberGenerator.generateAccountNumber();
+        if (!(isAccountNumberValid(number))){
+            return NumberGenerator.generateAccountNumber();
+        }
+        return  number;
+    }
+
+    boolean  isLoginValid(String login){
+        return !userRepository.isUserExists(login);
+    }
+    boolean isAccountNumberValid(String accountNumber){
+        return !accountNumberRepository.existsByNumber(accountNumber);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.DTO.PhoneTransferDTO;
+import com.example.payflow.DTO.TransferDTO;
 import com.example.payflow.service.TransferService;
 import com.example.payflow.model.Transfer;
 import lombok.RequiredArgsConstructor;
@@ -13,13 +14,23 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class TransferController {
     private final TransferService transferService;
-    @GetMapping("/transfers/{transfer-id}")
-    public ResponseEntity<Transfer> getTransferById(@PathVariable(name = "transfer-id") Long transferId) {
-        Transfer transfer = transferService.getTransferById(transferId);
+    @GetMapping("/transfers/{id}")
+    public ResponseEntity<Transfer> getTransferById(@PathVariable Long id) {
+        Transfer transfer = transferService.getTransferById(id);
         if (transfer != null) {
             return ResponseEntity.ok(transfer);
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/transfers")
+    public ResponseEntity<Transfer> createTransfer(@RequestBody TransferDTO transferDTO){
+        Transfer transfer = transferService.createTransfer(transferDTO);
+        if (transfer != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(transfer);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
         }
     }
 
@@ -32,4 +43,6 @@ public class TransferController {
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
         }
     }
+
+
 }

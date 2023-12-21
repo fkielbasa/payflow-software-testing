@@ -28,13 +28,5 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-//    @PostMapping("/createUser")
-//    public ResponseEntity<String> createUser(@RequestBody UserDTO userDTO,
-//                                                            @RequestBody AddressDTO addressDTO,
-//                                                            @RequestBody UserDetailsDTO userDetailsDTO) {
-//        userService.saveUser(userDTO);
-//        addressService.saveAddress(addressDTO);
-//        userDetailsService.saveUserDetails(userDetailsDTO);
-//        return ResponseEntity.ok("OK");
-//    }
+
 }
