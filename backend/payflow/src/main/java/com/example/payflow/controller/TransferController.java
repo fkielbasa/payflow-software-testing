@@ -1,7 +1,7 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.dto.PhoneTransferDTO;
-import com.example.payflow.DTO.TransferDTO;
+import com.example.payflow.dto.TransferDTO;
 import com.example.payflow.service.TransferService;
 import com.example.payflow.model.Transfer;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +34,7 @@ public class TransferController {
         }
     }
 
-    @PostMapping("/transfers/phone-number")
+    @PostMapping("/transfer/phone-number")
     public ResponseEntity<Transfer> addTransferByPhoneNumber(@RequestBody PhoneTransferDTO phoneTransfer){
         Transfer t = transferService.addTransferByPhoneNumber(phoneTransfer);
         if (t != null) {
