@@ -1,8 +1,8 @@
-import Navbar from "./components/elements/Navbar";
+import Navbar from "./components/afterLogin/elements/navbars/Navbar";
 import React from "react";
 import {Outlet, useLocation} from "react-router-dom";
-import styles from './components/styles/app/App.module.css'
-import TopNavbar from "./components/elements/TopNavbar";
+import styles from './App.module.css'
+import TopNavbar from "./components/afterLogin/elements/navbars/TopNavbar";
 
 function App() {
     const location = useLocation();
