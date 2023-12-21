@@ -9,7 +9,6 @@ public class NumberGenerator {
     public static final int BLIK_LENGTH = 6;
     public static final int LOGIN_LENGTH = 8;
     public static final int ACCOUNT_NUMBER_LENGTH = 26;
-    private static Validation validation;
     private static Random random;
     private static StringBuilder stringBuilder;
 

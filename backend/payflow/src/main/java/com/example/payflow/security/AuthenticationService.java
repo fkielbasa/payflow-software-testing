@@ -147,11 +147,11 @@ public class AuthenticationService {
     }
 
     public String getNewNumber(){
-        String number = NumberGenerator.generateAccountNumber();
+        String number = NumberGenerator.generateAccountNumber(ACCOUNT_NUMBER_LENGTH);
         if (!(isAccountNumberValid(number))){
-            return NumberGenerator.generateAccountNumber();
+            return NumberGenerator.generateAccountNumber(ACCOUNT_NUMBER_LENGTH);
         }
-        return  number;
+        return number;
     }
 
     boolean  isLoginValid(String login){

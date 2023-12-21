@@ -5,7 +5,6 @@ import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.User;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.UserRepository;
-import com.example.payflow.util.NumberGenerator;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
