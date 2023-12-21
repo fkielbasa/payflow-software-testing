@@ -18,8 +18,8 @@ import java.util.List;
 public class TransferController {
     private final TransferService transferService;
     @GetMapping("/transfers/{id}")
-    public ResponseEntity<Transfer> getTransferById(@PathVariable Long id) {
-        Transfer transfer = transferService.getTransferById(id);
+    public ResponseEntity<TransferResultDTO> getTransferById(@PathVariable Long id) {
+        TransferResultDTO transfer = transferService.getTransferById(id);
         if (transfer != null) {
             return ResponseEntity.ok(transfer);
         } else {

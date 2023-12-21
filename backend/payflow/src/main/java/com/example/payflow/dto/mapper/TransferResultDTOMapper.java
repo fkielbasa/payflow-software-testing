@@ -1,5 +1,6 @@
-package com.example.payflow.dto;
+package com.example.payflow.dto.mapper;
 
+import com.example.payflow.dto.TransferResultDTO;
 import com.example.payflow.model.Transfer;
 import org.springframework.stereotype.Service;
 

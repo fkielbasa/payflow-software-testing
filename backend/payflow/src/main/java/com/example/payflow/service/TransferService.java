@@ -1,6 +1,8 @@
 package com.example.payflow.service;
 
 import com.example.payflow.dto.*;
+import com.example.payflow.dto.mapper.TransferDTOMapper;
+import com.example.payflow.dto.mapper.TransferResultDTOMapper;
 import com.example.payflow.model.*;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.TransferRepository;
@@ -8,7 +10,6 @@ import com.example.payflow.repository.UserDetailsRepository;
 import com.example.payflow.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -30,8 +31,8 @@ public class TransferService {
     private final TransferDTOMapper transferDTOMapper;
     private final TransferResultDTOMapper transferResultDTOMapper;
 
-    public Transfer getTransferById(Long transferId) {
-        return transferRepository.findById(transferId).orElse(null);
+    public TransferResultDTO getTransferById(Long transferId) {
+        return transferResultDTOMapper.apply(transferRepository.findById(transferId).orElseThrow(EntityNotFoundException::new));
     }
 
     public List<TransferResultDTO> getTransfersByAccountNumberId(Long id) {
