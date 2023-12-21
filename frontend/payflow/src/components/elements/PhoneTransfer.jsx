@@ -8,6 +8,7 @@ const PhoneTransfer = () => {
     const [amount, setAmount]=useState('')
     const [desc, setDesc]=useState('')
     const [dataTransfer, setDataTransfer]=useState({})
+    const [isWrongData, setIsWrongData] = useState(false)
 
     // Design clicking
     const [isClickedPhoneNumber, setIsClickedPhoneNumber] = useState(false)
@@ -19,6 +20,7 @@ const PhoneTransfer = () => {
 
 
     const handleSubmit = (e) => {
+        setIsWrongData(false)
         e.preventDefault()
         if (isValidate()){
             setDataTransfer({
@@ -28,6 +30,8 @@ const PhoneTransfer = () => {
                 senderId: 1
             })
             sendTransfer()
+        } else {
+            setIsWrongData(true)
         }
 
     }
@@ -38,17 +42,10 @@ const PhoneTransfer = () => {
         setAmount(changeComa(amount))
         if (!checkPhoneNumber(phoneNumber))
             return false
-        if (!checkIfPhoneNumberExists(phoneNumber))
-            return false
-        
-        return true
-    }
-
-    const checkIfPhoneNumberExists = (number) => {
-        // get
 
         return true
     }
+
 
     const sendTransfer = () => {
         console.log(dataTransfer)
@@ -102,6 +99,7 @@ const PhoneTransfer = () => {
                     <input className={styles.submit} type="submit"  value="Wyślij" />
                 </div>
             </form>
+            <p className={isWrongData ? [styles.wrongTransferText, styles.textVisible].join(' ') : [styles.wrongTransferText, styles.textHidden].join(' ')}>Podane dane są złe</p>
         </div>
     )
 }

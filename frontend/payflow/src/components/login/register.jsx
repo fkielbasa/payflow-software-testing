@@ -84,7 +84,6 @@ const Register = () => {
     const handleOpenAccount = () => {
         console.log(JSON.stringify(registerData))
 
-
         fetch(REGISTER_URL, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
