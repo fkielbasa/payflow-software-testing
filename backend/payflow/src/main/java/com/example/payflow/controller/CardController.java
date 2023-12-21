@@ -11,15 +11,15 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class CardController {
     private final CardService cardService;
-    @GetMapping("/account_number/{id}/cards")
+    @GetMapping("/numbers/{id}/cards")
     public ResponseEntity<List<CardDTO>> getCardById(@PathVariable Long id){
         List<CardDTO> card = cardService.getCardByAccountId(id);
         return ResponseEntity.ok(card);
     }
-    @PostMapping("/card/add")
+    @PostMapping("/card")
     public ResponseEntity<Card> addCard(@RequestBody Card card){
         return cardService.addCard(card);
     }

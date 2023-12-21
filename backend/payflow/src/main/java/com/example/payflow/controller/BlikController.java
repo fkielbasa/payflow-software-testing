@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/blik")
+@RequestMapping("/api/v1/blik")
 public class BlikController {
 
     private final BlikService service;

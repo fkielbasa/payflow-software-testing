@@ -12,19 +12,19 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class AccountNumberController {
     private final AccountNumberService accountNumberService;
     @GetMapping("/numbers")
     public List<AccountNumber> getAccountNumbers() {
         return accountNumberService.getAccountNumbers();
     }
-    @GetMapping("/numbers/users/{id}")
+    @GetMapping("/users/{id}/numbers")
     public List<AccountNumberDTO> getAccountNumberByUserId(@PathVariable Long id){
         return accountNumberService.getAccountNumberByUserId(id);
     }
-    @PostMapping("/numbers/add")
-    public ResponseEntity<AccountNumberDTO> addCard(@RequestBody AccountNumber accountNumber){
+    @PostMapping("/number")
+    public ResponseEntity<AccountNumberDTO> addAccount(@RequestBody AccountNumber accountNumber){
         return accountNumberService.addAccount(accountNumber);
     }
 }
