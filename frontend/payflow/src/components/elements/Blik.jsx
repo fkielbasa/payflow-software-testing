@@ -64,7 +64,7 @@ function Blik() {
             <button onClick={handleButton} className={styles.btnWrapper}>
                 <p id="blikBtn" className={styles.btnText}>{blikText}</p>
                 <div className={styles.underlineWrap}>
-                    <div className={styles.underlineShrink} style={{width: `${100-((100/expirationTime)*count)}%`}}></div>
+                    <div className={styles.underlineShrink} style={isActive ? {width: `${100-((100/expirationTime)*count)}%`} : {width: '100%'}}></div>
                 </div>
             </button>
             <div style={isActive ? {visibility: "visible"} : {visibility: "hidden"}}>

@@ -2,6 +2,7 @@ import styles from '../styles/transfers/PhoneTransfer.module.css'
 import {useState} from "react";
 import {checkPhoneNumber, checkAmount} from "../utils/validation";
 
+const SEND_TRANSFER_POST = "http://localhost:8080/api/v1/transfers/phone-number";
 const PhoneTransfer = () => {
 
     const [phoneNumber, setPhoneNumber]=useState('')
@@ -9,6 +10,7 @@ const PhoneTransfer = () => {
     const [desc, setDesc]=useState('')
     const [dataTransfer, setDataTransfer]=useState({})
     const [isWrongData, setIsWrongData] = useState(false)
+    const [isSent, setIsSent] = useState(false)
 
     // Design clicking
     const [isClickedPhoneNumber, setIsClickedPhoneNumber] = useState(false)
@@ -20,17 +22,19 @@ const PhoneTransfer = () => {
 
 
     const handleSubmit = (e) => {
-        setIsWrongData(false)
         e.preventDefault()
+        setIsWrongData(false)
+        setDataTransfer({
+            phoneNumber: phoneNumber,
+            amount: amount,
+            description: desc,
+            senderId: 1
+        })
         if (isValidate()){
-            setDataTransfer({
-                phoneNumber: phoneNumber,
-                amount: amount,
-                description: desc,
-                senderId: 1
-            })
+
             sendTransfer()
         } else {
+            setIsSent(false)
             setIsWrongData(true)
         }
 
@@ -49,34 +53,33 @@ const PhoneTransfer = () => {
 
     const sendTransfer = () => {
         console.log(dataTransfer)
-        fetch("http://localhost:8080/api/transfers/phone-number", {
+        fetch(SEND_TRANSFER_POST, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(dataTransfer)
         }).then((response) => response.json())
             .then((data) => {
                 console.log(data)
+                setIsSent(true)
             })
-            .catch(er => console.log(er))
+            .catch(er => {
+                console.log(er)
+                setIsSent(false)
+                setIsWrongData(true)
+            })
+        document.forms['phoneTransferForm'].reset()
     }
 
     const changeComa = (amount) => {
-        if (!amount.contains(","))
-            return amount
-        let a = '';
-        for(let i=0; i<amount.length; i++){
-            if (amount[i] === ',')
-                a+='.'
-            else
-                a+= amount[i]
-        }
-        return a;
+        if (amount.includes(','))
+            return amount.replace(/\,/, ".");
+        return amount
     };
 
     return(
         <div className={styles.container}>
             <p>Przelew na telefon</p>
-            <form className={styles.formPhone} onSubmit={handleSubmit} autoComplete="off">
+            <form name="phoneTransferForm" className={styles.formPhone} onSubmit={handleSubmit} autoComplete="off">
                 <div className={styles.wrapper}>
                     <input onFocus={() => changePositionPhoneNumber()} onBlur={() =>changePositionPhoneNumber()}
                            onChange={(event) => setPhoneNumber(event.target.value)}
@@ -86,7 +89,7 @@ const PhoneTransfer = () => {
                 <div className={styles.wrapper}>
                     <input onFocus={() => changePositionAmount()} onBlur={() =>changePositionAmount()}
                            onChange={(event) => setAmount(event.target.value)}
-                           className={styles.inputPhoneTransfer} type="number" name="amount"  required />
+                           className={styles.inputPhoneTransfer} type="number" step="0.01" name="amount"  required />
                     <div className={isClickedAmount ? [styles.inputText, styles.changePositionUp].join(' ') : [styles.inputText,styles.changePositionDown].join(' ')}>Kwota</div>
                 </div>
                 <div className={styles.wrapper}>
@@ -99,6 +102,7 @@ const PhoneTransfer = () => {
                     <input className={styles.submit} type="submit"  value="Wyślij" />
                 </div>
             </form>
+            <p className={isSent ? [styles.successionText, styles.textVisible].join(' ') : [styles.successionText, styles.textHidden].join(' ')}>Wysłano</p>
             <p className={isWrongData ? [styles.wrongTransferText, styles.textVisible].join(' ') : [styles.wrongTransferText, styles.textHidden].join(' ')}>Podane dane są złe</p>
         </div>
     )

@@ -76,6 +76,12 @@
     font-size: 16px;
     font-weight: bold;
 }
+
+.successionText {
+    color: green;
+    font-size: 16px;
+    font-weight: bold;
+}
 .textHidden {
     visibility: hidden;
 }
