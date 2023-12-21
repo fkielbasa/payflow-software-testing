@@ -26,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AuthenticationService {
 
     private final UserRepository userRepository;
@@ -51,6 +51,8 @@ public class AuthenticationService {
 
     public AuthenticationRespone register(RegisterRequest request) throws ParseException {
         if (userDetailsRepository.isPhoneNumberExists(request.getPhoneNumber()))
+            return null;
+        if (userDetailsRepository.isEmailExists(request.getEmail()))
             return null;
 
         System.out.println(request.toString());

@@ -9,4 +9,7 @@ public interface UserDetailsRepository extends JpaRepository<UserDetails,Long> {
 
     @Query("SELECT EXISTS (SELECT 1 FROM UserDetails WHERE phoneNumber = ?1)")
     boolean isPhoneNumberExists(String phoneNumber);
+
+    @Query("SELECT EXISTS (SELECT 1 FROM UserDetails WHERE email = ?1)")
+    boolean isEmailExists(String email);
 }
