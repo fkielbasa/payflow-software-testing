@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "../styles/transfers/Transfers.module.css";
 import TransferAccountNumber from "../elements/TransferAccountNumber";
-import TransferBlik from "../elements/TransferBlik";
+import Blik from "../elements/Blik";
 
 function Transfers() {
     return (
@@ -11,7 +11,7 @@ function Transfers() {
             </div>
             <div className={styles.transferShowFields}>
                 <TransferAccountNumber />
-                <TransferBlik />
+                <Blik />
             </div>
         </div>
     );
