@@ -6,25 +6,25 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 
-import StartPage from "./components/startFrontPages/startPage";
-import DefaultPage from "./components/startFrontPages/defaultPage";
-import StartAccounts from "./components/startFrontPages/startAccounts";
-import StartCredits from "./components/startFrontPages/startCredits";
-import StartCards from "./components/startFrontPages/startCards";
-import StartSecure from "./components/startFrontPages/startSecure";
-import StartServices from "./components/startFrontPages/startServices";
-import Login from "./components/login/login";
-import Register from "./components/login/register";
+import StartPage from "./components/beforeLogin/pages/startFrontPages/startPage";
+import DefaultPage from "./components/beforeLogin/pages/startFrontPages/defaultPage";
+import StartAccounts from "./components/beforeLogin/pages/startFrontPages/startAccounts";
+import StartCredits from "./components/beforeLogin/pages/startFrontPages/startCredits";
+import StartCards from "./components/beforeLogin/pages/startFrontPages/startCards";
+import StartSecure from "./components/beforeLogin/pages/startFrontPages/startSecure";
+import StartServices from "./components/beforeLogin/pages/startFrontPages/startServices";
+import Login from "./components/beforeLogin/pages/login/login";
+import Register from "./components/beforeLogin/pages/login/register";
 
 
-import Home from "./components/pages/Home";
-import Transactions from "./components/pages/Transactions";
-import Transfers from "./components/pages/Transfers";
-import Credits from "./components/pages/Credits";
-import Settings from "./components/pages/Settings";
-import LogOut from "./components/pages/LogOut";
-import NotFound from "./components/pages/NotFound";
-import Cards from "./components/pages/Cards";
+import Home from "./components/afterLogin/pages/home/Home";
+import Transactions from "./components/afterLogin/pages/transactions/Transactions";
+import Transfers from "./components/afterLogin/pages/transfers/Transfers";
+import Credits from "./components/afterLogin/pages/credits/Credits";
+import Settings from "./components/afterLogin/pages/Settings";
+import LogOut from "./components/afterLogin/pages/LogOut";
+import NotFound from "./components/afterLogin/pages/notFound/NotFound";
+import Cards from "./components/afterLogin/pages/cards/Cards";
 
 
 ReactDOM.render(
