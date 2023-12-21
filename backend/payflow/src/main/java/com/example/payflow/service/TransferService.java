@@ -1,6 +1,6 @@
 package com.example.payflow.service;
 
-import com.example.payflow.DTO.PhoneTransferDTO;
+import com.example.payflow.dto.PhoneTransferDTO;
 import com.example.payflow.model.*;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.TransferRepository;

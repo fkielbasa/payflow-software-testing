@@ -46,6 +46,7 @@ public class AuthenticationService {
     private static final BigDecimal STARTER_BALANCE = new BigDecimal(100);
     private static final CurrencyType STARTER_CURRENCYTYPE = CurrencyType.PLN;
     private static final String STARTER_ACCOUNT_TYPE = "STANDARD";
+    public static final int ACCOUNT_NUMBER_LENGTH = 26;
 
     public AuthenticationRespone register(RegisterRequest request) throws ParseException {
 
@@ -73,12 +74,12 @@ public class AuthenticationService {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         formatter.setTimeZone(TimeZone.getTimeZone("Poland/Warsaw"));
 
-        String userLogin = NumberGenerator.generateLogin();
+        //String userLogin = NumberGenerator.generateLogin();
 
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .login(userLogin)
+                .login("userLogin")
                 .dateOfBirth(formatter.parse(request.getDateOfBirth()))
                 .nationality(request.getNationality())
                 .residentialAddress(residentalAddress)
@@ -104,7 +105,7 @@ public class AuthenticationService {
             accountNumberTypeAccount = AccountNumberType.INTENSIVE;
 
         var accountNumber = AccountNumber.builder()
-                .number(NumberGenerator.generateAccountNumber())
+                .number(NumberGenerator.generateAccountNumber(ACCOUNT_NUMBER_LENGTH))
                 .balance(STARTER_BALANCE)
                 .accountType(accountNumberTypeAccount)
                 .currency(STARTER_CURRENCYTYPE)
@@ -113,14 +114,12 @@ public class AuthenticationService {
         accountNumberRepository.save(accountNumber);
 
         // Mail sending with login
-        mailService.sendRegistrationMail(user.getFirstName(), userDetails.getEmail(), userLogin);
+        //mailService.sendRegistrationMail(user.getFirstName(), userDetails.getEmail(), "userLogin");
 
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationRespone.builder()
                 .token(jwtToken)
                 .build();
-
-
     }
 
     public AuthenticationRespone authenticate(AuthenticationRequest request) {
@@ -137,5 +136,4 @@ public class AuthenticationService {
                 .token(jwtToken)
                 .build();
     }
-
 }
