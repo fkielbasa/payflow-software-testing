@@ -1,5 +1,6 @@
 package com.example.payflow.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,7 @@ public class Card {
             sequenceName = "card_sequence",
             allocationSize = 1
     )
+    @JsonView()
     private Long id;
     private String cardNumber;
     private String cvv;

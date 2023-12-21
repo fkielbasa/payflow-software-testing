@@ -1,7 +1,7 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.dto.CardDTO;
-import com.example.payflow.model.Card;
+import com.example.payflow.dto.CardDTOPost;
 import com.example.payflow.service.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,8 +24,8 @@ public class CardController {
         return ResponseEntity.ok().body(card);
     }
     @PostMapping("/card")
-    public ResponseEntity<Card> createCard(@RequestBody Card card){
-        Card c = cardService.addCard(card).getBody();
+    public ResponseEntity<CardDTO> createCard(@RequestBody CardDTOPost card){
+        CardDTO c = cardService.createCard(card).getBody();
         if(card == null) {
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
         }

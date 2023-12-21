@@ -37,7 +37,7 @@ public class AccountNumberService {
         if(u.isPresent()) {
             var a = AccountNumber.builder()
                     .balance(START_BALANCE)
-                    .number(NumberGenerator.generateAccountNumber(ACCOUNT_NUMBER_LENGTH))
+                    .number(NumberGenerator.generateAccountNumber())
                     .currency(accountNumber.getCurrency())
                     .accountType(accountNumber.getAccountType())
                     .userId(u.get())
