@@ -1,7 +1,7 @@
 package com.example.payflow.service;
 
 import com.example.payflow.dto.PhoneTransferDTO;
-import com.example.payflow.DTO.TransferDTO;
+import com.example.payflow.dto.TransferDTO;
 import com.example.payflow.model.*;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.TransferRepository;
@@ -46,7 +46,7 @@ public class TransferService {
         Transfer newTransfer =
                 Transfer.builder()
                         .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
-                        .amount(phoneTransfer.amount())
+                        .amount(new BigDecimal(phoneTransfer.amount()))
                         .senderAccount(sender)
                         .receiverAccount(receiver)
                         .build();

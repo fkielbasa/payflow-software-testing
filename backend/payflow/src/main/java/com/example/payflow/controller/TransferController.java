@@ -1,7 +1,7 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.dto.PhoneTransferDTO;
-import com.example.payflow.DTO.TransferDTO;
+import com.example.payflow.dto.TransferDTO;
 import com.example.payflow.service.TransferService;
 import com.example.payflow.model.Transfer;
 import lombok.RequiredArgsConstructor;
