@@ -15,7 +15,6 @@ public class CardDTO {
     private String cardNumber;
     private LocalDate validDate;
     private String cvv;
-    private Boolean active;
-    private Boolean blocked;
+
 }
 

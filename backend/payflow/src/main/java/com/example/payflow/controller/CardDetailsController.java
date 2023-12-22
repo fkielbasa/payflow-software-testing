@@ -21,5 +21,9 @@ public class CardDetailsController {
     public ResponseEntity<CardDetails> blockCard(@PathVariable Long id){
         return cardDetailsService.blockCard(id);
     }
+    @PutMapping("/cards/{id}/unblock")
+    public ResponseEntity<CardDetails> unblockCard(@PathVariable Long id){
+        return cardDetailsService.unblockCard(id);
+    }
 
 }
