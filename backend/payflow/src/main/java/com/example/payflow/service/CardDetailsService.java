@@ -27,4 +27,14 @@ public class CardDetailsService {
         }
         return (ResponseEntity<CardDetails>) ResponseEntity.badRequest();
     }
+    public ResponseEntity<CardDetails> blockCard(Long id){
+        Optional<CardDetails> cardDetails = cardDetailsRepository.findById(id);
+        if(cardDetails.isPresent()){
+            CardDetails cd = cardDetails.get();
+            cd.setBlocked(true);
+            cardDetailsRepository.save(cd);
+            return ResponseEntity.ok().body(cd);
+        }
+        return (ResponseEntity<CardDetails>) ResponseEntity.badRequest();
+    }
 }

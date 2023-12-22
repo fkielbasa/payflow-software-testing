@@ -25,8 +25,6 @@ public class CardService {
     private final AccountNumberRepository accountNumberRepository;
     private final CardDetailsRepository cardDetailsRepository;
     private final CardDTOMapper cardDTOMapper;
-    private final boolean CARD_ACTIVE_STATUS = false;
-    private final boolean CARD_BLOCKED_STATUS = false;
 
     public List<CardDTO> getCardByAccountId(Long id){
         return cardRepository.findAll().stream()
@@ -46,8 +44,8 @@ public class CardService {
                     .accountNumberCard(ac.orElseThrow())
                     .build();
             var cd = CardDetails.builder()
-                    .active(CARD_ACTIVE_STATUS)
-                    .blocked(CARD_BLOCKED_STATUS)
+                    .active(false)
+                    .blocked(false)
                     .idCard(c)
                     .pin(null)
                     .build();

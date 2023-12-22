@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.*;
 public class CardDetailsController {
     private final CardDetailsService cardDetailsService;
 
-    @PutMapping("/card/{id}/activate")
+    @PutMapping("/cards/{id}/activate")
     public ResponseEntity<CardDetails> activeCard(@PathVariable Long id, @RequestBody CardDetailsDTO cardDetailsDTO){
         return cardDetailsService.activateCard(id,cardDetailsDTO);
     }
+    @PutMapping("/cards/{id}/block")
+    public ResponseEntity<CardDetails> blockCard(@PathVariable Long id){
+        return cardDetailsService.blockCard(id);
+    }
+
 }
