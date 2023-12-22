@@ -5,7 +5,9 @@ import com.example.payflow.dto.CardDTOPost;
 import com.example.payflow.mapper.CardDTOMapper;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.Card;
+import com.example.payflow.model.CardDetails;
 import com.example.payflow.repository.AccountNumberRepository;
+import com.example.payflow.repository.CardDetailsRepository;
 import com.example.payflow.repository.CardRepository;
 import com.example.payflow.util.NumberGenerator;
 import lombok.RequiredArgsConstructor;
@@ -21,12 +23,16 @@ import java.util.Optional;
 public class CardService {
     private final CardRepository cardRepository;
     private final AccountNumberRepository accountNumberRepository;
+    private final CardDetailsRepository cardDetailsRepository;
     private final CardDTOMapper cardDTOMapper;
+    private final boolean CARD_ACTIVE_STATUS = false;
+    private final boolean CARD_BLOCKED_STATUS = false;
 
     public List<CardDTO> getCardByAccountId(Long id){
         return cardRepository.findAll().stream()
                 .filter(card -> card.getAccountNumberCard().getId().equals(id))
-                .map(card -> new CardDTO(card.getId(), card.getCardNumber(), card.getValidDate(), card.getCvv()))
+                .map(card -> new CardDTO(card.getId(), card.getCardNumber(), card.getValidDate(),
+                        card.getCvv(),card.getCardDetails().isActive(),card.getCardDetails().isBlocked()))
                 .toList();
     }
     public ResponseEntity<CardDTO> createCard(CardDTOPost card){
@@ -39,7 +45,14 @@ public class CardService {
                     .cvv(NumberGenerator.generateCVV())
                     .accountNumberCard(ac.orElseThrow())
                     .build();
+            var cd = CardDetails.builder()
+                    .active(CARD_ACTIVE_STATUS)
+                    .blocked(CARD_BLOCKED_STATUS)
+                    .idCard(c)
+                    .pin(null)
+                    .build();
             cardRepository.save(c);
+            cardDetailsRepository.save(cd);
             CardDTO cardDTO = cardDTOMapper.apply(c);
             return ResponseEntity.ok(cardDTO);
         }

@@ -11,9 +11,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CardDTO {
-    Long id;
-    String cardNumber;
-    LocalDate validDate;
-    String cvv;
+    private Long id;
+    private String cardNumber;
+    private LocalDate validDate;
+    private String cvv;
+    private Boolean active;
+    private Boolean blocked;
 }
 

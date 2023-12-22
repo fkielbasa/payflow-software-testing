@@ -1,6 +1,5 @@
 package com.example.payflow.model;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,7 +25,7 @@ public class Card {
             sequenceName = "card_sequence",
             allocationSize = 1
     )
-    @JsonView()
+    @Column(name = "cardId")
     private Long id;
     private String cardNumber;
     private String cvv;
@@ -35,4 +34,6 @@ public class Card {
     @ManyToOne
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumberCard;
+    @OneToOne(mappedBy = "idCard")
+    private CardDetails cardDetails;
 }
