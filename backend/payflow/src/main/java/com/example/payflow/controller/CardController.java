@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,9 +27,12 @@ public class CardController {
     @PostMapping("/card")
     public ResponseEntity<CardDTO> createCard(@RequestBody CardDTOPost card){
         CardDTO c = cardService.createCard(card).getBody();
-        if(card == null) {
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+        if(card != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(c);
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(c);
+        if (c == null) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error creating card.");
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Card information is missing or invalid.");
     }
 }
