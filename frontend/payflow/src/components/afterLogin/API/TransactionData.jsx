@@ -8,6 +8,8 @@ export const TransactionData = [
         location: 'Tarnów 33-100, ul. Rynek 2',
         cardUsed: 'Karta bankomatowa',
         referenceNumber: '38766488840867774000186',
+        firstLastName: 'Grzegorz Grzegowski',
+        date: '2023-01-15',
     },
     {
         id: 2,
@@ -18,6 +20,8 @@ export const TransactionData = [
         location: 'Tarnów 33-101, ul. Królowej Jadwigi 32',
         cardUsed: 'Karta bankomatowa',
         referenceNumber: '45395054251730936000185',
+        firstLastName: 'Paweł Pawłowski',
+        date: '2023-02-28',
     },
     {
         id: 3,
@@ -28,6 +32,8 @@ export const TransactionData = [
         location: 'Tarnów 33-100, ul. Mickiewicza 8',
         cardUsed: 'Karta bankomatowa',
         referenceNumber: '87418602541979630000184',
+        firstLastName: 'Filip Filipowski',
+        date: '2023-03-10',
     },
     {
         id: 4,
@@ -38,6 +44,8 @@ export const TransactionData = [
         location: 'Kraków 30-394, ul. Skotnicka 211',
         cardUsed: 'Karta kredytowa',
         referenceNumber: '38766488840867774000154',
+        firstLastName: 'Jakub Jakubowski',
+        date: '2023-04-22',
     },
     {
         id: 5,
@@ -48,6 +56,8 @@ export const TransactionData = [
         location: 'Warszawa 00-001, ul. Podatkowa 10',
         cardUsed: 'Karta bankomatowa',
         referenceNumber: '74393687964974070000161',
+        firstLastName: 'Robert Kubica',
+        date: '2023-05-05',
     },
     {
         id: 6,
@@ -58,6 +68,8 @@ export const TransactionData = [
         location: 'Poznań 61-123, ul. Spożywcza 5',
         cardUsed: 'Karta kredytowa',
         referenceNumber: '65363169850595670000846',
+        firstLastName: 'Barack Obama',
+        date: '2023-06-18',
     },
     {
         id: 7,
@@ -68,6 +80,8 @@ export const TransactionData = [
         location: 'Gdańsk 80-001, ul. Rowerowa 15',
         cardUsed: 'Karta bankomatowa',
         referenceNumber: '85702940926517130000163',
+        firstLastName: 'Damian Dilerek',
+        date: '2023-07-29',
     },
     {
         id: 8,
@@ -78,6 +92,8 @@ export const TransactionData = [
         location: 'Kraków 30-002, ul. Księgarska 7',
         cardUsed: 'Karta bankomatowa',
         referenceNumber: '26471486685895140000186',
+        firstLastName: 'Orion Blackwood',
+        date: '2023-08-12',
     },
     {
         id: 9,
@@ -88,6 +104,8 @@ export const TransactionData = [
         location: 'Warszawa 01-002, ul. Pracownicza 22',
         cardUsed: 'Karta kredytowa',
         referenceNumber: '11709171783133377000148',
+        firstLastName: 'Zephyr Thornefield',
+        date: '2023-09-24',
 
     },
     {
@@ -99,5 +117,7 @@ export const TransactionData = [
         location: 'Wrocław 50-101, ul. Internetowa 3',
         cardUsed: 'Karta bankomatowa',
         referenceNumber: '38766488840867774047400',
+        firstLastName: 'Luciana Ravenscroft',
+        date: '2023-10-07',
     }
 ];
