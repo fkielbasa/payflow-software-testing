@@ -5,63 +5,70 @@
     align-items: center
 }
 
-.addForm {
+.submitWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+.submit {
+    background-color: var(--darkBlue);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit:hover {
+    transform: scale(1.2);
+}
+
+
+.wrapper {
+    position: relative;
+    margin:  10px auto ;
+    width: 80%;
+    display: flex;
+    align-content: center;
+}
+
+
+.inputStyle {
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--grey);
+    flex-grow: 1;
+    justify-content: center;
+}
+.inputStyle:focus {
+    border-bottom: 2px solid var(--darkBlue);
+    outline: none;
+}
+
+.inputText{
+    position: absolute;
+    /*top: 0;*/
+    left: 0;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+}
+
+.changePositionUp {
+    top: -10px;
+    font-size: 10px;
+}
+
+.changePositionDown {
+    top: 0;
+    font-size: 14px;
+}
+
+.formStyle {
+    width: 70%;
     display: flex;
     flex-direction: column;
-    width: 35vw;
-
-    /*background-color: red;*/
-}
-
-.addLabel {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-
-    /*background-color: #1687A7;*/
-}
-
-.formControl {
-    width: 60%;
-    height: 30px;
-    background-color: #D3E0EA;
-    color: black;
-    border-color: #276678;
-    border-radius: 15px;
-    margin-bottom: 12px;
-}
-
-
-.formControl:focus {
-    background-color: #F6F5F5;
-    color: #1687A7;
-    border-color: #276678;
-}
-
-.formControl::placeholder {
-    color: #1687A7;
-    border-color: #276678;
-}
-
-
-.addMargin {
-    margin-left: 5px;
-}
-
-.btnColor {
-    color: #1687A7;
-    background-color: #F6F5F5;
-    border-color: #276678;
-    border-width: 1px;
-    height: 40px;
-    border-radius: 15px;
-}
-
-.btn {
-    transition: transform 0.3s ease;
-}
-
-.btn:hover {
-    transform: scale(1.1);
+    align-content: center;
 }
