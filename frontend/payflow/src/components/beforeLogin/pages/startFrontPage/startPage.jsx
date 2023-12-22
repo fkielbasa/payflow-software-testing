@@ -1,7 +1,7 @@
-import StartNavbar from "./startNavbar";
+import StartNavbar from "../navbar/startNavbar";
 import {Outlet} from "react-router-dom";
 import StartPageCss from './startPage.module.css'
-import StartFooter from "./startFooter";
+import StartFooter from "../footer/startFooter";
 
 const StartPage = () => {
 

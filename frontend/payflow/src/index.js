@@ -6,13 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 
-import StartPage from "./components/beforeLogin/pages/startFrontPages/startPage";
-import DefaultPage from "./components/beforeLogin/pages/startFrontPages/defaultPage";
-import StartAccounts from "./components/beforeLogin/pages/startFrontPages/startAccounts";
-import StartCredits from "./components/beforeLogin/pages/startFrontPages/startCredits";
-import StartCards from "./components/beforeLogin/pages/startFrontPages/startCards";
-import StartSecure from "./components/beforeLogin/pages/startFrontPages/startSecure";
-import StartServices from "./components/beforeLogin/pages/startFrontPages/startServices";
+import StartPage from "./components/beforeLogin/pages/startFrontPage/startPage";
+import DefaultPage from "./components/beforeLogin/pages/defaultInfoPages/defaultPage";
+import StartAccounts from "./components/beforeLogin/pages/defaultInfoPages/startAccounts";
+import StartCredits from "./components/beforeLogin/pages/servicesInfo/startCredits";
+import StartCards from "./components/beforeLogin/pages/servicesInfo/startCards";
+import StartSecure from "./components/beforeLogin/pages/servicesInfo/startSecure";
+import StartServices from "./components/beforeLogin/pages/servicesInfo/startServices";
 import Login from "./components/beforeLogin/pages/login/login";
 import Register from "./components/beforeLogin/pages/login/register";
 

@@ -1,7 +1,7 @@
 import Navbar from "./components/afterLogin/elements/navbars/Navbar";
 import React from "react";
 import {Outlet, useLocation} from "react-router-dom";
-import styles from './App.module.css'
+import styles from "./App.module.css"
 import TopNavbar from "./components/afterLogin/elements/navbars/TopNavbar";
 
 function App() {

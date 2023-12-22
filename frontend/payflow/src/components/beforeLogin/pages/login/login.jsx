@@ -1,5 +1,5 @@
 import pic from "../../../../assets/beforeLogin/1.jpg";
-import DefaultPageCss from "../startFrontPages/defaultPage.module.css";
+import DefaultPageCss from "../defaultInfoPages/defaultPage.module.css";
 import styles from './login.module.css'
 
 const Login = () => {
