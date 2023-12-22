@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from "./Blik.module.css";
+import styles from "./Blik.module.css"
 
 
 const URL_GET_BLIK = "http://localhost:8080/api/blik";

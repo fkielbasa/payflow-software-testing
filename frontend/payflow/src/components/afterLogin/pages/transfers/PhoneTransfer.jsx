@@ -1,6 +1,6 @@
-import styles from '../styles/transfers/PhoneTransfer.module.css'
+import styles from './PhoneTransfer.module.css'
 import {useState} from "react";
-import {checkPhoneNumber, checkAmount} from "../utils/validation";
+import {checkPhoneNumber, checkAmount} from "../../../utils/validation"
 
 const SEND_TRANSFER_POST = "http://localhost:8080/api/v1/transfers/phone-number";
 const PhoneTransfer = () => {

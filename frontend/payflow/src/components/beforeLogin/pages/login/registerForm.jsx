@@ -1,7 +1,7 @@
 import styles from './registerForm.module.css'
 import {useEffect, useState} from "react";
 import SelectCountry from "./selectCountry";
-import {checkHomeNumber, checkZipCode, checkEmail, checkPhoneNumber, isString} from "../utils/validation";
+import {checkHomeNumber, checkZipCode, checkEmail, checkPhoneNumber, isString} from "../../../utils/validation"
 
 const RegisterForm = ({saveDataForm}) => {
     const [sameAddress, setSameAddress] = useState(false)

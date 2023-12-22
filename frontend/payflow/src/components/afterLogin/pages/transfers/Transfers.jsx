@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "../styles/transfers/Transfers.module.css";
-import TransferAccountNumber from "../elements/TransferAccountNumber";
-import Blik from "../elements/Blik";
-import PhoneTransfer from "../elements/PhoneTransfer";
+import styles from "./Transfers.module.css";
+import TransferAccountNumber from "./TransfersAccountNumber";
+import Blik from "./Blik";
+import PhoneTransfer from "./PhoneTransfer";
 
 function Transfers() {
     return (
