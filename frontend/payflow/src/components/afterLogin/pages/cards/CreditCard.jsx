@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 // import '../styles/home/Home.module.css';
 import styles from './CreditCards.module.css';
-import ChartComponent from "./ChartComponent";
+// import ChartComponent from "./ChartComponent";
 import {Link} from "react-router-dom";
 import chip from "../../../../assets/transations/chip.png";
 
@@ -104,9 +104,7 @@ function CreditCard(props) {
                     ) : null}
                 </div>
             </div>
-            <div className={styles.chartPosition}>
-                {props.graph && <ChartComponent type={props.currency}/>}
-            </div>
+
         </div>
     );
 }

@@ -1,5 +1,36 @@
+.cardsPage {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+
+    /*background-color: #512486;*/
+}
+
 .cardsContainer {
     display: flex;
     flex-direction: row;
-    width: 80vw;
+    height: 250px;
+
+    /*background-color: coral;*/
+}
+
+
+.chartContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 200px;
+
+    /*background-color: aqua;*/
+}
+
+.chartPosition {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.chartMargin {
+    margin-right: 40px;
 }
