@@ -2,39 +2,39 @@ import React, {useState} from 'react';
 import styles from "./GeneralForm.module.css";
 
 function GeneralForm(props) {
-    const [accountNumber, setAccountNumber] = useState('');
+    const [formInput, setFormInput] = useState('');
 
 
-    const [isClickedAccountNumber, setIsClickedAccountNumber] = useState(false);
+    const [isClickedFormInput, setIsClickedFormInput] = useState(false);
 
 
-    const changePositionAccountNumber = () => {
+    const changePositionFormInput = () => {
         document.getElementsByName(props.name)[0].value === ""
-            ? setIsClickedAccountNumber(!isClickedAccountNumber)
-            : setIsClickedAccountNumber(true);
+            ? setIsClickedFormInput(!isClickedFormInput)
+            : setIsClickedFormInput(true);
     };
 
 
     return (
         <div className={styles.wrapper}>
             <input
-                onFocus={() => changePositionAccountNumber()}
-                onBlur={() => changePositionAccountNumber()}
-                onChange={(event) => setAccountNumber(event.target.value)}
+                onFocus={() => changePositionFormInput()}
+                onBlur={() => changePositionFormInput()}
+                onChange={(event) => setFormInput(event.target.value)}
                 className={styles.inputStyle}
-                type="number"
+                type={props.type}
                 name={props.name}
-                maxLength="26"
-                required
+                maxLength={props.maxLength}
+                required={props.required}
             />
             <div
                 className={
-                    isClickedAccountNumber
+                    isClickedFormInput
                         ? [styles.inputText, styles.changePositionUp].join(' ')
                         : [styles.inputText, styles.changePositionDown].join(' ')
                 }
             >
-                {props.name}
+                {props.showText}
             </div>
         </div>
     );

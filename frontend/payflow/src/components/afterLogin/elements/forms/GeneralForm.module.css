@@ -7,7 +7,9 @@
 .alignContainer {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
 }
 
 .transferAccountNumberContainer {
@@ -37,6 +39,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100px;
 }
 
 .submit:hover {
@@ -88,5 +91,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-content: center;
+    justify-content: center;
+    align-items: center;
 }

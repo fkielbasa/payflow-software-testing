@@ -11,10 +11,11 @@ function Credits() {
     return (
         <div className={styles.creditsContainer}>
             <div className={styles.alignContainer}>
+                <h3>Formularz przyznania kredytu</h3>
                 <form className={styles.formStyle} onSubmit={handleSubmit}>
-                    <GeneralForm name={"Numer konta"}/>
-                    <GeneralForm name={"Odbiorca"}/>
-                    <input className={styles.submit} type="submit" value="Wyślij"/>
+                    <GeneralForm showText={"Numer konta"} name={"Numer konta"} type={"number"} maxLength={"26"} required={true}/>
+                    <GeneralForm showText={"Odbiorca"} name={"Odbiorca"} type={"text"} maxLength={"40"} required={false}/>
+                    <input className={styles.submit} type="submit" value="Prześlij"/>
                 </form>
             </div>
         </div>
