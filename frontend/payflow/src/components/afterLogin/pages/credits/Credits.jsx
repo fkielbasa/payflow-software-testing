@@ -1,14 +1,22 @@
 import React from 'react';
-import styles from "./Credits.module.css";
+import styles from "../../elements/forms/GeneralForm.module.css";
+import GeneralForm from "../../elements/forms/GeneralForm";
 
 function Credits() {
+    const handleSubmit = () => {
+        console.log('Przelew wysłany');
+        alert('Przelew wysłany');
+    };
+
     return (
         <div className={styles.creditsContainer}>
-            <h2>Weź se kurwa kredyt</h2>
-            <h4>spierdalaj</h4>
-            <h2>kredyt przyznano na 30tyś złotych, z poważaniem IPKO</h2>
-            <h1>CHUJ WAM W DUPE</h1>
-            <h4>a tak serio, nie mam pmysłu co tu może być, obgadajmy to, idę spać</h4>
+            <div className={styles.alignContainer}>
+                <form className={styles.formStyle} onSubmit={handleSubmit}>
+                    <GeneralForm name={"Numer konta"}/>
+                    <GeneralForm name={"Odbiorca"}/>
+                    <input className={styles.submit} type="submit" value="Wyślij"/>
+                </form>
+            </div>
         </div>
     );
 }

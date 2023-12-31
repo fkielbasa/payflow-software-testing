@@ -3,3 +3,14 @@
     flex-direction: column;
     width: 80vw;
 }
+
+/*.alignContainer {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    !*background-color: red;*!*/
+/*}*/
+
+.alignContainer {
+    display: flex;
+    flex-direction: column;
+}

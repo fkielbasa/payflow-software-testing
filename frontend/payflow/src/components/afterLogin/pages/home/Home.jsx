@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Home.module.css';
 
-import TransactionsContainer from "../transactions/TransactionsContainer";
+import TransactionsContainer from "../../elements/transactions/TransactionsContainer";
 import {Link} from "react-router-dom";
 
 function Home() {

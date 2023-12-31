@@ -1,0 +1,92 @@
+.creditsContainer{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+}
+
+.alignContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.transferAccountNumberContainer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+
+    /*background-color: coral;*/
+}
+
+.marginText {
+    margin-left: 10%;
+}
+
+.submitWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+.submit {
+    background-color: var(--darkBlue);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit:hover {
+    transform: scale(1.2);
+}
+
+
+.wrapper {
+    position: relative;
+    margin:  10px auto ;
+    width: 80%;
+    display: flex;
+    align-content: center;
+}
+
+
+.inputStyle {
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--grey);
+    flex-grow: 1;
+    justify-content: center;
+}
+.inputStyle:focus {
+    border-bottom: 2px solid var(--darkBlue);
+    outline: none;
+}
+
+.inputText{
+    position: absolute;
+    /*top: 0;*/
+    left: 0;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+}
+
+.changePositionUp {
+    top: -10px;
+    font-size: 10px;
+}
+
+.changePositionDown {
+    top: 0;
+    font-size: 14px;
+}
+
+.formStyle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
