@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from "./GeneralForm.module.css";
 
 function GeneralForm(props) {
     const [formInput, setFormInput] = useState('');
-
-
     const [isClickedFormInput, setIsClickedFormInput] = useState(false);
-
+    let requiredDot;
 
     const changePositionFormInput = () => {
         document.getElementsByName(props.name)[0].value === ""
@@ -14,9 +12,17 @@ function GeneralForm(props) {
             : setIsClickedFormInput(true);
     };
 
+    if (props.required) {
+        requiredDot = '*';
+    } else {
+        requiredDot = '';
+    }
 
     return (
         <div className={styles.wrapper}>
+            <div className={styles.dot}>
+                {requiredDot}
+            </div>
             <input
                 onFocus={() => changePositionFormInput()}
                 onBlur={() => changePositionFormInput()}
@@ -25,13 +31,16 @@ function GeneralForm(props) {
                 type={props.type}
                 name={props.name}
                 maxLength={props.maxLength}
+                minLength={props.minLength}
                 required={props.required}
             />
             <div
                 className={
-                    isClickedFormInput
+                    props.type === 'date'
                         ? [styles.inputText, styles.changePositionUp].join(' ')
-                        : [styles.inputText, styles.changePositionDown].join(' ')
+                        : isClickedFormInput
+                            ? [styles.inputText, styles.changePositionUp].join(' ')
+                            : [styles.inputText, styles.changePositionDown].join(' ')
                 }
             >
                 {props.showText}

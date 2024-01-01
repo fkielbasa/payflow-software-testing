@@ -40,6 +40,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     width: 100px;
+    /*justify-content: center;*/
+    /*align-items: center;*/
 }
 
 .submit:hover {
@@ -91,6 +93,35 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.hrLine {
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    border: 1px solid #1687A7;
+}
+
+.textJustify {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 5%;
+}
+
+.textMargin {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.buttonJustify {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
+}
+
+.dot {
+    position: absolute;
+    color: #1687A7;
+    margin-left: -15px;
 }
