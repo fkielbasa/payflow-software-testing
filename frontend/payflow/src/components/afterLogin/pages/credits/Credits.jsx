@@ -28,7 +28,7 @@ function Credits() {
                             {/*<div className={styles.textJustify}>*/}
                             <p className={styles.hardText}>Dane kredytobiorcy:</p>
                             {/*</div>*/}
-                            
+
                             <GeneralForm showText={"Nazwisko"} name={"surname"} type={"text"} maxLength={40}
                                          minLength={0}
                                          required={true}/>
