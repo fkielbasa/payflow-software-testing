@@ -110,10 +110,12 @@
 }
 
 .textJustify {
-    display: flex;
-    flex-direction: row;
+    /*display: flex;*/
+    /*flex-direction: row;*/
     justify-content: flex-start;
     margin-left: 5%;
+
+    /*background-color: green;*/
 }
 
 .hardText {
@@ -121,6 +123,8 @@
     margin-bottom: 0;
     font-weight: bold;
     font-size: 16px;
+
+    /*background-color: cornflowerblue;*/
 }
 
 .lightText {
@@ -139,4 +143,20 @@
     position: absolute;
     color: #1687A7;
     margin-left: -15px;
+}
+
+.twoSides {
+    display: flex;
+    flex-direction: row;
+    /*background-color: red;*/
+    justify-content: space-between;
+
+}
+
+.side {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    /*background-color: coral;*/
 }
