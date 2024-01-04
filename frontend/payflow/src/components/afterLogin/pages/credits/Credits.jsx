@@ -82,7 +82,6 @@ function Credits() {
                             <GeneralForm showText={"Średni miesięczny dochód brutto"} name={"income"} type={"number"}
                                          maxLength={40} minLength={0}
                                          required={true}/>
-
                         </div>
                     </div>
                     <hr className={styles.hardHrLine}/>
