@@ -1,6 +1,9 @@
 .containerFluid {
     display: flex;
-    height: 100vh;
+    flex-grow: 1;
+    background-color: #F6F5F5;
+    border-radius: 20px;
+    margin: 20px;
 }
 
 .appTop {

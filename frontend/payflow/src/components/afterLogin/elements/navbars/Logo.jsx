@@ -4,8 +4,8 @@ import styles from './Logo.module.css';
 
 function Logo() {
     return (
-        <div>
-            <img className={styles.image} src={mainImage} alt="Company logo" />
+        <div className={styles.image} >
+            <img src={mainImage} alt="Company logo" />
         </div>
     );
 }

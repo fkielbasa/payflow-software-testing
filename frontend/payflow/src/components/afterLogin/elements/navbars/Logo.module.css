@@ -1,4 +1,12 @@
 .image {
-    width: 80%;
-    padding: 20px;
+    /*height: 10vh;*/
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.image img {
+    width: 250px;
+    height: 10vh;
 }
