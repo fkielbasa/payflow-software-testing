@@ -47,12 +47,12 @@ function Navbar() {
                         </Link>
                     </div>
 
-                    <nav>
+                    <nav className={styles.nav}>
                         <ul className={styles.ulList}>
                             <li className={styles.liList}>
                                 <Link to='/home' className={`${styles.aLink} ${isHome ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isHome ? houseFill : house} alt="Home"/>
-                                    Strona główna
+                                    <p>Strona główna</p>
                                 </Link>
                             </li>
                             <li className={styles.liList}>

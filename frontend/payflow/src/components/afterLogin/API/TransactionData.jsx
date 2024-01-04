@@ -108,16 +108,16 @@ export const TransactionData = [
         date: '2023-09-24',
 
     },
-    {
-        id: 10,
-        amount: 22.60,
-        type: 'negative',
-        currency: 'EUR',
-        name: 'Opłata za usługi internetowe',
-        location: 'Wrocław 50-101, ul. Internetowa 3',
-        cardUsed: 'Karta bankomatowa',
-        referenceNumber: '38766488840867774047400',
-        firstLastName: 'Luciana Ravenscroft',
-        date: '2023-10-07',
-    }
+    // {
+    //     id: 10,
+    //     amount: 22.60,
+    //     type: 'negative',
+    //     currency: 'EUR',
+    //     name: 'Opłata za usługi internetowe',
+    //     location: 'Wrocław 50-101, ul. Internetowa 3',
+    //     cardUsed: 'Karta bankomatowa',
+    //     referenceNumber: '38766488840867774047400',
+    //     firstLastName: 'Luciana Ravenscroft',
+    //     date: '2023-10-07',
+    // }
 ];
