@@ -25,10 +25,7 @@ function Credits() {
                     <hr className={styles.hardHrLine}/>
                     <div className={styles.twoSides}>
                         <div className={styles.side}>
-                            {/*<div className={styles.textJustify}>*/}
                             <p className={styles.hardText}>Dane kredytobiorcy:</p>
-                            {/*</div>*/}
-
                             <GeneralForm showText={"Nazwisko"} name={"surname"} type={"text"} maxLength={40}
                                          minLength={0}
                                          required={true}/>
@@ -50,27 +47,64 @@ function Credits() {
                                          minLength={0} required={true}/>
                             <GeneralForm showText={"Ważny do"} name={"identityCardExpired"} type={"date"} maxLength={40}
                                          minLength={0} required={true}/>
+                            <GeneralForm showText={"Stan cywilny"} name={"maritalStatus"} type={"text"}
+                                         maxLength={40}
+                                         minLength={0} required={true}/>
                         </div>
-                        {/*<hr className={styles.lightHrLine}/>*/}
                         <div className={styles.side}>
+                            <p className={styles.hardText}>Dochody Wnioskodawny:</p>
+                            <GeneralForm showText={"Nazwa zakładu pracy/przedsiębiorstwa/nr. świadczenia"}
+                                         name={"workName"} type={"text"} maxLength={80}
+                                         minLength={0} required={true}/>
+                            <GeneralForm showText={"Numer NIP"} name={"nip"} type={"number"} maxLength={20}
+                                         minLength={0}
+                                         required={true}/>
+                            <GeneralForm showText={"Kod pocztowy miejsca pracy"} name={"workPostcardCode"} type={"text"}
+                                         maxLength={10} minLength={0}
+                                         required={true}/>
+                            <GeneralForm showText={"Miejscowość"} name={"placeOfWork"} type={"text"} maxLength={40}
+                                         minLength={0}
+                                         required={true}/>
+                            <GeneralForm showText={"Ulica"} name={"streetWork"} type={"text"} maxLength={40}
+                                         minLength={0}
+                                         required={true}/>
+                            <GeneralForm showText={"Nr. domu/mieszkania"} name={"workHouseApartmentNumber"}
+                                         type={"text"}
+                                         maxLength={40}
+                                         minLength={0} required={true}/>
+                            <GeneralForm showText={"Nr. telefonu"} name={"workPhoneNumber"} type={"number"}
+                                         maxLength={10}
+                                         minLength={0}
+                                         required={true}/>
+                            <GeneralForm showText={"Stanowisko"} name={"position"} type={"text"} maxLength={40}
+                                         minLength={0}
+                                         required={true}/>
+                            <GeneralForm showText={"Średni miesięczny dochód brutto"} name={"income"} type={"number"}
+                                         maxLength={40} minLength={0}
+                                         required={true}/>
 
-                            {/*<div className={styles.textJustify}>*/}
-                            <p className={styles.hardText}>Dane zamieszkania:</p>
-                            {/*</div>*/}
-                            <GeneralForm showText={"Kod pocztowy"} name={"zipCode"} type={"text"} maxLength={10}
-                                         minLength={0} required={true}/>
-                            <GeneralForm showText={"Miejscowość"} name={"residence"} type={"text"} maxLength={40}
-                                         minLength={0} required={true}/>
-                            <GeneralForm showText={"Ulica"} name={"street"} type={"text"} maxLength={40}
-                                         minLength={0} required={true}/>
-                            <GeneralForm showText={"Nr. domu/mieszkania"} name={"houseApartmentNumber"} type={"number"}
-                                         maxLength={40}
-                                         minLength={0} required={true}/>
-                            <GeneralForm showText={"Okres zamieszkania od"} name={"residenceFrom"} type={"date"}
-                                         maxLength={40}
-                                         minLength={0} required={true}/>
                         </div>
                     </div>
+                    <hr className={styles.hardHrLine}/>
+                    <p className={styles.hardText}>Dane zamieszkania:</p>
+                    <GeneralForm showText={"Kod pocztowy"} name={"zipCode"} type={"text"} maxLength={10}
+                                 minLength={0} required={true}/>
+                    <GeneralForm showText={"Miejscowość"} name={"residence"} type={"text"} maxLength={40}
+                                 minLength={0} required={true}/>
+                    <GeneralForm showText={"Ulica"} name={"street"} type={"text"} maxLength={40}
+                                 minLength={0} required={true}/>
+                    <GeneralForm showText={"Nr. domu/mieszkania"} name={"houseApartmentNumber"} type={"text"}
+                                 maxLength={40}
+                                 minLength={0} required={true}/>
+                    <GeneralForm showText={"Okres zamieszkania od"} name={"residenceFrom"} type={"date"}
+                                 maxLength={40}
+                                 minLength={0} required={true}/>
+                    <hr className={styles.hardHrLine}/>
+                    <p className={styles.hardText}>Obciążenia wnioskodawcy:</p>
+                    <GeneralForm showText={"Ilość osób na utrzymaniu"} name={"maintenance"} type={"number"} maxLength={20}
+                                 minLength={0} required={true}/>
+                    <GeneralForm showText={"Wysokość miesięcznych wydatków"} name={"spending"} type={"number"} maxLength={40}
+                                 minLength={0} required={true}/>
                     <div className={styles.buttonJustify}>
                         <input className={styles.submit} type="submit" value="Prześlij"/>
                     </div>
