@@ -19,7 +19,7 @@ function TransactionsContainer({ screenName, maxPerPage }) {
             {sortedTransactions.map(transaction => (
                 <div>
                     <TransactionItem key={transaction.id} transaction={transaction} screenName={screenName} />
-                    <TransactionItem key={transaction.id+1} transaction={transaction} screenName={screenName} />
+                    {/*<TransactionItem key={transaction.id+1} transaction={transaction} screenName={screenName} />*/}
                 </div>
             ))}
         </div>

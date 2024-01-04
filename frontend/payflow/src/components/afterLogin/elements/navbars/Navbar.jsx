@@ -84,22 +84,22 @@ function Navbar() {
                         </ul>
                     </nav>
                 </div>
-                {/*<nav>*/}
-                {/*    <ul className={styles.ulList}>*/}
-                {/*        <li className={styles.liList}>*/}
-                {/*            <Link to='/settings' className={`${styles.aLink} ${isSettings ? 'active' : ''}`}>*/}
-                {/*                <img className={styles.navImages} src={isSettings ? settingsFill : settings} alt="settings"/>*/}
-                {/*                Ustawienia*/}
-                {/*            </Link>*/}
-                {/*        </li>*/}
-                {/*        <li className={styles.liList}>*/}
-                {/*            <Link to='/logOut' className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}>*/}
-                {/*                <img className={styles.navImages} src={isLogOut ? logOutFill : logOut} alt="logOut"/>*/}
-                {/*                Wyloguj*/}
-                {/*            </Link>*/}
-                {/*        </li>*/}
-                {/*    </ul>*/}
-                {/*</nav>*/}
+                <nav>
+                    <ul className={styles.ulList}>
+                        <li className={styles.liList}>
+                            <Link to='/settings' className={`${styles.aLink} ${isSettings ? 'active' : ''}`}>
+                                <img className={styles.navImages} src={isSettings ? settingsFill : settings} alt="settings"/>
+                                Ustawienia
+                            </Link>
+                        </li>
+                        <li className={styles.liList}>
+                            <Link to='/logOut' className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}>
+                                <img className={styles.navImages} src={isLogOut ? logOutFill : logOut} alt="logOut"/>
+                                Wyloguj
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     );
