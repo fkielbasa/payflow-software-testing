@@ -30,7 +30,7 @@ public class CardService {
         return cardRepository.findAll().stream()
                 .filter(card -> card.getAccountNumberCard().getId().equals(id))
                 .map(card -> new CardDTO(card.getId(), card.getCardNumber(), card.getValidDate(),
-                        card.getCvv()))
+                        card.getCvv(),card.getCardDetails().isActive(),card.getCardDetails().isBlocked()))
                 .toList();
     }
     public ResponseEntity<CardDTO> createCard(CardDTOPost card){
@@ -56,5 +56,8 @@ public class CardService {
         }
         return (ResponseEntity<CardDTO>) ResponseEntity.badRequest();
     }
+    public void deleteCardById(Long id) {
+        cardDetailsRepository.deleteById(id);
+        cardRepository.deleteById(id);
+    }
 }
-

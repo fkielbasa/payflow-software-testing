@@ -34,6 +34,6 @@ public class Card {
     @ManyToOne
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumberCard;
-    @OneToOne(mappedBy = "idCard")
+    @OneToOne(mappedBy = "idCard",cascade = CascadeType.ALL)
     private CardDetails cardDetails;
 }
