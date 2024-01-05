@@ -8,9 +8,13 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class CardDTO {
+    @NonNull
     private Long id;
+    @NonNull
     private String cardNumber;
+    @NonNull
     private LocalDate validDate;
+    @NonNull
     private String cvv;
     private boolean isActive;
     private boolean isBlocked;
