@@ -1,6 +1,8 @@
 .balance {
-    width: 320px;
-    height: 175px;
+    /*width: 320px;*/
+    /*height: 175px;*/
+    /*width: 30%;*/
+    /*height: 73%;*/
     border-radius: 8px;
     margin-right: 18px;
     margin-top: 5vh;
@@ -8,6 +10,7 @@
     flex-direction: column;
     margin-bottom: 150px;
     transition: transform 0.3s ease, z-index 0.3s ease;
+    text-decoration: none;
 }
 
 .balanceText {
