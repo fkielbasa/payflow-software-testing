@@ -36,7 +36,7 @@ function Home() {
             >
                 <div className={styles.columnInfo}>
                     <FaUser />
-                    <p>{user.name}</p>
+                    <p>{user != null ? user.name : "string"}</p>
                     <IoIosArrowDown />
                 </div>
                 {isHover && (

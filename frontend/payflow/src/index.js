@@ -26,6 +26,7 @@ import LogOut from "./components/afterLogin/pages/LogOut";
 import NotFound from "./components/afterLogin/pages/notFound/NotFound";
 import Cards from "./components/afterLogin/pages/cards/Cards";
 import {isExpired} from "react-jwt";
+import CardDetails from "./components/afterLogin/pages/cards/CardDetails";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -47,12 +48,14 @@ ReactDOM.render(
                     {/*<Route path="*" element={<NotFound/>}/>*/}
 
                 {/*<Route path="/home" element={<App/>}>*/}
-                <Route path="/" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/login" /> : <App/>}>
+                {/*<Route path="/" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/login" /> : <App/>}>*/}
+                <Route path="/" element={<App/>}>
                     <Route path="/home" element={<Home/>} />
                     <Route path="transactions" element={<Transactions/>} />
                     <Route path="transfers" element={<Transfers/>} />
                     <Route path="credits" element={<Credits/>} />
                     <Route path="cards" element={<Cards/>} />
+                    <Route path="cards/:id" element={<CardDetails/>} />
                     <Route path="settings" element={<Settings/>} />
                     <Route path="logOut" element={<LogOut/>} />
                     <Route path="*" element={<NotFound/>}/>

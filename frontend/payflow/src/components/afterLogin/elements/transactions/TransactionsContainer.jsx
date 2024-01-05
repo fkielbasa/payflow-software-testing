@@ -1,15 +1,44 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './TransictionsContainer.module.css';
 import circleMinus from "../../../../assets/transations/circleMinus.png";
 import circlePlus from "../../../../assets/transations/circlePlus.png";
 import {TransactionData} from "../../API/TransactionData";
+import axios from "axios";
 
 function TransactionsContainer({ screenName, maxPerPage }) {
+
+
+    const id = 1;
+
+    useEffect(() => {
+        const getData = () => {
+            axios.get(
+                `http://localhost:8080/api/v1/account-numbers/${id}/transfers`,
+                {headers: {
+                        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Mzg5NjI4MCIsInVzZXJJZCI6IjIiLCJsb2dpbiI6IjQzODk2MjgwIiwibmFtZSI6InRlc3QiLCJpYXQiOjE3MDQ0MTg1OTgsImV4cCI6MTcwNTAyMzM5OH0.hL67cqkOGtRI4haIzGnjft4XztLD-RDw4Fj3OQ-cspA"
+                    }}
+            )
+                .then((response) => {
+                    console.log('response.data', response.data);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+
+        getData();
+    }, []);
+
+
+
+
+
+
     const sortedTransactions = [...TransactionData]
         .sort((a, b) => {
-            console.log('a.date:', a.date);
-            console.log('b.date:', b.date);
-            console.log('new Date(b.date) - new Date(a.date):', new Date(b.date) - new Date(a.date));
+            // console.log('a.date:', a.date);
+            // console.log('b.date:', b.date);
+            // console.log('new Date(b.date) - new Date(a.date):', new Date(b.date) - new Date(a.date));
             return new Date(b.date) - new Date(a.date);
         })
         .slice(0, maxPerPage);
