@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 
 
 import StartPage from "./components/beforeLogin/pages/startFrontPage/startPage";
@@ -25,7 +25,7 @@ import Settings from "./components/afterLogin/pages/Settings";
 import LogOut from "./components/afterLogin/pages/LogOut";
 import NotFound from "./components/afterLogin/pages/notFound/NotFound";
 import Cards from "./components/afterLogin/pages/cards/Cards";
-
+import {isExpired} from "react-jwt";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -47,7 +47,7 @@ ReactDOM.render(
                     {/*<Route path="*" element={<NotFound/>}/>*/}
 
                 {/*<Route path="/home" element={<App/>}>*/}
-                <Route path="/" element={<App/>}>
+                <Route path="/" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/login" /> : <App/>}>
                     <Route path="/home" element={<Home/>} />
                     <Route path="transactions" element={<Transactions/>} />
                     <Route path="transfers" element={<Transfers/>} />

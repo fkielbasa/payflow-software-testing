@@ -43,7 +43,6 @@ public class AuthenticationService {
 
     private final AuthenticationManager manager;
 
-    // TODO check it later and change it to 0 in production
     private static final BigDecimal STARTER_BALANCE = new BigDecimal(100);
     private static final CurrencyType STARTER_CURRENCYTYPE = CurrencyType.PLN;
     private static final String STARTER_ACCOUNT_TYPE = "STANDARD";
@@ -85,7 +84,7 @@ public class AuthenticationService {
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
-                .login("userLogin")
+                .login(userLogin)
                 .dateOfBirth(formatter.parse(request.getDateOfBirth()))
                 .nationality(request.getNationality())
                 .residentialAddress(residentalAddress)

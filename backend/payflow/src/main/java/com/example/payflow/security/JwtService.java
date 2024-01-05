@@ -2,6 +2,9 @@ package com.example.payflow.security;
 
 
 
+import com.example.payflow.model.User;
+import com.example.payflow.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import io.jsonwebtoken.Claims;
@@ -18,7 +21,10 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
+@RequiredArgsConstructor
 public class JwtService {
+
+    private final UserRepository repository;
 
     @Value("${jwt.secret_key}")
     private String SECRET_KEY;
@@ -44,10 +50,14 @@ public class JwtService {
             Map<String, Object> extraClaims,
             UserDetails userDetails
     ){
+        User user = repository.findByLogin(userDetails.getUsername()).get();
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
+                .claim("userId",user.getId().toString())
+                .claim("login",user.getLogin())
+                .claim("name",user.getFirstName())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
