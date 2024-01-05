@@ -5,12 +5,22 @@ import { FaUser } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { TbLogout } from "react-icons/tb";
 import { IoIosArrowDown } from "react-icons/io";
+import {user} from "../../../../config/authConfig";
+import {useNavigate} from "react-router-dom";
 
 function Home() {
+    let navigate = useNavigate()
+
     const [isHover, setIsHover] = useState(false)
 
     const handleHover = () => {
         setIsHover(!isHover)
+    }
+
+    const logout = () => {
+        localStorage.clear()
+        navigate('/home')
+        window.location.reload()
     }
 
     return (
@@ -22,18 +32,18 @@ function Home() {
             >
                 <div className={styles.columnInfo}>
                     <FaUser />
-                    <p>John</p>
+                    <p>{user.name}</p>
                     <IoIosArrowDown />
                 </div>
                 {isHover && (
                     <div className={styles.accountInfo}>
                         <div className={styles.columnInfo}>
                             <IoMdSettings />
-                            <p>ustawienia</p>
+                            <p>Ustawienia</p>
                         </div>
                         <div className={styles.columnInfo}>
                             <TbLogout />
-                            <p>wyloguj</p>
+                            <p onClick={logout}>Wyloguj</p>
                         </div>
                     </div>
                 )}
