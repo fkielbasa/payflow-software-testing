@@ -49,33 +49,33 @@ function Navbar() {
 
                     <nav className={styles.nav}>
                         <ul className={styles.ulList}>
-                            <li className={styles.liList}>
+                            <li className={isHome ? [styles.liList, styles.selected].join(' ') : styles.liList}>
                                 <Link to='/home' className={`${styles.aLink} ${isHome ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isHome ? houseFill : house} alt="Home"/>
                                     <p>Strona główna</p>
                                 </Link>
                             </li>
-                            <li className={styles.liList}>
+                            <li className={isTransactions ? [styles.liList, styles.selected].join(' ') : styles.liList}>
                                 <Link to='/transactions' className={`${styles.aLink} ${isTransactions ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isTransactions ? transactionsFill : transactions}
                                          alt="transactions"/>
                                     Transakcje
                                 </Link>
                             </li>
-                            <li className={styles.liList}>
+                            <li className={isTransfers ? [styles.liList, styles.selected].join(' ') : styles.liList}>
                                 <Link to='/transfers' className={`${styles.aLink} ${isTransfers ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isTransfers ? transfersFill : transfers}
                                          alt="transfers"/>
                                     Przelewy
                                 </Link>
                             </li>
-                            <li className={styles.liList}>
+                            <li className={isCredits ? [styles.liList, styles.selected].join(' ') : styles.liList}>
                                 <Link to="/credits" className={`${styles.aLink} ${isCredits ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isCredits ? creditsFill : credits} alt="credits"/>
                                     Kredyty
                                 </Link>
                             </li>
-                            <li className={styles.liList}>
+                            <li className={isCards ? [styles.liList, styles.selected].join(' ') : styles.liList}>
                                 <Link to="/cards" className={`${styles.aLink} ${isCards ? 'active' : ''}`}>
                                     <img className={styles.navImages} src={isCards ? cardsFill : cards} alt="cards"/>
                                     Karty

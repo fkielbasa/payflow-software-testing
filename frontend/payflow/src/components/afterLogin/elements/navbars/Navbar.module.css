@@ -32,6 +32,11 @@
     font-weight: bold;
 }
 
+.selected {
+    border-left: 3px solid black;
+    font-weight: bold;
+}
+
 .aLink {
     text-decoration: none;
     width: 70%;
