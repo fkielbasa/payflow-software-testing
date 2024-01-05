@@ -6,6 +6,7 @@ import bank from '../../../../assets/beforeLogin/banking.png'
 import card from '../../../../assets/beforeLogin/debit-card.png'
 import RegisterForm from "./registerForm";
 import PasswordForm from "./passwordForm";
+import axios from "axios";
 
 
 
@@ -23,11 +24,26 @@ const Register = () => {
     const [password, setPassword] = useState('')
 
     const registerData = {
-        dataForm : {
-            ...dataForm,
-            accountType: isStandardAccount ? 'STANDARD' : 'INTENSIVE',
-            password: password
-        }
+        firstName: dataForm.firstName,
+        lastName: dataForm.lastName,
+        dateOfBirth: dataForm.dateOfBirth,
+        nationality: dataForm.nationality,
+        email: dataForm.email,
+        phoneNumber: dataForm.phoneNumber,
+        zipCode: dataForm.zipCode,
+        city: dataForm.city,
+        street: dataForm.street,
+        homeNumber: dataForm.homeNumber,
+        apartmentNumber: dataForm.apartmentNumber,
+        countryAddress: dataForm.countryAddress,
+        zipCodeCorrespondence: dataForm.zipCodeCorrespondence,
+        cityCorrespondence: dataForm.cityCorrespondence,
+        streetCorrespondence: dataForm.streetCorrespondence,
+        homeNumberCorrespondence: dataForm.homeNumberCorrespondence,
+        apartmentNumberCorrespondence: dataForm.apartmentNumberCorrespondence,
+        countryAddressCorrespondence: dataForm.countryAddressCorrespondence,
+        accountType: isStandardAccount ? 'STANDARD' : 'INTENSIVE',
+        password: password
     }
 
     const selectAccount = (choice) => {
@@ -82,15 +98,12 @@ const Register = () => {
 
 
     const handleOpenAccount = () => {
-        console.log(JSON.stringify(registerData))
-
-        fetch(REGISTER_URL, {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(registerData.dataForm)
-        }).then((response) => response.json())
-            .then((data) => {
-                console.log(data)
+        axios
+            .post(REGISTER_URL,
+                registerData
+            )
+            .then((response) => {
+                console.log(response.data)
                 changePage()
             })
             .catch(er => console.log(er))
