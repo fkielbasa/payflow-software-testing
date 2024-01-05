@@ -23,6 +23,10 @@ function Home() {
         window.location.reload()
     }
 
+    const showSettings = () => {
+      alert("Nie ma i nie będzie")
+    }
+
     return (
         <div className={styles.topNavbar}>
             <div
@@ -37,13 +41,19 @@ function Home() {
                 </div>
                 {isHover && (
                     <div className={styles.accountInfo}>
-                        <div className={styles.columnInfo}>
+                        <div
+                            className={styles.columnInfo}
+                            onClick={showSettings}
+                        >
                             <IoMdSettings />
                             <p>Ustawienia</p>
                         </div>
-                        <div className={styles.columnInfo}>
+                        <div
+                            className={styles.columnInfo}
+                            onClick={logout}
+                        >
                             <TbLogout />
-                            <p onClick={logout}>Wyloguj</p>
+                            <p>Wyloguj</p>
                         </div>
                     </div>
                 )}

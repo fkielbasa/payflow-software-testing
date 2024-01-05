@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import styles from './Navbar.module.css';
 
 import house from "../../../../assets/navbar/home/houses.svg";
@@ -27,6 +27,7 @@ import Logo from "./Logo";
 
 function Navbar() {
     const location = useLocation();
+    let navigate = useNavigate()
 
     const isHome = location.pathname === '/home';
     const isTransactions = location.pathname === '/transactions';
@@ -36,6 +37,16 @@ function Navbar() {
     const isTransfers = location.pathname === '/transfers';
     const isSettings = location.pathname === '/settings';
     const isLogOut = location.pathname === '/logOut';
+
+    const logout = () => {
+        localStorage.clear()
+        navigate('/home')
+        window.location.reload()
+    }
+
+    const showSettings = () => {
+        alert("Nie ma i nie będzie")
+    }
 
     return (
         <div className={styles.verticalNavbar}>
@@ -87,13 +98,21 @@ function Navbar() {
                 <nav>
                     <ul className={styles.ulList}>
                         <li className={styles.liList}>
-                            <Link to='/settings' className={`${styles.aLink} ${isSettings ? 'active' : ''}`}>
+                            <Link
+
+                                className={`${styles.aLink} ${isSettings ? 'active' : ''}`}
+                                onClick={showSettings}
+                            >
                                 <img className={styles.navImages} src={isSettings ? settingsFill : settings} alt="settings"/>
                                 Ustawienia
                             </Link>
                         </li>
                         <li className={styles.liList}>
-                            <Link to='/logOut' className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}>
+                            <Link
+                                
+                                className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}
+                                onClick={logout}
+                            >
                                 <img className={styles.navImages} src={isLogOut ? logOutFill : logOut} alt="logOut"/>
                                 Wyloguj
                             </Link>
