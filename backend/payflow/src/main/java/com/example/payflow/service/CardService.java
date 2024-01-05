@@ -2,7 +2,7 @@ package com.example.payflow.service;
 
 import com.example.payflow.dto.CardDTO;
 import com.example.payflow.dto.CardDTOPost;
-import com.example.payflow.mapper.CardDTOMapper;
+import com.example.payflow.DTO.mapper.CardDTOMapper;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.Card;
 import com.example.payflow.model.CardDetails;

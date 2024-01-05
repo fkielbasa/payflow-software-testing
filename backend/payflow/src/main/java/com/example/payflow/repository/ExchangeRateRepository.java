@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public class ExchangeRateRepository {
 
-    public static final String EXCHANGE_RATES_DB = "src/main/resources/static/exchangeRates.json";
+    public static final String EXCHANGE_RATES_DB = "E:\\PayFlow\\payflow\\backend\\payflow\\src\\main\\resources\\static\\exchangeRates.json";
     ObjectMapper mapper = new ObjectMapper();
 
     public List<ExchangeRate> findAll(){
