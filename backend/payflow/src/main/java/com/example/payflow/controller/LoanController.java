@@ -9,35 +9,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class LoanController {
 
     private final LoanService loanService;
 
-    @GetMapping("/loans")
-    public List<Loan> getAllLoans() {
-        return loanService.getLoan();
-    }
-
-    @GetMapping("/loan/{id}")
-    public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
-        Loan loan = loanService.getLoanById(id);
-        return ResponseEntity.ok(loan);
-    }
-
-    @GetMapping("/account_numbers/{id}/loans")
+    @GetMapping("/numbers/{id}/loans")
     public List<Loan> getLoansByAccountNumberId(@PathVariable Long id){
         return loanService.getLoansByAccountNumberId(id);
     }
 
-//    @GetMapping("loan/get")
-//    public List<Loan> getLoans(){
-//        return loanService.getLoan().stream()
-//                .map(loanService.ln())
-//                .collect(Collectors.toList());
-//    }
-
-    @PostMapping("/loan/add")
+    @PostMapping("/loan")
     public ResponseEntity<Loan> addLoan(@RequestBody Loan loan) {
         return loanService.addLoan(loan);
     }

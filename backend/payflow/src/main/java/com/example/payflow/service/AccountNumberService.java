@@ -5,6 +5,7 @@ import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.User;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.UserRepository;
+import com.example.payflow.util.NumberGenerator;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -35,8 +36,8 @@ public class AccountNumberService {
         Optional<User> u = userRepository.findById(accountNumber.getUserId().getId());
         if(u.isPresent()) {
             var a = AccountNumber.builder()
-                    .balance(accountNumber.getBalance())
-                    .number(accountNumber.getNumber())
+                    .balance(START_BALANCE)
+                    .number(NumberGenerator.generateAccountNumber())
                     .currency(accountNumber.getCurrency())
                     .accountType(accountNumber.getAccountType())
                     .userId(u.get())

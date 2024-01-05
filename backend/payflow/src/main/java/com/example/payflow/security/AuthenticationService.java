@@ -151,9 +151,9 @@ public class AuthenticationService {
     }
 
     public String getNewNumber(){
-        String number = NumberGenerator.generateAccountNumber(ACCOUNT_NUMBER_LENGTH);
+        String number = NumberGenerator.generateAccountNumber();
         if (!(isAccountNumberValid(number))){
-            return NumberGenerator.generateAccountNumber(ACCOUNT_NUMBER_LENGTH);
+            return NumberGenerator.generateAccountNumber();
         }
         return number;
     }

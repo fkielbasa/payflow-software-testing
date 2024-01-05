@@ -25,6 +25,7 @@ public class Card {
             sequenceName = "card_sequence",
             allocationSize = 1
     )
+    @Column(name = "cardId")
     private Long id;
     private String cardNumber;
     private String cvv;
@@ -33,4 +34,6 @@ public class Card {
     @ManyToOne
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumberCard;
+    @OneToOne(mappedBy = "idCard",cascade = CascadeType.ALL)
+    private CardDetails cardDetails;
 }
