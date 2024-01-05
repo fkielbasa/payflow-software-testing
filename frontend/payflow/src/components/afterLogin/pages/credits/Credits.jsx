@@ -104,6 +104,14 @@ function Credits() {
                                  minLength={0} required={true}/>
                     <GeneralForm showText={"Wysokość miesięcznych wydatków"} name={"spending"} type={"number"} maxLength={40}
                                  minLength={0} required={true}/>
+                    <GeneralForm showText={"Okres trwania kredytu (msc.)"} name={"startDate"} type={"number"} maxLength={40}
+                                 minLength={0} required={true}/>
+                    <GeneralForm showText={"Numer rachunku obciążenia"} name={"ra"} type={"number"} maxLength={40}
+                                 minLength={0} required={true}/>
+                    <GeneralForm showText={"Wysokość kredytu"} name={"creditBalance"} type={"number"} maxLength={40}
+                                 minLength={0} required={true}/>
+                    <GeneralForm showText={"Oprocentowanie"} name={"op"} type={"number"} maxLength={40}
+                                 minLength={0} required={true}/>
                     <div className={styles.buttonJustify}>
                         <input className={styles.submit} type="submit" value="Prześlij"/>
                     </div>

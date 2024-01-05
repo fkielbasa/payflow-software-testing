@@ -25,6 +25,7 @@ import Settings from "./components/afterLogin/pages/Settings";
 import LogOut from "./components/afterLogin/pages/LogOut";
 import NotFound from "./components/afterLogin/pages/notFound/NotFound";
 import Cards from "./components/afterLogin/pages/cards/Cards";
+import CardDetails from "./components/afterLogin/pages/cards/CardDetails";
 
 
 ReactDOM.render(
@@ -53,6 +54,7 @@ ReactDOM.render(
                     <Route path="transfers" element={<Transfers/>} />
                     <Route path="credits" element={<Credits/>} />
                     <Route path="cards" element={<Cards/>} />
+                    <Route path="cards/:id" element={<CardDetails/>} />
                     <Route path="settings" element={<Settings/>} />
                     <Route path="logOut" element={<LogOut/>} />
                     <Route path="*" element={<NotFound/>}/>
