@@ -12,8 +12,24 @@ function CreditCard(props) {
     let currentBalanceText;
     let backgroundStyles;
 
+    let sizeStyles;
+    if (props.size === 'small') {
+        sizeStyles = {
+            width: '320px',
+            height: '175px',
+        };
+    } else if (props.size === 'big') {
+        sizeStyles = {
+            width: '640px',
+            height: '350px',
+        };
+    }
+
     // account number formatting
     const accountNumberConst = formatAccountNumber(props.accountNumber);
+
+    const toValue = props.to === '/cards' ? '/cards' : `/cards/${props.id}`;
+
     function formatAccountNumber(accountNumber) {
         const accountString = accountNumber.toString();
 
@@ -67,10 +83,14 @@ function CreditCard(props) {
     }
 
     return (
-        <div style={backgroundStyles}
-             className={`${styles.balance} ${isHovered ? styles.hovered : ''}`}
-             onMouseEnter={() => setIsHovered(true)}
-             onMouseLeave={() => setIsHovered(false)}
+        <Link
+            style={{ ...backgroundStyles, ...sizeStyles }} // Łącz style tła i rozmiaru
+              className={`${styles.balance} ${isHovered ? styles.hovered : ''}`}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              to={toValue}
+
+
         >
             <div className={styles.balanceText}>
                 <div className={styles.directionText}>
@@ -90,7 +110,7 @@ function CreditCard(props) {
                     <div className={styles.marginTop}>
                         <div className={styles.directionText}>
                             <div className={styles.textLeft}>
-                                <p className={styles.textDecoration}>{props.Owner}</p>
+                                <p className={styles.textDecoration}>{props.owner}</p>
                             </div>
                             <div className={styles.marginLeft}>
                                 <p className={styles.textDecoration}>{props.expirationMonth}/{props.expirationYear}</p>
@@ -100,12 +120,12 @@ function CreditCard(props) {
                 </div>
                 <div>
                     {props.details ? (
-                        <Link className={styles.accountDetails} to="/cards">Szczegóły konta >></Link>
+                        <p className={styles.accountDetails}>Szczegóły konta >></p>
                     ) : null}
                 </div>
             </div>
 
-        </div>
+        </Link>
     );
 }
 
