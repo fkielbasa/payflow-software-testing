@@ -15,6 +15,7 @@ public class TransferResultDTOMapper implements Function<Transfer, TransferResul
                 transfer.getId(),
                 transfer.getTransferDate().toString(),
                 transfer.getAmount().toString(),
+                transfer.getSenderAccount().getCurrency().toString(),
                 transfer.getDescription(),
                 transfer.getSenderAccount().getId(),
                 transfer.getSenderAccount().getUserId().getFirstName() + " " + transfer.getSenderAccount().getUserId().getLastName(),

@@ -13,18 +13,19 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class ExchangeRateRepository {
+public interface ExchangeRateRepository extends JpaRepository<ExchangeRate, Long> {
 
-    public static final String EXCHANGE_RATES_DB = "E:\\PayFlow\\payflow\\backend\\payflow\\src\\main\\resources\\static\\exchangeRates.json";
-    ObjectMapper mapper = new ObjectMapper();
+//    public static final String EXCHANGE_RATES_DB = "E:\\PayFlow\\payflow\\backend\\payflow\\src\\main\\resources\\static\\exchangeRates.json";
+//    ObjectMapper mapper = new ObjectMapper();
+//
+//    public List<ExchangeRate> findAll(){
+//        try {
+//            ExchangeRate[] rates = mapper.readValue(new File(EXCHANGE_RATES_DB), ExchangeRate[].class);
+//            return Arrays.stream(rates).toList();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e.getMessage());
+//        }
+//    }
 
-    public List<ExchangeRate> findAll(){
-        try {
-            ExchangeRate[] rates = mapper.readValue(new File(EXCHANGE_RATES_DB), ExchangeRate[].class);
-            return Arrays.stream(rates).toList();
-        } catch (IOException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-    }
 }
 
