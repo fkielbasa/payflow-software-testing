@@ -21,6 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class CardService {
+
     private final CardRepository cardRepository;
     private final AccountNumberRepository accountNumberRepository;
     private final CardDetailsRepository cardDetailsRepository;
@@ -33,7 +34,7 @@ public class CardService {
                         card.getCvv(),card.getCardDetails().isActive(),card.getCardDetails().isBlocked()))
                 .toList();
     }
-    public ResponseEntity<CardDTO> createCard(CardDTOPost card){
+    public CardDTO createCard(CardDTOPost card){
         LocalDate currentDate = LocalDate.now();
         Optional<AccountNumber> ac = accountNumberRepository.findById(card.getAccountId());
         if (ac.isPresent()) {
@@ -52,12 +53,17 @@ public class CardService {
             cardRepository.save(c);
             cardDetailsRepository.save(cd);
             CardDTO cardDTO = cardDTOMapper.apply(c);
-            return ResponseEntity.ok(cardDTO);
+            return cardDTO;
         }
-        return (ResponseEntity<CardDTO>) ResponseEntity.badRequest();
+        return null;
     }
     public void deleteCardById(Long id) {
-        cardDetailsRepository.deleteById(id);
         cardRepository.deleteById(id);
+    }
+    public boolean checkIfAccountByIdExist(Long id){
+        return accountNumberRepository.existsById(id);
+    }
+    public boolean checkIfCardByIdExist(Long id){
+        return cardRepository.existsById(id);
     }
 }
