@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -31,13 +32,13 @@ public class Loan {
     private BigDecimal amount;
     @Temporal(TemporalType.DATE)
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalDate startDate;
     @Temporal(TemporalType.DATE)
     @Column(name = "end_date")
-    private Date endDate;
+    private LocalDate endDate;
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumber;
 

@@ -1,8 +1,11 @@
 package com.example.payflow.controller;
 
+import com.example.payflow.dto.LoanDTO;
+import com.example.payflow.dto.LoanDTOPost;
 import com.example.payflow.model.Loan;
 import com.example.payflow.service.LoanService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +18,20 @@ public class LoanController {
     private final LoanService loanService;
 
     @GetMapping("/numbers/{id}/loans")
-    public List<Loan> getLoansByAccountNumberId(@PathVariable Long id){
-        return loanService.getLoansByAccountNumberId(id);
+    public ResponseEntity<List<LoanDTO>> getLoansByAccountNumberId(@PathVariable Long id){
+        List<LoanDTO> loan = loanService.getLoansByAccountNumberId(id);
+        if(loan == null || loan.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return ResponseEntity.ok().body(loan);
     }
 
     @PostMapping("/loan")
-    public ResponseEntity<Loan> addLoan(@RequestBody Loan loan) {
-        return loanService.addLoan(loan);
+    public ResponseEntity<LoanDTO> addLoan(@RequestBody LoanDTOPost loan) {
+        boolean ln = loanService.checkIfAccountExists(loan.getIdAccount());
+        if(ln){
+           return ResponseEntity.ok().build();
+        }
+        return new ResponseEntity("Bad Request",HttpStatus.BAD_REQUEST);
     }
-
 }
