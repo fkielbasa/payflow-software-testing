@@ -1,6 +1,7 @@
 package com.example.payflow.dto;
 
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,8 +13,8 @@ import lombok.*;
 import java.time.LocalDate;
 @Data
 @Builder
-@AllArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class CardDTO {
     @NonNull
     private Long id;

@@ -35,4 +35,9 @@ public class CardController {
         }
         throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Card information is missing or invalid.");
     }
+    @DeleteMapping("card/{id}")
+    public String deleteCardById(@PathVariable Long id){
+        cardService.deleteCardById(id);
+        return "Card successfully removed";
+    }
 }
