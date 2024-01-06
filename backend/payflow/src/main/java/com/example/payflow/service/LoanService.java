@@ -27,11 +27,16 @@ public class LoanService {
     public List<Loan> getLoan(){
         return loanRepository.findAll();
     }
-
-    public ResponseEntity<Loan> addLoan(LoanDTOPost loan) {
+    public List<LoanDTO> getLoansByAccountNumberId(Long id){
+        return loanRepository.findAll().stream()
+                .filter(loan -> loan.getAccountNumber().getId().equals(id))
+                .map(loan -> new LoanDTO(loan.getAmount(),loan.getStartDate(),loan.getEndDate(),loan.getInterestRate()))
+                .toList();
+    }
+    public Loan addLoan(LoanDTOPost loan) {
         LocalDate currentDate = LocalDate.now();
         Optional<AccountNumber> ac = accountNumberRepository.findById(loan.getIdAccount());
-        if (ac.isPresent()){
+        if (ac.isPresent()) {
             var l = Loan.builder()
                     .amount(loan.getAmount())
                     .endDate(loan.getEndDate())
@@ -40,24 +45,9 @@ public class LoanService {
                     .accountNumber(ac.orElseThrow())
                     .build();
             loanRepository.save(l);
-            return ResponseEntity.ok(l);
+            return l;
         }
-        // todo check it later
-        return (ResponseEntity<Loan>) ResponseEntity.badRequest();
-    }
-
-//    public List<Loan> getLoansByAccountNumberId(Long id) {
-//        List<Loan> results = loanRepository.findAll()
-//                .stream()
-//                .filter(l -> l.getAccountNumber().getId().equals(id))
-//                .toList();
-//        return results;
-//    }
-    public List<LoanDTO> getLoansByAccountNumberId(Long id){
-        return loanRepository.findAll().stream()
-                .filter(loan -> loan.getAccountNumber().getId().equals(id))
-                .map(loan -> new LoanDTO(loan.getAmount(),loan.getStartDate(),loan.getEndDate(),loan.getInterestRate()))
-                .toList();
+        return null;
     }
     public boolean checkIfAccountExists(Long id){
         return loanRepository.existsById(id);
