@@ -28,10 +28,17 @@ public class AccountNumberService {
     public List<AccountNumberDTO> getAccountNumberByUserId(Long id){
         return accountNumberRepository.findAll().stream()
                 .filter(accountNumber -> accountNumber.getUserId().getId().equals(id))
-                .map(accountNumber -> new AccountNumberDTO(accountNumber.getId(),accountNumber.getBalance(),
-                        accountNumber.getAccountType(),accountNumber.getNumber()))
+                .map(accountNumber -> new AccountNumberDTO(
+                        accountNumber.getId(),
+                        accountNumber.getBalance(),
+                        accountNumber.getCurrency(),
+                        accountNumber.getAccountType(),
+                        accountNumber.getNumber()
+                ))
                 .toList();
     }
+
+    // TODO change addaccount json
     public ResponseEntity<AccountNumberDTO> addAccount(AccountNumber accountNumber){
         Optional<User> u = userRepository.findById(accountNumber.getUserId().getId());
         if(u.isPresent()) {
@@ -43,8 +50,13 @@ public class AccountNumberService {
                     .userId(u.get())
                     .build();
              accountNumberRepository.save(a);
-            AccountNumberDTO accountNumberDTO = new AccountNumberDTO(a.getId(),a.getBalance(),a.getAccountType(),
-                    a.getNumber());
+            AccountNumberDTO accountNumberDTO = new AccountNumberDTO(
+                    a.getId(),
+                    a.getBalance(),
+                    a.getCurrency(),
+                    a.getAccountType(),
+                    a.getNumber()
+            );
             return ResponseEntity.ok(accountNumberDTO);
         }
         return ResponseEntity.badRequest().build();
