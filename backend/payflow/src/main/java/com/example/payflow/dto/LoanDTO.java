@@ -9,13 +9,19 @@ import java.util.Date;
 
 @Data
 @Builder
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 public class LoanDTO {
+    private Long id;
+    @NonNull
     private BigDecimal amount;
     @JsonFormat(pattern="yyyy-MM-dd")
+    @NonNull
     private LocalDate startDate;
     @JsonFormat(pattern="yyyy-MM-dd")
+    @NonNull
     private LocalDate endDate;
+    @NonNull
     private BigDecimal interestRate;
+    private Long idAccountNumber;
 }
