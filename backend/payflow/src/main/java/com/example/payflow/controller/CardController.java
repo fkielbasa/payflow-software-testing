@@ -26,15 +26,22 @@ public class CardController {
     }
     @PostMapping("/card")
     public ResponseEntity<CardDTO> createCard(@RequestBody CardDTOPost card){
-        if(cardService.checkIfAccountByIdExist(card.getAccountId())){
-            CardDTO cardDTO = cardService.createCard(card);
-            return ResponseEntity.status(HttpStatus.CREATED).body(cardDTO);
+        if(card.getAccountId() != null) {
+            if (cardService.checkIfAccountByIdExist(card.getAccountId())) {
+                CardDTO cardDTO = cardService.createCard(card);
+                return ResponseEntity.status(HttpStatus.CREATED).body(cardDTO);
+            }
         }
         return new ResponseEntity("Invalid data or account doesn't exist",HttpStatus.BAD_REQUEST);
     }
     @DeleteMapping("card/{id}")
-    public ResponseEntity deleteCardById(@PathVariable Long id){
-        cardService.deleteCardById(id);
-        return new ResponseEntity("Card successfully deleted",HttpStatus.NO_CONTENT);
+    public ResponseEntity<String> deleteCardById(@PathVariable Long id){
+        if(id != null) {
+            if (cardService.checkIfCardByIdExist(id)) {
+                cardService.deleteCardById(id);
+                return new ResponseEntity("Card successfully deleted", HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity("Invalid data or card doesn't exist",HttpStatus.BAD_REQUEST);
     }
 }
