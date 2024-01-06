@@ -28,10 +28,9 @@ public class LoanController {
 
     @PostMapping("/loan")
     public ResponseEntity<LoanDTO> addLoan(@RequestBody LoanDTOPost loan) {
-        boolean ln = loanService.checkIfAccountExists(loan.getIdAccount());
-        if(ln){
+        if(loanService.checkIfAccountExists(loan.getIdAccount())){
            return ResponseEntity.ok().build();
         }
-        return new ResponseEntity("Bad Request",HttpStatus.BAD_REQUEST);
+        return new ResponseEntity("Incorrect data or account doesn't exist", HttpStatus.BAD_REQUEST);
     }
 }
