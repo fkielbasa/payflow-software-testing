@@ -8,8 +8,8 @@ import styles from './cantor.module.css'
 const Cantor = () => {
     const [amount, setAmount]=useState(0.0)
     const [data, setData] = useState([])
-    const [accountsFrom, setAccountFrom] = useState(0)
-    const [accountsTo, setAccountTo] = useState(0)
+    const [fromAccount, setFromAccount] = useState(0)
+    const [toAccount, setToAccount] = useState(0)
     const [isClickedAmount, setIsClickedAmount] = useState(false)
     const [error,setError] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
@@ -35,14 +35,18 @@ const Cantor = () => {
 
     const exchangeBalance = (e) => {
         e.preventDefault()
-        if (accountsFrom === accountsTo){
+        if (fromAccount === toAccount){
             setError(true)
             setErrorMsg("Wybierz dwa różne rachunki")
             return
         }
         axios
-            .post(``,
-                {},
+            .post(`http://localhost:8080/api/v1/transfer/exchange`,
+                {
+                    fromAccount: fromAccount,
+                    toAccount: toAccount,
+                    amount: amount
+                },
                 config
                 )
             .then((response) => {
@@ -61,12 +65,12 @@ const Cantor = () => {
                 <p>Z konta:</p>
                 <SelectAccountNumber
                     data={data}
-                    selectedAccounts={setAccountFrom}
+                    selectedAccounts={setFromAccount}
                 />
                 <p>Na konto:</p>
                 <SelectAccountNumber
                     data={data}
-                    selectedAccounts={setAccountTo}
+                    selectedAccounts={setToAccount}
                 />
                 <p>Kwota:</p>
                 <div className={styles1.wrapper}>

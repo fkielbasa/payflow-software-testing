@@ -22,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TransferService {
 
+    public static final String CURRENCY_EXCHANGE = "Wymiana waluty";
     private final TransferRepository transferRepository;
 
     private final UserDetailsRepository userDetailsRepository;
@@ -116,4 +117,19 @@ public class TransferService {
     }
 
 
+    public TransferDTO exchangeBetweenAccounts(TransferExchangeDto exchange) {
+        AccountNumber sender = accountNumberRepository.findById(exchange.fromAccount()).orElseThrow(EntityNotFoundException::new);
+        AccountNumber receiver = accountNumberRepository.findById(exchange.toAccount()).orElseThrow(EntityNotFoundException::new);
+
+        Transfer newTransfer =
+                Transfer.builder()
+                        .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
+                        .amount(new BigDecimal(exchange.amount()))
+                        .description(CURRENCY_EXCHANGE)
+                        .senderAccount(sender)
+                        .receiverAccount(receiver)
+                        .build();
+
+        return finalizeTransfer(newTransfer);
+    }
 }
