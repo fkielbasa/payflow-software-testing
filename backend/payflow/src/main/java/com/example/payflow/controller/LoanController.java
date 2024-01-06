@@ -2,6 +2,7 @@ package com.example.payflow.controller;
 
 import com.example.payflow.dto.LoanDTO;
 import com.example.payflow.dto.LoanDTOPost;
+import com.example.payflow.dto.mapper.LoanDTOMapper;
 import com.example.payflow.model.Loan;
 import com.example.payflow.service.LoanService;
 import lombok.RequiredArgsConstructor;
@@ -28,9 +29,10 @@ public class LoanController {
 
     @PostMapping("/loan")
     public ResponseEntity<LoanDTO> addLoan(@RequestBody LoanDTOPost loan) {
+        System.out.println(loan.getIdAccount());
         if(loanService.checkIfAccountExists(loan.getIdAccount())){
-            loanService.addLoan(loan);
-            return new ResponseEntity("Loan created",HttpStatus.CREATED);
+            LoanDTO loanDTO = loanService.addLoan(loan);
+            return new ResponseEntity(loanDTO,HttpStatus.CREATED);
         }
         return new ResponseEntity("Incorrect data or account doesn't exist", HttpStatus.BAD_REQUEST);
     }
