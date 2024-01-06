@@ -1,0 +1,19 @@
+
+.container {
+    padding: 10px;
+}
+
+
+.option {
+
+}
+
+.option div {
+    display: flex;
+    flex-direction: column;
+   background-color: red;
+}
+
+.option div p {
+    margin: 0;
+}

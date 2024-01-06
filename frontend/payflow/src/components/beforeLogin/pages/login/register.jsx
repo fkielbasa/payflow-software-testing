@@ -10,7 +10,7 @@ import axios from "axios";
 
 
 
-const REGISTER_URL = "http://localhost:8080/api/auth/register"
+const REGISTER_URL = "http://localhost:8080/api/v1/auth/register"
 
 const Register = () => {
     const [account, setAccount] = useState(true)

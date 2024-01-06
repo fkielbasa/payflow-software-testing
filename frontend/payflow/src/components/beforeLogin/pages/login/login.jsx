@@ -21,7 +21,7 @@ const Login = () => {
         console.log(login)
         console.log(password)
         axios
-            .post('http://localhost:8080/api/auth/authenticate',
+            .post('http://localhost:8080/api/v1/auth/authenticate',
                 {
                     login: login,
                     password: password
