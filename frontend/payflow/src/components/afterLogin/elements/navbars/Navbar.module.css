@@ -39,7 +39,7 @@
 
 .aLink {
     text-decoration: none;
-    width: 70%;
+    width: 90%;
     /*text-align: center;*/
     color: black;
     font-size: 16px;
@@ -70,6 +70,9 @@
     flex-direction: column;
     justify-content: space-between;
     width: 20vw;
+    /*width: 240px;*/
+
+    background-color: red;
 }
 
 .active {

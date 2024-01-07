@@ -1,15 +1,16 @@
 * {
-    font-family: Bahnschrift;
+    font-family: Bahnschrift, serif;
 }
 
 .homePage {
     display: flex;
     flex-direction: column;
-    /*background-color: green;*/
+    background-color: green;
 }
 
 .contentWrapper {
     display: flex;
+    flex-direction: row;
 }
 
 .leftSidePosition {
@@ -37,6 +38,7 @@
     /*background-color: magenta;*/
     display: flex;
     flex-direction: column;
+    margin-right: 2%;
 }
 
 .marginL {

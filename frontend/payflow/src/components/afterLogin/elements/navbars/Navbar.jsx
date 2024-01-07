@@ -95,30 +95,30 @@ function Navbar() {
                         </ul>
                     </nav>
                 </div>
-                <nav>
-                    <ul className={styles.ulList}>
-                        <li className={styles.liList}>
-                            <Link
+                {/*<nav>*/}
+                {/*    <ul className={styles.ulList}>*/}
+                {/*        <li className={styles.liList}>*/}
+                {/*            <Link*/}
 
-                                className={`${styles.aLink} ${isSettings ? 'active' : ''}`}
-                                onClick={showSettings}
-                            >
-                                <img className={styles.navImages} src={isSettings ? settingsFill : settings} alt="settings"/>
-                                Ustawienia
-                            </Link>
-                        </li>
-                        <li className={styles.liList}>
-                            <Link
+                {/*                className={`${styles.aLink} ${isSettings ? 'active' : ''}`}*/}
+                {/*                onClick={showSettings}*/}
+                {/*            >*/}
+                {/*                <img className={styles.navImages} src={isSettings ? settingsFill : settings} alt="settings"/>*/}
+                {/*                Ustawienia*/}
+                {/*            </Link>*/}
+                {/*        </li>*/}
+                {/*        <li className={styles.liList}>*/}
+                {/*            <Link*/}
 
-                                className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}
-                                onClick={logout}
-                            >
-                                <img className={styles.navImages} src={isLogOut ? logOutFill : logOut} alt="logOut"/>
-                                Wyloguj
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
+                {/*                className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}*/}
+                {/*                onClick={logout}*/}
+                {/*            >*/}
+                {/*                <img className={styles.navImages} src={isLogOut ? logOutFill : logOut} alt="logOut"/>*/}
+                {/*                Wyloguj*/}
+                {/*            </Link>*/}
+                {/*        </li>*/}
+                {/*    </ul>*/}
+                {/*</nav>*/}
             </div>
         </div>
     );
