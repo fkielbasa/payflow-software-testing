@@ -1,7 +1,9 @@
 .transfersContainer {
     display: flex;
     flex-direction: column;
-    width: 80vw;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
 
 }
 

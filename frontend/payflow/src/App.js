@@ -9,14 +9,16 @@ function App() {
 
     const paths = ['/home', '/transactions', '/transfers', '/credits', '/cards', '/settings', '/logOut'];
     return (
-        // do not change anything here
-        <div className={styles.containerFluid}>
-            {paths.includes(location.pathname) && <Navbar />}
-            <div>
-                <div className={styles.appTop}>
-                    {paths.includes(location.pathname) && <TopNavbar />}
+        // do not change anything here // TODO change something here cuz not working properly
+        <div className={styles.backgroundWrapper}>
+            <div className={styles.containerFluid}>
+                {paths.includes(location.pathname) && <Navbar/>}
+                <div>
+                    <div className={styles.appTop}>
+                        {paths.includes(location.pathname) && <TopNavbar/>}
+                    </div>
+                    <Outlet/>
                 </div>
-                <Outlet/>
             </div>
         </div>
     );

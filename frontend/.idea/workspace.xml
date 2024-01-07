@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="325a8032-ec26-4257-a179-0f4914408129" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/dto/AccountNumberDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/dto/AccountNumberDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/service/AccountNumberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/service/AccountNumberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payflow/src/components/afterLogin/pages/transfers/Transfers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/components/afterLogin/pages/transfers/Transfers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/components/afterLogin/elements/navbars/TopNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/components/afterLogin/elements/navbars/TopNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/components/afterLogin/elements/navbars/TopNavbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/components/afterLogin/elements/navbars/TopNavbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/components/afterLogin/pages/transfers/Transfers.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/components/afterLogin/pages/transfers/Transfers.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/components/afterLogin/pages/transfers/cantor.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/components/afterLogin/pages/transfers/cantor.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +19,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2aaPBFTXrs7x5vANZorcminu9yB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,7 +31,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature-exchange-transfer",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Studia_rok_III/TOIK/payflow/frontend",
     "nodejs_package_manager_path": "npm",
@@ -52,6 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1704553579359</updated>
       <workItem from="1704553580639" duration="99000" />
+      <workItem from="1704618900389" duration="79000" />
     </task>
     <servers />
   </component>

@@ -14,11 +14,11 @@ function Transfers() {
             <div className={styles.transferShowFields}>
                 <div>
                     <TransferAccountNumber />
-                    <PhoneTransfer />
+                    <Blik />
                 </div>
                 <div>
                     <Cantor />
-                    <Blik />
+                    <PhoneTransfer />
                 </div>
             </div>
         </div>
