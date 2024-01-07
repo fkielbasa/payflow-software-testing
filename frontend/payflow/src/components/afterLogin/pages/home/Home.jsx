@@ -3,6 +3,7 @@ import styles from './Home.module.css';
 
 import TransactionsContainer from "../../elements/transactions/TransactionsContainer";
 import {Link} from "react-router-dom";
+import NewTransactionsContainer from "../../elements/transactions/NewTransactionsContainer";
 
 function Home() {
     return (
@@ -19,7 +20,8 @@ function Home() {
                             Pokaż więcej
                         </Link>
                     </div>
-                    <TransactionsContainer maxPerPage={4} screenName={'home'}/>
+                    <NewTransactionsContainer maxPerPage={4} screenName={'home'}/>
+                    {/*<TransactionsContainer maxPerPage={4} screenName={'home'}/>*/}
                 </div>
             </div>
         </div>
