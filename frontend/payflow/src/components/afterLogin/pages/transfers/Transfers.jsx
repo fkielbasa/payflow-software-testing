@@ -3,6 +3,7 @@ import styles from "./Transfers.module.css";
 import TransferAccountNumber from "./TransfersAccountNumber";
 import Blik from "./Blik";
 import PhoneTransfer from "./PhoneTransfer";
+import Cantor from "./cantor";
 
 function Transfers() {
     return (
@@ -11,10 +12,13 @@ function Transfers() {
                 <h2>Wybierz typ przelewu</h2>
             </div>
             <div className={styles.transferShowFields}>
-                <TransferAccountNumber />
-                <div>
+                <div className={styles.cellWrapper}>
+                    <TransferAccountNumber />
                     <Blik />
-                    <PhoneTransfer />
+                </div>
+                <div className={styles.cellWrapper}>
+                    <Cantor/>
+                    <PhoneTransfer/>
                 </div>
             </div>
         </div>

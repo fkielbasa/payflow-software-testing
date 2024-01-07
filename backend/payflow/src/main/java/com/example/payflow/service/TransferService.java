@@ -22,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TransferService {
 
+    public static final String CURRENCY_EXCHANGE = "Wymiana waluty";
     private final TransferRepository transferRepository;
 
     private final UserDetailsRepository userDetailsRepository;
@@ -100,9 +101,10 @@ public class TransferService {
 
     public TransferDTO createTransfer(TransferDTO transferDTO) {
         // searching for accounts
-        AccountNumber sender = accountNumberRepository.findById(transferDTO.senderAccountId()).orElseThrow(EntityNotFoundException::new);
-        AccountNumber receiver = accountNumberRepository.findById(transferDTO.receiverAccountId()).orElseThrow(EntityNotFoundException::new);
-
+        AccountNumber sender = accountNumberRepository.findAccountNumberByNumber(transferDTO.senderAccountNumber());
+        AccountNumber receiver = accountNumberRepository.findAccountNumberByNumber(transferDTO.receiverAccountNumber());
+//        AccountNumber receiver = accountNumberRepository.findById(transferDTO.receiverAccountId()).orElseThrow(EntityNotFoundException::new);
+        System.out.println("TEST" + receiver.getNumber());
         Transfer newTransfer =
                 Transfer.builder()
                         .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
@@ -116,4 +118,19 @@ public class TransferService {
     }
 
 
+    public TransferDTO exchangeBetweenAccounts(TransferExchangeDto exchange) {
+        AccountNumber sender = accountNumberRepository.findAccountNumberByNumber(exchange.fromAccount());
+        AccountNumber receiver = accountNumberRepository.findAccountNumberByNumber(exchange.toAccount());
+
+        Transfer newTransfer =
+                Transfer.builder()
+                        .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
+                        .amount(new BigDecimal(exchange.amount()))
+                        .description(CURRENCY_EXCHANGE)
+                        .senderAccount(sender)
+                        .receiverAccount(receiver)
+                        .build();
+
+        return finalizeTransfer(newTransfer);
+    }
 }

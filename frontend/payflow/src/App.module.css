@@ -1,17 +1,23 @@
 .containerFluid {
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
-    background-color: #F6F5F5;
+    background-color: white;
     border-radius: 20px;
-    margin: 20px;
-
-    /*background-color: darkblue;*/
+    /*margin: 20px;*/
 }
 
 .appTop {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
 
-    /*background-color: red;*/
+.backgroundWrapper {
+    background-color: #F6F5F5;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.mainWindow {
+    width: 100%;
 }

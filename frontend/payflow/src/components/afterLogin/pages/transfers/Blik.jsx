@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./Blik.module.css"
+import axios from "axios";
+import {config} from "../../../../config/authConfig";
 
 
-const URL_GET_BLIK = "http://localhost:8080/api/blik";
+const URL_GET_BLIK = "http://localhost:8080/api/v1/blik";
 
 function Blik() {
     const [blikTimeInSec, setBlikTimeInSec] = useState(0);
@@ -38,17 +40,18 @@ function Blik() {
     };
 
     const getBlikResponse =  () => {
-        fetch(URL_GET_BLIK)
-            .then((response) => response.json())
-            .then((data) => {
-                let time = data.expirationTime.split(":")
+        axios
+            .get(URL_GET_BLIK,
+                config
+            )
+            .then((response) => {
+                let time = response.data.expirationTime.split(":")
                 let sec = (+time[0]) * 60 * 60 + (+time[1]) * 60 + (+time[2])
                 setBlikTimeInSec(sec)
                 setExpirationTime(sec)
-                setBlikText(data.code)
+                setBlikText(response.data.code)
                 setIsActive(true)
             })
-            // .then(() => handleTimer())
             .catch((er) => console.log(er))
     }
 

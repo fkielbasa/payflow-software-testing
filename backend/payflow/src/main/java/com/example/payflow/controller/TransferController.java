@@ -2,6 +2,7 @@ package com.example.payflow.controller;
 
 import com.example.payflow.dto.PhoneTransferDTO;
 import com.example.payflow.dto.TransferDTO;
+import com.example.payflow.dto.TransferExchangeDto;
 import com.example.payflow.dto.TransferResultDTO;
 import com.example.payflow.service.TransferService;
 import com.example.payflow.model.Transfer;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -54,6 +56,15 @@ public class TransferController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
         }
+    }
+
+    @PostMapping("/transfer/exchange")
+    public ResponseEntity<TransferDTO> exchangeBetweenAccounts(@RequestBody TransferExchangeDto exchange){
+        TransferDTO t = transferService.exchangeBetweenAccounts(exchange);
+        if (t != null)
+            return ResponseEntity.status(HttpStatus.CREATED).body(t);
+        else
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.payflow.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +35,7 @@ public class AccountNumber {
     private CurrencyType currency;
     private String number;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
