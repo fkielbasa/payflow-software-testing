@@ -6,6 +6,7 @@ import com.example.payflow.model.CardDetails;
 import com.example.payflow.service.CardDetailsService;
 import com.example.payflow.service.CardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +18,14 @@ public class CardDetailsController {
     private final CardService cardService;
 
     @PatchMapping("/card/{id}/activate")
-    public ResponseEntity<CardDTO> activeCard(@PathVariable Long id, @RequestBody CardDetailsDTO card){
+    public ResponseEntity<CardDetails> activeCard(@PathVariable Long id, @RequestBody CardDetailsDTO card){
         if(card != null){
             if(cardService.checkCardIdExist(id)){
-                CardDTO cardDTO = cardDetailsService.activateCard(id,card);
-                return ResponseEntity.ok().body(cardDTO);
+                cardDetailsService.activateCard(id,card);
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
             }
         }
-        return ResponseEntity.ok().build();
+        return new ResponseEntity("Incorrect body or card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
     @PatchMapping("/card/{id}/block")
     public ResponseEntity<CardDetails> blockCard(@PathVariable Long id){

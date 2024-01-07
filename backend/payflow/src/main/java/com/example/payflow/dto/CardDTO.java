@@ -7,6 +7,7 @@ import java.time.LocalDate;
 @Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class CardDTO {
     @NonNull
     private Long id;
