@@ -1,6 +1,7 @@
 package com.example.payflow.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class CardDetails {
     private Long id;
     private boolean active;
     private boolean blocked;
+    @Column(length = 4)
     private String pin;
     @OneToOne
     @JoinColumn(name = "cardId")

@@ -5,9 +5,11 @@ import com.example.payflow.dto.CardDetailsDTO;
 import com.example.payflow.model.CardDetails;
 import com.example.payflow.service.CardDetailsService;
 import com.example.payflow.service.CardService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -18,7 +20,7 @@ public class CardDetailsController {
     private final CardService cardService;
 
     @PatchMapping("/card/{id}/activate")
-    public ResponseEntity<CardDetails> activeCard(@PathVariable Long id, @RequestBody CardDetailsDTO card){
+    public ResponseEntity<CardDetails> activeCard(@PathVariable Long id,@Valid @RequestBody CardDetailsDTO card){
         if(card != null || id != null){
             if(cardService.checkCardIdExist(id)){
                 cardDetailsService.activateCard(id,card);
