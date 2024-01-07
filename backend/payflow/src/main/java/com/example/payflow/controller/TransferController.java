@@ -31,7 +31,7 @@ public class TransferController {
     public ResponseEntity<List<TransferResultDTO>> getTransfersByAccountNumberId(@PathVariable Long id){
         List<TransferResultDTO> transferList = transferService.getTransfersByAccountNumberId(id);
         if (transferList.isEmpty())
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         else
             return ResponseEntity.status(HttpStatus.OK).body(transferList);
     }

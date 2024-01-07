@@ -1,4 +1,4 @@
-package com.example.payflow.mapper;
+package com.example.payflow.DTO.mapper;
 
 import com.example.payflow.dto.CardDTO;
 import com.example.payflow.model.Card;
