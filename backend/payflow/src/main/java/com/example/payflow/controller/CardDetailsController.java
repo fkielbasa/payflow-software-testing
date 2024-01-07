@@ -1,9 +1,12 @@
 package com.example.payflow.controller;
 
+import com.example.payflow.dto.CardDTO;
 import com.example.payflow.dto.CardDetailsDTO;
 import com.example.payflow.model.CardDetails;
 import com.example.payflow.service.CardDetailsService;
+import com.example.payflow.service.CardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,18 +15,37 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1")
 public class CardDetailsController {
     private final CardDetailsService cardDetailsService;
+    private final CardService cardService;
 
-    @PutMapping("/cards/{id}/activate")
-    public ResponseEntity<CardDetails> activeCard(@PathVariable Long id, @RequestBody CardDetailsDTO cardDetailsDTO){
-        return cardDetailsService.activateCard(id,cardDetailsDTO);
+    @PatchMapping("/card/{id}/activate")
+    public ResponseEntity<CardDetails> activeCard(@PathVariable Long id, @RequestBody CardDetailsDTO card){
+        if(card != null || id != null){
+            if(cardService.checkCardIdExist(id)){
+                cardDetailsService.activateCard(id,card);
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
+        }
+        return new ResponseEntity("Incorrect body or card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
-    @PutMapping("/cards/{id}/block")
+    @PatchMapping("/card/{id}/block")
     public ResponseEntity<CardDetails> blockCard(@PathVariable Long id){
-        return cardDetailsService.blockCard(id);
+        if(id != null){
+            if(cardService.checkCardIdExist(id)){
+                cardDetailsService.blockCard(id);
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
+        }
+        return new ResponseEntity("Incorrect body or card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
-    @PutMapping("/cards/{id}/unblock")
+    @PatchMapping("/card/{id}/unblock")
     public ResponseEntity<CardDetails> unblockCard(@PathVariable Long id){
-        return cardDetailsService.unblockCard(id);
+        if(id != null){
+            if(cardService.checkCardIdExist(id)){
+                cardDetailsService.unblockCard(id);
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
+        }
+        return new ResponseEntity("Incorrect body or card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
 
 }

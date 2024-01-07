@@ -64,6 +64,8 @@ public class CardService {
         return accountNumberRepository.existsById(id);
     }
     public boolean checkIfCardByIdExist(Long id){
+
+    public boolean checkCardIdExist(Long id){
         return cardRepository.existsById(id);
     }
 }
