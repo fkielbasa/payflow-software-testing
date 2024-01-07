@@ -29,14 +29,16 @@ const SelectAccountNumber = (props) => {
             {props.data.map((a) => {
                 return(
                     <option
+                        content={"eqweqweqwe"}
                         className={styles.option}
                         value={a.id}
                     >
-                        Nr rachunku {a.currency}: {addSpace(a.number)}
+                        Bilans: {a.balance} {a.currency}: {addSpace(a.number)}
                     </option>
                 )
             })}
         </select>
+
     )
 }
 export default SelectAccountNumber

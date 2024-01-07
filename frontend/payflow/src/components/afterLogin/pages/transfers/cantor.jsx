@@ -10,24 +10,25 @@ const Cantor = () => {
     const [data, setData] = useState([])
     const [fromAccount, setFromAccount] = useState(0)
     const [toAccount, setToAccount] = useState(0)
-    const [isClickedAmount, setIsClickedAmount] = useState(false)
     const [error,setError] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
-    const changePositionAmount = () => {document.getElementsByName("amount")[0].value === "" ? setIsClickedAmount(!isClickedAmount) : setIsClickedAmount(true)}
+
+
+    const getAccountNumbers = () => {
+        axios
+            .get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`,
+                config
+            )
+            .then((response) => {
+                setData(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 
     useEffect(() => {
-        const getAccountNumbers = () => {
-            axios
-                .get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`,
-                config
-                )
-                .then((response) => {
-                    setData(response.data)
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
-        }
+
 
         getAccountNumbers()
     }, []);
@@ -35,7 +36,7 @@ const Cantor = () => {
 
     const exchangeBalance = (e) => {
         e.preventDefault()
-        if (fromAccount === toAccount){
+        if (fromAccount === toAccount || fromAccount === 0 || toAccount === 0){
             setError(true)
             setErrorMsg("Wybierz dwa różne rachunki")
             return
@@ -51,17 +52,22 @@ const Cantor = () => {
                 )
             .then((response) => {
                 setError(false)
+                getAccountNumbers()
             })
             .catch((error) => {
                 setError(true)
                 setErrorMsg("Operacja nie powiodła się")
             })
+        document.getElementById("formCantor").reset();
     }
 
     return(
         <div className={styles.container}>
             <h3>Kantor wymiany walut</h3>
-            <form onSubmit={exchangeBalance}>
+            <form
+                id={"formCantor"}
+                onSubmit={exchangeBalance}
+            >
                 <p>Z konta:</p>
                 <SelectAccountNumber
                     data={data}

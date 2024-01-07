@@ -20,7 +20,7 @@ import java.util.Optional;
 public class AccountNumberService {
     private final AccountNumberRepository accountNumberRepository;
     private final UserRepository userRepository;
-    private static final BigDecimal START_BALANCE = new BigDecimal(0);
+    private static final BigDecimal START_BALANCE = new BigDecimal(100);
     public static final int ACCOUNT_NUMBER_LENGTH = 26;
 
     public List<AccountNumber> getAccountNumbers() {
