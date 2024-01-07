@@ -60,4 +60,7 @@ public class CardService {
         cardDetailsRepository.deleteById(id);
         cardRepository.deleteById(id);
     }
+    public boolean checkCardIdExist(Long id){
+        return cardRepository.existsById(id);
+    }
 }
