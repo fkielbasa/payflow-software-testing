@@ -10,6 +10,8 @@
     margin-bottom: 10px;
     align-items: center;
     transition: transform 0.3s ease, z-index 0.3s ease;
+
+    /*background-color: red;*/
 }
 
 .shortPayment.hovered {
@@ -64,12 +66,9 @@
 
 .balanceTextPosition {
     display: flex;
-    flex-direction: column;
-    width: 170px;
+    flex-direction: row-reverse;
+    width: 160px;
     align-items: flex-end;
-    /*margin-left: 10px;*/
-
-    /*background-color: aqua;*/
 }
 
 .transactionTextDecoration {
