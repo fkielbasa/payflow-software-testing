@@ -13,8 +13,8 @@ public class TransferDTOMapper implements Function<Transfer, TransferDTO> {
         return new TransferDTO(
                 transfer.getAmount().toString(),
                 transfer.getDescription(),
-                transfer.getSenderAccount().getId(),
-                transfer.getReceiverAccount().getId()
+                transfer.getSenderAccount().getNumber(),
+                transfer.getReceiverAccount().getNumber()
         );
     }
 }

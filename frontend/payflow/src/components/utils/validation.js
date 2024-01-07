@@ -26,3 +26,16 @@ export const checkAmount = (amount) => {
     return regex.test(amount);
 };
 
+export const isAccountNumberValid = (inputString) => {
+    const stringWithoutWhitespace = inputString.replace(/\s/g, '');
+    if (stringWithoutWhitespace.length !== 26) {
+        return false;
+    }
+    for (let i = 0; i < stringWithoutWhitespace.length; i++) {
+        if (!/\d/.test(stringWithoutWhitespace[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+

@@ -31,7 +31,7 @@ const SelectAccountNumber = (props) => {
                     <option
                         content={"eqweqweqwe"}
                         className={styles.option}
-                        value={a.id}
+                        value={a.number}
                     >
                         Bilans: {a.balance} {a.currency}: {addSpace(a.number)}
                     </option>

@@ -101,9 +101,10 @@ public class TransferService {
 
     public TransferDTO createTransfer(TransferDTO transferDTO) {
         // searching for accounts
-        AccountNumber sender = accountNumberRepository.findById(transferDTO.senderAccountId()).orElseThrow(EntityNotFoundException::new);
-        AccountNumber receiver = accountNumberRepository.findById(transferDTO.receiverAccountId()).orElseThrow(EntityNotFoundException::new);
-
+        AccountNumber sender = accountNumberRepository.findAccountNumberByNumber(transferDTO.senderAccountNumber());
+        AccountNumber receiver = accountNumberRepository.findAccountNumberByNumber(transferDTO.receiverAccountNumber());
+//        AccountNumber receiver = accountNumberRepository.findById(transferDTO.receiverAccountId()).orElseThrow(EntityNotFoundException::new);
+        System.out.println("TEST" + receiver.getNumber());
         Transfer newTransfer =
                 Transfer.builder()
                         .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
@@ -118,8 +119,8 @@ public class TransferService {
 
 
     public TransferDTO exchangeBetweenAccounts(TransferExchangeDto exchange) {
-        AccountNumber sender = accountNumberRepository.findById(exchange.fromAccount()).orElseThrow(EntityNotFoundException::new);
-        AccountNumber receiver = accountNumberRepository.findById(exchange.toAccount()).orElseThrow(EntityNotFoundException::new);
+        AccountNumber sender = accountNumberRepository.findAccountNumberByNumber(exchange.fromAccount());
+        AccountNumber receiver = accountNumberRepository.findAccountNumberByNumber(exchange.toAccount());
 
         Transfer newTransfer =
                 Transfer.builder()
