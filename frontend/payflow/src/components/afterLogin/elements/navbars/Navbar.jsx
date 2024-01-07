@@ -52,11 +52,11 @@ function Navbar() {
         <div className={styles.verticalNavbar}>
             <div className={styles.navbarFixed}>
                 <div className={styles.firstSection}>
-                    <div>
-                        <Link to="/home">
-                            <Logo/>
-                        </Link>
-                    </div>
+                    {/*<div>*/}
+                    {/*    <Link to="/home">*/}
+                    {/*        <Logo/>*/}
+                    {/*    </Link>*/}
+                    {/*</div>*/}
 
                     <nav className={styles.nav}>
                         <ul className={styles.ulList}>
@@ -109,7 +109,7 @@ function Navbar() {
                         </li>
                         <li className={styles.liList}>
                             <Link
-                                
+
                                 className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}
                                 onClick={logout}
                             >

@@ -6,7 +6,8 @@ import { IoMdSettings } from "react-icons/io";
 import { TbLogout } from "react-icons/tb";
 import { IoIosArrowDown } from "react-icons/io";
 import {user} from "../../../../config/authConfig";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import Logo from "./Logo";
 
 function Home() {
     let navigate = useNavigate()
@@ -29,15 +30,21 @@ function Home() {
 
     return (
         <div className={styles.topNavbar}>
+            <div >
+                <Link to="/home">
+                    <Logo/>
+                </Link>
+            </div>
+
             <div
                 className={isHover ? [styles.accountDisplay, styles.shadow].join(' ') : styles.accountDisplay}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleHover}
             >
                 <div className={styles.columnInfo}>
-                    <FaUser />
+                    <FaUser/>
                     <p>{user != null ? user.name : "string"}</p>
-                    <IoIosArrowDown />
+                    <IoIosArrowDown/>
                 </div>
                 {isHover && (
                     <div className={styles.accountInfo}>
@@ -45,14 +52,14 @@ function Home() {
                             className={styles.columnInfo}
                             onClick={showSettings}
                         >
-                            <IoMdSettings />
+                            <IoMdSettings/>
                             <p>Ustawienia</p>
                         </div>
                         <div
                             className={styles.columnInfo}
                             onClick={logout}
                         >
-                            <TbLogout />
+                            <TbLogout/>
                             <p>Wyloguj</p>
                         </div>
                     </div>

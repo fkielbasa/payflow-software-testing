@@ -11,12 +11,12 @@ function App() {
     return (
         // do not change anything here
         <div className={styles.containerFluid}>
-            {paths.includes(location.pathname) && <Navbar />}
+            {paths.includes(location.pathname) && <TopNavbar />}
             <div>
                 <div className={styles.appTop}>
-                    {paths.includes(location.pathname) && <TopNavbar />}
+                    {paths.includes(location.pathname) && <Navbar />}
+                    <Outlet/>
                 </div>
-                <Outlet/>
             </div>
         </div>
     );
