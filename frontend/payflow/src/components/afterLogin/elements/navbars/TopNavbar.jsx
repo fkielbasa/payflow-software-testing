@@ -25,17 +25,16 @@ function Home() {
     }
 
     const showSettings = () => {
-      alert("Nie ma i nie będzie")
+        alert("Nie ma i nie będzie")
     }
 
     return (
         <div className={styles.topNavbar}>
-            <div >
+            <div>
                 <Link to="/home">
                     <Logo/>
                 </Link>
             </div>
-
             <div
                 className={isHover ? [styles.accountDisplay, styles.shadow].join(' ') : styles.accountDisplay}
                 onMouseEnter={handleHover}
@@ -65,7 +64,6 @@ function Home() {
                     </div>
                 )}
             </div>
-
         </div>
     );
 }
