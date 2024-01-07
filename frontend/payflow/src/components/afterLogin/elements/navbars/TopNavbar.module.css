@@ -6,8 +6,15 @@
     padding: 10px;
     height: 10vh;
     position: relative;
+    /*width: 85vw;*/
 
     /*background-color: green;*/
+}
+
+.accoundPosition {
+    display: flex;
+    flex-direction: row;
+
 }
 
 .topNavbar p {
@@ -28,8 +35,9 @@
     flex-direction: column;
     justify-content: center;
     padding: 10px;
-    /*position: absolute;*/
+    position: absolute;
     top:0;
+    right: 0;
     /*bottom:0;*/
     /*left:0;*/
     /*right:0;*/

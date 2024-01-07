@@ -35,34 +35,36 @@ function Home() {
                     <Logo/>
                 </Link>
             </div>
-            <div
-                className={isHover ? [styles.accountDisplay, styles.shadow].join(' ') : styles.accountDisplay}
-                onMouseEnter={handleHover}
-                onMouseLeave={handleHover}
-            >
-                <div className={styles.columnInfo}>
-                    <FaUser/>
-                    <p>{user != null ? user.name : "string"}</p>
-                    <IoIosArrowDown/>
-                </div>
-                {isHover && (
-                    <div className={styles.accountInfo}>
-                        <div
-                            className={styles.columnInfo}
-                            onClick={showSettings}
-                        >
-                            <IoMdSettings/>
-                            <p>Ustawienia</p>
-                        </div>
-                        <div
-                            className={styles.columnInfo}
-                            onClick={logout}
-                        >
-                            <TbLogout/>
-                            <p>Wyloguj</p>
-                        </div>
+            <div className={styles.accoundPosition}>
+                <div
+                    className={isHover ? [styles.accountDisplay, styles.shadow].join(' ') : styles.accountDisplay}
+                    onMouseEnter={handleHover}
+                    onMouseLeave={handleHover}
+                >
+                    <div className={styles.columnInfo}>
+                        <FaUser/>
+                        <p>{user != null ? user.name : "string"}</p>
+                        <IoIosArrowDown/>
                     </div>
-                )}
+                    {isHover && (
+                        <div className={styles.accountInfo}>
+                            <div
+                                className={styles.columnInfo}
+                                onClick={showSettings}
+                            >
+                                <IoMdSettings/>
+                                <p>Ustawienia</p>
+                            </div>
+                            <div
+                                className={styles.columnInfo}
+                                onClick={logout}
+                            >
+                                <TbLogout/>
+                                <p>Wyloguj</p>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
