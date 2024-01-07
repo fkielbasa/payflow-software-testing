@@ -63,8 +63,6 @@ public class CardService {
     public boolean checkIfAccountByIdExist(Long id){
         return accountNumberRepository.existsById(id);
     }
-    public boolean checkIfCardByIdExist(Long id){
-
     public boolean checkCardIdExist(Long id){
         return cardRepository.existsById(id);
     }
