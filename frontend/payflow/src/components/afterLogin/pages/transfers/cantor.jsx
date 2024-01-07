@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {config, user} from "../../../../config/authConfig";
 import SelectAccountNumber from "./SelectAccountNumber";
-import styles1 from "./PhoneTransfer.module.css";
 import styles from './cantor.module.css'
+import TextInput from "../../common/textInput";
 
 const Cantor = () => {
     const [amount, setAmount]=useState(0.0)
@@ -73,25 +73,20 @@ const Cantor = () => {
                     selectedAccounts={setToAccount}
                 />
                 <p>Kwota:</p>
-                <div className={styles1.wrapper}>
-                    <input onFocus={() => changePositionAmount()} onBlur={() => changePositionAmount()}
-                           onChange={(event) => setAmount(event.target.value)}
-                           className={styles1.inputPhoneTransfer}
-                           type="number"
-                           step="0.01"
-                           name="amount"
-                           placeholder={"0,00"}
-                           required
+                <div className={styles.inputWrapper}>
+                    <input
+                        type="number"
+                        step={"0.01"}
+                        className={styles.inputAmount}
+                        placeholder={"0"}
+                        onChange={(event) => setAmount(event.target.value)}
                     />
-                    <div
-                        className={isClickedAmount ? [styles1.inputText, styles1.changePositionUp].join(' ') : [styles1.inputText, styles1.changePositionDown].join(' ')}>Kwota
-                    </div>
                 </div>
                 <div className={styles.submitWrapper}>
                     <input type="submit"/>
                 </div>
                 {error && (
-                    <p>{errorMsg}</p>
+                    <p className={styles.errorMsg}>{errorMsg}</p>
                 )}
             </form>
         </div>

@@ -12,13 +12,13 @@ function Transfers() {
                 <h2>Wybierz typ przelewu</h2>
             </div>
             <div className={styles.transferShowFields}>
-                <div>
+                <div className={styles.cellWrapper}>
                     <TransferAccountNumber />
                     <Blik />
                 </div>
-                <div>
-                    <Cantor />
-                    <PhoneTransfer />
+                <div className={styles.cellWrapper}>
+                    <Cantor/>
+                    <PhoneTransfer/>
                 </div>
             </div>
         </div>

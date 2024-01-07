@@ -13,7 +13,7 @@ function App() {
         <div className={styles.backgroundWrapper}>
             <div className={styles.containerFluid}>
                 {paths.includes(location.pathname) && <Navbar/>}
-                <div>
+                <div className={styles.mainWindow}>
                     <div className={styles.appTop}>
                         {paths.includes(location.pathname) && <TopNavbar/>}
                     </div>
