@@ -50,7 +50,7 @@ public class AccountNumberService {
                     .userId(u.get())
                     .build();
             accountNumberRepository.save(a);
-            return accountNumberDTO = new AccountNumberDTO(
+            return new AccountNumberDTO(
                     a.getId(),
                     a.getBalance(),
                     a.getCurrency(),
