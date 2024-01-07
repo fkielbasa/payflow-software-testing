@@ -4,19 +4,18 @@ import circleMinus from "../../../../assets/transations/circleMinus.png";
 import circlePlus from "../../../../assets/transations/circlePlus.png";
 import {TransactionData} from "../../API/TransactionData";
 import axios from "axios";
+import {config} from "../../../../config/authConfig";
 
 function TransactionsContainer({ screenName, maxPerPage }) {
 
 
-    const id = 1;
+    const id = 4;
 
     useEffect(() => {
         const getData = () => {
             axios.get(
                 `http://localhost:8080/api/v1/account-numbers/${id}/transfers`,
-                {headers: {
-                        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Mzg5NjI4MCIsInVzZXJJZCI6IjIiLCJsb2dpbiI6IjQzODk2MjgwIiwibmFtZSI6InRlc3QiLCJpYXQiOjE3MDQ0MTg1OTgsImV4cCI6MTcwNTAyMzM5OH0.hL67cqkOGtRI4haIzGnjft4XztLD-RDw4Fj3OQ-cspA"
-                    }}
+                config
             )
                 .then((response) => {
                     console.log('response.data', response.data);
@@ -28,11 +27,6 @@ function TransactionsContainer({ screenName, maxPerPage }) {
 
         getData();
     }, []);
-
-
-
-
-
 
     const sortedTransactions = [...TransactionData]
         .sort((a, b) => {
