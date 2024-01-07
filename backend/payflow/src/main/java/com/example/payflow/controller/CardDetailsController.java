@@ -19,7 +19,7 @@ public class CardDetailsController {
 
     @PatchMapping("/card/{id}/activate")
     public ResponseEntity<CardDetails> activeCard(@PathVariable Long id, @RequestBody CardDetailsDTO card){
-        if(card != null){
+        if(card != null || id != null){
             if(cardService.checkCardIdExist(id)){
                 cardDetailsService.activateCard(id,card);
                 return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -29,11 +29,23 @@ public class CardDetailsController {
     }
     @PatchMapping("/card/{id}/block")
     public ResponseEntity<CardDetails> blockCard(@PathVariable Long id){
-        return null;
+        if(id != null){
+            if(cardService.checkCardIdExist(id)){
+                cardDetailsService.blockCard(id);
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
+        }
+        return new ResponseEntity("Incorrect body or card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
     @PatchMapping("/card/{id}/unblock")
     public ResponseEntity<CardDetails> unblockCard(@PathVariable Long id){
-        return null;
+        if(id != null){
+            if(cardService.checkCardIdExist(id)){
+                cardDetailsService.unblockCard(id);
+                return new ResponseEntity(HttpStatus.NO_CONTENT);
+            }
+        }
+        return new ResponseEntity("Incorrect body or card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
 
 }

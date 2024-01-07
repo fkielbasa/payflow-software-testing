@@ -28,11 +28,9 @@ public class CardDetailsService {
         return null;
     }
     public CardDetails blockCard(Long id){
-        Optional<CardDetails> cardDetails = cardDetailsRepository.findById(id);
-        Long d = cardDetails.get().getIdCard().getId();
-        Optional<Card> card = cardRepository.findById(d);
+        Optional<CardDetails> card = cardDetailsRepository.findById(id);
         if(card.isPresent()){
-            CardDetails cd = cardDetails.get();
+            CardDetails cd = card.get();
             cd.setBlocked(true);
             cardDetailsRepository.save(cd);
             return cd;
@@ -41,9 +39,9 @@ public class CardDetailsService {
     }
 
     public CardDetails unblockCard(Long id) {
-        Optional<CardDetails> cardDetails = cardDetailsRepository.findById(id);
-        if(cardDetails.isPresent()){
-            CardDetails cd = cardDetails.get();
+        Optional<CardDetails> card = cardDetailsRepository.findById(id);
+        if(card.isPresent()){
+            CardDetails cd = card.get();
             cd.setBlocked(false);
             cardDetailsRepository.save(cd);
             return cd;
