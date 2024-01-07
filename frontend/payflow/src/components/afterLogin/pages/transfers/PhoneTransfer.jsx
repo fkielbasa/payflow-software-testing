@@ -2,14 +2,15 @@ import styles from './PhoneTransfer.module.css'
 import React, {useState} from "react";
 import {checkPhoneNumber, checkAmount} from "../../../utils/validation"
 import TextInput from "../../common/textInput";
+import axios from "axios";
+import {config, user} from "../../../../config/authConfig";
 
-const SEND_TRANSFER_POST = "http://localhost:8080/api/v1/transfers/phone-number";
+const SEND_TRANSFER_POST = "http://localhost:8080/api/v1/transfer/phone-number";
 const PhoneTransfer = () => {
 
     const [phoneNumber, setPhoneNumber]=useState('')
     const [amount, setAmount]=useState('')
     const [desc, setDesc]=useState('')
-    const [dataTransfer, setDataTransfer]=useState({})
     const [isWrongData, setIsWrongData] = useState(false)
     const [isSent, setIsSent] = useState(false)
 
@@ -17,14 +18,7 @@ const PhoneTransfer = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setIsWrongData(false)
-        setDataTransfer({
-            phoneNumber: phoneNumber,
-            amount: amount,
-            description: desc,
-            senderId: 1
-        })
         if (isValidate()){
-
             sendTransfer()
         } else {
             setIsSent(false)
@@ -39,24 +33,26 @@ const PhoneTransfer = () => {
         setAmount(changeComa(amount))
         if (!checkPhoneNumber(phoneNumber))
             return false
-
         return true
     }
 
 
     const sendTransfer = () => {
-        console.log(dataTransfer)
-        fetch(SEND_TRANSFER_POST, {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(dataTransfer)
-        }).then((response) => response.json())
+        axios
+            .post(
+                SEND_TRANSFER_POST,
+                {
+                    phoneNumber: phoneNumber,
+                    amount: amount,
+                    description: desc,
+                    senderId: user.userId
+                },
+                config
+            )
             .then((data) => {
-                console.log(data)
                 setIsSent(true)
             })
             .catch(er => {
-                console.log(er)
                 setIsSent(false)
                 setIsWrongData(true)
             })
@@ -81,12 +77,12 @@ const PhoneTransfer = () => {
                 />
                 <TextInput
                     state={setAmount}
-                    name={"Kwota"}
+                    name={"Kwota przelewu"}
                     type={"number"}
                 />
                 <TextInput
                     state={setDesc}
-                    name={"Opis (opcjonalnie)"}
+                    name={"Opis"}
                     type={"text"}
                 />
                 <div className={styles.submitWrapper}>

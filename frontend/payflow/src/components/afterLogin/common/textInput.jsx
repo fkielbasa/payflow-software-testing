@@ -14,6 +14,7 @@ const TextInput = (props) => {
                 onChange={(event) => props.state(event.target.value)}
                 className={styles.input} type={props.type} name={props.name}
                 required
+                step={"0.01"}
             />
             <div
                 className=
