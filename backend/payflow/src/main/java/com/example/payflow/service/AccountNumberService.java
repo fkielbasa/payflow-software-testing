@@ -1,6 +1,7 @@
 package com.example.payflow.service;
 
 import com.example.payflow.dto.AccountNumberDTO;
+import com.example.payflow.dto.AccountNumberRequestDto;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.User;
 import com.example.payflow.repository.AccountNumberRepository;
@@ -38,27 +39,25 @@ public class AccountNumberService {
                 .toList();
     }
 
-    // TODO change addaccount json
-    public ResponseEntity<AccountNumberDTO> addAccount(AccountNumber accountNumber){
-        Optional<User> u = userRepository.findById(accountNumber.getUserId().getId());
+    public AccountNumberDTO addAccount(AccountNumberRequestDto accountNumber){
+        Optional<User> u = userRepository.findById(accountNumber.userId());
         if(u.isPresent()) {
             var a = AccountNumber.builder()
                     .balance(START_BALANCE)
                     .number(NumberGenerator.generateAccountNumber())
-                    .currency(accountNumber.getCurrency())
-                    .accountType(accountNumber.getAccountType())
+                    .currency(accountNumber.currency())
+                    .accountType(accountNumber.accountType())
                     .userId(u.get())
                     .build();
-             accountNumberRepository.save(a);
-            AccountNumberDTO accountNumberDTO = new AccountNumberDTO(
+            accountNumberRepository.save(a);
+            return accountNumberDTO = new AccountNumberDTO(
                     a.getId(),
                     a.getBalance(),
                     a.getCurrency(),
                     a.getAccountType(),
                     a.getNumber()
             );
-            return ResponseEntity.ok(accountNumberDTO);
         }
-        return ResponseEntity.badRequest().build();
+        return null;
     }
 }
