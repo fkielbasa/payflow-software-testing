@@ -57,11 +57,13 @@ public class CardService {
         }
         return null;
     }
-    public void deleteCardById(Long id) {
-        cardRepository.deleteById(id);
-    }
-    public boolean checkIfAccountByIdExist(Long id){
-        return accountNumberRepository.existsById(id);
+    public Card deleteCardById(Long id) {
+        Optional<Card> c = cardRepository.findById(id);
+        if(c.isPresent()){
+            cardRepository.deleteById(id);
+            return c.orElseThrow();
+        }
+        return null;
     }
     public boolean checkCardIdExist(Long id){
         return cardRepository.existsById(id);

@@ -2,6 +2,7 @@ package com.example.payflow.controller;
 
 import com.example.payflow.dto.CardDTO;
 import com.example.payflow.dto.CardDTOPost;
+import com.example.payflow.model.Card;
 import com.example.payflow.service.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,29 +20,25 @@ public class CardController {
     @GetMapping("/numbers/{id}/cards")
     public ResponseEntity<List<CardDTO>> getCardById(@PathVariable Long id){
         List<CardDTO> card = cardService.getCardByAccountId(id);
-        if(card == null || card.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        if(!card.isEmpty()) {
+            return ResponseEntity.ok().body(card);
         }
-        return ResponseEntity.ok().body(card);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
     @PostMapping("/card")
     public ResponseEntity<CardDTO> createCard(@RequestBody CardDTOPost card){
-        if(card.getAccountId() != null) {
-            if (cardService.checkIfAccountByIdExist(card.getAccountId())) {
-                CardDTO cardDTO = cardService.createCard(card);
-                return ResponseEntity.status(HttpStatus.CREATED).body(cardDTO);
-            }
+        CardDTO c = cardService.createCard(card);
+        if(c != null){
+            return ResponseEntity.status(HttpStatus.CREATED).body(c);
         }
         return new ResponseEntity("Invalid data or account doesn't exist",HttpStatus.BAD_REQUEST);
     }
-    @DeleteMapping("card/{id}")
+    @DeleteMapping("/card/{id}")
     public ResponseEntity<String> deleteCardById(@PathVariable Long id){
-        if(id != null) {
-            if (cardService.checkCardIdExist(id)) {
-                cardService.deleteCardById(id);
-                return new ResponseEntity("Card successfully deleted", HttpStatus.OK);
-            }
+        Card c = cardService.deleteCardById(id);
+        if (c != null){
+            return new ResponseEntity("Card successfully deleted", HttpStatus.OK);
         }
-        return new ResponseEntity("Invalid data or card doesn't exist",HttpStatus.BAD_REQUEST);
+        return new ResponseEntity("Card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
 }
