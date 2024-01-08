@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CardDetailsDTO {
+public class PinDTO {
     @Valid
     @Size(min = 4, max = 4, message = "Pin must be exactly 4 characters long")
     private String pin;
