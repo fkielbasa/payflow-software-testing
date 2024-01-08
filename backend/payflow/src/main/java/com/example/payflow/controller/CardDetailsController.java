@@ -23,7 +23,7 @@ public class CardDetailsController {
         if(cd != null){
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity("Incorrect body or card doesn't exist.",HttpStatus.BAD_REQUEST);
+        return new ResponseEntity("Card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
     @PatchMapping("/card/{id}/block")
     public ResponseEntity<?> blockCard(@PathVariable Long id){
@@ -31,7 +31,7 @@ public class CardDetailsController {
         if(cd != null){
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity("Incorrect body or card doesn't exist.",HttpStatus.BAD_REQUEST);
+        return new ResponseEntity("Card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
     @PatchMapping("/card/{id}/unblock")
     public ResponseEntity<?> unblockCard(@PathVariable Long id){
@@ -39,7 +39,7 @@ public class CardDetailsController {
         if(cd != null){
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity("Incorrect body or card doesn't exist.",HttpStatus.BAD_REQUEST);
+        return new ResponseEntity("Card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
     @PatchMapping("/card/{id}/change-pin")
     public ResponseEntity<?> changePin(@PathVariable Long id,@Valid @RequestBody PinDTO pin){
@@ -47,6 +47,6 @@ public class CardDetailsController {
         if(pinDTO != null){
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity("Card is not active.",HttpStatus.BAD_REQUEST);
+        return new ResponseEntity("Card doesn't exist or doesn't active.",HttpStatus.BAD_REQUEST);
     }
 }

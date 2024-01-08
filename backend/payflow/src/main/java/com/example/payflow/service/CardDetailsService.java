@@ -13,12 +13,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class CardDetailsService {
-    private final CardDetailsRepository cardDetailsRepository;
-    private final CardRepository cardRepository;
 
+    private final CardDetailsRepository cardDetailsRepository;
     public CardDetails activateCard(Long id, PinDTO pinDTO){
         Optional<CardDetails> card = cardDetailsRepository.findById(id);
-        if (card.isPresent() && checkCardIdExist(id)) {
+        if (card.isPresent()) {
             CardDetails cd = card.get();
             cd.setActive(true);
             cd.setPin(pinDTO.getPin());
@@ -29,7 +28,7 @@ public class CardDetailsService {
     }
     public CardDetails blockCard(Long id){
         Optional<CardDetails> card = cardDetailsRepository.findById(id);
-        if(card.isPresent() && checkCardIdExist(id)){
+        if(card.isPresent()){
             CardDetails cd = card.get();
             cd.setBlocked(true);
             cardDetailsRepository.save(cd);
@@ -39,7 +38,7 @@ public class CardDetailsService {
     }
     public CardDetails unblockCard(Long id) {
         Optional<CardDetails> card = cardDetailsRepository.findById(id);
-        if(card.isPresent() && checkCardIdExist(id)){
+        if(card.isPresent()){
             CardDetails cd = card.get();
             cd.setBlocked(false);
             cardDetailsRepository.save(cd);
@@ -49,7 +48,7 @@ public class CardDetailsService {
     }
     public PinDTO changePin(Long id, PinDTO pin) {
         Optional<CardDetails> card = cardDetailsRepository.findById(id);
-        if (card.isPresent() && checkCardIdExist(id)) {
+        if (card.isPresent()) {
             CardDetails cd = card.get();
             if(cd.isActive()) {
                 cd.setPin(pin.getPin());
@@ -58,8 +57,5 @@ public class CardDetailsService {
             }
         }
         return null;
-    }
-    public boolean checkCardIdExist(Long id){
-        return cardRepository.existsById(id);
     }
 }
