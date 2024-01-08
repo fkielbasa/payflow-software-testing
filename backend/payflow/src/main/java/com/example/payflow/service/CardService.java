@@ -57,15 +57,12 @@ public class CardService {
         }
         return null;
     }
-    public Card deleteCardById(Long id) {
+    public Card removeCardById(Long id) {
         Optional<Card> c = cardRepository.findById(id);
         if(c.isPresent()){
             cardRepository.deleteById(id);
             return c.orElseThrow();
         }
         return null;
-    }
-    public boolean checkCardIdExist(Long id){
-        return cardRepository.existsById(id);
     }
 }

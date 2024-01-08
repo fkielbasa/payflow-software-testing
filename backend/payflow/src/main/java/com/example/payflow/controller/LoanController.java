@@ -21,19 +21,25 @@ public class LoanController {
     @GetMapping("/numbers/{id}/loans")
     public ResponseEntity<List<LoanDTO>> getLoansByAccountNumberId(@PathVariable Long id){
         List<LoanDTO> loan = loanService.getLoansByAccountNumberId(id);
-        if(loan == null || loan.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        if(!loan.isEmpty()){
+            return ResponseEntity.ok().body(loan);
         }
-        return ResponseEntity.ok().body(loan);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
     @PostMapping("/loan")
     public ResponseEntity<LoanDTO> addLoan(@RequestBody LoanDTOPost loan) {
-        System.out.println(loan.getIdAccount());
-        if(loanService.checkIfAccountExists(loan.getIdAccount())){
-            LoanDTO loanDTO = loanService.addLoan(loan);
-            return new ResponseEntity(loanDTO,HttpStatus.CREATED);
+        LoanDTO l = loanService.addLoan(loan);
+        if(l != null){
+            return new ResponseEntity(l,HttpStatus.CREATED);
         }
         return new ResponseEntity("Incorrect data or account doesn't exist", HttpStatus.BAD_REQUEST);
+    }
+    @DeleteMapping("/loan/{id}")
+    public ResponseEntity<String> removeLoanById(@PathVariable Long id){
+        Loan l = loanService.removeLoanById(id);
+        if(l != null){
+            return new ResponseEntity("Loan successfully removed.", HttpStatus.OK);
+        }
+        return new ResponseEntity("Loan doesn't exist.",HttpStatus.BAD_REQUEST);
     }
 }

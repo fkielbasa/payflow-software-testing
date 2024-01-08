@@ -34,10 +34,10 @@ public class CardController {
         return new ResponseEntity("Invalid data or account doesn't exist",HttpStatus.BAD_REQUEST);
     }
     @DeleteMapping("/card/{id}")
-    public ResponseEntity<String> deleteCardById(@PathVariable Long id){
-        Card c = cardService.deleteCardById(id);
+    public ResponseEntity<String> removeCardById(@PathVariable Long id){
+        Card c = cardService.removeCardById(id);
         if (c != null){
-            return new ResponseEntity("Card successfully deleted", HttpStatus.OK);
+            return new ResponseEntity("Card successfully removed", HttpStatus.OK);
         }
         return new ResponseEntity("Card doesn't exist.",HttpStatus.BAD_REQUEST);
     }

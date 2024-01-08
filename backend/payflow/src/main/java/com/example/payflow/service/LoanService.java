@@ -22,13 +22,6 @@ public class LoanService {
     private final AccountNumberRepository accountNumberRepository;
     private LoanDTOMapper loanDTOMapper;
 
-    public Loan getLoanById(Long id) {
-        return loanRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Loan not found"));
-    }
-    public List<Loan> getLoan(){
-        return loanRepository.findAll();
-    }
     public List<LoanDTO> getLoansByAccountNumberId(Long id){
         return loanRepository.findAll().stream()
                 .filter(loan -> loan.getAccountNumber().getId().equals(id))
@@ -52,7 +45,12 @@ public class LoanService {
         }
         return null;
     }
-    public boolean checkIfAccountExists(Long id){
-        return accountNumberRepository.existsById(id);
+    public Loan removeLoanById(Long id) {
+        Optional<Loan> l = loanRepository.findById(id);
+        if(l.isPresent()){
+            loanRepository.deleteById(id);
+            return l.orElseThrow();
+        }
+        return null;
     }
 }
