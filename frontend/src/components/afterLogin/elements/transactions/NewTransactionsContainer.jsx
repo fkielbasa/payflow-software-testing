@@ -8,20 +8,48 @@ const NewTransactionsContainer = ({ maxPerPage }) => {
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
-        const getData = () => {
-            axios
-                .get(`http://localhost:8080/api/v1/account-numbers/${user.userId}/transfers`, config)
-                .then((response) => {
-                    console.log('response.data', response.data);
-                    // Odwracanie kolejności danych przy pobieraniu
-                    setApiData(response.data.reverse().slice(0, maxPerPage));
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
+        const getDataAccountNumbers = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/v1/account-numbers/${user.userId}/transfers`, config);
+                console.log('response.data', response.data);
+
+                // Przygotuj dane w odpowiednim formacie
+                const formattedData = response.data.map((transaction) => ({
+                    ...transaction,
+                    userAddress: null, // Dodaj pole userAddress
+                }));
+
+                // Odwracanie kolejności danych przy pobieraniu
+                setApiData(formattedData.reverse().slice(0, maxPerPage));
+
+                // Pobierz userAddress dla każdego receiverAccountId
+                await Promise.all(
+                    formattedData.map((transaction) => getDataUsers(transaction.receiverAccountId))
+                );
+            } catch (error) {
+                console.error(error);
+            }
         };
 
-        getData();
+        const getDataUsers = async (receiverAccountId) => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/v1/users/${receiverAccountId}`, config);
+                console.log('userData', response.data);
+
+                // Zaktualizuj dane o userAddress dla danego receiverAccountId
+                setApiData((prevData) => {
+                    return prevData.map((transaction) =>
+                        transaction.receiverAccountId === receiverAccountId
+                            ? {...transaction, userAddress: response.data}
+                            : transaction
+                    );
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        getDataAccountNumbers();
     }, [user.userId, maxPerPage]);
 
     const getCurrencySymbol = (currency) => {
@@ -58,6 +86,15 @@ const NewTransactionsContainer = ({ maxPerPage }) => {
                     <div className={styles.shortPaymentText}>
                         <div className={styles.paymentTextPosition}>
                             <p className={styles.transactionTextDecoration}>{transaction.description}</p>
+                            {transaction.userAddress && transaction.userAddress.residentialAddress && (
+                                <div>
+                                    <p>{transaction.userAddress.residentialAddress.city}</p>
+                                    <p>{transaction.userAddress.residentialAddress.street}</p>
+                                    <p>{transaction.userAddress.residentialAddress.houseNumber}</p>
+                                    <p>{transaction.userAddress.residentialAddress.apartmentNumber}</p>
+                                    <p>{transaction.userAddress.residentialAddress.zipCode}</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className={styles.newPaymentTextPosition}>
