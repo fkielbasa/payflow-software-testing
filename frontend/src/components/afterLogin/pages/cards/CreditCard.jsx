@@ -4,6 +4,7 @@ import styles from './CreditCards.module.css';
 // import ChartComponent from "./ChartComponent";
 import {Link} from "react-router-dom";
 import chip from "../../../../assets/transations/chip.png";
+import {formatAccountNumber} from "../../elements/specialFunctions/formatAccountNumber";
 
 function CreditCard(props) {
     const [isHovered, setIsHovered] = useState(false);
@@ -30,19 +31,19 @@ function CreditCard(props) {
 
     const toValue = props.to === '/cards' ? '/cards' : `/cards/${props.id}`;
 
-    function formatAccountNumber(accountNumber) {
-        const accountString = accountNumber.toString();
-
-        const firstTwoDigits = accountString.substring(0, 2);
-        const remainingDigits = accountString.substring(2);
-
-        const chunks = [];
-        for (let i = 0; i < remainingDigits.length; i += 4) {
-            chunks.push(remainingDigits.substring(i, i + 4));
-        }
-
-        return `${firstTwoDigits} ${chunks.join(' ')}`;
-    }
+    // function formatAccountNumber(accountNumber) {
+    //     const accountString = accountNumber.toString();
+    //
+    //     const firstTwoDigits = accountString.substring(0, 2);
+    //     const remainingDigits = accountString.substring(2);
+    //
+    //     const chunks = [];
+    //     for (let i = 0; i < remainingDigits.length; i += 4) {
+    //         chunks.push(remainingDigits.substring(i, i + 4));
+    //     }
+    //
+    //     return `${firstTwoDigits} ${chunks.join(' ')}`;
+    // }
 
 
     const backgroundStyles1 = {

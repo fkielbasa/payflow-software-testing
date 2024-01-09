@@ -82,3 +82,19 @@
 .paymentTextSize {
     font-size: 22px;
 }
+
+.columnPosition {
+    display: flex;
+    flex-direction: column;
+}
+
+.rowPosition {
+    display: flex;
+    flex-direction: row;
+}
+
+.shortPayment.hovered {
+    transform: scale(1.04);
+    /*transition: transform 0.3s ease;*/
+    z-index: 1;
+}

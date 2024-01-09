@@ -6,7 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/Navbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/NewTransactionsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/NewTransactionsContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/NewTransactionsContainer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/NewTransactionsContainer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/TransactionsContainer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/cards/Cards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/cards/Cards.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/cards/CreditCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/cards/CreditCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/notFound/NotFound.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/notFound/NotFound.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transactions/Transactions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transactions/Transactions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="JSX File" />
         <option value="CSS File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -134,7 +144,7 @@
       <workItem from="1704730294909" duration="10528000" />
       <workItem from="1704750276243" duration="3699000" />
       <workItem from="1704801254402" duration="10411000" />
-      <workItem from="1704817864698" duration="2842000" />
+      <workItem from="1704817864698" duration="7221000" />
     </task>
     <servers />
   </component>

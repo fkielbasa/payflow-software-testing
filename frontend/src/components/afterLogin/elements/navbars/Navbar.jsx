@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import styles from './Navbar.module.css';
+import { useSpring, animated } from 'react-spring';
 
 import house from "../../../../assets/navbar/home/houses.svg";
 import houseFill from "../../../../assets/navbar/home/houses-fill.svg";
@@ -38,6 +39,11 @@ function Navbar() {
     const isSettings = location.pathname === '/settings';
     const isLogOut = location.pathname === '/logOut';
 
+    const fadeInAnimation = useSpring({
+        from: {opacity: 0, transform: 'translateY(50px)'},
+        to: {opacity: 1, transform: 'translateY(0)'},
+    });
+
     const logout = () => {
         localStorage.clear()
         navigate('/home')
@@ -49,78 +55,85 @@ function Navbar() {
     }
 
     return (
-        <div className={styles.verticalNavbar}>
-            <div className={styles.navbarFixed}>
-                <div className={styles.firstSection}>
-                    {/*<div>*/}
-                    {/*    <Link to="/home">*/}
-                    {/*        <Logo/>*/}
-                    {/*    </Link>*/}
-                    {/*</div>*/}
+        <animated.div style={fadeInAnimation}>
 
-                    <nav className={styles.nav}>
-                        <ul className={styles.ulList}>
-                            <li className={isHome ? [styles.liList, styles.selected].join(' ') : styles.liList}>
-                                <Link to='/home' className={`${styles.aLink} ${isHome ? 'active' : ''}`}>
-                                    <img className={styles.navImages} src={isHome ? houseFill : house} alt="Home"/>
-                                    <p>Strona główna</p>
-                                </Link>
-                            </li>
-                            <li className={isTransactions ? [styles.liList, styles.selected].join(' ') : styles.liList}>
-                                <Link to='/transactions' className={`${styles.aLink} ${isTransactions ? 'active' : ''}`}>
-                                    <img className={styles.navImages} src={isTransactions ? transactionsFill : transactions}
-                                         alt="transactions"/>
-                                    Transakcje
-                                </Link>
-                            </li>
-                            <li className={isTransfers ? [styles.liList, styles.selected].join(' ') : styles.liList}>
-                                <Link to='/transfers' className={`${styles.aLink} ${isTransfers ? 'active' : ''}`}>
-                                    <img className={styles.navImages} src={isTransfers ? transfersFill : transfers}
-                                         alt="transfers"/>
-                                    Przelewy
-                                </Link>
-                            </li>
-                            <li className={isCredits ? [styles.liList, styles.selected].join(' ') : styles.liList}>
-                                <Link to="/credits" className={`${styles.aLink} ${isCredits ? 'active' : ''}`}>
-                                    <img className={styles.navImages} src={isCredits ? creditsFill : credits} alt="credits"/>
-                                    Kredyty
-                                </Link>
-                            </li>
-                            <li className={isCards ? [styles.liList, styles.selected].join(' ') : styles.liList}>
-                                <Link to="/cards" className={`${styles.aLink} ${isCards ? 'active' : ''}`}>
-                                    <img className={styles.navImages} src={isCards ? cardsFill : cards} alt="cards"/>
-                                    Karty
-                                </Link>
-                            </li>
-                        </ul>
-                    </nav>
+            <div className={styles.verticalNavbar}>
+                <div className={styles.navbarFixed}>
+                    <div className={styles.firstSection}>
+                        {/*<div>*/}
+                        {/*    <Link to="/home">*/}
+                        {/*        <Logo/>*/}
+                        {/*    </Link>*/}
+                        {/*</div>*/}
+
+                        <nav className={styles.nav}>
+                            <ul className={styles.ulList}>
+                                <li className={isHome ? [styles.liList, styles.selected].join(' ') : styles.liList}>
+                                    <Link to='/home' className={`${styles.aLink} ${isHome ? 'active' : ''}`}>
+                                        <img className={styles.navImages} src={isHome ? houseFill : house} alt="Home"/>
+                                        <p>Strona główna</p>
+                                    </Link>
+                                </li>
+                                <li className={isTransactions ? [styles.liList, styles.selected].join(' ') : styles.liList}>
+                                    <Link to='/transactions'
+                                          className={`${styles.aLink} ${isTransactions ? 'active' : ''}`}>
+                                        <img className={styles.navImages}
+                                             src={isTransactions ? transactionsFill : transactions}
+                                             alt="transactions"/>
+                                        Transakcje
+                                    </Link>
+                                </li>
+                                <li className={isTransfers ? [styles.liList, styles.selected].join(' ') : styles.liList}>
+                                    <Link to='/transfers' className={`${styles.aLink} ${isTransfers ? 'active' : ''}`}>
+                                        <img className={styles.navImages} src={isTransfers ? transfersFill : transfers}
+                                             alt="transfers"/>
+                                        Przelewy
+                                    </Link>
+                                </li>
+                                <li className={isCredits ? [styles.liList, styles.selected].join(' ') : styles.liList}>
+                                    <Link to="/credits" className={`${styles.aLink} ${isCredits ? 'active' : ''}`}>
+                                        <img className={styles.navImages} src={isCredits ? creditsFill : credits}
+                                             alt="credits"/>
+                                        Kredyty
+                                    </Link>
+                                </li>
+                                <li className={isCards ? [styles.liList, styles.selected].join(' ') : styles.liList}>
+                                    <Link to="/cards" className={`${styles.aLink} ${isCards ? 'active' : ''}`}>
+                                        <img className={styles.navImages} src={isCards ? cardsFill : cards}
+                                             alt="cards"/>
+                                        Karty
+                                    </Link>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {/*<nav>*/}
+                    {/*    <ul className={styles.ulList}>*/}
+                    {/*        <li className={styles.liList}>*/}
+                    {/*            <Link*/}
+
+                    {/*                className={`${styles.aLink} ${isSettings ? 'active' : ''}`}*/}
+                    {/*                onClick={showSettings}*/}
+                    {/*            >*/}
+                    {/*                <img className={styles.navImages} src={isSettings ? settingsFill : settings} alt="settings"/>*/}
+                    {/*                Ustawienia*/}
+                    {/*            </Link>*/}
+                    {/*        </li>*/}
+                    {/*        <li className={styles.liList}>*/}
+                    {/*            <Link*/}
+
+                    {/*                className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}*/}
+                    {/*                onClick={logout}*/}
+                    {/*            >*/}
+                    {/*                <img className={styles.navImages} src={isLogOut ? logOutFill : logOut} alt="logOut"/>*/}
+                    {/*                Wyloguj*/}
+                    {/*            </Link>*/}
+                    {/*        </li>*/}
+                    {/*    </ul>*/}
+                    {/*</nav>*/}
                 </div>
-                {/*<nav>*/}
-                {/*    <ul className={styles.ulList}>*/}
-                {/*        <li className={styles.liList}>*/}
-                {/*            <Link*/}
-
-                {/*                className={`${styles.aLink} ${isSettings ? 'active' : ''}`}*/}
-                {/*                onClick={showSettings}*/}
-                {/*            >*/}
-                {/*                <img className={styles.navImages} src={isSettings ? settingsFill : settings} alt="settings"/>*/}
-                {/*                Ustawienia*/}
-                {/*            </Link>*/}
-                {/*        </li>*/}
-                {/*        <li className={styles.liList}>*/}
-                {/*            <Link*/}
-
-                {/*                className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}*/}
-                {/*                onClick={logout}*/}
-                {/*            >*/}
-                {/*                <img className={styles.navImages} src={isLogOut ? logOutFill : logOut} alt="logOut"/>*/}
-                {/*                Wyloguj*/}
-                {/*            </Link>*/}
-                {/*        </li>*/}
-                {/*    </ul>*/}
-                {/*</nav>*/}
             </div>
-        </div>
+        </animated.div>
     );
 }
 
