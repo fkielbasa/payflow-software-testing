@@ -3,12 +3,21 @@ import axios from 'axios';
 import styles from './TransictionsContainer.module.css';
 import { config, user } from '../../../../config/authConfig';
 import Popup from 'reactjs-popup';
+import { useSpring, animated } from 'react-spring';
 
 const NewTransactionsContainer = ({ maxPerPage }) => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [apiData, setApiData] = useState([]);
     const [selectedTransaction, setSelectedTransaction] = useState(null);
     const [receiverData, setReceiverData] = useState({});
+
+    const fadeInAnimation = useSpring({
+        from: {opacity: 0, transform: 'translateY(50px)'},
+        to: {opacity: 1, transform: 'translateY(0)'},
+    });
+
+    // const fadeInAnimation = useSpring({ opacity: 1, from: { opacity: 0 } });
+
 
     useEffect(() => {
         const getData = async () => {
@@ -70,52 +79,55 @@ const NewTransactionsContainer = ({ maxPerPage }) => {
     };
 
     return (
-        <div>
-            {apiData.map((transaction, index) => (
-                <div
-                    key={index}
-                    className={`${styles.shortPayment} ${hoveredIndex === index ? styles.hovered : ''}`}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    onClick={() => handleTransactionClick(transaction)}
-                >
-                    <div className={styles.shortPaymentText}>
-                        <div className={styles.paymentTextPosition}>
-                            <p className={styles.transactionTextDecoration}>{transaction.description}</p>
+        <animated.div style={fadeInAnimation}>
+            <div>
+                {apiData.map((transaction, index) => (
+                    <div
+                        key={index}
+                        className={`${styles.shortPayment} ${hoveredIndex === index ? styles.hovered : ''}`}
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                        onClick={() => handleTransactionClick(transaction)}
+                    >
+                        <div className={styles.shortPaymentText}>
+                            <div className={styles.paymentTextPosition}>
+                                <p className={styles.transactionTextDecoration}>{transaction.description}</p>
+                            </div>
+                        </div>
+                        <div className={styles.newPaymentTextPosition}>
+                            <div className={styles.lastPaymentTextPosition}>
+                                <p className={styles.transactionTextDecoration}>{transaction.receiverFullName}</p>
+                                <p className={`${styles.transactionTextDecoration} ${styles.transactionTextSmall}`}>{transaction.date}</p>
+                            </div>
+                        </div>
+                        <div className={styles.balanceTextPosition}>
+                            <p className={styles.paymentTextSize}>
+                                {formatAmount(transaction.amount, transaction.currency)}
+                            </p>
                         </div>
                     </div>
-                    <div className={styles.newPaymentTextPosition}>
-                        <div className={styles.lastPaymentTextPosition}>
-                            <p className={styles.transactionTextDecoration}>{transaction.receiverFullName}</p>
-                            <p className={`${styles.transactionTextDecoration} ${styles.transactionTextSmall}`}>{transaction.date}</p>
+                ))}
+
+                <Popup open={!!selectedTransaction} onClose={closePopup}
+                       contentStyle={{backgroundColor: '#D3E0EA', padding: '20px', borderRadius: 5}}>
+                    {selectedTransaction && receiverData && (
+                        <div>
+                            <h2 style={{marginTop: -8}}>Szczegóły transakcji:</h2>
+                            <p style={{marginTop: -8}}>Tytuł: {selectedTransaction.description}</p>
+                            <p style={{marginTop: -8}}>Odbiorca: {selectedTransaction.receiverFullName}</p>
+                            <p style={{marginTop: -8}}>Data: {selectedTransaction.date}</p>
+                            <p style={{marginTop: -8}}>Kwota: {formatAmount(selectedTransaction.amount, selectedTransaction.currency)}</p>
+                            <h3>Dane odbiorcy:</h3>
+                            <p style={{marginTop: -8}}>Kraj: {receiverData.residentialAddress?.country}</p>
+                            <p style={{marginTop: -8}}>Miasto: {receiverData.residentialAddress?.city}</p>
+                            <p style={{marginTop: -8}}>Kod pocztowy: {receiverData.residentialAddress?.zipCode}</p>
+
+                            <button onClick={closePopup}>Zamknij</button>
                         </div>
-                    </div>
-                    <div className={styles.balanceTextPosition}>
-                        <p className={styles.paymentTextSize}>
-                            {formatAmount(transaction.amount, transaction.currency)}
-                        </p>
-                    </div>
-                </div>
-            ))}
-
-            <Popup open={!!selectedTransaction} onClose={closePopup} contentStyle={{ backgroundColor: '#D3E0EA', padding: '20px', borderRadius: 5 }}>
-                {selectedTransaction && receiverData && (
-                    <div>
-                        <h2>Szczegóły transakcji</h2>
-                        <p>Tytuł: {selectedTransaction.description}</p>
-                        <p>Odbiorca: {selectedTransaction.receiverFullName}</p>
-                        <p>Data: {selectedTransaction.date}</p>
-                        <p>Kwota: {formatAmount(selectedTransaction.amount, selectedTransaction.currency)}</p>
-                        <h2>Dane odbiorcy</h2>
-                        <p>Kraj: {receiverData.residentialAddress?.country}</p>
-                        <p>Miasto: {receiverData.residentialAddress?.city}</p>
-                        <p>Kod pocztowy: {receiverData.residentialAddress?.zipCode}</p>
-
-                        <button onClick={closePopup}>Zamknij</button>
-                    </div>
-                )}
-            </Popup>
-        </div>
+                    )}
+                </Popup>
+            </div>
+        </animated.div>
     );
 };
 
