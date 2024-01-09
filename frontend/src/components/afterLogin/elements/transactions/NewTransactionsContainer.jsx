@@ -70,7 +70,8 @@ const NewTransactionsContainer = ({ maxPerPage }) => {
 
     const handleTransactionClick = (transaction) => {
         setSelectedTransaction(transaction);
-        personalData(transaction.receiverAccountId);
+        // personalData(transaction.receiverAccountId);
+        personalData(transaction.id);
     };
 
     const closePopup = () => {
