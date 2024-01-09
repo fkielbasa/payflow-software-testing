@@ -119,10 +119,13 @@ const NewTransactionsContainer = ({ maxPerPage }) => {
                             <p style={{marginTop: -8}}>Kwota: {formatAmount(selectedTransaction.amount, selectedTransaction.currency)}</p>
                             <h3>Dane odbiorcy:</h3>
                             <p style={{marginTop: -8}}>Numer konta: {receiverData.receiver?.accountNumber}</p>
-                            <p style={{marginTop: -8}}>Kraj: {receiverData.receiver.address?.country}</p>
-                            <p style={{marginTop: -8}}>Miasto: {receiverData.receiver.address?.city}</p>
-                            <p style={{marginTop: -8}}>Kod pocztowy: {receiverData.receiver.address?.zipCode}</p>
-
+                            {receiverData.receiver?.address && (
+                                <>
+                                    <p style={{marginTop: -8}}>Kraj: {receiverData.receiver.address?.country}</p>
+                                    <p style={{marginTop: -8}}>Miasto: {receiverData.receiver.address?.city}</p>
+                                    <p style={{marginTop: -8}}>Kod pocztowy: {receiverData.receiver.address?.zipCode}</p>
+                                </>
+                            )}
                             <button onClick={closePopup}>Zamknij</button>
                         </div>
                     )}
