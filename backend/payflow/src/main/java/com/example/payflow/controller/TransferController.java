@@ -1,11 +1,7 @@
 package com.example.payflow.controller;
 
-import com.example.payflow.dto.PhoneTransferDTO;
-import com.example.payflow.dto.TransferDTO;
-import com.example.payflow.dto.TransferExchangeDto;
-import com.example.payflow.dto.TransferResultDTO;
+import com.example.payflow.dto.*;
 import com.example.payflow.service.TransferService;
-import com.example.payflow.model.Transfer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +16,16 @@ import java.util.List;
 public class TransferController {
     private final TransferService transferService;
     @GetMapping("/transfers/{id}")
-    public ResponseEntity<TransferResultDTO> getTransferById(@PathVariable Long id) {
-        TransferResultDTO transfer = transferService.getTransferById(id);
+    public ResponseEntity<TransferDetailsResultDto> getTransferById(@PathVariable Long id) {
+        TransferDetailsResultDto transfer = transferService.getTransferById(id);
         if (transfer != null) {
-            return ResponseEntity.ok(transfer);
+            return ResponseEntity.status(HttpStatus.OK).body(transfer);
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+
 
     @GetMapping("/account-numbers/{id}/transfers")
     public ResponseEntity<List<TransferResultDTO>> getTransfersByAccountNumberId(@PathVariable Long id){
@@ -37,6 +35,8 @@ public class TransferController {
         else
             return ResponseEntity.status(HttpStatus.OK).body(transferList);
     }
+
+
 
     @PostMapping("/transfer")
     public ResponseEntity<TransferDTO> createTransfer(@RequestBody TransferDTO transferDTO){

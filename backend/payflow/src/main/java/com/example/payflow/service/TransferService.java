@@ -2,6 +2,7 @@ package com.example.payflow.service;
 
 import com.example.payflow.dto.*;
 import com.example.payflow.dto.mapper.TransferDTOMapper;
+import com.example.payflow.dto.mapper.TransferDetailsResultDtoMapper;
 import com.example.payflow.dto.mapper.TransferResultDTOMapper;
 import com.example.payflow.model.*;
 import com.example.payflow.repository.AccountNumberRepository;
@@ -17,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,9 +33,11 @@ public class TransferService {
     private final ExchangeRateService exchangeRateService;
     private final TransferDTOMapper transferDTOMapper;
     private final TransferResultDTOMapper transferResultDTOMapper;
+    private final TransferDetailsResultDtoMapper transferDetailsResultDtoMapper;
 
-    public TransferResultDTO getTransferById(Long transferId) {
-        return transferResultDTOMapper.apply(transferRepository.findById(transferId).orElseThrow(EntityNotFoundException::new));
+    public TransferDetailsResultDto getTransferById(Long transferId) {
+        Optional<Transfer> transfer = transferRepository.findById(transferId);
+        return transfer.map(transferDetailsResultDtoMapper).orElse(null);
     }
 
     public List<TransferResultDTO> getTransfersByAccountNumberId(Long id) {
