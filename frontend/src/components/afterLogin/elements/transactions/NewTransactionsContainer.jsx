@@ -2,46 +2,40 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './TransictionsContainer.module.css';
 import { config, user } from '../../../../config/authConfig';
+import Popup from 'reactjs-popup';
 
 const NewTransactionsContainer = ({ maxPerPage }) => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [apiData, setApiData] = useState([]);
-    // const [userAddresses, setUserAddresses] = useState([]); // Zmiana: zamiast obiektu, użyj tablicy
+    const [selectedTransaction, setSelectedTransaction] = useState(null);
+    const [receiverData, setReceiverData] = useState({});
 
     useEffect(() => {
-        const getData = () => {
+        const getData = async () => {
             axios.get(`http://localhost:8080/api/v1/account-numbers/${user.userId}/transfers`, config)
-                .then(
-                    (response) => {
-                        setApiData(response.data.reverse().slice(0, maxPerPage));
-                        // setApiData(response.data);
-                        console.log(response.data);
-                        console.log(response.data.receiverAccountId)
-                        // personalData(response.data.receiverAccountId)
-                    }
-                )
+                .then((response) => {
+                    console.log(response.data);
+                    setApiData(response.data.reverse().slice(0, maxPerPage));
+                })
                 .catch(err => {
                     console.error(err);
                 })
-        }
-
+        };
 
         getData();
-    }, []);
+    }, [user.userId, maxPerPage]);
 
-    // const personalData = (id) => {
-    //     console.log(id)
-    //     axios.get(`http://localhost:8080/api/v1/users/${id}`, config)
-    //         .then(
-    //             (response) => {
-    //                 console.log(response.data);
-    //             }
-    //         )
-    //         .catch(err => {
-    //             console.error(err);
-    //         })
-    // }
-
+    const personalData = async (id) => {
+        console.log('id:', id);
+        axios.get(`http://localhost:8080/api/v1/users/${id}`, config)
+            .then((response) => {
+                console.log('personalData response:', response.data[0]);
+                setReceiverData(response.data[0]);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
 
     const getCurrencySymbol = (currency) => {
         switch (currency) {
@@ -65,6 +59,16 @@ const NewTransactionsContainer = ({ maxPerPage }) => {
         }
     };
 
+    const handleTransactionClick = (transaction) => {
+        setSelectedTransaction(transaction);
+        personalData(transaction.receiverAccountId);
+    };
+
+    const closePopup = () => {
+        setSelectedTransaction(null);
+        setReceiverData(null);
+    };
+
     return (
         <div>
             {apiData.map((transaction, index) => (
@@ -73,6 +77,7 @@ const NewTransactionsContainer = ({ maxPerPage }) => {
                     className={`${styles.shortPayment} ${hoveredIndex === index ? styles.hovered : ''}`}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
+                    onClick={() => handleTransactionClick(transaction)}
                 >
                     <div className={styles.shortPaymentText}>
                         <div className={styles.paymentTextPosition}>
@@ -92,6 +97,24 @@ const NewTransactionsContainer = ({ maxPerPage }) => {
                     </div>
                 </div>
             ))}
+
+            <Popup open={!!selectedTransaction} onClose={closePopup} contentStyle={{ backgroundColor: '#D3E0EA', padding: '20px', borderRadius: 5 }}>
+                {selectedTransaction && receiverData && (
+                    <div>
+                        <h2>Szczegóły transakcji</h2>
+                        <p>Tytuł: {selectedTransaction.description}</p>
+                        <p>Odbiorca: {selectedTransaction.receiverFullName}</p>
+                        <p>Data: {selectedTransaction.date}</p>
+                        <p>Kwota: {formatAmount(selectedTransaction.amount, selectedTransaction.currency)}</p>
+                        <h2>Dane odbiorcy</h2>
+                        <p>Kraj: {receiverData.residentialAddress?.country}</p>
+                        <p>Miasto: {receiverData.residentialAddress?.city}</p>
+                        <p>Kod pocztowy: {receiverData.residentialAddress?.zipCode}</p>
+
+                        <button onClick={closePopup}>Zamknij</button>
+                    </div>
+                )}
+            </Popup>
         </div>
     );
 };
