@@ -2,7 +2,7 @@ package com.example.payflow.service;
 
 import com.example.payflow.dto.CardDTO;
 import com.example.payflow.dto.CardDTOPost;
-import com.example.payflow.DTO.mapper.CardDTOMapper;
+import com.example.payflow.dto.mapper.CardDTOMapper;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.Card;
 import com.example.payflow.model.CardDetails;
@@ -21,6 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class CardService {
+
     private final CardRepository cardRepository;
     private final AccountNumberRepository accountNumberRepository;
     private final CardDetailsRepository cardDetailsRepository;
@@ -33,7 +34,7 @@ public class CardService {
                         card.getCvv(),card.getCardDetails().isActive(),card.getCardDetails().isBlocked()))
                 .toList();
     }
-    public ResponseEntity<CardDTO> createCard(CardDTOPost card){
+    public CardDTO createCard(CardDTOPost card){
         LocalDate currentDate = LocalDate.now();
         Optional<AccountNumber> ac = accountNumberRepository.findById(card.getAccountId());
         if (ac.isPresent()) {
@@ -52,12 +53,16 @@ public class CardService {
             cardRepository.save(c);
             cardDetailsRepository.save(cd);
             CardDTO cardDTO = cardDTOMapper.apply(c);
-            return ResponseEntity.ok(cardDTO);
+            return cardDTO;
         }
-        return (ResponseEntity<CardDTO>) ResponseEntity.badRequest();
+        return null;
     }
-    public void deleteCardById(Long id) {
-        cardDetailsRepository.deleteById(id);
-        cardRepository.deleteById(id);
+    public Card removeCardById(Long id) {
+        Optional<Card> c = cardRepository.findById(id);
+        if(c.isPresent()){
+            cardRepository.deleteById(id);
+            return c.orElseThrow();
+        }
+        return null;
     }
 }
