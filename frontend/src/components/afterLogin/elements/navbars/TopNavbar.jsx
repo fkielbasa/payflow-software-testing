@@ -25,7 +25,7 @@ function Home() {
     }
 
     const showSettings = () => {
-        alert("Nie ma i nie będzie")
+        navigate('/settings')
     }
 
     return (

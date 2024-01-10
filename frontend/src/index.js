@@ -21,7 +21,7 @@ import Home from "./components/afterLogin/pages/home/Home";
 import Transactions from "./components/afterLogin/pages/transactions/Transactions";
 import Transfers from "./components/afterLogin/pages/transfers/Transfers";
 import Credits from "./components/afterLogin/pages/credits/Credits";
-import Settings from "./components/afterLogin/pages/Settings";
+import Settings from "./components/afterLogin/pages/settings/Settings";
 import LogOut from "./components/afterLogin/pages/LogOut";
 import NotFound from "./components/afterLogin/pages/notFound/NotFound";
 import Cards from "./components/afterLogin/pages/cards/Cards";
