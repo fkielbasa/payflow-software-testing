@@ -37,7 +37,7 @@ function Home() {
             </div>
             <div className={styles.accoundPosition}>
                 <div
-                    className={isHover ? [styles.accountDisplay, styles.shadow].join(' ') : styles.accountDisplay}
+                    className={styles.accountDisplay}
                     onMouseEnter={handleHover}
                     onMouseLeave={handleHover}
                 >
@@ -47,7 +47,8 @@ function Home() {
                         <IoIosArrowDown/>
                     </div>
                     {isHover && (
-                        <div className={styles.accountInfo}>
+                        <div className={styles.accountDetails}>
+                            <span></span>
                             <div
                                 className={styles.columnInfo}
                                 onClick={showSettings}
@@ -65,6 +66,7 @@ function Home() {
                         </div>
                     )}
                 </div>
+
             </div>
         </div>
     );

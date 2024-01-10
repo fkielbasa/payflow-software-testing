@@ -5,7 +5,7 @@
     align-items: center;
     padding: 10px;
     height: 10vh;
-    position: relative;
+    /*position: relative;*/
     /*width: 85vw;*/
 
     /*background-color: green;*/
@@ -34,22 +34,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px;
-    position: absolute;
-    top:0;
-    right: 0;
-    /*bottom:0;*/
-    /*left:0;*/
-    /*right:0;*/
-    /*margin-left: auto;*/
     width: 150px;
-    /*height: 100%;*/
     background-color: rgba(255,255,255, 1);
     background-color: #F6F5F5;
-    /*background-color: red;*/
     cursor: pointer;
     border-radius: 10px;
-    /*border: 1px solid black;*/
+    position: relative;
 
 }
 
@@ -66,14 +56,48 @@
 .columnInfo {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 
 }
 
+.underline {
+    border-bottom: 1px solid black;
+    width: 80%;
+}
 
-.accountInfo {
 
+.accountDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-around;
+    background-color: var(--darkBlue);
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+    width: 150px;
+    border-radius: 10px;
+    position: absolute;
+    top: 60px;
+    z-index: 1;
+}
+
+.accountDetails span:after {
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid var(--darkBlue);
+    border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+    /*left:-8px;*/
+
+    top: -30px;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
 }
 
 
