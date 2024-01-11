@@ -35,11 +35,13 @@ function Home() {
                     <Logo/>
                 </Link>
             </div>
-            <div className={styles.accoundPosition}>
+            <div
+                className={styles.accoundPosition}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
+            >
                 <div
                     className={styles.accountDisplay}
-                    onMouseEnter={handleHover}
-                    onMouseLeave={handleHover}
                 >
                     <div className={styles.columnInfo}>
                         <FaUser/>

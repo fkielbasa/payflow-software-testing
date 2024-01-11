@@ -3,18 +3,35 @@ import TextInputChange from "../../common/TextInputChange";
 import {user} from "../../../../config/authConfig";
 import styles from './Profile.module.css'
 import ShowChangeBtn from "./ShowChangeBtn";
-import PasswordForm from "../../../beforeLogin/pages/login/passwordForm";
 import PasswordChange from "./PasswordChange";
 
 function Profile() {
 
-    const [privateData, setPrivateData]=useState({})
-    const [disablePrivateData, setDisablePrivateData] = useState(true)
-    const [address, setAddress]=useState({})
-    const [disableAddress, setDisableAddress] = useState(true)
-    const [addressCorrespondence, setAddressCorrespondence]=useState({})
-    const [disableAddressCorrespondence, setDisableAddressCorrespondence] = useState(true)
+    const [privateData, setPrivateData]=useState({
+        email: '',
+        phoneNumber: ''
+    })
+    const [address, setAddress]=useState({
+        zipCode: '',
+        city: '',
+        street: '',
+        homeNumber: '',
+        flatNumber: '',
+        country: ''
+
+    })
+    const [addressCorrespondence, setAddressCorrespondence]=useState({
+        zipCodeCorrespondence: '',
+        cityCorrespondence: '',
+        streetCorrespondence: '',
+        homeNumberCorrespondence: '',
+        flatNumberCorrespondence: '',
+        countryCorrespondence: ''
+    })
     const [password, setPassword] = useState('')
+    const [disablePrivateData, setDisablePrivateData] = useState(true)
+    const [disableAddress, setDisableAddress] = useState(true)
+    const [disableAddressCorrespondence, setDisableAddressCorrespondence] = useState(true)
 
     const changePrivateData = () => setDisablePrivateData(false)
 
@@ -41,6 +58,7 @@ function Profile() {
                         <p>Dane osobowe</p>
                         <TextInputChange
                             name={"Login"}
+                            var={"login"}
                             placeholder={user.login}
                             state={''}
                             type={"text"}
@@ -49,6 +67,7 @@ function Profile() {
                         />
                         <TextInputChange
                             name={"Imię"}
+                            var={"firstName"}
                             placeholder={user.name}
                             state={''}
                             type={"text"}
@@ -57,6 +76,7 @@ function Profile() {
                         />
                         <TextInputChange
                             name={"Nazwisko"}
+                            var={"lastName"}
                             placeholder={"Kowalski"}
                             state={''}
                             type={"text"}
@@ -65,6 +85,7 @@ function Profile() {
                         />
                         <TextInputChange
                             name={"Kraj"}
+                            var={"CountryInfo"}
                             placeholder={"polska"}
                             state={''}
                             type={"text"}
@@ -73,6 +94,7 @@ function Profile() {
                         />
                         <TextInputChange
                             name={"data urodzenia"}
+                            var={"birthDate"}
                             placeholder={"01-04-2001"}
                             state={''}
                             type={"text"}
@@ -84,6 +106,7 @@ function Profile() {
                         <p>Dane prywatne</p>
                         <TextInputChange
                             name={"email"}
+                            var={"email"}
                             placeholder={"test@wp.pl"}
                             state={setPrivateData}
                             type={"text"}
@@ -92,6 +115,7 @@ function Profile() {
                         />
                         <TextInputChange
                             name={"telefon"}
+                            var={"phone"}
                             placeholder={"123456789"}
                             state={setPrivateData}
                             type={"text"}
@@ -107,7 +131,8 @@ function Profile() {
                 <div className={[styles.addressWrapper, styles.cell].join(' ')}>
                     <p>Adres zamieszkania</p>
                     <TextInputChange
-                        name={"zipCode"}
+                        name={"Kod pocztowy"}
+                        var={"zipCode"}
                         placeholder={"33-100"}
                         state={setAddress}
                         type={"text"}
@@ -115,7 +140,8 @@ function Profile() {
                         disabled={disableAddress}
                     />
                     <TextInputChange
-                        name={"city"}
+                        name={"Miejscowość"}
+                        var={"city"}
                         placeholder={"Tarnów"}
                         state={setAddress}
                         type={"text"}
@@ -123,7 +149,8 @@ function Profile() {
                         disabled={disableAddress}
                     />
                     <TextInputChange
-                        name={"street"}
+                        name={"ulica"}
+                        var={"street"}
                         placeholder={"Mickiewicza 8"}
                         state={setAddress}
                         type={"text"}
@@ -131,7 +158,8 @@ function Profile() {
                         disabled={disableAddress}
                     />
                     <TextInputChange
-                        name={"homeNumber"}
+                        name={"nr domu"}
+                        var={"homeNumber"}
                         placeholder={"3"}
                         state={setAddress}
                         type={"text"}
@@ -139,7 +167,8 @@ function Profile() {
                         disabled={disableAddress}
                     />
                     <TextInputChange
-                        name={"flatNumber"}
+                        name={"Nr mieszkania"}
+                        var={"flatNumber"}
                         placeholder={"4a"}
                         state={setAddress}
                         type={"text"}
@@ -148,6 +177,7 @@ function Profile() {
                     />
                     <TextInputChange
                         name={"Kraj"}
+                        var={"country"}
                         placeholder={"Polska"}
                         state={setAddress}
                         type={"text"}
@@ -163,7 +193,8 @@ function Profile() {
                 <div className={[styles.correspondenceWrapper, styles.cell].join(' ')}>
                     <p>Adres zamieszkania</p>
                     <TextInputChange
-                        name={"zipCode"}
+                        name={"Kod pocztowy"}
+                        var={"zipCodeCorrespondence"}
                         placeholder={"33-100"}
                         state={setAddressCorrespondence}
                         type={"text"}
@@ -171,7 +202,8 @@ function Profile() {
                         disabled={disableAddressCorrespondence}
                     />
                     <TextInputChange
-                        name={"city"}
+                        name={"Miejscowość"}
+                        var={"cityCorrespondence"}
                         placeholder={"Tarnów"}
                         state={setAddressCorrespondence}
                         type={"text"}
@@ -179,7 +211,8 @@ function Profile() {
                         disabled={disableAddressCorrespondence}
                     />
                     <TextInputChange
-                        name={"street"}
+                        name={"ulica"}
+                        var={"streetCorrespondence"}
                         placeholder={"Mickiewicza 8"}
                         state={setAddressCorrespondence}
                         type={"text"}
@@ -187,7 +220,8 @@ function Profile() {
                         disabled={disableAddressCorrespondence}
                     />
                     <TextInputChange
-                        name={"homeNumber"}
+                        name={"nr domu"}
+                        var={"homeNumberCorrespondence"}
                         placeholder={"3"}
                         state={setAddressCorrespondence}
                         type={"text"}
@@ -195,7 +229,8 @@ function Profile() {
                         disabled={disableAddressCorrespondence}
                     />
                     <TextInputChange
-                        name={"flatNumber"}
+                        name={"Nr mieszkania"}
+                        var={"flatNumberCorrespondence"}
                         placeholder={"4a"}
                         state={setAddressCorrespondence}
                         type={"text"}
@@ -204,6 +239,7 @@ function Profile() {
                     />
                     <TextInputChange
                         name={"Kraj"}
+                        var={"countryCorrespondence"}
                         placeholder={"Polska"}
                         state={setAddress}
                         type={"text"}
@@ -217,7 +253,7 @@ function Profile() {
                     />
                 </div>
                 <div className={[styles.passwordWrapper, styles.cell].join(' ')}>
-                    <PasswordChange savePassword={password} />
+                    <PasswordChange savePassword={setPassword} />
                 </div>
             </div>
 

@@ -6,11 +6,13 @@
     display: flex;
     flex-direction: column;
     /*background-color: green;*/
+    /*width: 100%;*/
 }
 
 .contentWrapper {
     display: flex;
     flex-direction: row;
+
 }
 
 .leftSidePosition {

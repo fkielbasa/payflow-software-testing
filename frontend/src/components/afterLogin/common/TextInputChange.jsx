@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 const TextInputChange = (props) => {
 
     const [isInputClicked, setIsInputClicked] = useState(false)
-    const changePositionInput = () => {document.getElementsByName(props.name)[0].value === "" ? setIsInputClicked(!isInputClicked) : setIsInputClicked(true)}
+    const changePositionInput = () => {document.getElementsByName(props.var)[0].value === "" ? setIsInputClicked(!isInputClicked) : setIsInputClicked(true)}
 
     useEffect(() => {
         changePositionInput()
@@ -16,10 +16,10 @@ const TextInputChange = (props) => {
             <input
                 onFocus={() => changePositionInput()}
                 onBlur={() => changePositionInput()}
-                onChange={(event) => props.state({...props, [props.name]: event.target.value})}
+                onChange={(event) => props.state((prev) => ({...prev,[props.var]: event.target.value}))}
                 className={styles.input}
                 type={props.type}
-                name={props.name}
+                name={props.var}
                 // value={props.disabled ? props.value : null}
                 placeholder={props.disabled ? props.placeholder : ''}
                 disabled={props.disabled}

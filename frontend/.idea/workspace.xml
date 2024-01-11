@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/TextInputChange.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/TextInputChange.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/TextInputChange.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/TextInputChange.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/Navbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/TopNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/TopNavbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/settings/Settings.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/settings/Settings.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/settings/ShowChangeBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/ShowChangeBtn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/settings/ShowChangeBtn.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/ShowChangeBtn.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/PasswordChange.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/PasswordChange.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +144,7 @@
       <workItem from="1704911312592" duration="7851000" />
       <workItem from="1704977734803" duration="1726000" />
       <workItem from="1704994644803" duration="4622000" />
-      <workItem from="1705004448072" duration="4929000" />
+      <workItem from="1705004448072" duration="7246000" />
     </task>
     <servers />
   </component>
