@@ -1,24 +1,30 @@
 import styles from './TextInputChange.module.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 const TextInputChange = (props) => {
 
-    const [isInputClicked, setIsInputClicked] = useState(props.clicked)
+    const [isInputClicked, setIsInputClicked] = useState(false)
     const changePositionInput = () => {document.getElementsByName(props.name)[0].value === "" ? setIsInputClicked(!isInputClicked) : setIsInputClicked(true)}
+
+    useEffect(() => {
+        changePositionInput()
+    }, [props.clicked]);
 
     return(
         <div className={styles.wrapper}>
             <input
                 onFocus={() => changePositionInput()}
                 onBlur={() => changePositionInput()}
-                onChange={(event) => props.state(event.target.value)}
+                onChange={(event) => props.state({...props, [props.name]: event.target.value})}
                 className={styles.input}
                 type={props.type}
                 name={props.name}
-                value={props.value}
+                // value={props.disabled ? props.value : null}
+                placeholder={props.disabled ? props.placeholder : ''}
                 disabled={props.disabled}
                 step={"0.01"}
+                autoComplete="off"
             />
             <div
                 className=

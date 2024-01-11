@@ -36,7 +36,7 @@ function Navbar() {
     const isCredits = location.pathname === '/credits';
     const isCards = location.pathname === '/cards';
     const isTransfers = location.pathname === '/transfers';
-    const isSettings = location.pathname === '/settings';
+    const isProfiles = location.pathname === '/profile';
     const isLogOut = location.pathname === '/logOut';
 
     const fadeInAnimation = useSpring({

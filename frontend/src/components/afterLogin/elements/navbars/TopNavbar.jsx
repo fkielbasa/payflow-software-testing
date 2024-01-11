@@ -25,7 +25,7 @@ function Home() {
     }
 
     const showSettings = () => {
-        navigate('/settings')
+        navigate('/profile')
     }
 
     return (
@@ -53,14 +53,14 @@ function Home() {
                                 className={styles.columnInfo}
                                 onClick={showSettings}
                             >
-                                <IoMdSettings/>
-                                <p>Ustawienia</p>
+                                {/*<IoMdSettings/>*/}
+                                <p>Konto</p>
                             </div>
                             <div
                                 className={styles.columnInfo}
                                 onClick={logout}
                             >
-                                <TbLogout/>
+                                {/*<TbLogout/>*/}
                                 <p>Wyloguj</p>
                             </div>
                         </div>
