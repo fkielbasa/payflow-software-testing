@@ -9,7 +9,7 @@ export const checkEmail = (email) => {
     return regex.test(email);
 };
 export const checkZipCode = (code) => {
-    const regex = /^\d{5}$/;
+    const regex = /^\d{2}-\d{3}$/;
     return regex.test(code);
 };
 export const checkHomeNumber = (number) => {
@@ -38,4 +38,5 @@ export const isAccountNumberValid = (inputString) => {
     }
     return true;
 }
+
 

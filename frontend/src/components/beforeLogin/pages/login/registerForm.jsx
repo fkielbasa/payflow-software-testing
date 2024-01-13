@@ -112,7 +112,7 @@ const RegisterForm = ({saveDataForm}) => {
                 <div className={styles.dataWrapper}>
                     <p>Adres zamieszkania</p>
                     <label>Kod pocztowy</label>
-                    <input  type="text" id="postalCode"  disabled={sameAddress} pattern="[0-9]*" onChange={(event) => setZipCode(event.target.value)} minLength="5"  maxLength="5"  required/>
+                    <input  type="text" id="postalCode"  disabled={sameAddress}  onChange={(event) => setZipCode(event.target.value)} minLength="6"  maxLength="6"  required/>
                     <label>Miejscowość</label>
                     <input  type="text" disabled={sameAddress} maxLength="50" onChange={(event) => setCity(event.target.value)} required/>
                     <label>Ulica</label>
@@ -128,7 +128,7 @@ const RegisterForm = ({saveDataForm}) => {
                         <p>Adres zamieszkania korespondencyjny</p>
 
                         <label>Kod pocztowy</label>
-                        <input  disabled={sameAddress} onChange={(event) => setZipCodeCorrespondence(event.target.value)} type="text" pattern="[0-9]*"  maxLength="5"  required/>
+                        <input  disabled={sameAddress} onChange={(event) => setZipCodeCorrespondence(event.target.value)} type="text" minLength="6"  maxLength="6"  required/>
                         <label>Miejscowość</label>
                         <input  maxLength="50" disabled={sameAddress} onChange={(event) => setCityCorrespondence(event.target.value)} type="text" required/>
                         <label>Ulica</label>
