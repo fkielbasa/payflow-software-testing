@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b750e811-3640-4781-8c5f-6eb32b63e2b2" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2ZuE9EYZYDhPA9FhWVFFzC9vb84" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.PayflowApplication.executor": "Run",
+    "git-widget-placeholder": "api",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Filip/react/IoT-react-native/iot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PayFlow\payflow\backend\payflow\src\main\resources\static" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.example.payflow.dto.mapper" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="PayflowApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="payflow" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.payflow.PayflowApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-249ae16d76d6-a618e4d4" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b750e811-3640-4781-8c5f-6eb32b63e2b2" name="Changes" comment="" />
+      <created>1703263411856</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1703263411856</updated>
+      <workItem from="1703263413199" duration="4500000" />
+      <workItem from="1703756647018" duration="2943000" />
+      <workItem from="1704178207416" duration="9000" />
+      <workItem from="1704283210481" duration="341000" />
+      <workItem from="1704395805931" duration="12828000" />
+      <workItem from="1704415482802" duration="557000" />
+      <workItem from="1704416072785" duration="3811000" />
+      <workItem from="1704531634068" duration="22550000" />
+      <workItem from="1704573398443" duration="7610000" />
+      <workItem from="1704581039344" duration="25239000" />
+      <workItem from="1704704691380" duration="244000" />
+      <workItem from="1704704954746" duration="149000" />
+      <workItem from="1704705134814" duration="2826000" />
+      <workItem from="1704727346350" duration="12416000" />
+      <workItem from="1704752837168" duration="1747000" />
+      <workItem from="1704876654002" duration="2476000" />
+      <workItem from="1704906331265" duration="515000" />
+      <workItem from="1704908264591" duration="34000" />
+      <workItem from="1705144901569" duration="18222000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
