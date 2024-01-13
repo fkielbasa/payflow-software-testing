@@ -7,7 +7,7 @@ import TopNavbar from "./components/afterLogin/elements/navbars/TopNavbar";
 function App() {
     const location = useLocation();
 
-    const paths = ['/home', '/transactions', '/transfers', '/credits', '/cards', '/settings', '/logOut'];
+    const paths = ['/home', '/transactions', '/transfers', '/credits', '/cards', '/profile', '/logOut'];
     return (
         // do not change anything here
         <div className={styles.containerFluid}>

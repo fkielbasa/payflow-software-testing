@@ -4,7 +4,7 @@ import styles from './TransictionsContainer.module.css';
 import { config, user } from '../../../../config/authConfig';
 import Popup from 'reactjs-popup';
 import { useSpring, animated } from 'react-spring';
-import {formatAccountNumber} from "../specialFunctions/formatAccountNumber";
+import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 
 const TransactionsContainer = ({ maxPerPage }) => {
     const [hoveredIndex, setHoveredIndex] = useState(null);

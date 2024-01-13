@@ -25,7 +25,7 @@ function Home() {
     }
 
     const showSettings = () => {
-        alert("Nie ma i nie będzie")
+        navigate('/profile')
     }
 
     return (
@@ -35,11 +35,13 @@ function Home() {
                     <Logo/>
                 </Link>
             </div>
-            <div className={styles.accoundPosition}>
+            <div
+                className={styles.accoundPosition}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
+            >
                 <div
-                    className={isHover ? [styles.accountDisplay, styles.shadow].join(' ') : styles.accountDisplay}
-                    onMouseEnter={handleHover}
-                    onMouseLeave={handleHover}
+                    className={styles.accountDisplay}
                 >
                     <div className={styles.columnInfo}>
                         <FaUser/>
@@ -47,24 +49,26 @@ function Home() {
                         <IoIosArrowDown/>
                     </div>
                     {isHover && (
-                        <div className={styles.accountInfo}>
+                        <div className={styles.accountDetails}>
+                            <span></span>
                             <div
                                 className={styles.columnInfo}
                                 onClick={showSettings}
                             >
-                                <IoMdSettings/>
-                                <p>Ustawienia</p>
+                                {/*<IoMdSettings/>*/}
+                                <p>Konto</p>
                             </div>
                             <div
                                 className={styles.columnInfo}
                                 onClick={logout}
                             >
-                                <TbLogout/>
+                                {/*<TbLogout/>*/}
                                 <p>Wyloguj</p>
                             </div>
                         </div>
                     )}
                 </div>
+
             </div>
         </div>
     );

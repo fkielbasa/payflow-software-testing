@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="" />
+    <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/TextInputChange.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/TextInputChange.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/TopNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/TopNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/PasswordChange.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/PasswordChange.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.module.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,9 +52,9 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature-frontend-repaired&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-settings&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kubad/Documents/GitHub/payflow/frontend&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Studia_rok_III/TOIK/payflow/frontend&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -54,7 +62,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\kubad\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\enqer\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\233.13135.103\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -67,11 +75,11 @@
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\components\afterLogin\pages\settings" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\afterLogin\elements\transactions" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\beforeLogin" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages\service" />
-      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages\info" />
     </key>
   </component>
   <component name="RunManager">
@@ -132,6 +140,11 @@
       <workItem from="1704750276243" duration="3699000" />
       <workItem from="1704801254402" duration="10411000" />
       <workItem from="1704817864698" duration="7847000" />
+      <workItem from="1704910248858" duration="524000" />
+      <workItem from="1704911312592" duration="7851000" />
+      <workItem from="1704977734803" duration="1726000" />
+      <workItem from="1704994644803" duration="4622000" />
+      <workItem from="1705004448072" duration="7246000" />
     </task>
     <servers />
   </component>
