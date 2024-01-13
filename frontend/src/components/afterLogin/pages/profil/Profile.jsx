@@ -79,15 +79,15 @@ function Profile() {
     }
 
     const validateAddress = (address) => {
+        console.log(address)
         return checkZipCode(address.zipCode)
                 && isString(address.city)
-                && isString(address.style)
+                && isString(address.street)
                 && checkHomeNumber(address.houseNumber)
                 && isString(address.country)
     }
 
     const submitAddress = () => {
-        console.log(address)
         if (!validateAddress(address)){
             showCorrectData()
             return
@@ -108,7 +108,30 @@ function Profile() {
 
 
     const submitAddressCorrespondence = () => {
+        let addressCor = {
+            zipCode: addressCorrespondence.zipCodeCorrespondence,
+            city: addressCorrespondence.cityCorrespondence,
+            street: addressCorrespondence.streetCorrespondence,
+            houseNumber: addressCorrespondence.houseNumberCorrespondence,
+            country: addressCorrespondence.countryCorrespondence
+        }
         console.log(addressCorrespondence)
+        if (!validateAddress(addressCor)){
+            showCorrectData()
+            return
+        }
+        axios
+            .put(
+                `${BASE_URL}/api/v1/user/${user.userId}/address?type=CORRESPONDENCE`,
+                addressCor,
+                config
+            )
+            .then(r => {
+                setDisableAddressCorrespondence(true)
+            })
+            .catch(error => {
+                showErrorAlert()
+            })
     }
 
     useEffect(() => {
@@ -274,7 +297,7 @@ function Profile() {
                         />
                     </div>
                     <div className={[styles.correspondenceWrapper, styles.cell].join(' ')}>
-                        <p>Adres zamieszkania</p>
+                        <p>Adres korespondencyjny</p>
                         <TextInputChange
                             name={"Kod pocztowy"}
                             var={"zipCodeCorrespondence"}
@@ -324,7 +347,7 @@ function Profile() {
                             name={"Kraj"}
                             var={"countryCorrespondence"}
                             placeholder={userData.correspondenceAddress.country}
-                            state={setAddress}
+                            state={setAddressCorrespondence}
                             type={"text"}
                             clicked={disableAddressCorrespondence}
                             disabled={disableAddressCorrespondence}
