@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import TextInputChange from "../../common/TextInputChange";
-import {user} from "../../../../config/authConfig";
+import {config, user} from "../../../../config/authConfig";
 import styles from './Profile.module.css'
 import ShowChangeBtn from "./ShowChangeBtn";
 import PasswordChange from "./PasswordChange";
+import {checkEmail, checkPhoneNumber} from "../../../utils/validation";
+import axios from "axios";
+import {BASE_URL} from "../../../../config/shared";
 
 function Profile() {
-
-    const [privateData, setPrivateData]=useState({
-        email: '',
-        phoneNumber: ''
-    })
+    const [userData, setUserData] = useState({})
+    const [email, setEmail]=useState({})
+    const [phoneNumber, setPhoneNumber]=useState({})
     const [address, setAddress]=useState({
         zipCode: '',
         city: '',
@@ -29,37 +30,56 @@ function Profile() {
         countryCorrespondence: ''
     })
     const [password, setPassword] = useState('')
-    const [disablePrivateData, setDisablePrivateData] = useState(true)
+    const [disableEmail, setDisableEmail] = useState(true)
+    const [disablePhoneNumber, setDisablePhoneNumber] = useState(true)
     const [disableAddress, setDisableAddress] = useState(true)
     const [disableAddressCorrespondence, setDisableAddressCorrespondence] = useState(true)
-
-    const changePrivateData = () => setDisablePrivateData(false)
-
-    const submitPrivateData = () => {
-        console.log(privateData)
+    const submitChangeEmail = () => {
+        
     }
-    const changeAddress = () => setDisableAddress(false)
+
+
+    const submitPhoneNumber = () => {
+
+    }
+
 
     const submitAddress = () => {
         console.log(address)
     }
-    const changeAddressCorrespondence = () => setDisableAddressCorrespondence(false)
+
 
     const submitAddressCorrespondence = () => {
         console.log(addressCorrespondence)
     }
 
+    useEffect(() => {
+        const getUserData = () => {
+            axios
+                .get(
+                    `${BASE_URL}/api/v1/users/${user.userId}`
+                )
+                .then(res => {
+                    console.log(res.data)
+                    setUserData(res.data)
+                })
+                .catch(er => {
 
+                })
+        }
+        getUserData()
+    }, []);
     return (
         <div className={styles.containerFluid}>
             <h2>Dane Konta</h2>
-            <div className={styles.container}>
+            {Object.keys(userData).length > 0 ? (
+                <div className={styles.container}>
                     <div className={[styles.personDataWrapper, styles.cell].join(' ')}>
                         <p>Dane osobowe</p>
                         <TextInputChange
                             name={"Login"}
                             var={"login"}
-                            placeholder={user.login}
+                            placeholder={userData.login}
                             state={''}
                             type={"text"}
                             clicked
@@ -68,7 +88,7 @@ function Profile() {
                         <TextInputChange
                             name={"Imię"}
                             var={"firstName"}
-                            placeholder={user.name}
+                            placeholder={userData.firstName}
                             state={''}
                             type={"text"}
                             clicked
@@ -77,7 +97,7 @@ function Profile() {
                         <TextInputChange
                             name={"Nazwisko"}
                             var={"lastName"}
-                            placeholder={"Kowalski"}
+                            placeholder={userData.lastName}
                             state={''}
                             type={"text"}
                             clicked
@@ -86,7 +106,7 @@ function Profile() {
                         <TextInputChange
                             name={"Kraj"}
                             var={"CountryInfo"}
-                            placeholder={"polska"}
+                            placeholder={userData.nationality}
                             state={''}
                             type={"text"}
                             clicked
@@ -95,7 +115,7 @@ function Profile() {
                         <TextInputChange
                             name={"data urodzenia"}
                             var={"birthDate"}
-                            placeholder={"01-04-2001"}
+                            placeholder={userData.dateOfBirth}
                             state={''}
                             type={"text"}
                             clicked
@@ -107,155 +127,164 @@ function Profile() {
                         <TextInputChange
                             name={"email"}
                             var={"email"}
-                            placeholder={"test@wp.pl"}
-                            state={setPrivateData}
+                            placeholder={userData.email}
+                            state={setEmail}
                             type={"text"}
-                            clicked={disablePrivateData}
-                            disabled={disablePrivateData}
+                            clicked={disableEmail}
+                            disabled={disableEmail}
+                        />
+                        <ShowChangeBtn
+                            disable={disableEmail}
+                            changeDisable={() => setDisableEmail(false)}
+                            submitData={submitChangeEmail}
                         />
                         <TextInputChange
                             name={"telefon"}
-                            var={"phone"}
-                            placeholder={"123456789"}
-                            state={setPrivateData}
+                            var={"phoneNumber"}
+                            placeholder={userData.phoneNumber}
+                            state={setPhoneNumber}
                             type={"text"}
-                            clicked={disablePrivateData}
-                            disabled={disablePrivateData}
+                            clicked={disablePhoneNumber}
+                            disabled={disablePhoneNumber}
                         />
                         <ShowChangeBtn
-                            disable={disablePrivateData}
-                            changeDisable={changePrivateData}
-                            submitData={submitPrivateData}
+                            disable={disablePhoneNumber}
+                            changeDisable={() => setDisablePhoneNumber(false)}
+                            submitData={submitPhoneNumber}
+                        />
+
+                    </div>
+                    <div className={[styles.addressWrapper, styles.cell].join(' ')}>
+                        <p>Adres zamieszkania</p>
+                        <TextInputChange
+                            name={"Kod pocztowy"}
+                            var={"zipCode"}
+                            placeholder={userData.residentialAddress.zipCode}
+                            state={setAddress}
+                            type={"text"}
+                            clicked={disableAddress}
+                            disabled={disableAddress}
+                        />
+                        <TextInputChange
+                            name={"Miejscowość"}
+                            var={"city"}
+                            placeholder={userData.residentialAddress.city}
+                            state={setAddress}
+                            type={"text"}
+                            clicked={disableAddress}
+                            disabled={disableAddress}
+                        />
+                        <TextInputChange
+                            name={"ulica"}
+                            var={"street"}
+                            placeholder={userData.residentialAddress.street}
+                            state={setAddress}
+                            type={"text"}
+                            clicked={disableAddress}
+                            disabled={disableAddress}
+                        />
+                        <TextInputChange
+                            name={"nr domu"}
+                            var={"homeNumber"}
+                            placeholder={userData.residentialAddress.houseNumber}
+                            state={setAddress}
+                            type={"text"}
+                            clicked={disableAddress}
+                            disabled={disableAddress}
+                        />
+                        <TextInputChange
+                            name={"Nr mieszkania"}
+                            var={"flatNumber"}
+                            placeholder={userData.residentialAddress.apartmentNumber}
+                            state={setAddress}
+                            type={"text"}
+                            clicked={disableAddress}
+                            disabled={disableAddress}
+                        />
+                        <TextInputChange
+                            name={"Kraj"}
+                            var={"country"}
+                            placeholder={userData.residentialAddress.country}
+                            state={setAddress}
+                            type={"text"}
+                            clicked={disableAddress}
+                            disabled={disableAddress}
+                        />
+                        <ShowChangeBtn
+                            disable={disableAddress}
+                            changeDisable={() => setDisableAddress(false)}
+                            submitData={submitAddress}
                         />
                     </div>
-                <div className={[styles.addressWrapper, styles.cell].join(' ')}>
-                    <p>Adres zamieszkania</p>
-                    <TextInputChange
-                        name={"Kod pocztowy"}
-                        var={"zipCode"}
-                        placeholder={"33-100"}
-                        state={setAddress}
-                        type={"text"}
-                        clicked={disableAddress}
-                        disabled={disableAddress}
-                    />
-                    <TextInputChange
-                        name={"Miejscowość"}
-                        var={"city"}
-                        placeholder={"Tarnów"}
-                        state={setAddress}
-                        type={"text"}
-                        clicked={disableAddress}
-                        disabled={disableAddress}
-                    />
-                    <TextInputChange
-                        name={"ulica"}
-                        var={"street"}
-                        placeholder={"Mickiewicza 8"}
-                        state={setAddress}
-                        type={"text"}
-                        clicked={disableAddress}
-                        disabled={disableAddress}
-                    />
-                    <TextInputChange
-                        name={"nr domu"}
-                        var={"homeNumber"}
-                        placeholder={"3"}
-                        state={setAddress}
-                        type={"text"}
-                        clicked={disableAddress}
-                        disabled={disableAddress}
-                    />
-                    <TextInputChange
-                        name={"Nr mieszkania"}
-                        var={"flatNumber"}
-                        placeholder={"4a"}
-                        state={setAddress}
-                        type={"text"}
-                        clicked={disableAddress}
-                        disabled={disableAddress}
-                    />
-                    <TextInputChange
-                        name={"Kraj"}
-                        var={"country"}
-                        placeholder={"Polska"}
-                        state={setAddress}
-                        type={"text"}
-                        clicked={disableAddress}
-                        disabled={disableAddress}
-                    />
-                    <ShowChangeBtn
-                        disable={disableAddress}
-                        changeDisable={changeAddress}
-                        submitData={submitAddress}
-                    />
+                    <div className={[styles.correspondenceWrapper, styles.cell].join(' ')}>
+                        <p>Adres zamieszkania</p>
+                        <TextInputChange
+                            name={"Kod pocztowy"}
+                            var={"zipCodeCorrespondence"}
+                            placeholder={userData.correspondenceAddress.zipCode}
+                            state={setAddressCorrespondence}
+                            type={"text"}
+                            clicked={disableAddressCorrespondence}
+                            disabled={disableAddressCorrespondence}
+                        />
+                        <TextInputChange
+                            name={"Miejscowość"}
+                            var={"cityCorrespondence"}
+                            placeholder={userData.correspondenceAddress.city}
+                            state={setAddressCorrespondence}
+                            type={"text"}
+                            clicked={disableAddressCorrespondence}
+                            disabled={disableAddressCorrespondence}
+                        />
+                        <TextInputChange
+                            name={"ulica"}
+                            var={"streetCorrespondence"}
+                            placeholder={userData.correspondenceAddress.street}
+                            state={setAddressCorrespondence}
+                            type={"text"}
+                            clicked={disableAddressCorrespondence}
+                            disabled={disableAddressCorrespondence}
+                        />
+                        <TextInputChange
+                            name={"nr domu"}
+                            var={"homeNumberCorrespondence"}
+                            placeholder={userData.correspondenceAddress.houseNumber}
+                            state={setAddressCorrespondence}
+                            type={"text"}
+                            clicked={disableAddressCorrespondence}
+                            disabled={disableAddressCorrespondence}
+                        />
+                        <TextInputChange
+                            name={"Nr mieszkania"}
+                            var={"flatNumberCorrespondence"}
+                            placeholder={userData.correspondenceAddress.apartmentNumber}
+                            state={setAddressCorrespondence}
+                            type={"text"}
+                            clicked={disableAddressCorrespondence}
+                            disabled={disableAddressCorrespondence}
+                        />
+                        <TextInputChange
+                            name={"Kraj"}
+                            var={"countryCorrespondence"}
+                            placeholder={userData.correspondenceAddress.country}
+                            state={setAddress}
+                            type={"text"}
+                            clicked={disableAddressCorrespondence}
+                            disabled={disableAddressCorrespondence}
+                        />
+                        <ShowChangeBtn
+                            disable={disableAddressCorrespondence}
+                            changeDisable={() => setDisableAddressCorrespondence(false)}
+                            submitData={submitAddressCorrespondence}
+                        />
+                    </div>
+                    <div className={[styles.passwordWrapper, styles.cell].join(' ')}>
+                        <PasswordChange savePassword={setPassword}/>
+                    </div>
                 </div>
-                <div className={[styles.correspondenceWrapper, styles.cell].join(' ')}>
-                    <p>Adres zamieszkania</p>
-                    <TextInputChange
-                        name={"Kod pocztowy"}
-                        var={"zipCodeCorrespondence"}
-                        placeholder={"33-100"}
-                        state={setAddressCorrespondence}
-                        type={"text"}
-                        clicked={disableAddressCorrespondence}
-                        disabled={disableAddressCorrespondence}
-                    />
-                    <TextInputChange
-                        name={"Miejscowość"}
-                        var={"cityCorrespondence"}
-                        placeholder={"Tarnów"}
-                        state={setAddressCorrespondence}
-                        type={"text"}
-                        clicked={disableAddressCorrespondence}
-                        disabled={disableAddressCorrespondence}
-                    />
-                    <TextInputChange
-                        name={"ulica"}
-                        var={"streetCorrespondence"}
-                        placeholder={"Mickiewicza 8"}
-                        state={setAddressCorrespondence}
-                        type={"text"}
-                        clicked={disableAddressCorrespondence}
-                        disabled={disableAddressCorrespondence}
-                    />
-                    <TextInputChange
-                        name={"nr domu"}
-                        var={"homeNumberCorrespondence"}
-                        placeholder={"3"}
-                        state={setAddressCorrespondence}
-                        type={"text"}
-                        clicked={disableAddressCorrespondence}
-                        disabled={disableAddressCorrespondence}
-                    />
-                    <TextInputChange
-                        name={"Nr mieszkania"}
-                        var={"flatNumberCorrespondence"}
-                        placeholder={"4a"}
-                        state={setAddressCorrespondence}
-                        type={"text"}
-                        clicked={disableAddressCorrespondence}
-                        disabled={disableAddressCorrespondence}
-                    />
-                    <TextInputChange
-                        name={"Kraj"}
-                        var={"countryCorrespondence"}
-                        placeholder={"Polska"}
-                        state={setAddress}
-                        type={"text"}
-                        clicked={disableAddressCorrespondence}
-                        disabled={disableAddressCorrespondence}
-                    />
-                    <ShowChangeBtn
-                        disable={disableAddressCorrespondence}
-                        changeDisable={changeAddressCorrespondence}
-                        submitData={submitAddressCorrespondence}
-                    />
-                </div>
-                <div className={[styles.passwordWrapper, styles.cell].join(' ')}>
-                    <PasswordChange savePassword={setPassword} />
-                </div>
-            </div>
+            ) : (
+                <p>Brak danych</p>
+            )}
 
         </div>
     );

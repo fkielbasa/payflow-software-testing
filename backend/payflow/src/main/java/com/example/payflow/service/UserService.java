@@ -15,12 +15,13 @@ public class UserService {
 //    public User getUserById(Long userId) {
 //        return userRepository.findById(userId).orElse(null);
 //    }
-    public List<UserDTO> getUserById(Long userId) {
+    public UserDTO getUserById(Long userId) {
         return  userRepository.findById(userId).stream()
                 .map(user -> new UserDTO(user.getId(),user.getFirstName(),user.getLastName(),user.getNationality(),
                         user.getDateOfBirth(),user.getLogin(), user.getUserDetails().getEmail(),
                         user.getUserDetails().getPhoneNumber(), user.getCorrespondenceAddress(),user.getResidentialAddress()))
-                .toList();
+                .toList()
+                .get(0);
     }
 
     public List<UserDTO> getAllUsers() {
