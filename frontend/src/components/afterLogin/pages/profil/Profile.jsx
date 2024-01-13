@@ -34,8 +34,30 @@ function Profile() {
     const [disablePhoneNumber, setDisablePhoneNumber] = useState(true)
     const [disableAddress, setDisableAddress] = useState(true)
     const [disableAddressCorrespondence, setDisableAddressCorrespondence] = useState(true)
+
+    const showErrorAlert = () => {
+        alert('Ups, coś poszło nie tak. Zmiana nie powiodła się.')
+    }
+    const showCorrectData = () => {
+        alert('Podaj prawidłowe dane!')
+    }
     const submitChangeEmail = () => {
-        
+        if (!checkEmail(email.email)){
+            showCorrectData()
+            return
+        }
+        axios
+            .patch(
+                `${BASE_URL}/api/v1/user/${user.userId}/email`,
+                email,
+                config
+            )
+            .then(r => {
+                setDisableEmail(true)
+            })
+            .catch(error => {
+                showErrorAlert()
+            })
     }
 
 
