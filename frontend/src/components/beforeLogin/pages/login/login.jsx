@@ -4,6 +4,7 @@ import styles from './login.module.css'
 import axios from "axios";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {TOKEN_KEY} from "../../../../config/authConfig";
 
 const Login = () => {
     let navigate = useNavigate()
@@ -29,7 +30,7 @@ const Login = () => {
                 )
             .then((response) => {
                 console.log(response.data)
-                localStorage.setItem('token', response.data.token)
+                localStorage.setItem(TOKEN_KEY, response.data.token)
                 switchRoute()
             })
             .catch((error) => console.log(error))

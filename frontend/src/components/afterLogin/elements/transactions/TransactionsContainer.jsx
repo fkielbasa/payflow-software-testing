@@ -22,7 +22,10 @@ const TransactionsContainer = ({ maxPerPage }) => {
 
     useEffect(() => {
         const getData = async () => {
-            axios.get(`http://localhost:8080/api/v1/account-numbers/${user.userId}/transfers`, config)
+            axios.get(
+                `http://localhost:8080/api/v1/account-numbers/${user.userId}/transfers`,
+                config
+            )
                 .then((response) => {
                     console.log(response.data);
                     setApiData(response.data.reverse().slice(0, maxPerPage));

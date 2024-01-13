@@ -27,6 +27,7 @@ import NotFound from "./components/afterLogin/pages/notFound/NotFound";
 import Cards from "./components/afterLogin/pages/cards/Cards";
 import {isExpired} from "react-jwt";
 import CardDetails from "./components/afterLogin/pages/cards/CardDetails";
+import {TOKEN_KEY} from "./config/authConfig";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -48,8 +49,8 @@ ReactDOM.render(
                     {/*<Route path="*" element={<NotFound/>}/>*/}
 
                 {/*<Route path="/home" element={<App/>}>*/}
-                {/*<Route path="/" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/login" /> : <App/>}>*/}
-                <Route path="/" element={<App/>}>
+                <Route path="/" element={isExpired(localStorage.getItem(TOKEN_KEY)) ? <Navigate replace to="/login" /> : <App/>}>
+                {/*<Route path="/" element={<App/>}>*/}
                     <Route path="/home" element={<Home/>} />
                     <Route path="transactions" element={<Transactions/>} />
                     <Route path="transfers" element={<Transfers/>} />

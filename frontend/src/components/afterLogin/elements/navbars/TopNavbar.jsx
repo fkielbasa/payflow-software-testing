@@ -5,7 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { TbLogout } from "react-icons/tb";
 import { IoIosArrowDown } from "react-icons/io";
-import {user} from "../../../../config/authConfig";
+import {TOKEN_KEY, user} from "../../../../config/authConfig";
 import {Link, useNavigate} from "react-router-dom";
 import Logo from "./Logo";
 
@@ -19,7 +19,7 @@ function Home() {
     }
 
     const logout = () => {
-        localStorage.clear()
+        localStorage.removeItem(TOKEN_KEY)
         navigate('/home')
         window.location.reload()
     }
