@@ -1,6 +1,7 @@
 package com.example.payflow.service;
 
 import com.example.payflow.dto.EmailDTO;
+import com.example.payflow.dto.PhoneNumberDTO;
 import com.example.payflow.model.User;
 import com.example.payflow.model.UserDetails;
 import com.example.payflow.repository.UserDetailsRepository;
@@ -32,7 +33,20 @@ public class UserDetailsServices {
         }
         return null;
     }
+    public UserDetails changeUserPhoneNumber(Long id, PhoneNumberDTO number) {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent() && isPhoneNumberValid(number.phoneNumber())){
+            UserDetails u = user.get().getUserDetails();
+            u.setPhoneNumber(number.phoneNumber());
+            userDetailsRepository.save(u);
+            return u;
+        }
+        return null;
+    }
     private boolean isEmailValid(String email){
         return !userDetailsRepository.isEmailExists(email);
+    }
+    private boolean isPhoneNumberValid(String number){
+        return !userDetailsRepository.isPhoneNumberExists(number);
     }
 }
