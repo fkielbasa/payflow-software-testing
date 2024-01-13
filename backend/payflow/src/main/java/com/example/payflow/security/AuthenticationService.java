@@ -23,6 +23,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.TimeZone;
 
 @Service
@@ -75,17 +78,16 @@ public class AuthenticationService {
 
 
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        formatter.setTimeZone(TimeZone.getTimeZone("Poland/Warsaw"));
-
         String userLogin = getNewLogin();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .login(userLogin)
-                .dateOfBirth(formatter.parse(request.getDateOfBirth()))
+                .dateOfBirth(LocalDate.parse(request.getDateOfBirth(),formatter))
                 .nationality(request.getNationality())
                 .residentialAddress(residentalAddress)
                 .correspondenceAddress(correspondenceAddress)
