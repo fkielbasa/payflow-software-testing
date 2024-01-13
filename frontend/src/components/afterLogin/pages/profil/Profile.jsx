@@ -7,6 +7,7 @@ import PasswordChange from "./PasswordChange";
 import {checkEmail, checkPhoneNumber} from "../../../utils/validation";
 import axios from "axios";
 import {BASE_URL} from "../../../../config/shared";
+import TextError from "../../common/TextError";
 
 function Profile() {
     const [userData, setUserData] = useState({})
@@ -97,7 +98,6 @@ function Profile() {
                     `${BASE_URL}/api/v1/users/${user.userId}`
                 )
                 .then(res => {
-                    console.log(res.data)
                     setUserData(res.data)
                 })
                 .catch(er => {
@@ -320,7 +320,9 @@ function Profile() {
                     </div>
                 </div>
             ) : (
-                <p>Brak danych</p>
+                <TextError
+                    text={"Wczytanie danych nie powiodło się."}
+                />
             )}
 
         </div>
