@@ -15,7 +15,7 @@ public class AddressController {
 
     private final AddressService addressService;
 
-    @PutMapping("/user/{id}/address/")
+    @PutMapping("/user/{id}/address")
     public ResponseEntity<?> changeUserAddress(@PathVariable Long id, @RequestParam(name = "type", required = true) AddressType addressType, @RequestBody AddressDTO address){
         Address a = addressService.changeUserAddress(id,addressType,address);
         if(a != null){
