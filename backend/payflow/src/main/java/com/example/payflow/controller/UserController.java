@@ -1,6 +1,7 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.dto.UserDTO;
+import com.example.payflow.model.User;
 import com.example.payflow.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,15 +19,16 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<List<UserDTO>> getUserById(@PathVariable Long id) {
-        List<UserDTO> user = userService.getUserById(id);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<?> getUserById(@PathVariable Long id) {
+        UserDTO user = userService.getUserById(id);
+        if(user != null)
+            return ResponseEntity.ok(user);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/users")
     public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
-
 
 }
