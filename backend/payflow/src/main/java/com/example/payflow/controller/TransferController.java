@@ -1,27 +1,73 @@
 package com.example.payflow.controller;
 
+import com.example.payflow.dto.*;
 import com.example.payflow.service.TransferService;
-import com.example.payflow.transfer.Transfer;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class TransferController {
     private final TransferService transferService;
-
-    @GetMapping("/transfer/{transferId}")
-    public ResponseEntity<Transfer> getTransferById(@PathVariable Long transferId) {
-        Transfer transfer = transferService.getTransferById(transferId);
+    @GetMapping("/transfers/{id}")
+    public ResponseEntity<TransferDetailsResultDto> getTransferById(@PathVariable Long id) {
+        TransferDetailsResultDto transfer = transferService.getTransferById(id);
         if (transfer != null) {
-            return ResponseEntity.ok(transfer);
+            return ResponseEntity.status(HttpStatus.OK).body(transfer);
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+
+
+    @GetMapping("/account-numbers/{id}/transfers")
+    public ResponseEntity<List<TransferResultDTO>> getTransfersByAccountNumberId(@PathVariable Long id){
+        List<TransferResultDTO> transferList = transferService.getTransfersByAccountNumberId(id);
+        if (transferList.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        else
+            return ResponseEntity.status(HttpStatus.OK).body(transferList);
+    }
+
+
+
+    @PostMapping("/transfer")
+    public ResponseEntity<TransferDTO> createTransfer(@RequestBody TransferDTO transferDTO){
+        TransferDTO transfer = transferService.createTransfer(transferDTO);
+        if (transfer != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(transfer);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
+        }
+    }
+
+    @PostMapping("/transfer/phone-number")
+    public ResponseEntity<TransferDTO> addTransferByPhoneNumber(@RequestBody PhoneTransferDTO phoneTransfer){
+        TransferDTO t = transferService.addTransferByPhoneNumber(phoneTransfer);
+        if (t != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(t);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
+        }
+    }
+
+    @PostMapping("/transfer/exchange")
+    public ResponseEntity<TransferDTO> exchangeBetweenAccounts(@RequestBody TransferExchangeDto exchange){
+        TransferDTO t = transferService.exchangeBetweenAccounts(exchange);
+        if (t != null)
+            return ResponseEntity.status(HttpStatus.CREATED).body(t);
+        else
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+
+
+
 }

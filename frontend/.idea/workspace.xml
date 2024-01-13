@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2XfyIGzuheDeqDGjDmkAt4b4jw7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-frontend-repaired&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kubad/Documents/GitHub/payflow/frontend&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\kubad\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\topNavbar\icon" />
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\transfers" />
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\transactions" />
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets" />
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\afterLogin\elements\transactions" />
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\beforeLogin" />
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages" />
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages\service" />
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages\info" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="" />
+      <created>1699034346264</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699034346264</updated>
+      <workItem from="1699034347325" duration="14386000" />
+      <workItem from="1699107586734" duration="3857000" />
+      <workItem from="1700080575400" duration="3804000" />
+      <workItem from="1701633034897" duration="12165000" />
+      <workItem from="1701704680216" duration="12741000" />
+      <workItem from="1701791107661" duration="6292000" />
+      <workItem from="1702069535623" duration="3581000" />
+      <workItem from="1702135389728" duration="111000" />
+      <workItem from="1702137317774" duration="2044000" />
+      <workItem from="1702220261896" duration="4234000" />
+      <workItem from="1702585858380" duration="1269000" />
+      <workItem from="1702640467275" duration="16478000" />
+      <workItem from="1702749582056" duration="18985000" />
+      <workItem from="1702815036855" duration="23734000" />
+      <workItem from="1703004292388" duration="9952000" />
+      <workItem from="1703106178193" duration="6472000" />
+      <workItem from="1703197157702" duration="3959000" />
+      <workItem from="1703255902443" duration="17007000" />
+      <workItem from="1703373361151" duration="603000" />
+      <workItem from="1703957924297" duration="6813000" />
+      <workItem from="1704016287816" duration="5404000" />
+      <workItem from="1704133879385" duration="1178000" />
+      <workItem from="1704140509677" duration="6993000" />
+      <workItem from="1704191498764" duration="39000" />
+      <workItem from="1704236332107" duration="2131000" />
+      <workItem from="1704297064898" duration="3134000" />
+      <workItem from="1704400957191" duration="16699000" />
+      <workItem from="1704638609736" duration="21117000" />
+      <workItem from="1704729357482" duration="38000" />
+      <workItem from="1704730294909" duration="10528000" />
+      <workItem from="1704750276243" duration="3699000" />
+      <workItem from="1704801254402" duration="10411000" />
+      <workItem from="1704817864698" duration="7847000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,37 +1,45 @@
 package com.example.payflow.controller;
 
-import com.example.payflow.loan.Loan;
-import com.example.payflow.loan.LoanRepository;
+import com.example.payflow.dto.LoanDTO;
+import com.example.payflow.dto.LoanDTOPost;
+import com.example.payflow.dto.mapper.LoanDTOMapper;
+import com.example.payflow.model.Loan;
 import com.example.payflow.service.LoanService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/v1")
 public class LoanController {
 
     private final LoanService loanService;
-    private final LoanRepository loanRepository;
 
-    @Autowired
-    public LoanController(LoanService loanService, LoanRepository loanRepository) {
-        this.loanService = loanService;
-        this.loanRepository = loanRepository;
+    @GetMapping("/numbers/{id}/loans")
+    public ResponseEntity<List<LoanDTO>> getLoansByAccountNumberId(@PathVariable Long id){
+        List<LoanDTO> loan = loanService.getLoansByAccountNumberId(id);
+        if(!loan.isEmpty()){
+            return ResponseEntity.ok().body(loan);
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-    @GetMapping("/loans")
-    public List<Loan> getAllLoans() {
-        return loanRepository.findAll();
+    @PostMapping("/loan")
+    public ResponseEntity<LoanDTO> addLoan(@RequestBody LoanDTOPost loan) {
+        LoanDTO l = loanService.addLoan(loan);
+        if(l != null){
+            return new ResponseEntity(l,HttpStatus.CREATED);
+        }
+        return new ResponseEntity("Incorrect data or account doesn't exist", HttpStatus.BAD_REQUEST);
     }
-
-    @GetMapping("/loan/{id}")
-    public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
-        Loan loan = loanService.getLoanById(id);
-        return ResponseEntity.ok(loan);
+    @DeleteMapping("/loan/{id}")
+    public ResponseEntity<String> removeLoanById(@PathVariable Long id){
+        Loan l = loanService.removeLoanById(id);
+        if(l != null){
+            return new ResponseEntity("Loan successfully removed.", HttpStatus.OK);
+        }
+        return new ResponseEntity("Loan doesn't exist.",HttpStatus.BAD_REQUEST);
     }
 }

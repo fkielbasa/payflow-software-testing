@@ -1,31 +1,52 @@
 package com.example.payflow.service;
 
-import com.example.payflow.DTO.UserDetailsDTO;
-import com.example.payflow.user_details.UserDetails;
-import com.example.payflow.user_details.UserDetailsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.payflow.dto.EmailDTO;
+import com.example.payflow.dto.PhoneNumberDTO;
+import com.example.payflow.model.User;
+import com.example.payflow.model.UserDetails;
+import com.example.payflow.repository.UserDetailsRepository;
+import com.example.payflow.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
+@RequiredArgsConstructor
 @Service
 public class UserDetailsServices {
 
     private final UserDetailsRepository userDetailsRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    public UserDetailsServices(UserDetailsRepository userDetailsRepository) {
-        this.userDetailsRepository = userDetailsRepository;
+
+//    public UserDetails getUserDetailsById(Long id) {
+//        return userDetailsRepository.findById(id)
+//                .orElseThrow(() -> new RuntimeException("UserDetails not found"));
+//    }
+    public UserDetails changeUserEmail(Long id, EmailDTO email) {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent() && isEmailValid(email.email())){
+            UserDetails u = user.get().getUserDetails();
+            u.setEmail(email.email());
+            userDetailsRepository.save(u);
+            return u;
+        }
+        return null;
     }
-    public void saveUserDetails(UserDetailsDTO userDetailsDTO) {
-        UserDetails userDetails = new UserDetails();
-        userDetails.setEmail(userDetailsDTO.getEmail());
-        userDetails.setPhoneNumber(userDetailsDTO.getPhoneNumber());
-
-        userDetailsRepository.save(userDetails);
+    public UserDetails changeUserPhoneNumber(Long id, PhoneNumberDTO number) {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent() && isPhoneNumberValid(number.phoneNumber())){
+            UserDetails u = user.get().getUserDetails();
+            u.setPhoneNumber(number.phoneNumber());
+            userDetailsRepository.save(u);
+            return u;
+        }
+        return null;
     }
-
-    public UserDetails getUserDetailsById(Long id) {
-        return userDetailsRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("UserDetails not found"));
+    private boolean isEmailValid(String email){
+        return !userDetailsRepository.isEmailExists(email);
     }
-
+    private boolean isPhoneNumberValid(String number){
+        return !userDetailsRepository.isPhoneNumberExists(number);
+    }
 }

@@ -1,0 +1,49 @@
+.container {
+
+}
+
+.infoWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.infoWrapper h2 {
+    margin-top: 40px;
+}
+
+.list {
+
+}
+
+.list li{
+    list-style: none;
+
+}
+.list li::before {
+    content: "\2022";
+    color: var(--darkBlue);
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+.pic {
+    margin: 5px;
+    width: 50vw;
+}
+
+.infoWrapper div div {
+    margin-left: 10px;
+}
+.infoWrapper button {
+    border: none;
+    color: var(--black);
+    margin: 20px;
+    background-color: var(--blue);
+    padding: 15px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+}

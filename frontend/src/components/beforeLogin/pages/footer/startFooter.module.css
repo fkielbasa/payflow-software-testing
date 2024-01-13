@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--grey);
+    padding: 15px;
+    height: 70px;
+
+}
+
+.wrapperInfo {
+    display: flex;
+
+}
+.wrapperInfo p {
+    padding: 10px;
+}
+
+.icons {
+    margin: 0 20px;
+}
+.icons svg {
+    padding: 5px;
+    color: var(--black);
+}

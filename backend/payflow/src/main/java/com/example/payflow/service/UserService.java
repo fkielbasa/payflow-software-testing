@@ -1,32 +1,33 @@
 package com.example.payflow.service;
 
-import com.example.payflow.DTO.UserDTO;
-import com.example.payflow.user.User;
-import com.example.payflow.user.UserRepository;
+import com.example.payflow.dto.UserDTO;
+import com.example.payflow.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+//    public User getUserById(Long userId) {
+//        return userRepository.findById(userId).orElse(null);
+//    }
+    public List<UserDTO> getUserById(Long userId) {
+        return  userRepository.findById(userId).stream()
+                .map(user -> new UserDTO(user.getId(),user.getFirstName(),user.getLastName(),user.getNationality(),
+                        user.getDateOfBirth(),user.getLogin(), user.getUserDetails().getEmail(),
+                        user.getUserDetails().getPhoneNumber(), user.getCorrespondenceAddress(),user.getResidentialAddress()))
+                .toList();
     }
 
-    public User getUserById(Long userId) {
-        return userRepository.findById(userId).orElse(null);
+    public List<UserDTO> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(user -> new UserDTO(user.getId(),user.getFirstName(),user.getLastName(),user.getNationality(),
+                        user.getDateOfBirth(),user.getLogin(), user.getUserDetails().getEmail(),
+                        user.getUserDetails().getPhoneNumber(), user.getCorrespondenceAddress(),user.getResidentialAddress()))
+                .toList();
     }
-
-    public void saveUser(UserDTO userDTO) {
-        User user = new User();
-        user.setFirstname(userDTO.getFirstname());
-        user.setLastname(userDTO.getLastname());
-        user.setLogin(userDTO.getLogin());
-        user.setPassword(userDTO.getPassword());
-        user.setRole(userDTO.getRole());
-
-        userRepository.save(user);
-    }
-
 }

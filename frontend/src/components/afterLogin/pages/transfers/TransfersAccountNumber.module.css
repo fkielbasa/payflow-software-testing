@@ -1,0 +1,49 @@
+.transferAccountNumberContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4ce96;
+    border-radius: 10px;
+    padding: 20px;
+    width: 40%;
+    margin: 20px;
+}
+
+.submitWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+.submit {
+    background-color: var(--black);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit:hover {
+    /*transform: scale(1.2);*/
+}
+
+.msg {
+    text-align: center;
+}
+
+
+
+
+.formStyle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.selectAccount {
+    margin: auto;
+    width: 90%;
+}

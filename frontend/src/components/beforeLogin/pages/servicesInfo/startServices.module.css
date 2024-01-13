@@ -1,0 +1,23 @@
+
+.wrapper div {
+    /*width: 15%;*/
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-around;*/
+
+
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
+
+.headline {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+}
