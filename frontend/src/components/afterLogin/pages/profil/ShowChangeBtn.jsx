@@ -4,7 +4,7 @@ import React from "react";
 const ShowChangeBtn = (props) => {
 
     return(
-        <div>
+        <div className={styles.wrapper}>
             {props.disable ? (
                 <button
                     className={styles.btn}
