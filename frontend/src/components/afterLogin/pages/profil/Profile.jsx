@@ -62,7 +62,22 @@ function Profile() {
 
 
     const submitPhoneNumber = () => {
-
+        if (!checkPhoneNumber(phoneNumber.phoneNumber)){
+            showCorrectData()
+            return
+        }
+        axios
+            .patch(
+                `${BASE_URL}/api/v1/user/${user.userId}/phone-number`,
+                phoneNumber,
+                config
+            )
+            .then(r => {
+                setDisablePhoneNumber(true)
+            })
+            .catch(error => {
+                showErrorAlert()
+            })
     }
 
 
