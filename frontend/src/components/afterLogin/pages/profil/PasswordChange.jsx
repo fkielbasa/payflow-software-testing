@@ -1,5 +1,9 @@
 import React, {useState} from "react";
 import styles from "./PasswordChange.module.css"
+import axios from "axios";
+import {BASE_URL} from "../../../../config/shared";
+import {config, user} from "../../../../config/authConfig";
+import {showErrorAlert} from "../../../utils/alerts";
 
 const PasswordChange = (props) => {
     const [password, setPassword] = useState('');
@@ -41,10 +45,27 @@ const PasswordChange = (props) => {
         }
     };
 
+    const changePassword = () => {
+        axios
+            .patch(
+                `${BASE_URL}/api/v1/users/${user.userId}/password`,
+                {
+                    password: password
+                },
+                config
+            )
+            .then(r => {
+                window.location.reload()
+            })
+            .catch(er => {
+                showErrorAlert()
+            })
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault()
         if (isStrong && password === passwordRepeated){
-            props.savePassword(password)
+            changePassword()
         } else{
             document.getElementById("wrong").style.display='block';
         }

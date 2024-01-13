@@ -11,9 +11,6 @@ import AddressData from "./addressData";
 
 const Profile = () => {
     const [userData, setUserData] = useState({})
-    const [password, setPassword] = useState('')
-
-
     useEffect(() => {
         const getUserData = () => {
             axios
@@ -57,9 +54,9 @@ const Profile = () => {
                         type={"CORRESPONDENCE"}
                         name={"korespondencyjny"}
                     />
-                    <div className={[styles.passwordWrapper, styles.cell].join(' ')}>
-                        <PasswordChange savePassword={setPassword}/>
-                    </div>
+                    {/*<div className={[styles.passwordWrapper, styles.cell].join(' ')}>*/}
+                        <PasswordChange />
+                    {/*</div>*/}
                 </div>
             ) : (
                 <TextError

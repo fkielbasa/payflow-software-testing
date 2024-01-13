@@ -17,7 +17,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<?> getUserById(@PathVariable Long id) {
         UserDTO user = userService.getUserById(id);
         if(user != null)
@@ -30,7 +30,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PatchMapping("/user/{id}/password")
+    @PatchMapping("/users/{id}/password")
     public ResponseEntity<?> changeUserPassword(@PathVariable Long id, @RequestBody PasswordDTO password){
         UserDTO user = userService.changeUserPassword(id,password);
         if(user != null)
