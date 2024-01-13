@@ -4,7 +4,7 @@ import {config, user} from "../../../../config/authConfig";
 import styles from './Profile.module.css'
 import ShowChangeBtn from "./ShowChangeBtn";
 import PasswordChange from "./PasswordChange";
-import {checkEmail, checkPhoneNumber} from "../../../utils/validation";
+import {checkEmail, checkHomeNumber, checkPhoneNumber, checkZipCode, isString} from "../../../utils/validation";
 import axios from "axios";
 import {BASE_URL} from "../../../../config/shared";
 import TextError from "../../common/TextError";
@@ -17,7 +17,7 @@ function Profile() {
         zipCode: '',
         city: '',
         street: '',
-        homeNumber: '',
+        houseNumber: '',
         flatNumber: '',
         country: ''
 
@@ -26,7 +26,7 @@ function Profile() {
         zipCodeCorrespondence: '',
         cityCorrespondence: '',
         streetCorrespondence: '',
-        homeNumberCorrespondence: '',
+        houseNumberCorrespondence: '',
         flatNumberCorrespondence: '',
         countryCorrespondence: ''
     })
@@ -36,12 +36,9 @@ function Profile() {
     const [disableAddress, setDisableAddress] = useState(true)
     const [disableAddressCorrespondence, setDisableAddressCorrespondence] = useState(true)
 
-    const showErrorAlert = () => {
-        alert('Ups, coś poszło nie tak. Zmiana nie powiodła się.')
-    }
-    const showCorrectData = () => {
-        alert('Podaj prawidłowe dane!')
-    }
+    const showErrorAlert = () => alert('Ups, coś poszło nie tak. Zmiana nie powiodła się.')
+
+    const showCorrectData = () => alert('Podaj prawidłowe dane!')
     const submitChangeEmail = () => {
         if (!checkEmail(email.email)){
             showCorrectData()
@@ -81,9 +78,32 @@ function Profile() {
             })
     }
 
+    const validateAddress = (address) => {
+        return checkZipCode(address.zipCode)
+                && isString(address.city)
+                && isString(address.style)
+                && checkHomeNumber(address.houseNumber)
+                && isString(address.country)
+    }
 
     const submitAddress = () => {
         console.log(address)
+        if (!validateAddress(address)){
+            showCorrectData()
+            return
+        }
+        axios
+            .put(
+                `${BASE_URL}/api/v1/user/${user.userId}/address?type=RESIDENTIAL`,
+                address,
+                config
+            )
+            .then(r => {
+                setDisableAddress(true)
+            })
+            .catch(error => {
+                showErrorAlert()
+            })
     }
 
 
@@ -222,7 +242,7 @@ function Profile() {
                         />
                         <TextInputChange
                             name={"nr domu"}
-                            var={"homeNumber"}
+                            var={"houseNumber"}
                             placeholder={userData.residentialAddress.houseNumber}
                             state={setAddress}
                             type={"text"}
@@ -284,7 +304,7 @@ function Profile() {
                         />
                         <TextInputChange
                             name={"nr domu"}
-                            var={"homeNumberCorrespondence"}
+                            var={"houseNumberCorrespondence"}
                             placeholder={userData.correspondenceAddress.houseNumber}
                             state={setAddressCorrespondence}
                             type={"text"}
