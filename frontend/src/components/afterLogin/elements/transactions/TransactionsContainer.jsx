@@ -94,8 +94,8 @@ const TransactionsContainer = ({ maxPerPage }) => {
                         onClick={() => handleTransactionClick(transaction)}
                     >
                         <div className={styles.imagePosition}>
-                            {console.log('user.userId', user.userId)}
-                            {console.log('t.rAId', transaction.receiverAccountId)}
+                            {/*{console.log('user.userId', user.userId)}*/}
+                            {/*{console.log('t.rAId', transaction.receiverAccountId)}*/}
                             {transaction.receiverAccountId == user.userId ? (
                                 <img src={circlePlus} alt="circlePlus" className={styles.imgWidth}/>
                             ) : (

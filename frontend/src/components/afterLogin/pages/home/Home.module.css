@@ -12,28 +12,17 @@
 .contentWrapper {
     display: flex;
     flex-direction: row;
-
 }
 
 .leftSidePosition {
-    width: 50vw;
+    width: 49vw;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    margin: 10px;
+
+    /*background-color: blue;*/
 }
-
-/*.balancePosition {*/
-/*    display: flex;*/
-/*    !*flex-direction: row;*!*/
-/*    flex-wrap: wrap;*/
-/*    position: absolute;*/
-/*    width: 50vw;*/
-/*    !*background-color: red;*!*/
-/*}*/
-
-/*.properMargin {*/
-/*    margin-left: 22%;*/
-/*    margin-top: 17%;*/
-/*}*/
 
 .transactionPosition {
     width: 29vw;

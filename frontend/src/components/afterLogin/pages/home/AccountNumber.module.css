@@ -1,0 +1,44 @@
+.position {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    width: 260px;
+    height: 150px;
+
+    padding: 10px;
+    color: white;
+}
+
+.textPosition {
+    margin-bottom: -10px;
+}
+
+.twoThings {
+    display: flex;
+    flex-direction: row;
+    margin-top: -15px;
+    justify-content: space-between;
+}
+
+.accountNumberType {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.money {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.smallText {
+    font-size: 13px;
+}
+
+.number {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

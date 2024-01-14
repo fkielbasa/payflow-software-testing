@@ -31,21 +31,6 @@ function CreditCard(props) {
 
     const toValue = props.to === '/cards' ? '/cards' : `/cards/${props.id}`;
 
-    // function formatAccountNumber(accountNumber) {
-    //     const accountString = accountNumber.toString();
-    //
-    //     const firstTwoDigits = accountString.substring(0, 2);
-    //     const remainingDigits = accountString.substring(2);
-    //
-    //     const chunks = [];
-    //     for (let i = 0; i < remainingDigits.length; i += 4) {
-    //         chunks.push(remainingDigits.substring(i, i + 4));
-    //     }
-    //
-    //     return `${firstTwoDigits} ${chunks.join(' ')}`;
-    // }
-
-
     const backgroundStyles1 = {
         background: 'linear-gradient(55deg, rgba(22,135,167,1) 10%, rgba(39,102,120,1) 90%)'
     };
