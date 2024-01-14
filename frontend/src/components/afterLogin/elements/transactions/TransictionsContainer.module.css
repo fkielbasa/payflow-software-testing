@@ -10,14 +10,17 @@
     margin-bottom: 10px;
     align-items: center;
     transition: transform 0.3s ease, z-index 0.3s ease;
-
-    /*background-color: red;*/
+    border-radius: 15px;
+    background-color: #ececec;
+    padding-right: 10px;
 }
 
 .shortPayment.hovered {
     transform: scale(1.04);
     /*transition: transform 0.3s ease;*/
     z-index: 1;
+
+    background-color: #D3E0EA;
 }
 
 .shortPaymentText {
@@ -91,10 +94,4 @@
 .rowPosition {
     display: flex;
     flex-direction: row;
-}
-
-.shortPayment.hovered {
-    transform: scale(1.04);
-    /*transition: transform 0.3s ease;*/
-    z-index: 1;
 }
