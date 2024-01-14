@@ -4,7 +4,7 @@ import styles from './CreditCards.module.css';
 // import ChartComponent from "./ChartComponent";
 import {Link} from "react-router-dom";
 import chip from "../../../../assets/transations/chip.png";
-import {formatAccountNumber} from "../../elements/specialFunctions/formatAccountNumber";
+import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 
 function CreditCard(props) {
     const [isHovered, setIsHovered] = useState(false);

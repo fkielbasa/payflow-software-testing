@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/specialFunctions/formatAccountNumber.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utils/formatAccountNumber.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/TransactionsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/TransactionsContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/TransictionsContainer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/TransictionsContainer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/cards/CreditCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/cards/CreditCard.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +52,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature-frontend-repaired",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/kuba/Documents/payflow/backend",
+    "last_opened_file_path": "C:/Users/kubad/Documents/GitHub/payflow/backend",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -70,11 +73,11 @@
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\src\components\utils" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\afterLogin\elements\transactions" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\beforeLogin" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages\service" />
-      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages\info" />
     </key>
   </component>
   <component name="RunManager">
@@ -136,6 +139,7 @@
       <workItem from="1704801254402" duration="10411000" />
       <workItem from="1704817864698" duration="8583000" />
       <workItem from="1704876537057" duration="1736000" />
+      <workItem from="1705237009352" duration="1759000" />
     </task>
     <servers />
   </component>

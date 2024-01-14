@@ -4,7 +4,7 @@ import styles from './TransictionsContainer.module.css';
 import { config, user } from '../../../../config/authConfig';
 import Popup from 'reactjs-popup';
 import { useSpring, animated } from 'react-spring';
-import {formatAccountNumber} from "../specialFunctions/formatAccountNumber";
+import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 
 const TransactionsContainer = ({ maxPerPage }) => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -111,7 +111,7 @@ const TransactionsContainer = ({ maxPerPage }) => {
                 ))}
 
                 <Popup open={!!selectedTransaction} onClose={closePopup}
-                       contentStyle={{backgroundColor: '#D3E0EA', padding: '25px', borderRadius: 5}}>
+                       contentStyle={{backgroundColor: '#1687A7', padding: '15px', borderRadius: 10}}>
                     {selectedTransaction && receiverData && (
                         <div>
                             <div style={{backgroundColor: '#F6F5F5', borderRadius: 5, padding: '10px'}}>
@@ -121,7 +121,7 @@ const TransactionsContainer = ({ maxPerPage }) => {
                                 <p style={{marginTop: -8}}>Data: {selectedTransaction.date}</p>
                                 <p style={{marginTop: -8, marginBottom: -4}}>Kwota: {formatAmount(selectedTransaction.amount, selectedTransaction.currency)}</p>
                             </div>
-                            <div style={{margin: 25}}/>
+                            <div style={{margin: 15}}/>
                             <div style={{backgroundColor: '#F6F5F5', borderRadius: 5, padding: '10px'}}>
                                 <h3 style={{marginTop: -4}}>Dane odbiorcy:</h3>
                                 <p style={{marginTop: -8}}>Numer
@@ -135,8 +135,8 @@ const TransactionsContainer = ({ maxPerPage }) => {
                                     </>
                                 )}
                             </div>
-                            <div style={{display: "flex", justifyContent: "center", marginTop: 12, marginBottom: -12}}>
-                                <button style={{backgroundColor: '#276678', borderRadius: 5, color: 'white', borderColor: '#276678'}} onClick={closePopup}>Zamknij</button>
+                            <div style={{display: "flex", justifyContent: "center", marginTop: 2, marginBottom: -10}}>
+                                <button style={{backgroundColor: '#276678', borderRadius: 5, color: 'white', borderColor: '#1687A7', boxShadow: 0, width: 80, height: 28}} onClick={closePopup}>Zamknij</button>
                             </div>
                         </div>
                     )}
