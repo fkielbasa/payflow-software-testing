@@ -5,6 +5,8 @@ import { config, user } from '../../../../config/authConfig';
 import Popup from 'reactjs-popup';
 import { useSpring, animated } from 'react-spring';
 import {formatAccountNumber} from "../../../utils/formatAccountNumber";
+import circleMinus from "../../../../assets/transations/circleMinus.png";
+import circlePlus from "../../../../assets/transations/circlePlus.png";
 
 const TransactionsContainer = ({ maxPerPage }) => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -91,6 +93,15 @@ const TransactionsContainer = ({ maxPerPage }) => {
                         onMouseLeave={() => setHoveredIndex(null)}
                         onClick={() => handleTransactionClick(transaction)}
                     >
+                        <div className={styles.imagePosition}>
+                            {console.log('user.userId', user.userId)}
+                            {console.log('t.rAId', transaction.receiverAccountId)}
+                            {transaction.receiverAccountId == user.userId ? (
+                                <img src={circlePlus} alt="circlePlus" className={styles.imgWidth}/>
+                            ) : (
+                                <img src={circleMinus} alt="circleMinus" className={styles.imgWidth}/>
+                            )}
+                        </div>
                         <div className={styles.shortPaymentText}>
                             <div className={styles.paymentTextPosition}>
                                 <p className={styles.transactionTextDecoration}>{transaction.description}</p>
@@ -119,7 +130,10 @@ const TransactionsContainer = ({ maxPerPage }) => {
                                 <p style={{marginTop: -8}}>Tytuł: {selectedTransaction.description}</p>
                                 <p style={{marginTop: -8}}>Odbiorca: {selectedTransaction.receiverFullName}</p>
                                 <p style={{marginTop: -8}}>Data: {selectedTransaction.date}</p>
-                                <p style={{marginTop: -8, marginBottom: -4}}>Kwota: {formatAmount(selectedTransaction.amount, selectedTransaction.currency)}</p>
+                                <p style={{
+                                    marginTop: -8,
+                                    marginBottom: -4
+                                }}>Kwota: {formatAmount(selectedTransaction.amount, selectedTransaction.currency)}</p>
                             </div>
                             <div style={{margin: 15}}/>
                             <div style={{backgroundColor: '#F6F5F5', borderRadius: 5, padding: '10px'}}>
@@ -136,7 +150,16 @@ const TransactionsContainer = ({ maxPerPage }) => {
                                 )}
                             </div>
                             <div style={{display: "flex", justifyContent: "center", marginTop: 2, marginBottom: -10}}>
-                                <button style={{backgroundColor: '#276678', borderRadius: 5, color: 'white', borderColor: '#1687A7', boxShadow: 0, width: 80, height: 28}} onClick={closePopup}>Zamknij</button>
+                                <button style={{
+                                    backgroundColor: '#276678',
+                                    borderRadius: 5,
+                                    color: 'white',
+                                    borderColor: '#1687A7',
+                                    boxShadow: 0,
+                                    width: 80,
+                                    height: 28
+                                }} onClick={closePopup}>Zamknij
+                                </button>
                             </div>
                         </div>
                     )}

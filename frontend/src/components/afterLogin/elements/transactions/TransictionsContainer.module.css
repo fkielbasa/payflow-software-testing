@@ -13,21 +13,31 @@
     border-radius: 15px;
     background-color: #ececec;
     padding-right: 10px;
+    /*padding: 5px;*/
 }
 
 .shortPayment.hovered {
     transform: scale(1.04);
-    /*transition: transform 0.3s ease;*/
     z-index: 1;
-
     background-color: #D3E0EA;
+}
+
+.imagePosition {
+    display: flex;
+    flex-direction: row;
+    margin-left: 7px;
+}
+
+.imgWidth {
+    width: 60px;
 }
 
 .shortPaymentText {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 28vw;
+    justify-content: center;
+    width: 24vw;
 
     /*background-color: coral;*/
 }
@@ -35,33 +45,23 @@
 .paymentTextPosition{
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
+
+    /*background-color: #a63b40;*/
 }
 
 .newPaymentTextPosition {
     display: flex;
     flex-direction: row;
-    width: 33vw;
+    width: 22vw;
     align-items: flex-start;
     /*justify-content: space-between;*/
 
     /*background-color: red;*/
 }
 
-.firstPaymentTextPosition {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 55%;
-    margin-right: 20px;
-
-    /*background-color: blue;*/
-}
-
 .lastPaymentTextPosition {
     display: flex;
     flex-direction: column;
-    width: 50%;
     align-items: flex-start;
 
     /*background-color: green;*/
@@ -72,6 +72,8 @@
     flex-direction: row-reverse;
     width: 160px;
     align-items: flex-end;
+
+    /*background-color: blue;*/
 }
 
 .transactionTextDecoration {
