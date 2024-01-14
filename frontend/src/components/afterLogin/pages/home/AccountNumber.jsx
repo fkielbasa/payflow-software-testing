@@ -1,22 +1,13 @@
 import React from 'react';
 import styles from './AccountNumber.module.css';
+import { backgroundStyles1, backgroundStyles2, backgroundStyles3 } from '../../../utils/backgroundStyles';
+import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 
 
 function AccountNumber(props) {
+    let symbol;
+    let currentBalanceText;
     let backgroundStyles;
-
-    const backgroundStyles1 = {
-        background: 'linear-gradient(55deg, rgba(22,135,167,1) 10%, rgba(39,102,120,1) 90%)'
-    };
-    const backgroundStyles2 = {
-        background: 'linear-gradient(225deg, rgba(22,135,167,1) 5%, rgba(29,41,50,1) 95%)'
-    };
-    const backgroundStyles3 = {
-        background: 'linear-gradient(326deg, rgba(39,102,120,1) 5%, rgba(0,198,255,1) 95%)'
-    };
-    const backgroundStyles4 = {
-        background: 'linear-gradient(73deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)'
-    };
 
     if (props.accountNumberType === 'INTENSIVE') {
         backgroundStyles = backgroundStyles1;
@@ -26,6 +17,18 @@ function AccountNumber(props) {
         backgroundStyles = backgroundStyles3;
     }
 
+    const accountNumberConst = formatAccountNumber(props.number);
+
+    if (props.currency === 'USD') {
+        symbol = '$';
+        currentBalanceText = `${symbol}${props.balance}`;
+    } else if (props.currency === 'EUR') {
+        symbol = '€';
+        currentBalanceText = `${symbol}${props.balance}`;
+    } else if (props.currency === 'PLN') {
+        symbol = 'zł';
+        currentBalanceText = `${props.balance}${symbol}`;
+    }
 
     return (
         <div
@@ -35,18 +38,20 @@ function AccountNumber(props) {
             <div className={styles.twoThings}>
                 <div className={styles.accountNumberType}>
                     <p className={`${styles.textPosition} ${styles.smallText}`}> Typ konta bankowego: </p>
-                    <p className={styles.textPosition}> {props.accountNumberType}</p>
+                    <p className={`${styles.textPosition} ${styles.boldedText}`}> {props.accountNumberType}</p>
                 </div>
                 <div className={styles.money}>
                     <p className={`${styles.textPosition} ${styles.smallText}`}> Bilans:</p>
-                    <p className={styles.textPosition}> {props.balance}</p>
+                    <p className={`${styles.textPosition} ${styles.boldedText}`}> {currentBalanceText}</p>
                     <p className={`${styles.textPosition} ${styles.smallText}`}> Waluta:</p>
-                    <p className={styles.textPosition}> {props.currency}</p>
+                    <p className={`${styles.textPosition} ${styles.boldedText}`}> {props.currency}</p>
                 </div>
             </div>
-            <div className={styles.number}>
-                <p className={`${styles.textPosition} ${styles.smallText}`}> Numer konta:</p>
-                <p className={styles.textPosition}> {props.number}</p>
+            <div className={`${styles.numberPosition} ${styles.needMarginBottom}`}>
+                <div className={styles.number}>
+                    <p className={`${styles.textPosition} ${styles.smallText}`}> Numer konta:</p>
+                    <p className={`${styles.textPosition} ${styles.boldedText}`}> {accountNumberConst} </p>
+                </div>
             </div>
         </div>
     );

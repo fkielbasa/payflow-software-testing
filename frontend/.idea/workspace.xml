@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/TransactionsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/TransactionsContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/cards/CreditCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/cards/CreditCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +48,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature-frontend",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Studia_rok_III/TOIK/payflow/frontend",
+    "last_opened_file_path": "C:/Users/kubad/Documents/GitHub/movie-mania-network",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
