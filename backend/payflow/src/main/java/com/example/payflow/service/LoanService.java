@@ -22,15 +22,19 @@ public class LoanService {
     private final AccountNumberRepository accountNumberRepository;
     private LoanDTOMapper loanDTOMapper;
 
-    public List<LoanDTO> getLoansByAccountNumberId(Long id){
-        return loanRepository.findAll().stream()
-                .filter(loan -> loan.getAccountNumber().getId().equals(id))
-                .map(loan -> new LoanDTO(loan.getId(),loan.getAmount(),loan.getStartDate(),loan.getEndDate(),loan.getInterestRate(),loan.getAccountNumber().getId()))
-                .toList();
+//    public List<LoanDTO> getLoansByAccountNumberId(Long id){
+//        return loanRepository.findAll().stream()
+//                .filter(loan -> loan.getAccountNumber().getId().equals(id))
+//                .map(loan -> new LoanDTO(loan.getId(),loan.getAmount(),loan.getStartDate(),loan.getEndDate(),loan.getInterestRate(),loan.getAccountNumber().getId()))
+//                .toList();
+//    }
+    public List<LoanDTO> getLoansByAccountNumberId(Long id) {
+        return accountNumberRepository.findById(id).get().getLoans().stream()
+                .map(loanDTOMapper).toList();
     }
-    public LoanDTO addLoan(LoanDTOPost loan) {
+    public LoanDTO addLoan(Long id,LoanDTOPost loan) {
         LocalDate currentDate = LocalDate.now();
-        Optional<AccountNumber> ac = accountNumberRepository.findById(loan.getIdAccount());
+        Optional<AccountNumber> ac = accountNumberRepository.findById(id);
         if (ac.isPresent()) {
             var l = Loan.builder()
                     .amount(loan.getAmount())
@@ -40,6 +44,11 @@ public class LoanService {
                     .accountNumber(ac.orElseThrow())
                     .build();
             loanRepository.save(l);
+
+            //update balance after new loan
+            AccountNumber a = ac.get();
+            a.setBalance(a.getBalance().add(loan.getAmount()));
+            accountNumberRepository.save(a);
             LoanDTO loanDTO = loanDTOMapper.apply(l);
             return loanDTO;
         }

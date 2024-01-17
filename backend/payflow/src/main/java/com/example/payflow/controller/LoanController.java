@@ -26,9 +26,9 @@ public class LoanController {
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-    @PostMapping("/loan")
-    public ResponseEntity<LoanDTO> addLoan(@RequestBody LoanDTOPost loan) {
-        LoanDTO l = loanService.addLoan(loan);
+    @PostMapping("/numbers/{id}/loan")
+    public ResponseEntity<LoanDTO> addLoan(@PathVariable Long id, @RequestBody LoanDTOPost loan) {
+        LoanDTO l = loanService.addLoan(id,loan);
         if(l != null){
             return new ResponseEntity(l,HttpStatus.CREATED);
         }

@@ -38,7 +38,7 @@ public class Loan {
     private LocalDate endDate;
     @Column(name = "interest_rate")
     private BigDecimal interestRate;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumber;
 

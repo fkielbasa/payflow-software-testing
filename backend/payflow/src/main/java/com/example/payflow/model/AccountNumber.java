@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -39,4 +40,7 @@ public class AccountNumber {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
+
+    @OneToMany(mappedBy = "accountNumber",cascade = CascadeType.ALL)
+    private List<Loan> loans;
 }
