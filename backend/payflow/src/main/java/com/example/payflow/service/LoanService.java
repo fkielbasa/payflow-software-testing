@@ -22,14 +22,9 @@ public class LoanService {
     private final AccountNumberRepository accountNumberRepository;
     private LoanDTOMapper loanDTOMapper;
 
-//    public List<LoanDTO> getLoansByAccountNumberId(Long id){
-//        return loanRepository.findAll().stream()
-//                .filter(loan -> loan.getAccountNumber().getId().equals(id))
-//                .map(loan -> new LoanDTO(loan.getId(),loan.getAmount(),loan.getStartDate(),loan.getEndDate(),loan.getInterestRate(),loan.getAccountNumber().getId()))
-//                .toList();
-//    }
     public List<LoanDTO> getLoansByAccountNumberId(Long id) {
-        return accountNumberRepository.findById(id).get().getLoans().stream()
+        return accountNumberRepository.findById(id).get().getLoans()
+                .stream()
                 .map(loanDTOMapper).toList();
     }
     public LoanDTO addLoan(Long id,LoanDTOPost loan) {
