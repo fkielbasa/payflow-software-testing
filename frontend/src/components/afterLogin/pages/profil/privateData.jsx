@@ -1,5 +1,5 @@
 import styles from "./Profile.module.css";
-import TextInputChange from "../../common/TextInputChange";
+import TextInputChange from "../../common/inputs/TextInputChange";
 import ShowChangeBtn from "./ShowChangeBtn";
 import React, {useState} from "react";
 import {checkEmail, checkPhoneNumber} from "../../../utils/validation";

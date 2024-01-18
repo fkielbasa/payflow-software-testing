@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Transactions.module.css';
-import TransactionsContainer from "../../elements/transactions/TransactionsContainer";
+import TransactionsContainer from "../../common/transactions/TransactionsContainer";
 
 function Transactions() {
     return (

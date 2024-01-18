@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./TransfersAccountNumber.module.css";
-import TextInput from "../../common/textInput"
+import TextInput from "../../common/inputs/textInput"
 import axios from "axios";
 import {config, user} from "../../../../config/authConfig";
 import {isAccountNumberValid} from "../../../utils/validation";

@@ -1,16 +1,24 @@
 .creditsContainer {
     display: flex;
-    flex-direction: column;
-    width: 80vw;
+    flex-flow: row wrap;
+    width: 90%;
+}
+.creditsContainer > div {
+    flex-basis: 0;
+    flex-grow: 1;
 }
 
-/*.alignContainer {*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    !*background-color: red;*!*/
-/*}*/
 
-.alignContainer {
+
+.headerWrapper {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.headerWrapper span {
+    background-color: var(--darkBlue);
+    height: 2px;
+    width: 80%;
 }

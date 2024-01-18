@@ -5,7 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/TextError.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/inputs/TextError.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/TextInputChange.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/inputs/TextInputChange.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/TextInputChange.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/inputs/TextInputChange.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/textInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/inputs/textInput.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/textInput.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/inputs/textInput.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/forms/GeneralForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/forms/GeneralForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/forms/GeneralForm.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/forms/GeneralForm.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/Logo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Logo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/Logo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Logo.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/TopNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/TopNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/navbars/TopNavbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/TopNavbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/TransactionsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/transactions/TransactionsContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/elements/transactions/TransictionsContainer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/transactions/TransictionsContainer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/addressData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/addressData.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/personalData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/personalData.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/privateData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/profil/privateData.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transactions/Transactions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transactions/Transactions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/PhoneTransfer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/PhoneTransfer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/TransfersAccountNumber.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/TransfersAccountNumber.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/cantor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/cantor.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +75,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature-frontend",
+    "git-widget-placeholder": "feature-credits",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kubad/Documents/GitHub/movie-mania-network",
     "list.type.of.created.stylesheet": "CSS",
@@ -69,11 +98,11 @@
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\components\afterLogin\common\inputs" />
+      <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\components\afterLogin\common" />
       <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\components\afterLogin\pages\settings" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\afterLogin\elements\transactions" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\beforeLogin" />
-      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages" />
-      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\beforeLogin\pages\service" />
     </key>
   </component>
   <component name="RunManager">

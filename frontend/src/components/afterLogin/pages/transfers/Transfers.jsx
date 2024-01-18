@@ -12,6 +12,10 @@ function Transfers() {
         from: {opacity: 0, transform: 'translateY(50px)', width: '100%'},
         to: {opacity: 1, transform: 'translateY(0)', width: '100%'},
     });
+
+
+
+
     return (
         <animated.div style={fadeInAnimation}>
 

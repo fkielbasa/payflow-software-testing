@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from './Home.module.css';
 
 import {Link} from "react-router-dom";
-import TransactionsContainer from "../../elements/transactions/TransactionsContainer";
+import TransactionsContainer from "../../common/transactions/TransactionsContainer";
 import { useSpring, animated } from 'react-spring';
 import axios from "axios";
 import {config, user} from "../../../../config/authConfig";
