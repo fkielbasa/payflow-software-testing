@@ -37,3 +37,26 @@
 .dateWrapper {
     display: flex;
 }
+
+.dateWrapper p {
+    margin: 0 10px;
+}
+.dateWrapper span {
+    color: var(--darkBlue);
+    font-weight: bold;
+}
+
+.submitWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit {
+    padding: 10px 20px;
+    background-color: var(--darkBlue);
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}

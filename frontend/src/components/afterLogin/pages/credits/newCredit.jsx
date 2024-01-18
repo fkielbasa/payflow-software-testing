@@ -5,15 +5,19 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {config, user} from "../../../../config/authConfig";
 import TextInput from "../../common/inputs/textInput";
+import {BASE_URL} from "../../../../config/shared";
+import Alert from "../../common/alerts/alert";
+import toast from "react-hot-toast";
 
 const NewCredit = (props) => {
+    const INTREST_RATE = 2;
     const currentDate = new Date()
-    const [data, setData] = useState([])
+    const [dataAccounts, setDataAccounts] = useState([])
     const [fromAccount, setFromAccount] = useState('')
     const [amount, setAmount] = useState('')
     const [monthsNum, setMonthsNum] = useState('1')
-    const [toDate, setToDate] = useState('')
-
+    const [toDate, setToDate] = useState(currentDate.toLocaleDateString())
+    const [userData, setUserData] = useState({})
 
     const calcDate = (value) => {
         setMonthsNum(value)
@@ -29,18 +33,62 @@ const NewCredit = (props) => {
                     config
                 )
                 .then((response) => {
-                    setData(response.data)
+                    setDataAccounts(response.data)
                 })
                 .catch((error) => {
                     console.log(error)
                 })
         }
-        getAccountNumbers()
+        const getUserData = () => {
+            axios
+                .get(
+                    `${BASE_URL}/api/v1/users/${user.userId}`,
+                    config
+                )
+                .then(res => {
+                    setUserData(res.data)
+                })
+                .catch(er => {
 
+                })
+        }
+        getUserData()
+        getAccountNumbers()
     }, []);
+
+    const addNewCredit = () => {
+        if (amount === '' || fromAccount === ''){
+            toast('Pola nie mogą być puste')
+            return
+        }
+        // // console.log(dataAccounts)
+        const account = dataAccounts.filter((a) => a.number === fromAccount)[0]
+        console.log(account)
+        // console.log(amount)
+        // console.log(INTREST_RATE)
+        // console.log(toDate)
+        const [rok, miesiac, dzien] = toDate.split('.');
+        const formattedDate = `${dzien}-${miesiac}-${rok}`;
+        axios
+            .post(
+                `${BASE_URL}/api/v1/numbers/${account.id}/loan`,
+                {
+                    amount: amount,
+                    endDate: formattedDate,
+                    interestRate: INTREST_RATE
+                },
+                config
+            ).then((res) => {
+            toast('Pomyślnie dodano kredyt')
+            })
+            .catch((err) => {
+                toast('Dodanie kredytu nie powiodło się')
+            })
+    }
 
     return(
         <div>
+            <Alert />
             <header className={styles.headerWrapper}>
                 <h3>Formularz przyznania kredytu</h3>
                 <span></span>
@@ -52,7 +100,7 @@ const NewCredit = (props) => {
                     <TextInputChange
                         name={"Nazwisko"}
                         var={"t"}
-                        placeholder={"test"}
+                        placeholder={userData.lastName}
                         state={""}
                         type={"text"}
                         clicked={true}
@@ -64,7 +112,7 @@ const NewCredit = (props) => {
                     <TextInputChange
                         name={"Imię"}
                         var={"t"}
-                        placeholder={"test"}
+                        placeholder={userData.firstName}
                         state={""}
                         type={"text"}
                         clicked={true}
@@ -76,7 +124,7 @@ const NewCredit = (props) => {
                     <TextInputChange
                         name={"Email"}
                         var={"t"}
-                        placeholder={"test@wp.pl"}
+                        placeholder={userData.email}
                         state={""}
                         type={"text"}
                         clicked={true}
@@ -87,7 +135,7 @@ const NewCredit = (props) => {
             <div className={styles.accountWrapper}>
                 <p>Wybór rachunku:</p>
                 <SelectAccountNumber
-                    data={data}
+                    data={dataAccounts}
                     selectedAccounts={setFromAccount}
                 />
             </div>
@@ -98,22 +146,30 @@ const NewCredit = (props) => {
                     type={"number"}
                 />
                 <div>
-                    <p>Wybierz: </p>
+                    <p>Wybierz okres kredytu: </p>
                     <div className={styles.dateWrapper}>
                         <input
+                            className={styles.inputRange}
                             type="range"
                             min={"1"}
                             max={"24"}
                             defaultValue={"1"}
                             onChange={(event) => calcDate(event.target.value)}
                         />
-                        <p>Ilość miesięcy: {monthsNum}</p>
-                        <p>Data: {toDate}</p>
+                        <p>Ilość miesięcy: <span>{monthsNum}</span></p>
+                        <p>Data: <span>{toDate}</span></p>
                     </div>
                 </div>
                 <div>
-                    <p>Intrest rate</p>
-                    <input type="range"/>
+                    <p>Oprocentowanie wynosi: {INTREST_RATE}%</p>
+                </div>
+                <div className={styles.submitWrapper}>
+                    <button
+                        onClick={addNewCredit}
+                        className={styles.submit}
+                    >
+                        Prześlij
+                    </button>
                 </div>
             </div>
 
