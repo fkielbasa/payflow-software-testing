@@ -22,3 +22,10 @@
     height: 2px;
     width: 80%;
 }
+
+.creditsWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    gap: 10px;
+}

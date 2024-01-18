@@ -13,3 +13,13 @@ export const backgroundStyles3 = {
 export const backgroundStyles4 = {
     background: 'linear-gradient(73deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)'
 };
+
+export  const generateRandomColor = () => {
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+};
+
+export const generateRandomLightColor = () => {
+    const limit = 200;
+    const randomColorComponent = () => Math.floor(Math.random() * (255 - limit) + limit);
+    return `rgb(${randomColorComponent()}, ${randomColorComponent()}, ${randomColorComponent()})`;
+};

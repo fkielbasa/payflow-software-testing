@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/creditCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/creditCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/newCredit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/newCredit.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/newCredit.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/newCredit.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/utils/backgroundStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utils/backgroundStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +53,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature-credits",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kubad/Documents/GitHub/movie-mania-network",
+    "last_opened_file_path": "C:/Studia_rok_III/TOIK/payflow/frontend/src/assets",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -61,17 +61,17 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "C:\\Users\\kubad\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Users\\enqer\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\233.13135.103\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\assets" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\topNavbar\icon" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\transfers" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\transactions" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets" />
-      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\components\afterLogin\common\inputs" />
