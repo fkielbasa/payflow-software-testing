@@ -15,5 +15,4 @@ public class LoanDTOPost {
     private BigDecimal amount;
     private LocalDate endDate;
     private BigDecimal interestRate;
-    private Long idAccount;
 }

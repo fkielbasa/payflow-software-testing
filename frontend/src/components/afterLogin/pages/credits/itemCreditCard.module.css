@@ -1,0 +1,29 @@
+.container {
+    /*background-color: red;*/
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.interest {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.img {
+    width: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.colorText {
+    color: var(--darkBlue);
+    font-weight: bold;
+}

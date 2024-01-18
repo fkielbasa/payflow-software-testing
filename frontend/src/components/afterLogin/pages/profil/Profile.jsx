@@ -4,7 +4,7 @@ import styles from './Profile.module.css'
 import PasswordChange from "./PasswordChange";
 import axios from "axios";
 import {BASE_URL} from "../../../../config/shared";
-import TextError from "../../common/TextError";
+import TextError from "../../common/inputs/TextError";
 import PersonalData from "./personalData";
 import PrivateData from "./privateData";
 import AddressData from "./addressData";

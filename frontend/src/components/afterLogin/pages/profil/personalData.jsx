@@ -1,5 +1,5 @@
 import styles from "./Profile.module.css";
-import TextInputChange from "../../common/TextInputChange";
+import TextInputChange from "../../common/inputs/TextInputChange";
 import React from "react";
 
 const PersonalData = (props) => {

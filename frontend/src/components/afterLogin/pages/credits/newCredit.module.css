@@ -1,0 +1,62 @@
+.infoWrapper {
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+.infoWrapper span {
+    margin: 0;
+    padding: 0;
+    line-height: 12px;
+    font-size: 24px;
+    color: var(--darkBlue);
+}
+.headerWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.headerWrapper span {
+    background-color: var(--darkBlue);
+    height: 2px;
+    width: 80%;
+}
+
+.accountWrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.detailsWrapper {
+    width: 80%;
+    margin-top: 15px;
+}
+
+.dateWrapper {
+    display: flex;
+}
+
+.dateWrapper p {
+    margin: 0 10px;
+}
+.dateWrapper span {
+    color: var(--darkBlue);
+    font-weight: bold;
+}
+
+.submitWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit {
+    padding: 10px 20px;
+    background-color: var(--darkBlue);
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}

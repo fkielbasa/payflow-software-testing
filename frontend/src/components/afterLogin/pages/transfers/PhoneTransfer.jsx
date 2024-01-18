@@ -1,7 +1,7 @@
 import styles from './PhoneTransfer.module.css'
 import React, {useState} from "react";
 import {checkPhoneNumber, checkAmount} from "../../../utils/validation"
-import TextInput from "../../common/textInput";
+import TextInput from "../../common/inputs/textInput";
 import axios from "axios";
 import {config, user} from "../../../../config/authConfig";
 

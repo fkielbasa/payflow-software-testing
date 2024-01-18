@@ -2,6 +2,7 @@ package com.example.payflow.service;
 
 import com.example.payflow.dto.AccountNumberDTO;
 import com.example.payflow.dto.AccountNumberRequestDto;
+import com.example.payflow.dto.mapper.AccountNumberDtoMapper;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.User;
 import com.example.payflow.repository.AccountNumberRepository;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class AccountNumberService {
     private final AccountNumberRepository accountNumberRepository;
     private final UserRepository userRepository;
+    private final AccountNumberDtoMapper accountNumberDtoMapper;
     private static final BigDecimal START_BALANCE = new BigDecimal(100);
     public static final int ACCOUNT_NUMBER_LENGTH = 26;
 
@@ -29,13 +31,14 @@ public class AccountNumberService {
     public List<AccountNumberDTO> getAccountNumberByUserId(Long id){
         return accountNumberRepository.findAll().stream()
                 .filter(accountNumber -> accountNumber.getUserId().getId().equals(id))
-                .map(accountNumber -> new AccountNumberDTO(
-                        accountNumber.getId(),
-                        accountNumber.getBalance(),
-                        accountNumber.getCurrency(),
-                        accountNumber.getAccountType(),
-                        accountNumber.getNumber()
-                ))
+                .map(accountNumberDtoMapper
+//                        accountNumber -> new AccountNumberDTO(
+//                        accountNumber.getId(),
+//                        accountNumber.getBalance(),
+//                        accountNumber.getCurrency(),
+//                        accountNumber.getAccountType(),
+//                        accountNumber.getNumber()
+                )
                 .toList();
     }
 
@@ -58,6 +61,13 @@ public class AccountNumberService {
                     a.getNumber()
             );
         }
+        return null;
+    }
+
+    public AccountNumberDTO getAccountNumberById(Long id) {
+        Optional<AccountNumber> ac =  accountNumberRepository.findById(id);
+        if (ac.isPresent())
+            return ac.map(accountNumberDtoMapper).get();
         return null;
     }
 }

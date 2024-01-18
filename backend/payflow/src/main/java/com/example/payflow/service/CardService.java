@@ -1,7 +1,6 @@
 package com.example.payflow.service;
 
 import com.example.payflow.dto.CardDTO;
-import com.example.payflow.dto.CardDTOPost;
 import com.example.payflow.dto.mapper.CardDTOMapper;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.Card;
@@ -11,7 +10,6 @@ import com.example.payflow.repository.CardDetailsRepository;
 import com.example.payflow.repository.CardRepository;
 import com.example.payflow.util.NumberGenerator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -28,15 +26,13 @@ public class CardService {
     private final CardDTOMapper cardDTOMapper;
 
     public List<CardDTO> getCardByAccountId(Long id){
-        return cardRepository.findAll().stream()
-                .filter(card -> card.getAccountNumberCard().getId().equals(id))
-                .map(card -> new CardDTO(card.getId(), card.getCardNumber(), card.getValidDate(),
-                        card.getCvv(),card.getCardDetails().isActive(),card.getCardDetails().isBlocked()))
-                .toList();
+        return accountNumberRepository.findById(id).get().getCards()
+                .stream()
+                .map(cardDTOMapper).toList();
     }
-    public CardDTO createCard(CardDTOPost card){
+    public CardDTO createCard(Long id){
         LocalDate currentDate = LocalDate.now();
-        Optional<AccountNumber> ac = accountNumberRepository.findById(card.getAccountId());
+        Optional<AccountNumber> ac = accountNumberRepository.findById(id);
         if (ac.isPresent()) {
             var c = Card.builder()
                     .validDate(currentDate.plusYears(4))

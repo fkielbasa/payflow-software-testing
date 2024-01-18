@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b750e811-3640-4781-8c5f-6eb32b63e2b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/Home.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/CardDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/CardDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/dto/mapper/CardDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/dto/mapper/CardDTOMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/model/AccountNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/model/AccountNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/service/CardService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +53,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.PayflowApplication.executor": "Run",
-    "git-widget-placeholder": "feature-frontend",
+    "git-widget-placeholder": "feature-card",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kubad/Documents/GitHub/payflow/frontend",
+    "last_opened_file_path": "C:/Users/Filip/react/IoT-react-native/iot",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,7 +90,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-249ae16d76d6-a618e4d4" />
       </set>
     </attachedChunks>
   </component>
@@ -120,8 +122,6 @@
       <workItem from="1704908264591" duration="34000" />
       <workItem from="1705144901569" duration="18222000" />
       <workItem from="1705183880160" duration="2104000" />
-      <workItem from="1705324690804" duration="638000" />
-      <workItem from="1705602225109" duration="1375000" />
     </task>
     <servers />
   </component>
