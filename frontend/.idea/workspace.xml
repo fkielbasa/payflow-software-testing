@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/home/Home.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="JSX File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -48,7 +50,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature-frontend",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kubad/Documents/GitHub/movie-mania-network",
+    "last_opened_file_path": "C:/Users/kubad/Documents/GitHub/payflow/frontend",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -139,6 +141,7 @@
       <workItem from="1704977734803" duration="1726000" />
       <workItem from="1704994644803" duration="4622000" />
       <workItem from="1705004448072" duration="7246000" />
+      <workItem from="1705602235428" duration="1817000" />
     </task>
     <servers />
   </component>
