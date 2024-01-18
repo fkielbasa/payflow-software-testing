@@ -27,6 +27,7 @@ public class AccountNumberController {
     public List<AccountNumberDTO> getAccountNumberByUserId(@PathVariable Long id){
         return accountNumberService.getAccountNumberByUserId(id);
     }
+
     @PostMapping("/number")
     public ResponseEntity<AccountNumberDTO> addAccount(@RequestBody AccountNumberRequestDto accountNumber){
         AccountNumberDTO ac = accountNumberService.addAccount(accountNumber);

@@ -4,6 +4,7 @@ import com.example.payflow.dto.LoanDTO;
 import com.example.payflow.dto.LoanDTOPost;
 import com.example.payflow.dto.mapper.LoanDTOMapper;
 import com.example.payflow.model.Loan;
+import com.example.payflow.service.AccountNumberService;
 import com.example.payflow.service.LoanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,16 @@ public class LoanController {
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    @GetMapping("/users/{id}/numbers/loans")
+    public ResponseEntity<List<LoanDTO>> getAllLoansByUserId(@PathVariable Long id){
+        List<LoanDTO> loans = loanService.getAllLoansByUserId(id);
+        if (loans != null)
+            return ResponseEntity.status(HttpStatus.OK).body(loans);
+        else
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
     @PostMapping("/numbers/{id}/loan")
     public ResponseEntity<LoanDTO> addLoan(@PathVariable Long id, @RequestBody LoanDTOPost loan) {
         LoanDTO l = loanService.addLoan(id,loan);
