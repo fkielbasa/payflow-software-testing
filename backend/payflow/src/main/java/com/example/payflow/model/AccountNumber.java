@@ -43,4 +43,7 @@ public class AccountNumber {
 
     @OneToMany(mappedBy = "accountNumber",cascade = CascadeType.ALL)
     private List<Loan> loans;
+
+    @OneToMany(mappedBy = "accountNumberCard")
+    private List<Card> cards;
 }
