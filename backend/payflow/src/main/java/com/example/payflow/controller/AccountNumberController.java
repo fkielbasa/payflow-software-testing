@@ -6,6 +6,7 @@ import com.example.payflow.dto.AccountNumberRequestDto;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.service.AccountNumberService;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.parser.HttpParser;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,14 @@ public class AccountNumberController {
     @GetMapping("/users/{id}/numbers")
     public List<AccountNumberDTO> getAccountNumberByUserId(@PathVariable Long id){
         return accountNumberService.getAccountNumberByUserId(id);
+    }
+
+    @GetMapping("/numbers/{id}")
+    public ResponseEntity<AccountNumberDTO> getAccountNumberById(@PathVariable Long id){
+        AccountNumberDTO ac = accountNumberService.getAccountNumberById(id);
+        if (ac != null)
+            return ResponseEntity.status(HttpStatus.OK).body(ac);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @PostMapping("/number")
