@@ -17,7 +17,7 @@ public class CardDetailsController {
     private final CardDetailsService cardDetailsService;
     private final CardService cardService;
 
-    @PatchMapping("/card/{id}/activate")
+    @PatchMapping("/cards/{id}/activate")
     public ResponseEntity<?> activeCard(@PathVariable Long id,@Valid @RequestBody PinDTO pin){
         CardDetails cd = cardDetailsService.activateCard(id, pin);
         if(cd != null){
@@ -25,7 +25,7 @@ public class CardDetailsController {
         }
         return new ResponseEntity("Card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
-    @PatchMapping("/card/{id}/block")
+    @PatchMapping("/cards/{id}/block")
     public ResponseEntity<?> blockCard(@PathVariable Long id){
         CardDetails cd = cardDetailsService.blockCard(id);
         if(cd != null){
@@ -33,7 +33,7 @@ public class CardDetailsController {
         }
         return new ResponseEntity("Card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
-    @PatchMapping("/card/{id}/unblock")
+    @PatchMapping("/cards/{id}/unblock")
     public ResponseEntity<?> unblockCard(@PathVariable Long id){
         CardDetails cd = cardDetailsService.unblockCard(id);
         if(cd != null){
@@ -41,12 +41,12 @@ public class CardDetailsController {
         }
         return new ResponseEntity("Card doesn't exist.",HttpStatus.BAD_REQUEST);
     }
-    @PatchMapping("/card/{id}/change-pin")
+    @PatchMapping("/cards/{id}/change-pin")
     public ResponseEntity<?> changePin(@PathVariable Long id,@Valid @RequestBody PinDTO pin){
         PinDTO pinDTO = cardDetailsService.changePin(id, pin);
         if(pinDTO != null){
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity("Card doesn't exist or doesn't active.",HttpStatus.BAD_REQUEST);
+        return new ResponseEntity("Card doesn't exist or is inactive.",HttpStatus.BAD_REQUEST);
     }
 }
