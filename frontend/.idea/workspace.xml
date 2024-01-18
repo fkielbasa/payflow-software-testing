@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/utils/backgroundStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utils/backgroundStyles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +51,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature-credits",
+    "git-widget-placeholder": "feature-frontend",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Studia_rok_III/TOIK/payflow/frontend/src/assets",
     "list.type.of.created.stylesheet": "CSS",
