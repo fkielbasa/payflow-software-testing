@@ -22,8 +22,12 @@ const DefaultPage = () => {
                     </div>
 
                 </div>
-                <div>
-                    <img src={pic} alt="Zdjęcie przedstawia bank" className={DefaultPageCss.pic}/>
+                <div className={DefaultPageCss.pic}>
+                    <img
+                        src={pic}
+                        alt="Zdjęcie przedstawia bank"
+                        className={DefaultPageCss.pic}
+                    />
                 </div>
             </div>
 

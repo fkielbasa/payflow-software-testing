@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/service/AccountNumberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/service/AccountNumberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/TopNavbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/TopNavbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/itemCreditCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/itemCreditCard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/newCredit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/newCredit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/newCredit.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/newCredit.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/beforeLogin/pages/defaultInfoPages/defaultPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/beforeLogin/pages/defaultInfoPages/defaultPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/beforeLogin/pages/defaultInfoPages/defaultPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/beforeLogin/pages/defaultInfoPages/defaultPage.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
@@ -53,7 +59,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature-style",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Studia_rok_III/TOIK/payflow/frontend",
+    "last_opened_file_path": "C:/Studia_rok_III/TOIK/payflow/backend/payflow",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -144,7 +150,8 @@
       <workItem from="1704977734803" duration="1726000" />
       <workItem from="1704994644803" duration="4622000" />
       <workItem from="1705004448072" duration="7246000" />
-      <workItem from="1705673057421" duration="542000" />
+      <workItem from="1705673057421" duration="5736000" />
+      <workItem from="1705696410641" duration="712000" />
     </task>
     <servers />
   </component>

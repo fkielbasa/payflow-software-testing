@@ -15,6 +15,7 @@ body {
 
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -25,4 +26,17 @@ code {
   --grey: #D3E0EA;
   --blue: #1687A7;
   --darkBlue: #276678;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--black);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--darkBlue);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
