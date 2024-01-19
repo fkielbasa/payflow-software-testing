@@ -4,6 +4,7 @@ import {checkPhoneNumber, checkAmount} from "../../../utils/validation"
 import TextInput from "../../common/inputs/textInput";
 import axios from "axios";
 import {config, user} from "../../../../config/authConfig";
+import toast from "react-hot-toast";
 
 const SEND_TRANSFER_POST = "http://localhost:8080/api/v1/transfer/phone-number";
 const PhoneTransfer = () => {
@@ -11,20 +12,14 @@ const PhoneTransfer = () => {
     const [phoneNumber, setPhoneNumber]=useState('')
     const [amount, setAmount]=useState('')
     const [desc, setDesc]=useState('')
-    const [isWrongData, setIsWrongData] = useState(false)
-    const [isSent, setIsSent] = useState(false)
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setIsWrongData(false)
-        if (isValidate()){
+        if (isValidate())
             sendTransfer()
-        } else {
-            setIsSent(false)
-            setIsWrongData(true)
-        }
-
+        else
+            toast("Podaj dobre dane")
     }
 
     const isValidate = () => {
@@ -50,11 +45,10 @@ const PhoneTransfer = () => {
                 config
             )
             .then((data) => {
-                setIsSent(true)
+                toast("Wysłano przelew")
             })
             .catch(er => {
-                setIsSent(false)
-                setIsWrongData(true)
+                toast("Wysłanie przelewu nie powiodło się")
             })
         document.forms['phoneTransferForm'].reset()
     }
@@ -89,9 +83,7 @@ const PhoneTransfer = () => {
                     <input className={styles.submit} type="submit"  value="Wyślij" />
                 </div>
             </form>
-            <p className={isSent ? [styles.successionText, styles.textVisible].join(' ') : [styles.successionText, styles.textHidden].join(' ')}>Wysłano</p>
-            <p className={isWrongData ? [styles.wrongTransferText, styles.textVisible].join(' ') : [styles.wrongTransferText, styles.textHidden].join(' ')}>Podane dane są złe</p>
-        </div>
+           </div>
     )
 }
 export default PhoneTransfer

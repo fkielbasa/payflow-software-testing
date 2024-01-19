@@ -5,13 +5,13 @@ import axios from "axios";
 import {config, user} from "../../../../config/authConfig";
 import {isAccountNumberValid} from "../../../utils/validation";
 import SelectAccountNumber from "./SelectAccountNumber";
+import toast from "react-hot-toast";
 
 
 function TransfersAccountNumber() {
     const [recipientAccountNumber, setRecipientAccountNumber] = useState('');
     const [title, setTitle] = useState('');
     const [amount, setAmount] = useState('');
-    const [msg, setMsg] = useState('')
     const [data, setData] = useState([])
     const [fromAccount, setFromAccount] = useState('')
 
@@ -56,10 +56,10 @@ function TransfersAccountNumber() {
                 config
             )
             .then((response) => {
-                setMsg('Wysłano')
+                toast('Wysłano')
             })
             .catch((error) => {
-                setMsg('Operacja nie powiodła się')
+                toast('Operacja nie powiodła się')
             })
     };
 
@@ -92,7 +92,6 @@ function TransfersAccountNumber() {
                 <div className={styles.submitWrapper}>
                     <input className={styles.submit} type="submit" value="Wyślij"/>
                 </div>
-                <p className={styles.msg}>{msg}</p>
             </form>
         </div>
     );
