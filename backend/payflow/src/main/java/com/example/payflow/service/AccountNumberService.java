@@ -34,8 +34,8 @@ public class AccountNumberService {
                 .toList();
     }
 
-    public AccountNumberDTO addAccount(AccountNumberRequestDto accountNumber){
-        Optional<User> u = userRepository.findById(accountNumber.userId());
+    public AccountNumberDTO addAccount(Long id, AccountNumberRequestDto accountNumber){
+        Optional<User> u = userRepository.findById(id);
         if(u.isPresent()) {
             var a = AccountNumber.builder()
                     .balance(START_BALANCE)
