@@ -5,10 +5,10 @@ import { config, user } from '../../../../config/authConfig';
 import Popup from 'reactjs-popup';
 import { useSpring, animated } from 'react-spring';
 import {formatAccountNumber} from "../../../utils/formatAccountNumber";
-import circleMinus from "../../../../assets/transations/circleMinus.png";
-import circlePlus from "../../../../assets/transations/circlePlus.png";
 import TransactionCard from "./transactionCard";
 import {getCurrencySymbol} from "../../../utils/money";
+import logo from "../navbars/Logo";
+import Logo from "../navbars/Logo";
 
 const TransactionsContainer = ({ maxPerPage }) => {
 
@@ -22,7 +22,6 @@ const TransactionsContainer = ({ maxPerPage }) => {
         to: {opacity: 1, transform: 'translateY(0)', width: '100%'},
     });
 
-    // const fadeInAnimation = useSpring({ opacity: 1, from: { opacity: 0 } });
 
 
     useEffect(() => {
@@ -52,8 +51,6 @@ const TransactionsContainer = ({ maxPerPage }) => {
             })
     };
 
-
-
     const formatAmount = (amount, currency) => {
         const symbol = getCurrencySymbol(currency);
         if (currency === 'PLN') {
@@ -74,24 +71,20 @@ const TransactionsContainer = ({ maxPerPage }) => {
         setReceiverData(null);
     };
 
-
-    const getAccountNumbers = () => {
-        axios
-            .get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`,
-                config
-            )
-            .then((response) => {
-                setUserAccounts(response.data.map(ac => ac.id))
-                console.log(response.data.map(ac => ac.id))
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    }
-
     useEffect(() => {
-
-
+        const getAccountNumbers = () => {
+            axios
+                .get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`,
+                    config
+                )
+                .then((response) => {
+                    setUserAccounts(response.data.map(ac => ac.id))
+                    console.log(response.data.map(ac => ac.id))
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
         getAccountNumbers()
     }, []);
 
@@ -110,47 +103,32 @@ const TransactionsContainer = ({ maxPerPage }) => {
                             key={index}
                             userSender={userAccounts.includes(transaction.senderAccountId)}
                             data={transaction}
+                            handleTransactionClick={handleTransactionClick}
                         />
-                        // <div
-                        //     key={index}
-                        //     className={`${styles.shortPayment} ${hoveredIndex === index ? styles.hovered : ''}`}
-                        //     onMouseEnter={() => setHoveredIndex(index)}
-                        //     onMouseLeave={() => setHoveredIndex(null)}
-                        //     onClick={() => handleTransactionClick(transaction)}
-                        // >
-                        //     <div className={styles.imagePosition}>
-                        //         {transaction.receiverAccountId === user.userId ? (
-                        //             <img src={circlePlus} alt="circlePlus" className={styles.imgWidth}/>
-                        //         ) : (
-                        //             <img src={circleMinus} alt="circleMinus" className={styles.imgWidth}/>
-                        //         )}
-                        //     </div>
-                        //     <div className={styles.shortPaymentText}>
-                        //         <div className={styles.paymentTextPosition}>
-                        //             <p className={styles.transactionTextDecoration}>{transaction.description}</p>
-                        //         </div>
-                        //     </div>
-                        //     <div className={styles.newPaymentTextPosition}>
-                        //         <div className={styles.lastPaymentTextPosition}>
-                        //             <p className={styles.transactionTextDecoration}>{transaction.receiverFullName}</p>
-                        //             <p className={`${styles.transactionTextDecoration} ${styles.transactionTextSmall}`}>{transaction.date}</p>
-                        //         </div>
-                        //     </div>
-                        //     <div className={styles.balanceTextPosition}>
-                        //         <p className={styles.paymentTextSize}>
-                        //             {formatAmount(transaction.amount, transaction.currency)}
-                        //         </p>
-                        //     </div>
-                        // </div>
                     ))}
 
                     <Popup open={!!selectedTransaction} onClose={closePopup}
-                           contentStyle={{backgroundColor: '#1687A7', padding: '15px', borderRadius: 10}}>
+                           contentStyle={{backgroundColor: 'black', padding: '20px',paddingBottom: 30, borderRadius: 10, width: '400px'}}>
                         {selectedTransaction && receiverData && (
                             <div>
+                                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center',padding: 5}}>
+                                    <div style={{width: '30%'}}>
+                                        <img
+                                            src={require('../../../../assets/navbar/payflow.png')}
+                                            alt=""
+                                            style={{width: '90%'}}
+                                        />
+                                    </div>
+                                    <p
+                                        style={{color: 'white', fontSize: 26, cursor: 'pointer', margin: 5}}
+                                        onClick={closePopup}
+                                    >
+                                        x
+                                    </p>
+                                </div>
                                 <div style={{backgroundColor: '#F6F5F5', borderRadius: 5, padding: '10px'}}>
                                     <h3 style={{marginTop: -4}}>Szczegóły transakcji:</h3>
-                                    <p style={{marginTop: -8}}>Tytuł: {selectedTransaction.description}</p>
+                                    <p style={{marginTop: -8, wordWrap: 'break-word'}}>Tytuł: {selectedTransaction.description}</p>
                                     <p style={{marginTop: -8}}>Odbiorca: {selectedTransaction.receiverFullName}</p>
                                     <p style={{marginTop: -8}}>Data: {selectedTransaction.date}</p>
                                     <p style={{
@@ -172,29 +150,31 @@ const TransactionsContainer = ({ maxPerPage }) => {
                                         </>
                                     )}
                                 </div>
-                                <div style={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    marginTop: 2,
-                                    marginBottom: -10
-                                }}>
-                                    <button style={{
-                                        backgroundColor: '#276678',
-                                        borderRadius: 5,
-                                        color: 'white',
-                                        borderColor: '#1687A7',
-                                        boxShadow: 0,
-                                        width: 80,
-                                        height: 28
-                                    }} onClick={closePopup}>Zamknij
-                                    </button>
-                                </div>
+                                {/*<div style={{*/}
+                                {/*    display: "flex",*/}
+                                {/*    justifyContent: "center",*/}
+                                {/*    marginTop: 20,*/}
+                                {/*    marginBottom: 10*/}
+                                {/*}}>*/}
+                                {/*    <button style={{*/}
+                                {/*        backgroundColor: '#276678',*/}
+                                {/*        borderRadius: 5,*/}
+                                {/*        color: 'white',*/}
+                                {/*        borderColor: '#1687A7',*/}
+                                {/*        boxShadow: 0,*/}
+                                {/*        width: 80,*/}
+                                {/*        paddingTop: 10,*/}
+                                {/*        paddingBottom: 10,*/}
+                                {/*        paddingLeft: 20,*/}
+                                {/*        paddingRight: 20*/}
+                                {/*    }} onClick={closePopup}>Zamknij*/}
+                                {/*    </button>*/}
+                                {/*</div>*/}
                             </div>
                         )}
                     </Popup>
                 </div>
             </div>
-
         </animated.div>
     );
 };

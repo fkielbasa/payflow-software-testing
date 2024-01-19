@@ -2,12 +2,14 @@ import styles from './transactionCard.module.css'
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaCircleMinus } from "react-icons/fa6";
 import React from "react";
-import {getCurrencySymbol} from "../../../utils/money";
 import InfoTransactionWrapper from "./InfoTransactionWrapper";
 
 const TransactionCard = (props) => {
     return(
-        <div className={styles.container}>
+        <div
+            className={styles.container}
+            onClick={() => props.handleTransactionClick(props.data)}
+        >
             <div className={styles.amountWrapper}>
                 {props.userSender ? <FaCircleMinus /> : <FaCirclePlus/>}
                 <p>{props.data.amount} <span>{props.data.currency}</span></p>
