@@ -8,9 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/.yarn-integrity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/navbars/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/navbars/Navbar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/navbars/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/navbars/Navbar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.PayflowApplication.executor": "Run",
-    "git-widget-placeholder": "feature-frontend",
+    "git-widget-placeholder": "feature-account-page",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Filip/react/IoT-react-native/iot",
     "node.js.detected.package.eslint": "true",
@@ -123,6 +121,7 @@
       <workItem from="1704908264591" duration="34000" />
       <workItem from="1705144901569" duration="18222000" />
       <workItem from="1705183880160" duration="2104000" />
+      <workItem from="1705676079108" duration="3543000" />
     </task>
     <servers />
   </component>

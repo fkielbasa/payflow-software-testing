@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import styles from './Navbar.module.css';
+import stylesDropDown from './DropDown.module.css'
 import { useSpring, animated } from 'react-spring';
 
 import house from "../../../../assets/navbar/home/houses.svg";
@@ -25,6 +26,8 @@ import logOut from "../../../../assets/navbar/logOut/door-open.svg";
 import logOutFill from "../../../../assets/navbar/logOut/door-open-fill.svg";
 
 import Logo from "./Logo";
+import {config, user} from "../../../../config/authConfig";
+import axios from "axios";
 
 function Navbar() {
     const location = useLocation();
@@ -38,6 +41,25 @@ function Navbar() {
     const isTransfers = location.pathname === '/transfers';
     const isProfiles = location.pathname === '/profile';
     const isLogOut = location.pathname === '/logOut';
+    const isAccount = location.pathname === '/account';
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [accountData, setAccountData] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            axios.get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`, config)
+                .then((response) => {
+                    console.log('response.data', response.data);
+                    setAccountData(response.data);
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        };
+
+        getData();
+    }, [user.userId]);
+
 
     const fadeInAnimation = useSpring({
         from: {opacity: 0, transform: 'translateY(50px)'},
@@ -52,7 +74,13 @@ function Navbar() {
 
     const showSettings = () => {
         alert("Nie ma i nie będzie")
+        // Jesteś pewien??
     }
+
+
+    const showDropDown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
 
     return (
         <animated.div style={fadeInAnimation}>
@@ -104,6 +132,23 @@ function Navbar() {
                                         Karty
                                     </Link>
                                 </li>
+                                <li className={isAccount ? [styles.liList, styles.selected].join(" ") : styles.liList}>
+                                    <div onClick={showDropDown}
+                                         className={`${styles.aLink}`}>
+                                        <img className={styles.navImages} src={isCards ? cardsFill : cards}
+                                             alt="account"/>
+                                        Rachunki
+                                    </div>
+                                </li>
+                                {isDropdownOpen && (
+                                    <ul className={stylesDropDown.dropdownList}>
+                                        {accountData.map((account, index) => (
+                                            <li key={index}>
+                                                {account.number}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </ul>
                         </nav>
                     </div>

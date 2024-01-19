@@ -8,9 +8,7 @@
       <change beforePath="$PROJECT_DIR$/../backend/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature-frontend",
+    "git-widget-placeholder": "feature-account-page",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Studia_rok_III/TOIK/payflow/frontend/src/assets",
     "list.type.of.created.stylesheet": "CSS",
@@ -144,6 +142,7 @@
       <workItem from="1704977734803" duration="1726000" />
       <workItem from="1704994644803" duration="4622000" />
       <workItem from="1705004448072" duration="7246000" />
+      <workItem from="1705676126599" duration="11403000" />
     </task>
     <servers />
   </component>
