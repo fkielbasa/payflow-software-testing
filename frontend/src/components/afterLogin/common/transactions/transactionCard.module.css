@@ -1,0 +1,42 @@
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 50px;
+    margin: 20px;
+    background-color: var(--blue);
+    border-radius: 20px;
+    cursor: pointer;
+    align-items: center;
+    padding-right: 20px;
+}
+.container:hover .amountWrapper svg {
+    rotate: 180deg;
+}
+
+.amountWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.amountWrapper svg {
+    font-size: 50px;
+    position: relative;
+    left: -10px;
+    transition: all 0.5s ease-in-out;
+}
+.amountWrapper p {
+    font-size: 20px;
+}
+.amountWrapper p  span{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+.descWrapper {
+    width: 30%;
+}
+
+
