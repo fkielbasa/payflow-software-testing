@@ -15,6 +15,7 @@ import {
     FormField,
     StyledSelect,
 } from './PopupStyles';
+import TransactionCard from "../../common/transactions/transactionCard";
 
 function Home() {
     const fadeInAnimation = useSpring({
@@ -87,6 +88,9 @@ function Home() {
         <animated.div style={fadeInAnimation}>
             <div className={styles.homePage}>
                 <div className={styles.leftSitePosition}>
+
+                </div>
+                <div className={styles.rightSitePosition}>
                     <div className={styles.accountNumberSection}>
                         {apiData.map((numbers, index) => (
                             <div key={index} className={styles.accountNumber}>
@@ -102,20 +106,19 @@ function Home() {
                     <div className={styles.addAccountNumberPosition}>
                         <ReactiveButton
                             color="primary"
-                            style={{ backgroundColor: '#1687A7', fontSize: 20, fontWeight: 'bold' }}
+                            style={{backgroundColor: '#1687A7', fontSize: 20, fontWeight: 'bold'}}
                             onClick={openPopup}
                             idleText="+"
                         />
                     </div>
-                </div>
-                <div className={styles.rightSitePosition}>
                     <div className={styles.sameHeight}>
                         <p>Ostatnie transakcje</p>
                         <Link to="/transactions" className={styles.linkTo}>
                             Pokaż więcej
                         </Link>
                     </div>
-                    <TransactionsContainer maxPerPage={4} />
+                    <TransactionsContainer maxPerPage={4}/>
+                    {/*<TransactionCard/>*/}
                 </div>
 
 

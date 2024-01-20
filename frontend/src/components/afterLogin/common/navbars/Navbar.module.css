@@ -15,7 +15,8 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    height: 70vh;
+    /*height: 74vh;*/
+    /*height: 100%;*/
 
     /*background-color: #1687A7;*/
 }
@@ -28,7 +29,7 @@
     margin: 15px 0;
     display: flex;
     justify-content: flex-start;
-    padding: 0 15%;
+    padding: 0 5%;
     /*background-color: #a63b40;*/
 }
 
@@ -71,7 +72,7 @@
 .navImages {
     width: 24px;
     height: 25px;
-    /*margin: 0 10px;*/
+    margin: 0 10px;
 }
 
 .verticalNavbar {
