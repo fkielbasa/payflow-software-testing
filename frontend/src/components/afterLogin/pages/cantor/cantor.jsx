@@ -3,7 +3,7 @@ import {useEffect, useMemo, useState} from "react";
 import axios from "axios";
 import {config} from "../../../../config/authConfig";
 import {BASE_URL} from "../../../../config/shared";
-import ExchangeChart from "./exchangeChart";
+import ExchangeChart from './exchangeChart'
 import styles from './cantor.module.css'
 
 
