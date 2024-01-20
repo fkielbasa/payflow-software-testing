@@ -40,7 +40,7 @@ public class TransferService {
         return transfer.map(transferDetailsResultDtoMapper).orElse(null);
     }
 
-    public List<TransferResultDTO> getTransfersByAccountNumberId(Long id) {
+    public List<TransferResultDTO> getTransfersByAccountNumberId(Long id, int last) {
         return transferRepository.findAll()
                 .stream()
                 .filter(

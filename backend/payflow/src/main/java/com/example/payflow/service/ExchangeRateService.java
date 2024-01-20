@@ -24,25 +24,13 @@ public class ExchangeRateService {
     private final ExchangeRateRepository repository;
 
 
-//    public List<ExchangeRate> getExchangeRates(int last) {
-//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-//        return repository.findAll()
-//                .stream()
-//                .sorted(Comparator.nullsLast((r1, r2) -> {
-//                    try {
-//                        return formatter.parse(r2.getDate()).compareTo(formatter.parse(r1.getDate()));
-//                    } catch (ParseException e) {
-//                        throw new RuntimeException(e.getMessage());
-//                    }
-//                })).limit(last).toList();
-//    }
-
     public List<ExchangeRate> getExchangeRates(int last) {
         return repository
                 .findAll()
                 .stream()
-                .sorted((r1,r2) -> r2.getDate().compareTo(r1.getDate())
-                ).toList();
+                .sorted((r1,r2) -> r2.getDate().compareTo(r1.getDate()))
+                .limit(last)
+                .toList();
     }
 
 
