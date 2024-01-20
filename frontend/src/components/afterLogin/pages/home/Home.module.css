@@ -4,35 +4,43 @@
 
 .homePage {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 65vw;
+
     /*background-color: green;*/
 }
 
-.contentWrapper {
-    display: flex;
-    flex-direction: row;
-}
-
-.leftSidePosition {
-    width: 49vw;
+.leftSitePosition {
+    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin: 10px;
 
     /*background-color: blue;*/
 }
 
-.transactionPosition {
-    width: 29vw;
-    /*background-color: magenta;*/
+.addAccountNumberPosition {
     display: flex;
     flex-direction: column;
-    margin-right: 2%;
+    align-items: center;
+
+    /*background-color: #a63b40;*/
 }
 
-.marginL {
-    margin-left: 20px;
+.accountNumberSection {
+    display: flex;
+    flex-direction: row;
+    /*margin: 10px;*/
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.rightSitePosition {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    /*background-color: magenta;*/
 }
 
 .linkTo {
@@ -54,6 +62,22 @@
     flex-direction: row;
     justify-content: space-between;
     margin-right: 20px;
+    margin-left: 20px;
 }
 
+.accountNumber {
+    padding: 10px;
+    /*margin: 10px;*/
+}
 
+/*.btnColor {*/
+/*    color: #E0A96D;*/
+/*    border-color: #E0A96D;*/
+/*    border-width: 2px;*/
+/*}*/
+
+/*.btnColor:hover {*/
+/*    background-color: #E0A96D;*/
+/*    border-color: #E0A96D;*/
+/*    color: #312E31;*/
+/*}*/

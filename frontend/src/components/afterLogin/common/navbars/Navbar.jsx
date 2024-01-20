@@ -26,6 +26,7 @@ import DropdownList from "./DropDown";
 import AccountData from "../../pages/account/AccountData";
 
 
+
 import settings from "../../../../assets/navbar/settings/gear.svg";
 import settingsFill from "../../../../assets/navbar/settings/gear-fill.svg";
 
@@ -36,9 +37,12 @@ import Logo from "./Logo";
 import {config, user} from "../../../../config/authConfig";
 import Account from "../../pages/account/Account";
 
+import exchange from '../../../../assets/navbar/cantor/exchange.png'
+import exchangeFilled from '../../../../assets/navbar/cantor/exchangeFilled.png'
+
+
 function Navbar() {
     const location = useLocation();
-    let navigate = useNavigate()
 
     const isHome = location.pathname === '/home';
     const isTransactions = location.pathname === '/transactions';
@@ -46,16 +50,19 @@ function Navbar() {
     const isCredits = location.pathname === '/credits';
     const isCards = location.pathname === '/cards';
     const isTransfers = location.pathname === '/transfers';
+
     const isProfiles = location.pathname === '/profile';
     const isLogOut = location.pathname === '/logOut';
     const isAccount = location.pathname === '/account';
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const AccountBalanceIcon = isAccount ? MdAccountBalanceWallet : MdOutlineAccountBalanceWallet;
+    const isCantor = location.pathname === '/cantor';
 
     const fadeInAnimation = useSpring({
         from: {opacity: 0, transform: 'translateY(50px)'},
         to: {opacity: 1, transform: 'translateY(0)'},
     });
+
     const handleAccountSelect = () => {
         setIsDropdownOpen(false);
     };
@@ -81,12 +88,6 @@ function Navbar() {
             <div className={styles.verticalNavbar}>
                 <div className={styles.navbarFixed}>
                     <div className={styles.firstSection}>
-                        {/*<div>*/}
-                        {/*    <Link to="/home">*/}
-                        {/*        <Logo/>*/}
-                        {/*    </Link>*/}
-                        {/*</div>*/}
-
                         <nav className={styles.nav}>
                             <ul className={styles.ulList}>
                                 <li className={isHome ? [styles.liList, styles.selected].join(' ') : styles.liList}>
@@ -125,6 +126,14 @@ function Navbar() {
                                         Karty
                                     </Link>
                                 </li>
+
+                                <li className={isCantor ? [styles.liList, styles.selected].join(' ') : styles.liList}>
+                                    <Link to="/cantor" className={`${styles.aLink} ${isCantor ? 'active' : ''}`}>
+                                        <img className={styles.navImages} src={isCantor ? exchangeFilled : exchange}
+                                             alt="cantor"/>
+                                        Kantor
+                                    </Link>
+                                </li>
                                 <li className={isAccount ? [styles.liList, styles.selected].join(" ") : styles.liList}>
                                     <div onClick={showDropDown}
                                          className={`${styles.aLink}`}>
@@ -136,33 +145,11 @@ function Navbar() {
                                     <DropdownList onAccountSelect={handleAccountSelect} status={setIsDropdownOpen} />
                                 )}
 
+
                             </ul>
                         </nav>
                     </div>
-                    {/*<nav>*/}
-                    {/*    <ul className={styles.ulList}>*/}
-                    {/*        <li className={styles.liList}>*/}
-                    {/*            <Link*/}
 
-                    {/*                className={`${styles.aLink} ${isSettings ? 'active' : ''}`}*/}
-                    {/*                onClick={showSettings}*/}
-                    {/*            >*/}
-                    {/*                <img className={styles.navImages} src={isSettings ? settingsFill : settings} alt="settings"/>*/}
-                    {/*                Ustawienia*/}
-                    {/*            </Link>*/}
-                    {/*        </li>*/}
-                    {/*        <li className={styles.liList}>*/}
-                    {/*            <Link*/}
-
-                    {/*                className={`${styles.aLink} ${isLogOut ? 'active' : ''}`}*/}
-                    {/*                onClick={logout}*/}
-                    {/*            >*/}
-                    {/*                <img className={styles.navImages} src={isLogOut ? logOutFill : logOut} alt="logOut"/>*/}
-                    {/*                Wyloguj*/}
-                    {/*            </Link>*/}
-                    {/*        </li>*/}
-                    {/*    </ul>*/}
-                    {/*</nav>*/}
                 </div>
             </div>
         </animated.div>

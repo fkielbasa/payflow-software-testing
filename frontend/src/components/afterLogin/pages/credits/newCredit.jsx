@@ -87,13 +87,13 @@ const NewCredit = (props) => {
     }
 
     return(
-        <div>
+        <div className={styles.container}>
             <Alert />
             <header className={styles.headerWrapper}>
                 <h3>Formularz przyznania kredytu</h3>
                 <span></span>
             </header>
-            <div>
+            <div className={styles.formWrapper}>
                 <p className={styles.hardText}>Dane kredytobiorcy:</p>
                 <div className={styles.infoWrapper}>
                     <span>*</span>
@@ -131,46 +131,47 @@ const NewCredit = (props) => {
                         disabled={true}
                     />
                 </div>
-            </div>
-            <div className={styles.accountWrapper}>
-                <p>Wybór rachunku:</p>
-                <SelectAccountNumber
-                    data={dataAccounts}
-                    selectedAccounts={setFromAccount}
-                />
-            </div>
-            <div className={styles.detailsWrapper}>
-                <TextInput
-                    name={"Kwota"}
-                    state={setAmount}
-                    type={"number"}
-                />
-                <div>
-                    <p>Wybierz okres kredytu: </p>
-                    <div className={styles.dateWrapper}>
-                        <input
-                            className={styles.inputRange}
-                            type="range"
-                            min={"1"}
-                            max={"24"}
-                            defaultValue={"1"}
-                            onChange={(event) => calcDate(event.target.value)}
-                        />
-                        <p>Ilość miesięcy: <span>{monthsNum}</span></p>
-                        <p>Data: <span>{toDate}</span></p>
+                <div className={styles.accountWrapper}>
+                    <p>Wybór rachunku:</p>
+                    <SelectAccountNumber
+                        data={dataAccounts}
+                        selectedAccounts={setFromAccount}
+                    />
+                </div>
+                <div className={styles.detailsWrapper}>
+                    <TextInput
+                        name={"Kwota"}
+                        state={setAmount}
+                        type={"number"}
+                    />
+                    <div>
+                        <p>Wybierz okres kredytu: </p>
+                        <div className={styles.dateWrapper}>
+                            <input
+                                className={styles.inputRange}
+                                type="range"
+                                min={"1"}
+                                max={"24"}
+                                defaultValue={"1"}
+                                onChange={(event) => calcDate(event.target.value)}
+                            />
+                            <p>Ilość miesięcy: <span>{monthsNum}</span></p>
+                            <p>Data: <span>{toDate}</span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Oprocentowanie wynosi: {INTREST_RATE}%</p>
+                    </div>
+                    <div className={styles.submitWrapper}>
+                        <button
+                            onClick={addNewCredit}
+                            className={styles.submit}
+                        >
+                            Prześlij
+                        </button>
                     </div>
                 </div>
-                <div>
-                    <p>Oprocentowanie wynosi: {INTREST_RATE}%</p>
-                </div>
-                <div className={styles.submitWrapper}>
-                    <button
-                        onClick={addNewCredit}
-                        className={styles.submit}
-                    >
-                        Prześlij
-                    </button>
-                </div>
+
             </div>
 
 

@@ -40,7 +40,7 @@ public class TransferService {
         return transfer.map(transferDetailsResultDtoMapper).orElse(null);
     }
 
-    public List<TransferResultDTO> getTransfersByAccountNumberId(Long id) {
+    public List<TransferResultDTO> getTransfersByAccountNumberId(Long id, int last) {
         return transferRepository.findAll()
                 .stream()
                 .filter(
@@ -48,6 +48,7 @@ public class TransferService {
                                     transfer.getReceiverAccount().getId().equals(id)
                 )
                 .map(transferResultDTOMapper)
+                .limit(last)
                 .toList();
     }
 

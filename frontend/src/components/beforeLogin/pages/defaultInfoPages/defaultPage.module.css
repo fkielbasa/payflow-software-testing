@@ -7,6 +7,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    flex-grow: 1;
 }
 
 .infoWrapper h2 {
@@ -30,9 +31,13 @@
     width: 1em;
     margin-left: -1em;
 }
+
+.picWrapper {
+    width: 30%;
+}
+
 .pic {
-    margin: 5px;
-    width: 50vw;
+    /*width: 20%;*/
 }
 
 .infoWrapper div div {

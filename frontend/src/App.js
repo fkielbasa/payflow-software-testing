@@ -10,14 +10,18 @@ function App() {
     const paths = ['/home', '/transactions', '/transfers', '/credits', '/cards', '/profile', '/account', '/logOut'];
     return (
         // do not change anything here
-        <div className={styles.containerFluid}>
-            {paths.includes(location.pathname) && <TopNavbar />}
-            <div>
-                <div className={styles.appTop}>
-                    {paths.includes(location.pathname) && <Navbar />}
-                    <Outlet/>
-                </div>
+        <div className={styles.pageWrapper}>
+            <div className={styles.containerFluid}>
+                {/*{paths.includes(location.pathname) && <TopNavbar/>}*/}
+                <TopNavbar />
+                {/*<div>*/}
+                    <div className={styles.appTop}>
+                        {/*{paths.includes(location.pathname) && <Navbar/>}*/}
+                        <Navbar />
+                        <Outlet/>
+                    </div>
 
+                {/*</div>*/}
             </div>
         </div>
     );

@@ -29,6 +29,8 @@ import {isExpired} from "react-jwt";
 import CardDetails from "./components/afterLogin/pages/cards/CardDetails";
 import Account from "./components/afterLogin/pages/account/Account";
 import {TOKEN_KEY} from "./config/authConfig";
+import CantorExchange from "./components/afterLogin/pages/cantor/cantorExchange";
+import Cantor from "./components/afterLogin/pages/cantor/cantor";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -58,6 +60,7 @@ ReactDOM.render(
                     <Route path="credits" element={<Credits/>} />
                     <Route path="cards" element={<Cards/>} />
                     <Route path="cards/:id" element={<CardDetails/>} />
+                    <Route path="cantor" element={<Cantor />} />
                     <Route path="profile" element={<Profile/>} />
                     <Route path="account" element={<Account/>}/>
                     <Route path="logOut" element={<LogOut/>} />
