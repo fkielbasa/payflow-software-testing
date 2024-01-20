@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/controller/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/dto/CardDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/dto/CardDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/dto/mapper/CardDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/dto/mapper/CardDTOMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/model/AccountNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/model/AccountNumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/model/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/payflow/src/main/java/com/example/payflow/service/CardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/transactions/TransactionsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/transactions/TransactionsContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/cantor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/cantor/cantorExchange.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/cantor.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/cantor/cantorExchange.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,9 +52,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "api",
+    "git-widget-placeholder": "feature-cantor",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Studia_rok_III/TOIK/payflow/frontend/src/assets",
+    "last_opened_file_path": "C:/Studia_rok_III/TOIK/payflow/frontend/src/assets/navbar/cantor",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -64,24 +62,24 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "C:\\Users\\Filip\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\233.13135.103\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Users\\enqer\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\233.13135.103\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\assets\navbar\cantor" />
       <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\assets" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\topNavbar\icon" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\transfers" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\transactions" />
-      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\components\afterLogin\pages\cantor" />
       <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\components\afterLogin\common\inputs" />
       <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\components\afterLogin\common" />
       <recent name="C:\Studia_rok_III\TOIK\payflow\frontend\src\components\afterLogin\pages\settings" />
       <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\components\afterLogin\elements\transactions" />
-      <recent name="C:\Users\kubad\Documents\GitHub\payflow\frontend\payflow\src\assets\beforeLogin" />
     </key>
   </component>
   <component name="RunManager">

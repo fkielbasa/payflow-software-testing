@@ -3,7 +3,7 @@ import styles from "./Transfers.module.css";
 import TransferAccountNumber from "./TransfersAccountNumber";
 import Blik from "./Blik";
 import PhoneTransfer from "./PhoneTransfer";
-import Cantor from "./cantor";
+import CantorExchange from "../cantor/cantorExchange";
 import { useSpring, animated } from 'react-spring';
 import Alert from "../../common/alerts/alert";
 
@@ -30,7 +30,6 @@ function Transfers() {
                         <PhoneTransfer/>
                     </div>
                     <div className={styles.transferWrapper}>
-                        <Cantor/>
                         <Blik/>
                     </div>
                 </div>

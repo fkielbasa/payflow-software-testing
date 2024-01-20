@@ -5,7 +5,7 @@ import { config, user } from '../../../../config/authConfig';
 import Popup from 'reactjs-popup';
 import { useSpring, animated } from 'react-spring';
 import {formatAccountNumber} from "../../../utils/formatAccountNumber";
-import TransactionCard from "./transactionCard";
+import TransactionCard from './transactionCard'
 import {getCurrencySymbol} from "../../../utils/money";
 import { ImCross } from "react-icons/im";
 import {FaSort} from "react-icons/fa";
