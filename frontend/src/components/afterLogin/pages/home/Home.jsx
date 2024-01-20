@@ -86,7 +86,7 @@ function Home() {
     return (
         <animated.div style={fadeInAnimation}>
             <div className={styles.homePage}>
-                <div className={styles.leftSidePosition}>
+                <div className={styles.leftSitePosition}>
                     <div className={styles.accountNumberSection}>
                         {apiData.map((numbers, index) => (
                             <div key={index} className={styles.accountNumber}>
@@ -108,7 +108,7 @@ function Home() {
                         />
                     </div>
                 </div>
-                <div className={styles.transactionPosition}>
+                <div className={styles.rightSitePosition}>
                     <div className={styles.sameHeight}>
                         <p>Ostatnie transakcje</p>
                         <Link to="/transactions" className={styles.linkTo}>
