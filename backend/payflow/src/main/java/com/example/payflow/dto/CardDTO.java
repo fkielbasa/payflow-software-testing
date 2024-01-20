@@ -24,4 +24,5 @@ public class CardDTO {
     private String cvv;
     private boolean isActive;
     private boolean isBlocked;
+    private String owner;
 }
