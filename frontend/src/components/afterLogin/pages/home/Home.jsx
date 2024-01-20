@@ -92,7 +92,7 @@ function Home() {
                             <div key={index} className={styles.accountNumber}>
                                 <AccountNumber
                                     accountNumberType={numbers.accountNumberType}
-                                    balance={numbers.balance}
+                                    // balance={numbers.balance}
                                     currency={numbers.currency}
                                     number={numbers.number}
                                 />
@@ -118,12 +118,13 @@ function Home() {
                     <TransactionsContainer maxPerPage={4} />
                 </div>
 
+
                 <Popup open={isPopupOpen} onClose={closePopup}>
                     <PopupContainer>
                         <FormContainer onSubmit={handleSubmit}>
                             <FormField>
                                 <SpaceObject>
-                                    <label htmlFor="currency">Currency:</label>
+                                    <label htmlFor="currency">Waluta:</label>
                                 </SpaceObject>
                                 <StyledSelect name="currency" id="currency" ref={currencyRef}>
                                     <option value="PLN">PLN</option>
@@ -133,7 +134,7 @@ function Home() {
                             </FormField>
                             <FormField>
                                 <SpaceObject>
-                                    <label htmlFor="accountType">Account type:</label>
+                                    <label htmlFor="accountType">Typ konta:</label>
                                 </SpaceObject>
                                 <StyledSelect name="accountType" id="accountType" ref={accountTypeRef}>
                                     <option value="INTENSIVE">INTENSIVE</option>
@@ -141,7 +142,7 @@ function Home() {
                                 </StyledSelect>
                             </FormField>
                             <ReactiveButton color="primary"
-                                            style={{ backgroundColor: '#1687A7', fontWeight: 'bold' }} type="submit" idleText="Add account number"/>
+                                            style={{ backgroundColor: '#1687A7', fontWeight: 'bold' }} type="submit" idleText="Dodaj konto bankowe"/>
                         </FormContainer>
                     </PopupContainer>
                 </Popup>

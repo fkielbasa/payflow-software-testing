@@ -5,8 +5,8 @@ import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 
 
 function AccountNumber(props) {
-    let symbol;
-    let currentBalanceText;
+    // let symbol;
+    // let currentBalanceText;
     let backgroundStyles;
 
     if (props.accountNumberType === 'INTENSIVE') {
@@ -19,16 +19,16 @@ function AccountNumber(props) {
 
     const accountNumberConst = formatAccountNumber(props.number);
 
-    if (props.currency === 'USD') {
-        symbol = '$';
-        currentBalanceText = `${symbol}${props.balance}`;
-    } else if (props.currency === 'EUR') {
-        symbol = '€';
-        currentBalanceText = `${symbol}${props.balance}`;
-    } else if (props.currency === 'PLN') {
-        symbol = 'zł';
-        currentBalanceText = `${props.balance}${symbol}`;
-    }
+    // if (props.currency === 'USD') {
+    //     symbol = '$';
+    //     currentBalanceText = `${symbol}${props.balance}`;
+    // } else if (props.currency === 'EUR') {
+    //     symbol = '€';
+    //     currentBalanceText = `${symbol}${props.balance}`;
+    // } else if (props.currency === 'PLN') {
+    //     symbol = 'zł';
+    //     currentBalanceText = `${props.balance}${symbol}`;
+    // }
 
     return (
         <div
@@ -41,8 +41,8 @@ function AccountNumber(props) {
                     <p className={`${styles.textPosition} ${styles.boldedText}`}> {props.accountNumberType}</p>
                 </div>
                 <div className={styles.money}>
-                    <p className={`${styles.textPosition} ${styles.smallText}`}> Bilans:</p>
-                    <p className={`${styles.textPosition} ${styles.boldedText}`}> {currentBalanceText}</p>
+                    {/*<p className={`${styles.textPosition} ${styles.smallText}`}> Bilans:</p>*/}
+                    {/*<p className={`${styles.textPosition} ${styles.boldedText}`}> {currentBalanceText}</p>*/}
                     <p className={`${styles.textPosition} ${styles.smallText}`}> Waluta:</p>
                     <p className={`${styles.textPosition} ${styles.boldedText}`}> {props.currency}</p>
                 </div>
