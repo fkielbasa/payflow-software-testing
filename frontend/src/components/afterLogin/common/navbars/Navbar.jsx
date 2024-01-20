@@ -23,8 +23,6 @@ import creditsFill from "../../../../assets/navbar/credits/money-bill-fill.svg";
 import cards from "../../../../assets/navbar/cards/credit-card.svg";
 import cardsFill from "../../../../assets/navbar/cards/credit-card-fill.svg";
 import DropdownList from "./DropDown";
-import AccountData from "../../pages/account/AccountData";
-
 
 import settings from "../../../../assets/navbar/settings/gear.svg";
 import settingsFill from "../../../../assets/navbar/settings/gear-fill.svg";
@@ -34,7 +32,6 @@ import logOutFill from "../../../../assets/navbar/logOut/door-open-fill.svg";
 
 import Logo from "./Logo";
 import {config, user} from "../../../../config/authConfig";
-import Account from "../../pages/account/Account";
 
 function Navbar() {
     const location = useLocation();
@@ -56,9 +53,7 @@ function Navbar() {
         from: {opacity: 0, transform: 'translateY(50px)'},
         to: {opacity: 1, transform: 'translateY(0)'},
     });
-    const handleAccountSelect = () => {
-        setIsDropdownOpen(false);
-    };
+
     const logout = () => {
         localStorage.clear()
         navigate('/home')
@@ -133,9 +128,10 @@ function Navbar() {
                                     </div>
                                 </li>
                                 {isDropdownOpen && (
-                                    <DropdownList onAccountSelect={handleAccountSelect} status={setIsDropdownOpen} />
+                                    <DropdownList
+                                        status={setIsDropdownOpen}
+                                    />
                                 )}
-
                             </ul>
                         </nav>
                     </div>
