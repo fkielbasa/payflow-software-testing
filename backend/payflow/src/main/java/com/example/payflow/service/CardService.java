@@ -25,10 +25,8 @@ public class CardService {
     private final CardDetailsRepository cardDetailsRepository;
     private final CardDTOMapper cardDTOMapper;
 
-    public List<CardDTO> getCardByAccountId(Long id){
-        return accountNumberRepository.findById(id).get().getCards()
-                .stream()
-                .map(cardDTOMapper).toList();
+    public CardDTO getCardByAccountId(Long id){
+        return cardDTOMapper.apply(accountNumberRepository.findById(id).get().getCard());
     }
     public CardDTO createCard(Long id){
         LocalDate currentDate = LocalDate.now();
