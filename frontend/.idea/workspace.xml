@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/PhoneTransfer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/PhoneTransfer.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/TransfersAccountNumber.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/TransfersAccountNumber.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/cantor.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/cantor.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/transactions/transactionCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/transactions/transactionCard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transactions/Transactions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transactions/Transactions.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +143,7 @@
       <workItem from="1705004448072" duration="7246000" />
       <workItem from="1705673057421" duration="5736000" />
       <workItem from="1705696410641" duration="11614000" />
-      <workItem from="1705744392456" duration="4954000" />
+      <workItem from="1705744392456" duration="6179000" />
     </task>
     <servers />
   </component>
