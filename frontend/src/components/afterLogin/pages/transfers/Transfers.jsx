@@ -5,6 +5,7 @@ import Blik from "./Blik";
 import PhoneTransfer from "./PhoneTransfer";
 import Cantor from "./cantor";
 import { useSpring, animated } from 'react-spring';
+import Alert from "../../common/alerts/alert";
 
 
 function Transfers() {
@@ -18,19 +19,19 @@ function Transfers() {
 
     return (
         <animated.div style={fadeInAnimation}>
-
+            <Alert />
             <div className={styles.transfersContainer}>
                 <div className={styles.transferType}>
                     <h2>Wybierz typ przelewu</h2>
                 </div>
                 <div className={styles.transferShowFields}>
-                    <div className={styles.cellWrapper}>
+                    <div className={styles.transferWrapper}>
                         <TransferAccountNumber/>
-                        <Blik/>
-                    </div>
-                    <div className={styles.cellWrapper}>
-                        <Cantor/>
                         <PhoneTransfer/>
+                    </div>
+                    <div className={styles.transferWrapper}>
+                        <Cantor/>
+                        <Blik/>
                     </div>
                 </div>
             </div>

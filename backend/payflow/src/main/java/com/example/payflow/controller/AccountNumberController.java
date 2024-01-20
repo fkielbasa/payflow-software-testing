@@ -37,9 +37,9 @@ public class AccountNumberController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @PostMapping("/number")
-    public ResponseEntity<AccountNumberDTO> addAccount(@RequestBody AccountNumberRequestDto accountNumber){
-        AccountNumberDTO ac = accountNumberService.addAccount(accountNumber);
+    @PostMapping("/users/{id}/number")
+    public ResponseEntity<AccountNumberDTO> addAccount(@PathVariable Long id,@RequestBody AccountNumberRequestDto accountNumber){
+        AccountNumberDTO ac = accountNumberService.addAccount(id, accountNumber);
         if (ac != null)
             return ResponseEntity.status(HttpStatus.CREATED).body(ac);
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

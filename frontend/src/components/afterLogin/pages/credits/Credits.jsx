@@ -15,12 +15,6 @@ function Credits() {
 
     const [data,setData] = useState([])
 
-    const handleSubmit = () => {
-        console.log('Przelew wysłany');
-        alert('Przelew wysłany');
-    };
-
-
 
     useEffect(() => {
         const getAllCredits = () => {
@@ -47,7 +41,7 @@ function Credits() {
             className={styles.creditsContainer}
         >
             <NewCredit />
-            <div>
+            <div className={styles.wrapper}>
                 <header className={styles.headerWrapper}>
                     <h3>Kredyty</h3>
                     <span></span>
