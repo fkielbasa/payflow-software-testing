@@ -6,9 +6,19 @@
 }
 
 .sort {
-    width: 90%;
+    width: 85%;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+.sort p {
+    text-align: center;
+}
+.sort div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
 }
 
 .container {

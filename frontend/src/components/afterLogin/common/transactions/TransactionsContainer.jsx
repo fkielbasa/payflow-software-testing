@@ -7,8 +7,8 @@ import { useSpring, animated } from 'react-spring';
 import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 import TransactionCard from "./transactionCard";
 import {getCurrencySymbol} from "../../../utils/money";
-import logo from "../navbars/Logo";
-import Logo from "../navbars/Logo";
+import { ImCross } from "react-icons/im";
+import {FaSort} from "react-icons/fa";
 
 const TransactionsContainer = ({ maxPerPage }) => {
 
@@ -16,6 +16,11 @@ const TransactionsContainer = ({ maxPerPage }) => {
     const [selectedTransaction, setSelectedTransaction] = useState(null);
     const [receiverData, setReceiverData] = useState({});
     const [userAccounts, setUserAccounts] = useState([])
+    const [sortByAmount, setSortByAmount] = useState(false)
+    const [sortByDesc, setSortByDesc] = useState(false)
+    const [sortBySender, setSortBySender] = useState(false)
+    const [sortByReceiver, setSortByReceiver] = useState(false)
+    const [sortByDate, setSortByDate] = useState(false)
 
     const fadeInAnimation = useSpring({
         from: {opacity: 0, transform: 'translateY(50px)', width: '100%'},
@@ -88,14 +93,66 @@ const TransactionsContainer = ({ maxPerPage }) => {
         getAccountNumbers()
     }, []);
 
+
+    const sortByBalance = () => {
+        const newD = [...apiData]
+        sortByAmount ? newD.sort((a,b) => a.amount - b.amount ) : newD.sort((a,b) => b.amount - a.amount)
+        setApiData(newD)
+        setSortByAmount(!sortByAmount)
+    }
+
+    const sortByDescription = () => {
+        const newD = [...apiData]
+        sortByDesc ? newD.sort((a,b) => a.description.toLowerCase().localeCompare(b.description.toLowerCase())) : newD.sort((a,b) => b.description.toLowerCase().localeCompare(a.description.toLowerCase()))
+        setApiData(newD)
+        setSortByDesc(!sortByDesc)
+    }
+
+    const sortSender = () => {
+        const newD = [...apiData]
+        sortBySender ? newD.sort((a,b) => a.senderFullName.toLowerCase().localeCompare(b.senderFullName.toLowerCase())) : newD.sort((a,b) => b.senderFullName.toLowerCase().localeCompare(a.senderFullName.toLowerCase()))
+        setApiData(newD)
+        setSortBySender(!sortBySender)
+    }
+
+    const sortReceiver = () => {
+        const newD = [...apiData]
+        sortByReceiver ? newD.sort((a,b) => a.receiverFullName.toLowerCase().localeCompare(b.receiverFullName.toLowerCase())) : newD.sort((a,b) => b.receiverFullName.toLowerCase().localeCompare(a.receiverFullName.toLowerCase()))
+        setApiData(newD)
+        setSortByReceiver(!sortByReceiver)
+    }
+
+    const sortDate = () => {
+        const newD = [...apiData]
+        sortByDate ? newD.sort((a,b) => a.date.toLowerCase().localeCompare(b.date.toLowerCase())) : newD.sort((a,b) => b.date.toLowerCase().localeCompare(a.date.toLowerCase()))
+        setApiData(newD)
+        setSortByDate(!sortByDate)
+    }
+
     return (
         <animated.div style={fadeInAnimation}>
             <div className={styles.containerFluid}>
                 <div className={styles.sort}>
-                    <p>te</p>
-                    <p>te</p>
-                    <p>te</p>
-                    <p>te</p>
+                    <div  onClick={sortByBalance}>
+                        <p>Saldo</p>
+                        <FaSort/>
+                    </div>
+                    <div onClick={sortByDescription} style={{width: '25%'}}>
+                        <p>Opis</p>
+                        <FaSort/>
+                    </div>
+                    <div  onClick={sortSender}>
+                        <p>Nadawca</p>
+                        <FaSort/>
+                    </div>
+                    <div onClick={sortReceiver}>
+                        <p>Odbiorca</p>
+                        <FaSort/>
+                    </div>
+                    <div onClick={sortDate}>
+                        <p>Data</p>
+                        <FaSort/>
+                    </div>
                 </div>
                 <div className={styles.container}>
                     {apiData.map((transaction, index) => (
@@ -120,10 +177,10 @@ const TransactionsContainer = ({ maxPerPage }) => {
                                         />
                                     </div>
                                     <p
-                                        style={{color: 'white', fontSize: 26, cursor: 'pointer', margin: 5}}
+                                        style={{color: 'white', fontSize: 20, cursor: 'pointer', margin: 5}}
                                         onClick={closePopup}
                                     >
-                                        x
+                                        <ImCross />
                                     </p>
                                 </div>
                                 <div style={{backgroundColor: '#F6F5F5', borderRadius: 5, padding: '10px'}}>
@@ -150,26 +207,6 @@ const TransactionsContainer = ({ maxPerPage }) => {
                                         </>
                                     )}
                                 </div>
-                                {/*<div style={{*/}
-                                {/*    display: "flex",*/}
-                                {/*    justifyContent: "center",*/}
-                                {/*    marginTop: 20,*/}
-                                {/*    marginBottom: 10*/}
-                                {/*}}>*/}
-                                {/*    <button style={{*/}
-                                {/*        backgroundColor: '#276678',*/}
-                                {/*        borderRadius: 5,*/}
-                                {/*        color: 'white',*/}
-                                {/*        borderColor: '#1687A7',*/}
-                                {/*        boxShadow: 0,*/}
-                                {/*        width: 80,*/}
-                                {/*        paddingTop: 10,*/}
-                                {/*        paddingBottom: 10,*/}
-                                {/*        paddingLeft: 20,*/}
-                                {/*        paddingRight: 20*/}
-                                {/*    }} onClick={closePopup}>Zamknij*/}
-                                {/*    </button>*/}
-                                {/*</div>*/}
                             </div>
                         )}
                     </Popup>
