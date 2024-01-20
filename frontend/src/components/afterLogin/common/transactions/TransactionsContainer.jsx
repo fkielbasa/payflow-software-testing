@@ -161,6 +161,11 @@ const TransactionsContainer = ({ maxPerPage }) => {
                             userSender={userAccounts.includes(transaction.senderAccountId)}
                             data={transaction}
                             handleTransactionClick={handleTransactionClick}
+                            showAmount // dodaj showAmount i inne propsy w zależności od potrzeb
+                            showDesc
+                            showSenderInfo
+                            showReceiverInfo
+                            showDate
                         />
                     ))}
 
