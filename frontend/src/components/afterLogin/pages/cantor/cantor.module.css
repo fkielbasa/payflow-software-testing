@@ -1,0 +1,20 @@
+.containerFluid {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.exchangeBar {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+}
+
+.chartWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
