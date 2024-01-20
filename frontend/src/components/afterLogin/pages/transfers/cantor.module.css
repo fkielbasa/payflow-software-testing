@@ -11,6 +11,10 @@
     outline: none;
 }
 
+.container h3 {
+    margin: 10px;
+}
+
 .submitWrapper {
     width: 100%;
     display: flex;

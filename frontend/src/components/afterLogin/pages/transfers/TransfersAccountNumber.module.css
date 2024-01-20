@@ -9,6 +9,10 @@
     margin: 10px;
 }
 
+.transferAccountNumberContainer h3 {
+    margin: 5px;
+}
+
 .submitWrapper {
     display: flex;
     justify-content: center;
@@ -46,4 +50,7 @@
 .selectAccount {
     margin: auto;
     width: 90%;
+}
+.selectAccount > p {
+    margin: 5px;
 }
