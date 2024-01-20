@@ -48,6 +48,7 @@ public class TransferService {
                                     transfer.getReceiverAccount().getId().equals(id)
                 )
                 .map(transferResultDTOMapper)
+                .limit(last)
                 .toList();
     }
 

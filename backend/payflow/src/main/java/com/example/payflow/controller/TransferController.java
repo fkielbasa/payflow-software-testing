@@ -28,7 +28,7 @@ public class TransferController {
 
 
     @GetMapping("/account-numbers/{id}/transfers")
-    public ResponseEntity<List<TransferResultDTO>> getTransfersByAccountNumberId(@PathVariable Long id,@RequestParam(required = false, defaultValue = "7") int last){
+    public ResponseEntity<List<TransferResultDTO>> getTransfersByAccountNumberId(@PathVariable Long id,@RequestParam(required = false, defaultValue = "200") int last){
         List<TransferResultDTO> transferList = transferService.getTransfersByAccountNumberId(id, last);
         if (transferList.isEmpty())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
