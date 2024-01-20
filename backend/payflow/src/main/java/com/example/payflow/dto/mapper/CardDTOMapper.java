@@ -17,7 +17,8 @@ public class CardDTOMapper implements Function<Card, CardDTO> {
                 card.getValidDate(),
                 card.getCvv(),
                 card.getCardDetails().isActive(),
-                card.getCardDetails().isBlocked()
+                card.getCardDetails().isBlocked(),
+                card.getAccountNumberCard().getUserId().getFirstName() + ' ' + card.getAccountNumberCard().getUserId().getLastName()
         );
     }
 }

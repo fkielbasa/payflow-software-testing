@@ -15,10 +15,10 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class CardController {
     private final CardService cardService;
-    @GetMapping("/numbers/{id}/cards")
-    public ResponseEntity<List<CardDTO>> getCardById(@PathVariable Long id){
-        List<CardDTO> card = cardService.getCardByAccountId(id);
-        if(!card.isEmpty()) {
+    @GetMapping("/numbers/{id}/card")
+    public ResponseEntity<CardDTO> getCardById(@PathVariable Long id){
+        CardDTO card = cardService.getCardByAccountId(id);
+        if(card != null) {
             return ResponseEntity.ok().body(card);
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {config, user} from "../../../../config/authConfig";
-import SelectAccountNumber from "./SelectAccountNumber";
-import styles from './cantor.module.css'
+import SelectAccountNumber from "../transfers/SelectAccountNumber";
+import styles from './cantorExchange.module.css'
 import TextInput from "../../common/inputs/textInput";
 
-const Cantor = () => {
+const CantorExchange = () => {
     const [amount, setAmount]=useState(0.0)
     const [data, setData] = useState([])
     const [fromAccount, setFromAccount] = useState(0)
@@ -98,4 +98,4 @@ const Cantor = () => {
         </div>
     )
 }
-export default Cantor
+export default CantorExchange

@@ -5,7 +5,6 @@ import TransactionsContainer from "../../common/transactions/TransactionsContain
 function Transactions() {
     return (
         <div className={styles.transactionsContainer}>
-            {/*<TransactionsContainer screenName={'transactions'}/>*/}
             <TransactionsContainer screenName={'transactions'}/>
         </div>
     );

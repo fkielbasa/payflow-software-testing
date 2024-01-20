@@ -23,7 +23,6 @@ public class AccountNumberService {
     private final UserRepository userRepository;
     private final AccountNumberDtoMapper accountNumberDtoMapper;
     private static final BigDecimal START_BALANCE = new BigDecimal(100);
-    public static final int ACCOUNT_NUMBER_LENGTH = 26;
 
     public List<AccountNumber> getAccountNumbers() {
         return accountNumberRepository.findAll();
@@ -31,19 +30,12 @@ public class AccountNumberService {
     public List<AccountNumberDTO> getAccountNumberByUserId(Long id){
         return accountNumberRepository.findAll().stream()
                 .filter(accountNumber -> accountNumber.getUserId().getId().equals(id))
-                .map(accountNumberDtoMapper
-//                        accountNumber -> new AccountNumberDTO(
-//                        accountNumber.getId(),
-//                        accountNumber.getBalance(),
-//                        accountNumber.getCurrency(),
-//                        accountNumber.getAccountType(),
-//                        accountNumber.getNumber()
-                )
+                .map(accountNumberDtoMapper)
                 .toList();
     }
 
-    public AccountNumberDTO addAccount(AccountNumberRequestDto accountNumber){
-        Optional<User> u = userRepository.findById(accountNumber.userId());
+    public AccountNumberDTO addAccount(Long id, AccountNumberRequestDto accountNumber){
+        Optional<User> u = userRepository.findById(id);
         if(u.isPresent()) {
             var a = AccountNumber.builder()
                     .balance(START_BALANCE)
