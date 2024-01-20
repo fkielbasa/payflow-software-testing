@@ -3,7 +3,8 @@ import styles from './Account.module.css'
 import TextInputChange from "../../common/inputs/TextInputChange";
 import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 
-const AccountData = (props) => {return (
+const AccountData = (props) => {
+    return (
     <div className={styles.containerData}>
         <p>Dane rachunku</p>
         <TextInputChange
