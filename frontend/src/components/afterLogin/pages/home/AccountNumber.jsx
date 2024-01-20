@@ -50,7 +50,7 @@ function AccountNumber(props) {
             <div className={`${styles.numberPosition} ${styles.needMarginBottom}`}>
                 <div className={styles.number}>
                     <p className={`${styles.textPosition} ${styles.smallText}`}> Numer konta:</p>
-                    <p className={`${styles.textPosition} ${styles.boldedText}`}> {accountNumberConst} </p>
+                    <p className={`${styles.textPosition} ${styles.boldedText} ${styles.smallText}`}> {accountNumberConst} </p>
                 </div>
             </div>
         </div>
