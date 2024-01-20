@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="942098ad-9944-4276-a235-c77a0f84e95e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/navbars/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/common/transactions/TransactionsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/common/transactions/TransactionsContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/cantor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/cantor/cantorExchange.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/cantor.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/cantor/cantorExchange.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/credits/Credits.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Blik.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Blik.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Blik.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Blik.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/PhoneTransfer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/PhoneTransfer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/Transfers.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/TransfersAccountNumber.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/afterLogin/pages/transfers/TransfersAccountNumber.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

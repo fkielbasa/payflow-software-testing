@@ -19,9 +19,7 @@ function Blik() {
         if (isActive){
             const tick = setInterval(() => {
                 setBlikTimeInSec((prev) => {
-                    console.log(prev)
                     if (prev <= 0){
-                        console.log("koniec")
                         clearInterval(tick)
                         setBlikText("Odśwież blik")
                         setIsActive(false)

@@ -16,18 +16,21 @@
 
 .transferShowFields {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 90%;
-
+    max-height: 90%;
+    /*overflow-y: scroll;*/
 }
 
 .transferWrapper {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    /*flex-wrap: wrap;*/
     width: 100%;
-    height: 100%;
+    height: 90%;
+
 }
 
 .cellWrapper {

@@ -1,6 +1,7 @@
 
 .container {
-    width: 70%;
+    width: 45%;
+    height: 350px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -14,11 +15,8 @@
 .container > p {
     font-weight: bold;
     font-size: 18px;
-    margin: 10px;
+    /*margin: 10px;*/
 }
-
-
-
 
 .formPhone {
     width: 90%;
@@ -26,8 +24,6 @@
     flex-direction: column;
     align-content: center;
 }
-
-
 
 .submitWrapper {
     display: flex;
@@ -45,22 +41,3 @@
     transition: all 0.3s ease;
 }
 
-
-
-.wrongTransferText {
-    color: red;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.successionText {
-    color: green;
-    font-size: 16px;
-    font-weight: bold;
-}
-.textHidden {
-    visibility: hidden;
-}
-.textVisible {
-    visibility: visible;
-}
