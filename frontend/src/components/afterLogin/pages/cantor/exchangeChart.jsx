@@ -1,7 +1,6 @@
 import * as d3 from "d3";
-import {useCallback, useEffect, useState} from "react";
-import axios from "axios";
-import {BASE_URL} from "../../../../config/shared";
+import {useCallback} from "react";
+
 
 const ExchangeChart = ({ data, currency }) => {
     const width = 400;
@@ -17,7 +16,7 @@ const ExchangeChart = ({ data, currency }) => {
                 const parseDate = d3.timeParse("%Y-%m-%d");
 
                 const filteredData = data.map((d) => ({
-                    date: parseDate(d.date), // Przekształć datę na obiekt daty JavaScript
+                    date: parseDate(d.date),
                     rate: currency === "EUR" ? d.pln / d.eur : d.pln / d.usd,
                 }));
 
@@ -28,7 +27,7 @@ const ExchangeChart = ({ data, currency }) => {
 
                 const xScale = d3
                     .scaleTime()
-                    .domain(d3.extent(filteredData, (d) => d.date)) // Użyj przekształconych dat
+                    .domain(d3.extent(filteredData, (d) => d.date))
                     .range([margin.left, width - margin.right])
                     .nice();
 
