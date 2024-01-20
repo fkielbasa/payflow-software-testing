@@ -32,7 +32,16 @@ const Cantor = () => {
             <div className={styles.exchangeBar}>
                 <CantorExchange />
             </div>
-            
+            <div className={styles.container}>
+                <div className={styles.chartWrapper}>
+                    <p>Kurs euro</p>
+                    <ExchangeChart data={dataRate} currency={"EUR"} />
+                </div>
+                <div className={styles.chartWrapper}>
+                    <p>Kurs dolara</p>
+                    <ExchangeChart data={dataRate} currency={"USD"}/>
+                </div>
+            </div>
         </div>
     )
 }
