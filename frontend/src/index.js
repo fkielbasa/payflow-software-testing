@@ -27,6 +27,7 @@ import NotFound from "./components/afterLogin/pages/notFound/NotFound";
 import Cards from "./components/afterLogin/pages/cards/Cards";
 import {isExpired} from "react-jwt";
 import CardDetails from "./components/afterLogin/pages/cards/CardDetails";
+import Account from "./components/afterLogin/pages/account/Account";
 import {TOKEN_KEY} from "./config/authConfig";
 
 ReactDOM.render(
@@ -58,6 +59,7 @@ ReactDOM.render(
                     <Route path="cards" element={<Cards/>} />
                     <Route path="cards/:id" element={<CardDetails/>} />
                     <Route path="profile" element={<Profile/>} />
+                    <Route path="account" element={<Account/>}/>
                     <Route path="logOut" element={<LogOut/>} />
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
