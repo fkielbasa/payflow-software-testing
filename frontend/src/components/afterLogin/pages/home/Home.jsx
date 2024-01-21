@@ -18,6 +18,8 @@ import {
 import EmptyAccountNumber from "./EmptyAccountNumber";
 import TransactionCard from "../../common/transactions/transactionCard";
 import {BASE_URL} from "../../../../config/shared";
+import TransactionChart from './TransactionChart';
+
 
 function Home() {
     const fadeInAnimation = useSpring({
@@ -26,6 +28,7 @@ function Home() {
     });
     const [apiDataAccountNumber, setApiDataAccountNumber] = useState([]);
     const [apiDataTransactions, setApiDataTransactions] = useState([]);
+    const [apiDataAllTransactions, setApiDataAllTransactions] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [userAccounts, setUserAccounts] = useState([])
     const [selectedTransaction, setSelectedTransaction] = useState(null);
@@ -34,10 +37,12 @@ function Home() {
     const accountTypeRef = useRef(null);
 
     useEffect(() => {
+        console.log('user.userId', user.userId);
         const getDataAccountNumber = async () => {
             axios
                 .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
                 .then((response) => {
+                    console.log('getDataAccountNumber response', response.data)
                     setApiDataAccountNumber(response.data);
                 })
                 .catch((err) => {
@@ -48,8 +53,19 @@ function Home() {
         const getDataTransactions = async () => {
             axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers?last=5`, config)
                 .then((response) => {
-                    console.log(response.data);
+                    console.log('getDataTransactions response',response.data);
                     setApiDataTransactions(response.data);
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        };
+
+        const getDataAllTransactions = async () => {
+            axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers`, config)
+                .then((response) => {
+                    console.log('getDataAllTransactions response',response.data);
+                    setApiDataAllTransactions(response.data);
                 })
                 .catch(err => {
                     console.error(err);
@@ -63,7 +79,7 @@ function Home() {
                 )
                 .then((response) => {
                     setUserAccounts(response.data.map(ac => ac.id))
-                    console.log(response.data.map(ac => ac.id))
+                    console.log('getAccountNumbers response',response.data.map(ac => ac.id))
                 })
                 .catch((error) => {
                     console.log(error)
@@ -73,6 +89,7 @@ function Home() {
         getDataAccountNumber();
         getDataTransactions();
         getAccountNumbers()
+        getDataAllTransactions();
     }, [user.userId]);
 
     const personalData = async (id) => {
@@ -148,6 +165,7 @@ function Home() {
                 <div className={styles.content}>
                     <div className={styles.leftSitePosition}>
 
+                        <TransactionChart transactions={apiDataAllTransactions} />
 
 
 
