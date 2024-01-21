@@ -10,6 +10,7 @@ public class NumberGenerator {
     public static final int LOGIN_LENGTH = 8;
     public static final int ACCOUNT_NUMBER_LENGTH = 26;
     public static final int CVV_LENGTH = 3;
+    public static final int CARD_NUMBER_LENGTH = 16;
     private static Random random;
     private static StringBuilder stringBuilder;
 
@@ -52,6 +53,16 @@ public class NumberGenerator {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < CVV_LENGTH; i++) {
+            int randomNumber = random.nextInt(10);
+            stringBuilder.append(randomNumber);
+        }
+        return stringBuilder.toString();
+    }
+    public static String generateCardNumber() {
+        Random random = new Random();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < CARD_NUMBER_LENGTH; i++) {
             int randomNumber = random.nextInt(10);
             stringBuilder.append(randomNumber);
         }

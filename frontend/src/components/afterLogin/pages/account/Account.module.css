@@ -19,8 +19,23 @@
     background-color: #65b6d5;
 }
 .rightContainer{
-
+    align-items: center;
+    /*background-color: #65b6d5;*/
 }
 .cardBottomMargin{
     margin-bottom: 20px;
+}
+.inactiveCard{
+    display: flex;
+    flex-direction: column;
+}
+.activateCard{
+    border-radius: 10px;
+    background-color: #1b1d2a;
+    color: #cccccc;
+    padding: 10px;
+    cursor: pointer;
+}
+.activateCard:hover{
+    background-color: green;
 }

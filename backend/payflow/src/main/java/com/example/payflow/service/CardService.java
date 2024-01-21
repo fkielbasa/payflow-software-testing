@@ -34,7 +34,7 @@ public class CardService {
         if (ac.isPresent()) {
             var c = Card.builder()
                     .validDate(currentDate.plusYears(4))
-                    .cardNumber(NumberGenerator.generateAccountNumber())
+                    .cardNumber(NumberGenerator.generateCardNumber())
                     .cvv(NumberGenerator.generateCVV())
                     .accountNumberCard(ac.orElseThrow())
                     .build();
@@ -44,6 +44,7 @@ public class CardService {
                     .idCard(c)
                     .pin(null)
                     .build();
+            c.setCardDetails(cd);
             cardRepository.save(c);
             cardDetailsRepository.save(cd);
             CardDTO cardDTO = cardDTOMapper.apply(c);

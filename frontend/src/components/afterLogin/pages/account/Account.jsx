@@ -7,6 +7,7 @@ import {config} from "../../../../config/authConfig";
 import {useLocation} from "react-router-dom";
 import AccountCard from "./AccountCard";
 import AccountDetails from "./AccountDetails";
+import Popup from "reactjs-popup";
 
 const Account = () => {
     const [accountData, setAccountData] = useState({})
@@ -81,11 +82,13 @@ const Account = () => {
                     />
                 )}
                 <AccountDetails
+                    id={cardData.id}
                     active={cardData.active}
                     blocked={cardData.blocked}
                 />
             </div>
         </div>
+
     );
 }
 export default Account

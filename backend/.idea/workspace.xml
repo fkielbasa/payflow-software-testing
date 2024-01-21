@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b750e811-3640-4781-8c5f-6eb32b63e2b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/service/AccountNumberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/service/AccountNumberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/navbars/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/navbars/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/service/CardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/util/NumberGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/util/NumberGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/inputs/TextInputChange.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/inputs/TextInputChange.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountData.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/CreditCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/CreditCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/CreditCards.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/CreditCards.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountDetails.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
