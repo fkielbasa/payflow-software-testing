@@ -27,9 +27,14 @@ public class AccountNumberService {
     public List<AccountNumber> getAccountNumbers() {
         return accountNumberRepository.findAll();
     }
+//    public List<AccountNumberDTO> getAccountNumberByUserId(Long id){
+//        return accountNumberRepository.findAll().stream()
+//                .filter(accountNumber -> accountNumber.getUserId().getId().equals(id))
+//                .map(accountNumberDtoMapper)
+//                .toList();
+//    }
     public List<AccountNumberDTO> getAccountNumberByUserId(Long id){
-        return accountNumberRepository.findAll().stream()
-                .filter(accountNumber -> accountNumber.getUserId().getId().equals(id))
+        return userRepository.findById(id).get().getAccountNumbers().stream()
                 .map(accountNumberDtoMapper)
                 .toList();
     }

@@ -5,7 +5,7 @@ import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 
 const AccountData = (props) => {
     return (
-    <div className={styles.containerData}>
+    <div>
         <p>Dane rachunku</p>
         <TextInputChange
             name={"Typ konta"}

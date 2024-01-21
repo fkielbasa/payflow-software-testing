@@ -66,11 +66,11 @@ function Navbar() {
     const handleAccountSelect = () => {
         setIsDropdownOpen(false);
     };
-    const logout = () => {
-        localStorage.clear()
-        navigate('/home')
-        window.location.reload()
-    }
+    // const logout = () => {
+    //     localStorage.clear()
+    //     navigate('/home')
+    //     window.location.reload()
+    // }
 
     const showSettings = () => {
         alert("Nie ma i nie będzie")

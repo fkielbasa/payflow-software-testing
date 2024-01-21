@@ -6,6 +6,7 @@ import { backgroundStyles1, backgroundStyles2, backgroundStyles3, backgroundStyl
 import {Link} from "react-router-dom";
 import chip from "../../../../assets/transations/chip.png";
 import {formatAccountNumber} from "../../../utils/formatAccountNumber";
+import {formatCardNumber} from "../../../utils/formatCardNumber";
 
 function CreditCard(props) {
     const [isHovered, setIsHovered] = useState(false);
@@ -28,7 +29,7 @@ function CreditCard(props) {
     }
 
     // account number formatting
-    const accountNumberConst = formatAccountNumber(props.accountNumber);
+    const accountNumberConst = formatCardNumber(props.accountNumber);
 
     const toValue = props.to === '/cards' ? '/cards' : `/cards/${props.id}`;
 

@@ -5,10 +5,10 @@
     /*height: 73%;*/
     border-radius: 8px;
     margin-right: 18px;
-    margin-top: 5vh;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 150px;
+    /*margin-bottom: 150px;*/
     transition: transform 0.3s ease, z-index 0.3s ease;
     text-decoration: none;
 }
@@ -49,7 +49,7 @@
 }
 
 .marginLeft {
-    margin-left: 15px;
+    margin-left: 40px;
 }
 
 .textLeft {
@@ -57,7 +57,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    width: 50%;
+    width: 70%;
 }
 
 .chipPlace {
@@ -92,3 +92,4 @@
     font-size: 13px;
     color: white;
 }
+

@@ -6,12 +6,14 @@ import {BASE_URL} from "../../../../config/shared";
 import {config} from "../../../../config/authConfig";
 import {useLocation} from "react-router-dom";
 import AccountCard from "./AccountCard";
+import AccountDetails from "./AccountDetails";
 
 const Account = () => {
     const [accountData, setAccountData] = useState({})
     const [cardData, setCardData] = useState({})
     const location = useLocation();
-
+    const [expirationMonth, setExpirationMonth] = useState(null);
+    const [expirationYear, setExpirationYear] = useState(null);
     const { state } = location;
     const accountId = state ? state.accountId : null;
     useEffect(() => {
@@ -30,18 +32,28 @@ const Account = () => {
             };
             const getCardDetails = () => {
                 axios
-                    .get(`${BASE_URL}/api/v1/numbers/2/cards`, config)
+                    .get(`${BASE_URL}/api/v1/numbers/${accountId}/card`, config)
                     .then((res) => {
-                        setCardData(res.data[0]);
-                        console.log(res.data[0]);
+                        setCardData(res.data);
+                        extractMonthAndYear(res.data.validDate);
+                        console.log(res.data);
                         })
                     .catch((er) => {
                             console.error(er);
                         });
             }
-        getAccountDetails()
-        getCardDetails();
+            getAccountDetails()
+            getCardDetails();
     }, [accountId]);
+
+    const extractMonthAndYear = (validDate) => {
+        const date = new Date(validDate);
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+
+        setExpirationMonth(month);
+        setExpirationYear(year.toString().slice(2));
+    };
 
     return (
         <div className={styles.accountContainer}>
@@ -57,14 +69,21 @@ const Account = () => {
             </div>
             <div className={styles.rightContainer}>
                 {cardData && Object.keys(cardData).length > 0 && (
-                <AccountCard
-                    balance={accountData.balance}
-                    currency={accountData.currency}
-                    cardNumber={cardData.cardNumber}
-                    cvv={cardData.cvv}
-                    validDate={cardData.validDate}
-                />
+                    <AccountCard
+                        owner={cardData.owner}
+                        balance={accountData.balance}
+                        currency={accountData.currency}
+                        cardNumber={cardData.cardNumber}
+                        cvv={cardData.cvv}
+                        month={expirationMonth}
+                        year={expirationYear}
+
+                    />
                 )}
+                <AccountDetails
+                    active={cardData.active}
+                    blocked={cardData.blocked}
+                />
             </div>
         </div>
     );
