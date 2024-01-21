@@ -50,6 +50,7 @@ public class TransferService {
                 )
                 .map(transferResultDTOMapper)
                 .sorted(Comparator.comparing(TransferResultDTO::date).reversed())
+                .sorted(Comparator.comparing(TransferResultDTO::id).reversed())
                 .limit(last)
                 .toList();
     }
