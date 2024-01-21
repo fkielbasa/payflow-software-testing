@@ -27,7 +27,7 @@ const Register = () => {
         firstName: dataForm.firstName,
         lastName: dataForm.lastName,
         dateOfBirth: dataForm.dateOfBirth,
-        nationality: dataForm.nationality,
+        nationality: dataForm.country,
         email: dataForm.email,
         phoneNumber: dataForm.phoneNumber,
         zipCode: dataForm.zipCode,

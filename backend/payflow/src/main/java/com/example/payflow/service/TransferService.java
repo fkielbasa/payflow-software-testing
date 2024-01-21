@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +49,8 @@ public class TransferService {
                                     transfer.getReceiverAccount().getId().equals(id)
                 )
                 .map(transferResultDTOMapper)
+                .sorted(Comparator.comparing(TransferResultDTO::date).reversed())
+                .sorted(Comparator.comparing(TransferResultDTO::id).reversed())
                 .limit(last)
                 .toList();
     }
