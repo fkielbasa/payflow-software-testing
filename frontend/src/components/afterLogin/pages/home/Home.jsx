@@ -17,6 +17,7 @@ import {
 } from './PopupStyles';
 import EmptyAccountNumber from "./EmptyAccountNumber";
 import TransactionCard from "../../common/transactions/transactionCard";
+import {BASE_URL} from "../../../../config/shared";
 
 function Home() {
     const fadeInAnimation = useSpring({
@@ -35,7 +36,7 @@ function Home() {
     useEffect(() => {
         const getDataAccountNumber = async () => {
             axios
-                .get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`, config)
+                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
                 .then((response) => {
                     setApiDataAccountNumber(response.data);
                 })
@@ -45,10 +46,10 @@ function Home() {
         };
 
         const getDataTransactions = async () => {
-            axios.get(`http://localhost:8080/api/v1/account-numbers/${user.userId}/transfers?last=5`, config)
+            axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers?last=5`, config)
                 .then((response) => {
                     console.log(response.data);
-                    setApiDataTransactions(response.data.reverse());
+                    setApiDataTransactions(response.data);
                 })
                 .catch(err => {
                     console.error(err);
@@ -57,7 +58,7 @@ function Home() {
 
         const getAccountNumbers = () => {
             axios
-                .get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`,
+                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`,
                     config
                 )
                 .then((response) => {
@@ -76,7 +77,7 @@ function Home() {
 
     const personalData = async (id) => {
         console.log('id:', id);
-        axios.get(`http://localhost:8080/api/v1/transfers/${id}`, config)
+        axios.get(`${BASE_URL}/api/v1/transfers/${id}`, config)
             .then((response) => {
                 console.log('personalData response:', response.data);
                 setReceiverData(response.data);

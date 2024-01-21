@@ -9,8 +9,9 @@ import TransactionCard from './transactionCard'
 import {getCurrencySymbol} from "../../../utils/money";
 import { ImCross } from "react-icons/im";
 import {FaSort} from "react-icons/fa";
+import {BASE_URL} from "../../../../config/shared";
 
-const TransactionsContainer = ({ maxPerPage }) => {
+const TransactionsContainer = () => {
 
     const [apiData, setApiData] = useState([]);
     const [selectedTransaction, setSelectedTransaction] = useState(null);
@@ -27,14 +28,12 @@ const TransactionsContainer = ({ maxPerPage }) => {
         to: {opacity: 1, transform: 'translateY(0)', width: '100%'},
     });
 
-
-
     useEffect(() => {
         const getData = async () => {
-            axios.get(`http://localhost:8080/api/v1/account-numbers/${user.userId}/transfers`, config)
+            axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers`, config)
                 .then((response) => {
                     console.log(response.data);
-                    setApiData(response.data.reverse().slice(0, maxPerPage));
+                    setApiData(response.data);
                 })
                 .catch(err => {
                     console.error(err);
@@ -42,11 +41,11 @@ const TransactionsContainer = ({ maxPerPage }) => {
         };
 
         getData();
-    }, [user.userId, maxPerPage]);
+    }, [user.userId]);
 
     const personalData = async (id) => {
         console.log('id:', id);
-        axios.get(`http://localhost:8080/api/v1/transfers/${id}`, config)
+        axios.get(`${BASE_URL}/api/v1/transfers/${id}`, config)
             .then((response) => {
                 console.log('personalData response:', response.data);
                 setReceiverData(response.data);
@@ -79,7 +78,7 @@ const TransactionsContainer = ({ maxPerPage }) => {
     useEffect(() => {
         const getAccountNumbers = () => {
             axios
-                .get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`,
+                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`,
                     config
                 )
                 .then((response) => {
