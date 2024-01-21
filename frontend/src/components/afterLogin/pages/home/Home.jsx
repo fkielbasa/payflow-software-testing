@@ -48,7 +48,7 @@ function Home() {
             axios.get(`http://localhost:8080/api/v1/account-numbers/${user.userId}/transfers?last=5`, config)
                 .then((response) => {
                     console.log(response.data);
-                    setApiDataTransactions(response.data);
+                    setApiDataTransactions(response.data.reverse());
                 })
                 .catch(err => {
                     console.error(err);
@@ -146,7 +146,10 @@ function Home() {
                 </div>
                 <div className={styles.content}>
                     <div className={styles.leftSitePosition}>
-                        <p>zajebisty wykres</p>
+
+
+
+
                     </div>
                     <div className={styles.rightSitePosition}>
                         <div className={styles.sameHeight}>
