@@ -14,6 +14,7 @@ import {BASE_URL} from "../../../../config/shared";
 const TransactionsContainer = () => {
 
     const [apiData, setApiData] = useState([]);
+    const [apiAllData, setAllData] = useState([]);
     const [selectedTransaction, setSelectedTransaction] = useState(null);
     const [receiverData, setReceiverData] = useState({});
     const [userAccounts, setUserAccounts] = useState([])
@@ -22,6 +23,7 @@ const TransactionsContainer = () => {
     const [sortBySender, setSortBySender] = useState(false)
     const [sortByReceiver, setSortByReceiver] = useState(false)
     const [sortByDate, setSortByDate] = useState(false)
+    const [apiDataMap, setApiDataMap] = useState(new Map());
 
     const fadeInAnimation = useSpring({
         from: {opacity: 0, transform: 'translateY(50px)', width: '100%'},
@@ -29,19 +31,37 @@ const TransactionsContainer = () => {
     });
 
     useEffect(() => {
-        const getData = async () => {
-            axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers`, config)
-                .then((response) => {
-                    console.log(response.data);
-                    setApiData(response.data);
-                })
-                .catch(err => {
-                    console.error(err);
-                })
+        const getAllData = async () => {
+            try {
+                const response = await axios.get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config);
+                console.log('getAllData', response.data);
+                setAllData(response.data);
+
+                const accountIds = response.data.map(account => account.id);
+
+                accountIds.forEach(accountId => {
+                    getData(accountId);
+                });
+            } catch (err) {
+                console.error(err);
+            }
         };
 
-        getData();
+        const getData = async (accountId) => {
+            console.log('accountId', accountId)
+            try {
+                const response = await axios.get(`${BASE_URL}/api/v1/account-numbers/${accountId}/transfers`, config);
+
+                setApiDataMap(prevMap => new Map(prevMap.set(accountId, response.data)));
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        getAllData();
     }, [user.userId]);
+
+
 
     const personalData = async (id) => {
         console.log('id:', id);
@@ -154,18 +174,22 @@ const TransactionsContainer = () => {
                     </div>
                 </div>
                 <div className={styles.container}>
-                    {apiData.map((transaction, index) => (
-                        <TransactionCard
-                            key={index}
-                            userSender={userAccounts.includes(transaction.senderAccountId)}
-                            data={transaction}
-                            handleTransactionClick={handleTransactionClick}
-                            showAmount // dodaj showAmount i inne propsy w zależności od potrzeb
-                            showDesc
-                            showSenderInfo
-                            showReceiverInfo
-                            showDate
-                        />
+                    {Array.from(apiDataMap.entries()).map(([accountId, data], index) => (
+                        <div key={index}>
+                            {data.map((transaction, idx) => (
+                                <TransactionCard
+                                    key={idx}
+                                    userSender={userAccounts.includes(transaction.senderAccountId)}
+                                    data={transaction}
+                                    handleTransactionClick={handleTransactionClick}
+                                    showAmount
+                                    showDesc
+                                    showSenderInfo
+                                    showReceiverInfo
+                                    showDate
+                                />
+                            ))}
+                        </div>
                     ))}
 
                     <Popup open={!!selectedTransaction} onClose={closePopup}
