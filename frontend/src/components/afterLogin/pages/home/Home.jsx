@@ -116,15 +116,36 @@ function Home() {
         closePopup();
     };
 
+    const checkCurrencyAvailability = async (selectedCurrency) => {
+        try {
+            const response = await axios.get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config);
+
+            // Sprawdź, czy istnieje konto o podanej walucie
+            return response.data.some((account) => account.currency === selectedCurrency);
+        } catch (error) {
+            console.error('API Error:', error);
+            return false; // W przypadku błędu zwraca false
+        }
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         const selectedCurrency = currencyRef.current.value;
         const selectedAccountType = accountTypeRef.current.value;
 
+        // Sprawdź dostępność konta o podanej walucie
+        const isCurrencyAvailable = await checkCurrencyAvailability(selectedCurrency);
+
+        if (isCurrencyAvailable) {
+            console.error(`Konto w walucie ${selectedCurrency} już istnieje!`);
+            return; // Przerwij funkcję w przypadku dostępności konta o podanej walucie
+        }
+
+        // Kontynuuj zapytanie POST tylko jeśli nie istnieje konto o podanej walucie
         try {
             const response = await axios.post(
-                `http://localhost:8080/api/v1/users/${user.userId}/number`,
+                `${BASE_URL}/api/v1/users/${user.userId}/number`,
                 {
                     currency: selectedCurrency,
                     accountType: selectedAccountType,
@@ -135,6 +156,9 @@ function Home() {
             console.log('API Response:', response.data);
 
             handleAddNumber();
+
+            // Odśwież stronę po udanym zapytaniu POST
+            window.location.reload();
         } catch (error) {
             console.error('API Error:', error);
         }

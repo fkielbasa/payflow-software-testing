@@ -11,8 +11,8 @@
 }
 
 .leftSitePosition {
-    width: 58%;
-    height: 270px;
+    width: 65%;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     /*margin-top: 10px;*/
@@ -40,7 +40,8 @@
 }
 
 .rightSitePosition {
-    width: 42%;
+    margin-top: 15px;
+    width: 32%;
     display: flex;
     flex-direction: column;
 
