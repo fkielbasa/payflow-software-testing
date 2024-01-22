@@ -186,7 +186,6 @@ function Home() {
                                         data={transaction}
                                         handleTransactionClick={handleTransactionClick}
                                         showAmount
-                                        showReceiverInfo
                                         showDate
                                     />
                                 </div>
