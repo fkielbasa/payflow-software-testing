@@ -17,27 +17,28 @@ import {
 } from './PopupStyles';
 import EmptyAccountNumber from "./EmptyAccountNumber";
 import TransactionCard from "../../common/transactions/transactionCard";
-import {BASE_URL} from "../../../../config/shared";
+import { BASE_URL } from "../../../../config/shared";
 import TransactionChart from './TransactionChart';
 
 
 function Home() {
     const fadeInAnimation = useSpring({
-        from: {opacity: 0, transform: 'translateY(50px)'},
-        to: {opacity: 1, transform: 'translateY(0)'},
+        from: { opacity: 0, transform: 'translateY(50px)' },
+        to: { opacity: 1, transform: 'translateY(0)' },
     });
     const [apiDataAccountNumber, setApiDataAccountNumber] = useState([]);
     const [apiDataTransactions, setApiDataTransactions] = useState([]);
     const [apiDataAllTransactions, setApiDataAllTransactions] = useState([]);
+    const [apiTransactionClick, setTransactionClick] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [userAccounts, setUserAccounts] = useState([])
+    const [userAccounts, setUserAccounts] = useState([]);
     const [selectedTransaction, setSelectedTransaction] = useState(null);
     const [receiverData, setReceiverData] = useState({});
+    const [selectedAccountId, setSelectedAccountId] = useState(null); // Nowy stan dla śledzenia klikniętego konta
     const currencyRef = useRef(null);
     const accountTypeRef = useRef(null);
 
     useEffect(() => {
-        console.log('user.userId', user.userId);
         const getDataAccountNumber = async () => {
             axios
                 .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
@@ -50,21 +51,10 @@ function Home() {
                 });
         };
 
-        const getDataTransactions = async () => {
-            axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers?last=5`, config)
-                .then((response) => {
-                    console.log('getDataTransactions response',response.data);
-                    setApiDataTransactions(response.data);
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-        };
-
         const getDataAllTransactions = async () => {
             axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers`, config)
                 .then((response) => {
-                    console.log('getDataAllTransactions response',response.data);
+                    console.log('getDataAllTransactions response', response.data);
                     setApiDataAllTransactions(response.data);
                 })
                 .catch(err => {
@@ -74,12 +64,10 @@ function Home() {
 
         const getAccountNumbers = () => {
             axios
-                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`,
-                    config
-                )
+                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
                 .then((response) => {
                     setUserAccounts(response.data.map(ac => ac.id))
-                    console.log('getAccountNumbers response',response.data.map(ac => ac.id))
+                    console.log('getAccountNumbers response', response.data.map(ac => ac.id))
                 })
                 .catch((error) => {
                     console.log(error)
@@ -87,10 +75,21 @@ function Home() {
         }
 
         getDataAccountNumber();
-        getDataTransactions();
+        getDataTransactions(user.userId);
         getAccountNumbers()
         getDataAllTransactions();
     }, [user.userId]);
+
+    const getDataTransactions = async (id) => {
+        axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
+            .then((response) => {
+                console.log('getDataTransactions response', response.data);
+                setApiDataTransactions(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
 
     const personalData = async (id) => {
         console.log('id:', id);
@@ -120,11 +119,10 @@ function Home() {
         try {
             const response = await axios.get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config);
 
-            // Sprawdź, czy istnieje konto o podanej walucie
             return response.data.some((account) => account.currency === selectedCurrency);
         } catch (error) {
             console.error('API Error:', error);
-            return false; // W przypadku błędu zwraca false
+            return false;
         }
     };
 
@@ -134,15 +132,13 @@ function Home() {
         const selectedCurrency = currencyRef.current.value;
         const selectedAccountType = accountTypeRef.current.value;
 
-        // Sprawdź dostępność konta o podanej walucie
         const isCurrencyAvailable = await checkCurrencyAvailability(selectedCurrency);
 
         if (isCurrencyAvailable) {
             console.error(`Konto w walucie ${selectedCurrency} już istnieje!`);
-            return; // Przerwij funkcję w przypadku dostępności konta o podanej walucie
+            return;
         }
 
-        // Kontynuuj zapytanie POST tylko jeśli nie istnieje konto o podanej walucie
         try {
             const response = await axios.post(
                 `${BASE_URL}/api/v1/users/${user.userId}/number`,
@@ -169,19 +165,32 @@ function Home() {
         personalData(transaction.id);
     };
 
+    const getTransactionClick = async (id) => {
+        axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
+            .then((response) => {
+                console.log('setTransactionClick response', response.data);
+                setTransactionClick(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
+
     const handleAccountNumberClick = (accountData) => {
         console.log("Kliknięty id konta!", accountData.id);
+        getTransactionClick(accountData.id);
+        getDataTransactions(accountData.id);
 
-        // Znajdź indeks klikniętego numeru konta
         const clickedIndex = apiDataAccountNumber.findIndex(account => account.id === accountData.id);
 
-        // Resetowanie stanu isClicked dla innych numerów konta
         const updatedAccountNumbers = apiDataAccountNumber.map((account, index) => ({
             ...account,
             isClicked: index === clickedIndex ? !account.isClicked : false, // Odwróć stan zaznaczenia dla klikniętego konta, zachowaj dla innych
         }));
 
         setApiDataAccountNumber(updatedAccountNumbers);
+
+        setSelectedAccountId(accountData.id);
     };
 
     return (
@@ -195,16 +204,18 @@ function Home() {
                                 currency={numbers.currency}
                                 number={numbers.number}
                                 onClick={() => handleAccountNumberClick(numbers)}
+                                isClicked={numbers.isClicked}
                             />
                         </div>
                     ))}
                     {(apiDataAccountNumber.length === 1 || apiDataAccountNumber.length === 2) &&
-                        <EmptyAccountNumber onClick={openPopup}/>}
+                        <EmptyAccountNumber onClick={openPopup} />
+                    }
                 </div>
                 <div className={styles.content}>
                     <div className={styles.leftSitePosition}>
 
-                        <TransactionChart transactions={apiDataAllTransactions}/>
+                        <TransactionChart transactions={selectedAccountId ? apiTransactionClick : apiDataAllTransactions} />
 
                     </div>
                     <div className={styles.rightSitePosition}>
