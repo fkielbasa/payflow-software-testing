@@ -4,71 +4,55 @@ import styles from './TransictionsContainer.module.css';
 import { config, user } from '../../../../config/authConfig';
 import Popup from 'reactjs-popup';
 import { useSpring, animated } from 'react-spring';
-import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 import TransactionCard from './transactionCard'
 import {getCurrencySymbol} from "../../../utils/money";
 import { ImCross } from "react-icons/im";
 import {FaSort} from "react-icons/fa";
-import {BASE_URL} from "../../../../config/shared";
 
-const TransactionsContainer = () => {
+const TransactionsContainer = ({ maxPerPage }) => {
 
     const [apiData, setApiData] = useState([]);
-    const [apiAllData, setAllData] = useState([]);
     const [selectedTransaction, setSelectedTransaction] = useState(null);
-    const [receiverData, setReceiverData] = useState({});
+    const [personalDataTransfer, setPersonalDataTransfer] = useState({});
     const [userAccounts, setUserAccounts] = useState([])
     const [sortByAmount, setSortByAmount] = useState(false)
     const [sortByDesc, setSortByDesc] = useState(false)
     const [sortBySender, setSortBySender] = useState(false)
     const [sortByReceiver, setSortByReceiver] = useState(false)
     const [sortByDate, setSortByDate] = useState(false)
-    const [apiDataMap, setApiDataMap] = useState(new Map());
 
     const fadeInAnimation = useSpring({
         from: {opacity: 0, transform: 'translateY(50px)', width: '100%'},
         to: {opacity: 1, transform: 'translateY(0)', width: '100%'},
     });
 
+
+
     useEffect(() => {
-        const getAllData = async () => {
-            try {
-                const response = await axios.get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config);
-                console.log('getAllData', response.data);
-                setAllData(response.data);
-
-                const accountIds = response.data.map(account => account.id);
-
-                accountIds.forEach(accountId => {
-                    getData(accountId);
-                });
-            } catch (err) {
-                console.error(err);
-            }
+        const getData = async () => {
+            await axios.get(
+                `http://localhost:8080/api/v1/users/${user.userId}/transfers?last=${100}`,
+                config
+            )
+                .then((response) => {
+                    setApiData(response.data);
+                })
+                .catch(err => {
+                    console.error(err);
+                })
         };
 
-        const getData = async (accountId) => {
-            console.log('accountId', accountId)
-            try {
-                const response = await axios.get(`${BASE_URL}/api/v1/account-numbers/${accountId}/transfers`, config);
-
-                setApiDataMap(prevMap => new Map(prevMap.set(accountId, response.data)));
-            } catch (err) {
-                console.error(err);
-            }
-        };
-
-        getAllData();
-    }, [user.userId]);
-
-
+        getData();
+    }, [user.userId, maxPerPage]);
 
     const personalData = async (id) => {
-        console.log('id:', id);
-        axios.get(`${BASE_URL}/api/v1/transfers/${id}`, config)
+        axios.get(
+            `http://localhost:8080/api/v1/transfers/${id}`,
+                config
+            )
             .then((response) => {
-                console.log('personalData response:', response.data);
-                setReceiverData(response.data);
+                console.log(response.data)
+                setPersonalDataTransfer(response.data);
             })
             .catch(err => {
                 console.error(err);
@@ -92,13 +76,13 @@ const TransactionsContainer = () => {
 
     const closePopup = () => {
         setSelectedTransaction(null);
-        setReceiverData(null);
+        setPersonalDataTransfer({});
     };
 
     useEffect(() => {
         const getAccountNumbers = () => {
             axios
-                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`,
+                .get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`,
                     config
                 )
                 .then((response) => {
@@ -174,66 +158,65 @@ const TransactionsContainer = () => {
                     </div>
                 </div>
                 <div className={styles.container}>
-                    {Array.from(apiDataMap.entries()).map(([accountId, data], index) => (
-                        <div key={index}>
-                            {data.map((transaction, idx) => (
-                                <TransactionCard
-                                    key={idx}
-                                    userSender={userAccounts.includes(transaction.senderAccountId)}
-                                    data={transaction}
-                                    handleTransactionClick={handleTransactionClick}
-                                    showAmount
-                                    showDesc
-                                    showSenderInfo
-                                    showReceiverInfo
-                                    showDate
-                                />
-                            ))}
-                        </div>
+                    {apiData.map((transaction, index) => (
+                        <TransactionCard
+                            key={index}
+                            userSender={userAccounts.includes(transaction.senderAccountId)}
+                            data={transaction}
+                            handleTransactionClick={handleTransactionClick}
+                        />
                     ))}
 
                     <Popup open={!!selectedTransaction} onClose={closePopup}
-                           contentStyle={{backgroundColor: 'black', padding: '20px',paddingBottom: 30, borderRadius: 10, width: '400px'}}>
-                        {selectedTransaction && receiverData && (
+                           contentStyle={{backgroundColor: 'black', padding: '20px',paddingBottom: 30, borderRadius: 10, width: '650px'}}
+                    >
+                        {selectedTransaction && JSON.stringify(personalDataTransfer) !== '{}' && (
                             <div>
-                                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center',padding: 5}}>
-                                    <div style={{width: '30%'}}>
+                                <div className={styles.popupHeaderWrapper}>
+                                    <div>
                                         <img
                                             src={require('../../../../assets/navbar/payflow.png')}
                                             alt=""
-                                            style={{width: '90%'}}
                                         />
                                     </div>
                                     <p
-                                        style={{color: 'white', fontSize: 20, cursor: 'pointer', margin: 5}}
+                                        className={styles.closePopup}
                                         onClick={closePopup}
                                     >
                                         <ImCross />
                                     </p>
                                 </div>
-                                <div style={{backgroundColor: '#F6F5F5', borderRadius: 5, padding: '10px'}}>
-                                    <h3 style={{marginTop: -4}}>Szczegóły transakcji:</h3>
-                                    <p style={{marginTop: -8, wordWrap: 'break-word'}}>Tytuł: {selectedTransaction.description}</p>
-                                    <p style={{marginTop: -8}}>Odbiorca: {selectedTransaction.receiverFullName}</p>
-                                    <p style={{marginTop: -8}}>Data: {selectedTransaction.date}</p>
-                                    <p style={{
-                                        marginTop: -8,
-                                        marginBottom: -4
-                                    }}>Kwota: {formatAmount(selectedTransaction.amount, selectedTransaction.currency)}</p>
+                                <div className={styles.personalDataContainer}>
+                                    <header>
+                                        <h3>Szczegóły transakcji:</h3>
+                                        <p>{selectedTransaction.date}</p>
+                                    </header>
+                                    <p>Tytuł: {selectedTransaction.description}</p>
+                                    <div>
+                                        <p>Kwota: {formatAmount(selectedTransaction.amount, selectedTransaction.currency)}</p>
+                                    </div>
                                 </div>
-                                <div style={{margin: 15}}/>
-                                <div style={{backgroundColor: '#F6F5F5', borderRadius: 5, padding: '10px'}}>
-                                    <h3 style={{marginTop: -4}}>Dane odbiorcy:</h3>
-                                    <p style={{marginTop: -8}}>Numer
-                                        konta: {formatAccountNumber(receiverData.receiver?.accountNumber)}</p>
-                                    {receiverData.receiver?.address && (
-                                        <>
-                                            <p style={{marginTop: -8}}>Kraj: {receiverData.receiver.address?.country}</p>
-                                            <p style={{marginTop: -8}}>Miasto: {receiverData.receiver.address?.city}</p>
-                                            <p style={{marginTop: -8, marginBottom: -4}}>Kod
-                                                pocztowy: {receiverData.receiver.address?.zipCode}</p>
-                                        </>
-                                    )}
+                                <div className={styles.personalDataContainer}>
+                                    <div className={styles.personalDataWrapper}>
+                                        <h3 className={styles.left}>Dane nadawcy:</h3>
+                                        <p></p>
+                                        <h3 className={styles.right}>Dane odbiorcy:</h3>
+                                    </div>
+                                    <div className={styles.personalDataWrapper}>
+                                        <p className={styles.left}>{personalDataTransfer.sender.firstName} {personalDataTransfer.sender.lastName}</p>
+                                        <p className={styles.center}>Imię i nazwisko</p>
+                                        <p className={styles.right}>{personalDataTransfer.receiver.firstName} {personalDataTransfer.receiver.lastName}</p>
+                                    </div>
+                                    <div className={styles.personalDataWrapper}>
+                                        <p className={styles.left}>{personalDataTransfer.sender.accountNumber}</p>
+                                        <p className={styles.center}>Numer rachunku</p>
+                                        <p className={styles.right}>{personalDataTransfer.receiver.accountNumber}</p>
+                                    </div>
+                                    <div className={styles.personalDataWrapper}>
+                                        <p className={styles.left}>{personalDataTransfer.sender.address.zipCode} {personalDataTransfer.sender.address.city}, {personalDataTransfer.sender.address.country}</p>
+                                        <p className={styles.center}>Adres</p>
+                                        <p className={styles.right}>{personalDataTransfer.receiver.address.zipCode} {personalDataTransfer.receiver.address.city}, {personalDataTransfer.receiver.address.country}</p>
+                                    </div>
                                 </div>
                             </div>
                         )}
