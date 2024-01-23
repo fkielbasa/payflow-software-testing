@@ -26,7 +26,7 @@ public class CardController {
     @GetMapping("users/{id}/cards")
     public ResponseEntity<List<CardDTO>> getCardsByUserId(@PathVariable Long id){
         List<CardDTO> cards = cardService.getCardsByUserId(id);
-        if(cards != null){
+        if(!cards.isEmpty()){
             return ResponseEntity.ok().body(cards);
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
