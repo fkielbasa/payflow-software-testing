@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './AccountNumber.module.css';
 import { backgroundStyles1, backgroundStyles2, backgroundStyles3 } from '../../../utils/backgroundStyles';
 import { formatAccountNumber } from "../../../utils/formatAccountNumber";
@@ -23,10 +23,21 @@ function AccountNumber(props) {
 
     const accountNumberConst = formatAccountNumber(props.number);
 
+    useEffect(() => {
+        if (isClicked) {
+            const timeoutId = setTimeout(() => {
+                setIsClicked(false);
+            }, 175);
+
+            return () => clearTimeout(timeoutId);
+        }
+    }, [isClicked]);
+
     const handleClick = () => {
         setIsClicked(true);
-        props.onClick(props); // przekazuje informacje o numerze konta
+        props.onClick(props);
     };
+
 
     return (
         <div

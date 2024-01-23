@@ -173,12 +173,12 @@ function Home() {
         console.log("Kliknięty id konta!", accountData.id);
 
         // Znajdź indeks klikniętego numeru konta
-        const clickedIndex = apiDataAccountNumber.findIndex(account => account.number === accountData.number);
+        const clickedIndex = apiDataAccountNumber.findIndex(account => account.id === accountData.id);
 
         // Resetowanie stanu isClicked dla innych numerów konta
         const updatedAccountNumbers = apiDataAccountNumber.map((account, index) => ({
             ...account,
-            isClicked: index === clickedIndex,
+            isClicked: index === clickedIndex ? !account.isClicked : false, // Odwróć stan zaznaczenia dla klikniętego konta, zachowaj dla innych
         }));
 
         setApiDataAccountNumber(updatedAccountNumbers);

@@ -9,13 +9,9 @@
     color: white;
     /*justify-content: space-between;*/
     transition: transform 0.3s ease, z-index 0.3s ease;
-
+    cursor: pointer;
 }
 
-.position:hover {
-    transform: scale(1.05);
-
-}
 
 .textPosition {
     margin-bottom: -10px;
