@@ -27,14 +27,14 @@ const groupAndSumTransactionsByDate = (transactions) => {
     return reversedGroupedTransactions;
 };
 
-const TransactionChart = ({ transactions }) => {
+const TransactionChart = ({ transactions, currency }) => {
     const groupedTransactions = groupAndSumTransactionsByDate(transactions);
 
     const data = {
         labels: groupedTransactions.map((transaction) => transaction.date),
         datasets: [
             {
-                label: 'Suma wartości transakcji (PLN)',
+                label: `Suma wartości transakcji (${currency})`,
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(22,135,167,0.4)',

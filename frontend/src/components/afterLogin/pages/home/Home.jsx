@@ -37,6 +37,8 @@ function Home() {
     const [selectedAccountId, setSelectedAccountId] = useState(null); // Nowy stan dla śledzenia klikniętego konta
     const currencyRef = useRef(null);
     const accountTypeRef = useRef(null);
+    const [currency, setCurrency] = useState('PLN'); // Domyślna waluta, możesz dostosować do swoich potrzeb
+
 
     useEffect(() => {
         const getDataAccountNumber = async () => {
@@ -176,8 +178,13 @@ function Home() {
             })
     };
 
+    const handleCurrencyChange = (selectedCurrency) => {
+        console.log('Wybrana waluta:', selectedCurrency);
+        setCurrency(selectedCurrency);
+    };
+
     const handleAccountNumberClick = (accountData) => {
-        console.log("Kliknięty id konta!", accountData.id);
+        console.log("Kliknięty id konta:", accountData.id);
         getTransactionClick(accountData.id);
         getDataTransactions(accountData.id);
 
@@ -191,6 +198,8 @@ function Home() {
         setApiDataAccountNumber(updatedAccountNumbers);
 
         setSelectedAccountId(accountData.id);
+
+        handleCurrencyChange(accountData.currency);
     };
 
     return (
@@ -215,7 +224,7 @@ function Home() {
                 <div className={styles.content}>
                     <div className={styles.leftSitePosition}>
 
-                        <TransactionChart transactions={selectedAccountId ? apiTransactionClick : apiDataAllTransactions} />
+                        <TransactionChart currency={currency} transactions={selectedAccountId ? apiTransactionClick : apiDataAllTransactions} />
 
                     </div>
                     <div className={styles.rightSitePosition}>
