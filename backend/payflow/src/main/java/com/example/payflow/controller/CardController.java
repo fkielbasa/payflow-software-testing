@@ -23,6 +23,14 @@ public class CardController {
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+    @GetMapping("users/{id}/cards")
+    public ResponseEntity<List<CardDTO>> getCardsByUserId(@PathVariable Long id){
+        List<CardDTO> cards = cardService.getCardsByUserId(id);
+        if(cards != null){
+            return ResponseEntity.ok().body(cards);
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
     @PostMapping("/numbers/{id}/card")
     public ResponseEntity<CardDTO> createCard(@PathVariable Long id){
         CardDTO c = cardService.createCard(id);
