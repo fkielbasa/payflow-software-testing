@@ -7,9 +7,9 @@ import useZoomEffect from '../../../utils/useZoomEffect';
 function AccountNumber(props) {
     const [isClicked, setIsClicked] = useState(false);
 
-    const isZoomedIn = useZoomEffect();
-    const marginStyle = isZoomedIn ? { marginTop: '0px' } : { marginTop: '15px' };
-    const textSmall = isZoomedIn ? { fontSize: '10px' } : { fontSize: '13px' };
+    // const isZoomedIn = useZoomEffect();
+    // const marginStyle = isZoomedIn ? { marginTop: '0px' } : { marginTop: '15px' };
+    // const textSmall = isZoomedIn ? { fontSize: '10px' } : { fontSize: '13px' };
 
     let backgroundStyles;
 
@@ -50,7 +50,7 @@ function AccountNumber(props) {
         >
             <div className={styles.twoThings}>
                 <div className={styles.accountNumberType}>
-                    <p className={`${styles.textPosition} ${styles.smallText}`}> Typ konta bankowego: </p>
+                    <p className={`${styles.textPosition} ${styles.smallText}`}> Typ konta: </p>
                     <p className={`${styles.textPosition} ${styles.boldedText}`}> {props.accountNumberType}</p>
                 </div>
                 <div className={styles.money}>
@@ -58,11 +58,11 @@ function AccountNumber(props) {
                     <p className={`${styles.textPosition} ${styles.boldedText}`}> {props.currency}</p>
                 </div>
             </div>
-            <div className={`${styles.numberPosition}`} style={marginStyle}>
+            <div className={`${styles.numberPosition}`}>
                 <div className={styles.number}>
                     <p className={`${styles.textPosition} ${styles.smallText}`}> Numer konta:</p>
-                    <p className={`${styles.textPosition} ${styles.boldedText}`}
-                       style={textSmall}> {accountNumberConst} </p>
+                    <p className={`${styles.textPosition} ${styles.smallerText} ${styles.boldedText}`}
+                       > {accountNumberConst} </p>
                 </div>
             </div>
         </div>
