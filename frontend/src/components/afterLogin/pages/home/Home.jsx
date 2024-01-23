@@ -15,32 +15,95 @@ import {
     FormField,
     StyledSelect,
 } from './PopupStyles';
+import EmptyAccountNumber from "./EmptyAccountNumber";
+import TransactionCard from "../../common/transactions/transactionCard";
+import { BASE_URL } from "../../../../config/shared";
+import TransactionChart from './TransactionChart';
+
 
 function Home() {
     const fadeInAnimation = useSpring({
         from: { opacity: 0, transform: 'translateY(50px)' },
         to: { opacity: 1, transform: 'translateY(0)' },
     });
-    const [apiData, setApiData] = useState([]);
+    const [apiDataAccountNumber, setApiDataAccountNumber] = useState([]);
+    const [apiDataTransactions, setApiDataTransactions] = useState([]);
+    const [apiDataAllTransactions, setApiDataAllTransactions] = useState([]);
+    const [apiTransactionClick, setTransactionClick] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
-
+    const [userAccounts, setUserAccounts] = useState([]);
+    const [selectedTransaction, setSelectedTransaction] = useState(null);
+    const [receiverData, setReceiverData] = useState({});
+    const [selectedAccountId, setSelectedAccountId] = useState(null); // Nowy stan dla śledzenia klikniętego konta
     const currencyRef = useRef(null);
     const accountTypeRef = useRef(null);
+    const [currency, setCurrency] = useState('PLN'); // Domyślna waluta, możesz dostosować do swoich potrzeb
+
 
     useEffect(() => {
-        const getData = async () => {
+        const getDataAccountNumber = async () => {
             axios
-                .get(`http://localhost:8080/api/v1/users/${user.userId}/numbers`, config)
+                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
                 .then((response) => {
-                    setApiData(response.data);
+                    console.log('getDataAccountNumber response', response.data)
+                    setApiDataAccountNumber(response.data);
                 })
                 .catch((err) => {
                     console.error(err);
                 });
         };
 
-        getData();
+        const getDataAllTransactions = async () => {
+            axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers`, config)
+                .then((response) => {
+                    console.log('getDataAllTransactions response', response.data);
+                    setApiDataAllTransactions(response.data);
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        };
+
+        const getAccountNumbers = () => {
+            axios
+                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
+                .then((response) => {
+                    setUserAccounts(response.data.map(ac => ac.id))
+                    console.log('getAccountNumbers response', response.data.map(ac => ac.id))
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+
+        getDataAccountNumber();
+        getDataTransactions(user.userId);
+        getAccountNumbers()
+        getDataAllTransactions();
     }, [user.userId]);
+
+    const getDataTransactions = async (id) => {
+        axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
+            .then((response) => {
+                console.log('getDataTransactions response', response.data);
+                setApiDataTransactions(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
+
+    const personalData = async (id) => {
+        console.log('id:', id);
+        axios.get(`${BASE_URL}/api/v1/transfers/${id}`, config)
+            .then((response) => {
+                console.log('personalData response:', response.data);
+                setReceiverData(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
 
     const openPopup = () => {
         setIsPopupOpen(true);
@@ -54,19 +117,34 @@ function Home() {
         closePopup();
     };
 
+    const checkCurrencyAvailability = async (selectedCurrency) => {
+        try {
+            const response = await axios.get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config);
+
+            return response.data.some((account) => account.currency === selectedCurrency);
+        } catch (error) {
+            console.error('API Error:', error);
+            return false;
+        }
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Uzyskiwanie wartości z referencji
         const selectedCurrency = currencyRef.current.value;
         const selectedAccountType = accountTypeRef.current.value;
 
-        // Wysyłka danych do API
+        const isCurrencyAvailable = await checkCurrencyAvailability(selectedCurrency);
+
+        if (isCurrencyAvailable) {
+            console.error(`Konto w walucie ${selectedCurrency} już istnieje!`);
+            return;
+        }
+
         try {
             const response = await axios.post(
-                'http://localhost:8080/api/v1/number',
+                `${BASE_URL}/api/v1/users/${user.userId}/number`,
                 {
-                    userId: user.userId,
                     currency: selectedCurrency,
                     accountType: selectedAccountType,
                 },
@@ -75,49 +153,103 @@ function Home() {
 
             console.log('API Response:', response.data);
 
-            // Dodatkowe operacje po pomyślnej wysyłce
             handleAddNumber();
+
+            // Odśwież stronę po udanym zapytaniu POST
+            window.location.reload();
         } catch (error) {
             console.error('API Error:', error);
-            // Obsługa błędów związanych z wysyłką do API
         }
+    };
+
+    const handleTransactionClick = (transaction) => {
+        setSelectedTransaction(transaction);
+        personalData(transaction.id);
+    };
+
+    const getTransactionClick = async (id) => {
+        axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
+            .then((response) => {
+                console.log('setTransactionClick response', response.data);
+                setTransactionClick(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
+
+    const handleCurrencyChange = (selectedCurrency) => {
+        console.log('Wybrana waluta:', selectedCurrency);
+        setCurrency(selectedCurrency);
+    };
+
+    const handleAccountNumberClick = (accountData) => {
+        console.log("Kliknięty id konta:", accountData.id);
+        getTransactionClick(accountData.id);
+        getDataTransactions(accountData.id);
+
+        const clickedIndex = apiDataAccountNumber.findIndex(account => account.id === accountData.id);
+
+        const updatedAccountNumbers = apiDataAccountNumber.map((account, index) => ({
+            ...account,
+            isClicked: index === clickedIndex ? !account.isClicked : false, // Odwróć stan zaznaczenia dla klikniętego konta, zachowaj dla innych
+        }));
+
+        setApiDataAccountNumber(updatedAccountNumbers);
+
+        setSelectedAccountId(accountData.id);
+
+        handleCurrencyChange(accountData.currency);
     };
 
     return (
         <animated.div style={fadeInAnimation}>
             <div className={styles.homePage}>
-                <div className={styles.leftSitePosition}>
-                    <div className={styles.accountNumberSection}>
-                        {apiData.map((numbers, index) => (
-                            <div key={index} className={styles.accountNumber}>
-                                <AccountNumber
-                                    accountNumberType={numbers.accountNumberType}
-                                    // balance={numbers.balance}
-                                    currency={numbers.currency}
-                                    number={numbers.number}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                    <div className={styles.addAccountNumberPosition}>
-                        <ReactiveButton
-                            color="primary"
-                            style={{ backgroundColor: '#1687A7', fontSize: 20, fontWeight: 'bold' }}
-                            onClick={openPopup}
-                            idleText="+"
-                        />
-                    </div>
+                <div className={styles.accountNumberSection}>
+                    {apiDataAccountNumber.map((numbers, index) => (
+                        <div key={index} className={styles.giveMeMargin}>
+                            <AccountNumber
+                                accountNumberType={numbers.accountNumberType}
+                                currency={numbers.currency}
+                                number={numbers.number}
+                                onClick={() => handleAccountNumberClick(numbers)}
+                                isClicked={numbers.isClicked}
+                            />
+                        </div>
+                    ))}
+                    {(apiDataAccountNumber.length === 1 || apiDataAccountNumber.length === 2) &&
+                        <EmptyAccountNumber onClick={openPopup} />
+                    }
                 </div>
-                <div className={styles.rightSitePosition}>
-                    <div className={styles.sameHeight}>
-                        <p>Ostatnie transakcje</p>
-                        <Link to="/transactions" className={styles.linkTo}>
-                            Pokaż więcej
-                        </Link>
-                    </div>
-                    <TransactionsContainer maxPerPage={4} />
-                </div>
+                <div className={styles.content}>
+                    <div className={styles.leftSitePosition}>
 
+                        <TransactionChart currency={currency} transactions={selectedAccountId ? apiTransactionClick : apiDataAllTransactions} />
+
+                    </div>
+                    <div className={styles.rightSitePosition}>
+                        <div className={styles.sameHeight}>
+                            <p>Ostatnie transakcje</p>
+                            <Link to="/transactions" className={styles.linkTo}>
+                                Pokaż więcej
+                            </Link>
+                        </div>
+                        <div className={styles.transactionContainer}>
+                            {apiDataTransactions.map((transaction, index) => (
+                                <div className={styles.transactionCard}>
+                                    <TransactionCard
+                                        key={index}
+                                        userSender={userAccounts.includes(transaction.senderAccountId)}
+                                        data={transaction}
+                                        handleTransactionClick={handleTransactionClick}
+                                        showAmount
+                                        showDate
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
 
                 <Popup open={isPopupOpen} onClose={closePopup}>
                     <PopupContainer>
@@ -142,7 +274,8 @@ function Home() {
                                 </StyledSelect>
                             </FormField>
                             <ReactiveButton color="primary"
-                                            style={{ backgroundColor: '#1687A7', fontWeight: 'bold' }} type="submit" idleText="Dodaj konto bankowe"/>
+                                            style={{backgroundColor: '#1687A7', fontWeight: 'bold'}} type="submit"
+                                            idleText="Dodaj konto bankowe"/>
                         </FormContainer>
                     </PopupContainer>
                 </Popup>

@@ -2,19 +2,14 @@
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    /*width: 200px;*/
+    /*width: 194px;*/
     width: 91%;
-    height: 95px;
+    height: 90px;
     padding: 10px;
     color: white;
     /*justify-content: space-between;*/
     transition: transform 0.3s ease, z-index 0.3s ease;
-
-}
-
-.position:hover {
-    transform: scale(1.05);
-
+    cursor: pointer;
 }
 
 .textPosition {
@@ -23,10 +18,6 @@
 
 .boldedText {
     font-weight: bold;
-}
-
-.needMarginBottom {
-    margin-bottom: 7px;
 }
 
 .twoThings {
@@ -58,6 +49,10 @@
     font-size: 13px;
 }
 
+.smallerText {
+    font-size: 12px;
+}
+
 .number {
     display: flex;
     flex-direction: column;
@@ -68,7 +63,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 15px;
+    margin-top: 5px;
 
 
     /*background-color: red;*/

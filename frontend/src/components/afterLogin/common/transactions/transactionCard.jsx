@@ -5,34 +5,44 @@ import React from "react";
 import InfoTransactionWrapper from "./infoTransactionWrapper";
 
 const TransactionCard = (props) => {
-    return(
+    return (
         <div
             className={styles.container}
             onClick={() => props.handleTransactionClick(props.data)}
         >
-            <div className={styles.amountWrapper}>
-                {props.userSender ? <FaCircleMinus /> : <FaCirclePlus/>}
-                <p>{props.data.amount} <span>{props.data.currency}</span></p>
-            </div>
-            <div className={styles.descWrapper}>
+            {props.showAmount && (
+                <div className={styles.amountWrapper}>
+                    {props.userSender ? <FaCircleMinus /> : <FaCirclePlus />}
+                    <p>
+                        {props.data.amount} <span>{props.data.currency}</span>
+                    </p>
+                </div>
+            )}
+            {props.showDesc && (
+                <div className={styles.descWrapper}>
+                    <InfoTransactionWrapper
+                        prefix={'Opis:'}
+                        text={props.data.description.substring(0, 30) + '...'}
+                    />
+                </div>
+            )}
+            {props.showSenderInfo && (
                 <InfoTransactionWrapper
-                    prefix={"Opis:"}
-                    text={props.data.description.substring(0, 30)+"..."}
+                    prefix={'Od:'}
+                    text={props.data.senderFullName}
                 />
-            </div>
-            <InfoTransactionWrapper
-                prefix={"Od:"}
-                text={props.data.senderFullName}
-            />
-            <InfoTransactionWrapper
-                prefix={"Do:"}
-                text={props.data.receiverFullName}
-            />
-            <InfoTransactionWrapper
-                prefix={"Data:"}
-                text={props.data.date}
-            />
+            )}
+            {props.showReceiverInfo && (
+                <InfoTransactionWrapper
+                    prefix={'Do:'}
+                    text={props.data.receiverFullName}
+                />
+            )}
+            {props.showDate && (
+                <InfoTransactionWrapper prefix={'Data:'} text={props.data.date} />
+            )}
         </div>
-    )
-}
-export default TransactionCard
+    );
+};
+
+export default TransactionCard;
