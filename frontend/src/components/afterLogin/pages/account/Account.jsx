@@ -58,18 +58,21 @@ const Account = () => {
 
     return (
         <div className={styles.accountContainer}>
-            <div className={styles.leftContainer}>
-                {accountData && Object.keys(accountData).length > 0 && (
+            {accountData && Object.keys(accountData).length > 0 ? (
+                <div className={styles.leftContainer}>
                     <AccountData
                         type={accountData.accountNumberType}
                         balance={accountData.balance}
                         number={accountData.number}
                         currency={accountData.currency}
                     />
-                )}
-            </div>
-            <div className={styles.rightContainer}>
-                {cardData && Object.keys(cardData).length > 0 && (
+                </div>
+            ) : (
+                <p>Brak danych do wyświetlenia</p>
+            )}
+
+            {cardData && Object.keys(cardData).length > 0 ? (
+                <div className={styles.rightContainer}>
                     <AccountCard
                         owner={cardData.owner}
                         balance={accountData.balance}
@@ -78,17 +81,17 @@ const Account = () => {
                         cvv={cardData.cvv}
                         month={expirationMonth}
                         year={expirationYear}
-
                     />
-                )}
-                <AccountDetails
-                    id={cardData.id}
-                    active={cardData.active}
-                    blocked={cardData.blocked}
-                />
-            </div>
+                    <AccountDetails
+                        id={cardData.id}
+                        active={cardData.active}
+                        blocked={cardData.blocked}
+                    />
+                </div>
+            ) : (
+                <p>Brak danych do wyświetlenia</p>
+            )}
         </div>
-
     );
 }
 export default Account

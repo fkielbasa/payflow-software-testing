@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b750e811-3640-4781-8c5f-6eb32b63e2b2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/CustomButton.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/service/CardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/service/CardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/util/NumberGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/util/NumberGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/inputs/TextInputChange.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/common/inputs/TextInputChange.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountDetails.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/ActivateButton.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/CardDetails.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/CardDetails.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +124,9 @@
       <workItem from="1705144901569" duration="18222000" />
       <workItem from="1705183880160" duration="2104000" />
       <workItem from="1705828071425" duration="5375000" />
+      <workItem from="1705926911018" duration="600000" />
+      <workItem from="1706009146612" duration="3000" />
+      <workItem from="1706024668947" duration="947000" />
     </task>
     <servers />
   </component>

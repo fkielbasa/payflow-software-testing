@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import styles from './Account.module.css'
-import ActivateButton from "./ActivateButton";
+import CustomButton from "./CustomButton";
 import {ImCross} from "react-icons/im";
 import Popup from "reactjs-popup";
 import TextInputChange from "../../common/inputs/TextInputChange";
@@ -9,7 +9,6 @@ import {BASE_URL} from "../../../../config/shared";
 import {config} from "../../../../config/authConfig";
 
 const AccountDetails = (props) => {
-    const [activateStatus , setActivateStatus] = useState(false)
     const [pin,setPin] = useState('')
     const [isPopupOpen, setPopupOpen] = useState(false);
     let status;
@@ -18,7 +17,7 @@ const AccountDetails = (props) => {
         axios
             .patch(`${BASE_URL}/api/v1/cards/${props.id}/activate`, pin, config)
             .then((res) => {
-                setActivateStatus(true)
+                console.log("sukces")
             })
             .catch((er) => {
                 console.error(er);
@@ -26,12 +25,13 @@ const AccountDetails = (props) => {
         window.location.reload()
     };
 
-    if(props.active){
-        status = "Aktywna"
-    }
-    else{
-        status ="Nie aktywna"
-    }
+    // if(props.active && !props.blocked)
+    //     status = "Aktywna"
+    // else if(!props.active && !props.blocked)
+    //     status ="Nie aktywna"
+    // else
+    //     status = "Zablokowana"
+    status = props.blocked ? "Zablokowana" : props.active ? "Aktywna" : "Nie aktywna";
     const getStatusColor = (status) => {
         switch (status) {
             case true:
@@ -41,9 +41,6 @@ const AccountDetails = (props) => {
             default:
                 return 'black';
         }
-    };
-    const handleFormChange = () => {
-        console.log("git")
     }
     const handleActivateButtonClick = () => {
         setPopupOpen(true);
@@ -58,7 +55,11 @@ const AccountDetails = (props) => {
             <div>
                 <p>Status: <span style={{color: statusColor}}>{status}</span></p>
             </div>
-            <ActivateButton openPopUp={handleActivateButtonClick}/>
+            {!props.active ? (
+            <CustomButton color={"green"} content={"Aktywuj kartę"} openPopUp={handleActivateButtonClick}/>
+                ) : (
+            <CustomButton color={"red"} content={"Zablokuj kartę"} openPopUp={handleActivateButtonClick}/>
+            )}
             <Popup open={isPopupOpen} onClose={handleClosePopup} modal contentStyle={{
                 backgroundColor: 'gray',
                 padding: '20px',
