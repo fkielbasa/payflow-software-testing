@@ -173,7 +173,7 @@ const TransactionsContainer = ({ maxPerPage }) => {
                     ))}
 
                     <Popup open={!!selectedTransaction} onClose={closePopup}
-                           contentStyle={{backgroundColor: 'black', padding: '20px',paddingBottom: 30, borderRadius: 10, width: '650px', ...styles.myPopupContent}}
+                           contentStyle={{backgroundColor: '#28282B', padding: '20px',paddingBottom: 30, borderRadius: 10, width: '620px', ...styles.myPopupContent}}
                            className={styles.myPopupContent}
                     >
                         {selectedTransaction && JSON.stringify(personalDataTransfer) !== '{}' && (
