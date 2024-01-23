@@ -169,6 +169,21 @@ function Home() {
         personalData(transaction.id);
     };
 
+    const handleAccountNumberClick = (accountData) => {
+        console.log("Kliknięty id konta!", accountData.id);
+
+        // Znajdź indeks klikniętego numeru konta
+        const clickedIndex = apiDataAccountNumber.findIndex(account => account.number === accountData.number);
+
+        // Resetowanie stanu isClicked dla innych numerów konta
+        const updatedAccountNumbers = apiDataAccountNumber.map((account, index) => ({
+            ...account,
+            isClicked: index === clickedIndex,
+        }));
+
+        setApiDataAccountNumber(updatedAccountNumbers);
+    };
+
     return (
         <animated.div style={fadeInAnimation}>
             <div className={styles.homePage}>
@@ -177,9 +192,9 @@ function Home() {
                         <div key={index} className={styles.giveMeMargin}>
                             <AccountNumber
                                 accountNumberType={numbers.accountNumberType}
-                                // balance={numbers.balance}
                                 currency={numbers.currency}
                                 number={numbers.number}
+                                onClick={() => handleAccountNumberClick(numbers)}
                             />
                         </div>
                     ))}
@@ -189,9 +204,7 @@ function Home() {
                 <div className={styles.content}>
                     <div className={styles.leftSitePosition}>
 
-                        <TransactionChart transactions={apiDataAllTransactions} />
-
-
+                        <TransactionChart transactions={apiDataAllTransactions}/>
 
                     </div>
                     <div className={styles.rightSitePosition}>

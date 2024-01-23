@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './AccountNumber.module.css';
 import { backgroundStyles1, backgroundStyles2, backgroundStyles3 } from '../../../utils/backgroundStyles';
 import { formatAccountNumber } from "../../../utils/formatAccountNumber";
 import useZoomEffect from '../../../utils/useZoomEffect';
 
 function AccountNumber(props) {
+    const [isClicked, setIsClicked] = useState(false);
+
     const isZoomedIn = useZoomEffect();
-    const marginStyle = isZoomedIn ? { marginTop: '0px' } : { marginTop: '15px'};
-    const textSmall = isZoomedIn ? {fontSize: '10px'} : {fontSize: '13px' };
+    const marginStyle = isZoomedIn ? { marginTop: '0px' } : { marginTop: '15px' };
+    const textSmall = isZoomedIn ? { fontSize: '10px' } : { fontSize: '13px' };
 
     let backgroundStyles;
 
@@ -21,12 +23,19 @@ function AccountNumber(props) {
 
     const accountNumberConst = formatAccountNumber(props.number);
 
-    console.log('accountNumberConst', accountNumberConst);
+    const handleClick = () => {
+        setIsClicked(true);
+        props.onClick(props); // przekazuje informacje o numerze konta
+    };
 
     return (
         <div
             className={styles.position}
-            style={{ ...backgroundStyles }}
+            style={{
+                ...backgroundStyles,
+                transform: isClicked ? 'scale(1.05)' : 'scale(1)',
+            }}
+            onClick={handleClick}
         >
             <div className={styles.twoThings}>
                 <div className={styles.accountNumberType}>
@@ -40,8 +49,9 @@ function AccountNumber(props) {
             </div>
             <div className={`${styles.numberPosition}`} style={marginStyle}>
                 <div className={styles.number}>
-                    <p className={`${styles.textPosition} ${styles.smallText}`} > Numer konta:</p>
-                    <p className={`${styles.textPosition} ${styles.boldedText}`} style={textSmall}> {accountNumberConst} </p>
+                    <p className={`${styles.textPosition} ${styles.smallText}`}> Numer konta:</p>
+                    <p className={`${styles.textPosition} ${styles.boldedText}`}
+                       style={textSmall}> {accountNumberConst} </p>
                 </div>
             </div>
         </div>
