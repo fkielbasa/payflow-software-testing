@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Cards.module.css';
 import CreditCard from "./CreditCard";
 import ChartComponent from "./ChartComponent";
 import { useSpring, animated } from 'react-spring';
+import axios from "axios";
+import {BASE_URL} from "../../../../config/shared";
+import {config, user} from "../../../../config/authConfig";
 
 
 function Cards() {
@@ -10,6 +13,25 @@ function Cards() {
         from: {opacity: 0, transform: 'translateY(50px)'},
         to: {opacity: 1, transform: 'translateY(0)'},
     });
+
+    const [apiCardData, setApiCardData] = useState([]);
+    
+    useEffect(() => {
+        const getCardData = async () => {
+            axios
+                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
+                .then((response) => {
+                    console.log('getCardData response', response.data)
+                    setApiCardData(response.data);
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        };
+
+        getCardData();
+    }, [user.userId]);
+
     return (
         <animated.div style={fadeInAnimation}>
 
