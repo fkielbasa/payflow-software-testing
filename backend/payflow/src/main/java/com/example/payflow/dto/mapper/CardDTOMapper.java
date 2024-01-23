@@ -1,4 +1,4 @@
-package com.example.payflow.DTO.mapper;
+package com.example.payflow.dto.mapper;
 
 import com.example.payflow.dto.CardDTO;
 import com.example.payflow.model.Card;
@@ -15,7 +15,12 @@ public class CardDTOMapper implements Function<Card, CardDTO> {
                 card.getId(),
                 card.getCardNumber(),
                 card.getValidDate(),
-                card.getCvv()
+                card.getCvv(),
+                card.getCardDetails().isActive(),
+                card.getCardDetails().isBlocked(),
+                card.getAccountNumberCard().getUserId().getFirstName() + ' ' + card.getAccountNumberCard().getUserId().getLastName(),
+                card.getAccountNumberCard().getBalance(),
+                card.getAccountNumberCard().getCurrency()
         );
     }
 }

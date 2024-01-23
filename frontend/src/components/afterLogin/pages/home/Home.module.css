@@ -1,0 +1,86 @@
+* {
+    font-family: Bahnschrift, serif;
+}
+
+.homePage {
+    display: flex;
+    flex-direction: column;
+    width: 65vw;
+
+    /*background-color: green;*/
+}
+
+.leftSitePosition {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /*margin-top: 10px;*/
+    margin: 5px;
+    padding-top: 20px;
+    /*background-color: blue;*/
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.accountNumberSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+
+    /*background-color: yellow;*/
+}
+
+.giveMeMargin {
+    margin-right: 10%;
+}
+
+.rightSitePosition {
+    margin-top: 15px;
+    width: 31%;
+    display: flex;
+    flex-direction: column;
+
+    /*background-color: magenta;*/
+}
+
+.linkTo {
+    font-size: 13px;
+    text-decoration: none;
+    color: black;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+}
+
+.linkTo:hover {
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+.sameHeight {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 20px;
+    margin-left: 20px;
+
+    /*background-color: green;*/
+}
+
+.transactionContainer {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-top: -10px;
+    /*asdasd*/
+
+    /*background-color: red;*/
+}
+
+.transactionCard {
+    margin-top: -20px;
+}

@@ -14,16 +14,14 @@ import com.example.payflow.model.UserDetails;
 import com.example.payflow.repository.UserDetailsRepository;
 import com.example.payflow.util.NumberGenerator;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.TimeZone;
+import java.time.LocalDate;
+
 
 @Service
 @AllArgsConstructor
@@ -54,7 +52,6 @@ public class AuthenticationService {
         if (userDetailsRepository.isEmailExists(request.getEmail()))
             return null;
 
-        System.out.println(request.toString());
         var residentalAddress = Address.builder()
                 .zipCode(request.getZipCode())
                 .city(request.getCity())
@@ -74,18 +71,13 @@ public class AuthenticationService {
                 .build();
 
 
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        formatter.setTimeZone(TimeZone.getTimeZone("Poland/Warsaw"));
-
         String userLogin = getNewLogin();
-
 
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .login(userLogin)
-                .dateOfBirth(formatter.parse(request.getDateOfBirth()))
+                .dateOfBirth(LocalDate.parse(request.getDateOfBirth()))
                 .nationality(request.getNationality())
                 .residentialAddress(residentalAddress)
                 .correspondenceAddress(correspondenceAddress)

@@ -1,0 +1,124 @@
+.topNavbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 10%;
+    /*position: relative;*/
+    /*width: 85vw;*/
+
+    /*background-color: green;*/
+}
+
+.accoundPosition {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.topNavbar p {
+    font-weight: bold;
+}
+
+.topNavImages {
+    width: 32px;
+}
+
+.topNavImagesSmall {
+    width: 26px;
+    /*vertical-align: middle;*/
+}
+
+.accountDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 150px;
+    background-color: rgba(255,255,255, 1);
+    background-color: #F6F5F5;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+
+}
+
+.shadow {
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+
+}
+
+.accountDisplay svg {
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+.columnInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.underline {
+    border-bottom: 1px solid black;
+    width: 80%;
+}
+
+
+.accountDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-around;
+    /*background-color: var(--darkBlue);*/
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+    width: 150px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    color: white;
+}
+
+/*.accountDetails span:after {*/
+/*    content:'';*/
+/*    display:block;*/
+/*    width:0;*/
+/*    height:0;*/
+/*    position:absolute;*/
+
+/*    border-top: 20px solid transparent;*/
+/*    border-bottom: 20px solid var(--darkBlue);*/
+/*    border-right: 20px solid transparent;*/
+/*    border-left: 20px solid transparent;*/
+/*    !*left:-8px;*!*/
+
+/*    top: -30px;*/
+/*    left: 50%;*/
+/*    right: 50%;*/
+/*    transform: translateX(-50%);*/
+/*}*/
+
+
+.accountDetails span::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    background: linear-gradient(326deg, rgba(39, 102, 120, 1) 5%, rgba(0, 198, 255, 1) 95%);
+    z-index: -1;
+}
+
+.accountDetails span {
+    position: relative;
+}
+
+
+

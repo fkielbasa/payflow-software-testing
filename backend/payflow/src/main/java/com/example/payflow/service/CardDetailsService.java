@@ -1,12 +1,11 @@
 package com.example.payflow.service;
 
-import com.example.payflow.dto.CardDetailsDTO;
-import com.example.payflow.model.Card;
+import com.example.payflow.dto.CardDTO;
+import com.example.payflow.dto.PinDTO;
 import com.example.payflow.model.CardDetails;
 import com.example.payflow.repository.CardDetailsRepository;
 import com.example.payflow.repository.CardRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,41 +13,49 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class CardDetailsService {
-    private final CardDetailsRepository cardDetailsRepository;
-    private final CardRepository cardRepository;
 
-    public ResponseEntity<CardDetails> activateCard(Long id,CardDetailsDTO cardDetailsDTO){
+    private final CardDetailsRepository cardDetailsRepository;
+    public CardDetails activateCard(Long id, PinDTO pinDTO){
         Optional<CardDetails> card = cardDetailsRepository.findById(id);
         if (card.isPresent()) {
             CardDetails cd = card.get();
             cd.setActive(true);
-            cd.setPin(cardDetailsDTO.getPin());
+            cd.setPin(pinDTO.getPin());
             cardDetailsRepository.save(cd);
-            return ResponseEntity.ok().body(cd);
+            return cd;
         }
-        return (ResponseEntity<CardDetails>) ResponseEntity.badRequest();
+        return null;
     }
-    public ResponseEntity<CardDetails> blockCard(Long id){
-        Optional<CardDetails> cardDetails = cardDetailsRepository.findById(id);
-        Long d = cardDetails.get().getIdCard().getId();
-        Optional<Card> card = cardRepository.findById(d);
+    public CardDetails blockCard(Long id){
+        Optional<CardDetails> card = cardDetailsRepository.findById(id);
         if(card.isPresent()){
-            CardDetails cd = cardDetails.get();
+            CardDetails cd = card.get();
             cd.setBlocked(true);
             cardDetailsRepository.save(cd);
-            return ResponseEntity.ok().body(cd);
+            return cd;
         }
-        return (ResponseEntity<CardDetails>) ResponseEntity.badRequest();
+        return null;
     }
-
-    public ResponseEntity<CardDetails> unblockCard(Long id) {
-        Optional<CardDetails> cardDetails = cardDetailsRepository.findById(id);
-        if(cardDetails.isPresent()){
-            CardDetails cd = cardDetails.get();
+    public CardDetails unblockCard(Long id) {
+        Optional<CardDetails> card = cardDetailsRepository.findById(id);
+        if(card.isPresent()){
+            CardDetails cd = card.get();
             cd.setBlocked(false);
             cardDetailsRepository.save(cd);
-            return ResponseEntity.ok().body(cd);
+            return cd;
         }
-        return (ResponseEntity<CardDetails>) ResponseEntity.badRequest();
+        return null;
+    }
+    public PinDTO changePin(Long id, PinDTO pin) {
+        Optional<CardDetails> card = cardDetailsRepository.findById(id);
+        if (card.isPresent()) {
+            CardDetails cd = card.get();
+            if(cd.isActive()) {
+                cd.setPin(pin.getPin());
+                cardDetailsRepository.save(cd);
+                return pin;
+            }
+        }
+        return null;
     }
 }

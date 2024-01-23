@@ -25,11 +25,19 @@ public class TransferController {
         }
     }
 
+    @GetMapping("/users/{id}/transfers")
+    public ResponseEntity<List<TransferResultDTO>> getAllTransfersByUserId(@PathVariable Long id,@RequestParam(required = false, defaultValue = "100") int last){
+        List<TransferResultDTO> transfers = transferService.getAllTransferByUserId(id, last);
+        if (transfers != null)
+            return ResponseEntity.status(HttpStatus.OK).body(transfers);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
 
 
     @GetMapping("/account-numbers/{id}/transfers")
-    public ResponseEntity<List<TransferResultDTO>> getTransfersByAccountNumberId(@PathVariable Long id){
-        List<TransferResultDTO> transferList = transferService.getTransfersByAccountNumberId(id);
+    public ResponseEntity<List<TransferResultDTO>> getTransfersByAccountNumberId(@PathVariable Long id,@RequestParam(required = false, defaultValue = "100") int last){
+        List<TransferResultDTO> transferList = transferService.getTransfersByAccountNumberId(id, last);
         if (transferList.isEmpty())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         else

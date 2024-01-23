@@ -1,0 +1,46 @@
+.transfersContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+
+.transferType {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.transferShowFields {
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 90%;
+    /*overflow-y: scroll;*/
+}
+
+.transferWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*flex-wrap: wrap;*/
+    width: 100%;
+    height: 90%;
+
+}
+
+.cellWrapper {
+    width: 100%;
+}
+
+@media all and  (width < 650px){
+    .transferShowFields {
+        height: 70vh;
+        overflow: auto;
+    }
+}

@@ -29,9 +29,9 @@ public class Card {
     private Long id;
     private String cardNumber;
     private String cvv;
+    @Temporal(TemporalType.DATE)
     private LocalDate validDate;
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_account_number")
     private AccountNumber accountNumberCard;
     @OneToOne(mappedBy = "idCard",cascade = CascadeType.ALL)

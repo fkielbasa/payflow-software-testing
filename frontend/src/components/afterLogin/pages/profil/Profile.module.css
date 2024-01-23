@@ -1,0 +1,43 @@
+
+.containerFluid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.container {
+    display: flex;
+    /*flex-wrap: wrap;*/
+    /*width: 90%;*/
+    /*overflow: auto;*/
+}
+
+.cell {
+    padding: 10px 20px 30px;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.personDataWrapper {
+    background-color: skyblue;
+
+}
+
+.personContactWrapper {
+    background-color: yellowgreen;
+
+}
+
+.addressWrapper {
+    background-color: grey;
+}
+
+.correspondenceWrapper {
+    background-color: darkolivegreen;
+}

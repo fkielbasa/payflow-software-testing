@@ -1,0 +1,70 @@
+.position {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    /*width: 194px;*/
+    width: 91%;
+    height: 90px;
+    padding: 10px;
+    color: white;
+    /*justify-content: space-between;*/
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    cursor: pointer;
+}
+
+.textPosition {
+    margin-bottom: -10px;
+}
+
+.boldedText {
+    font-weight: bold;
+}
+
+.twoThings {
+    display: flex;
+    flex-direction: row;
+    margin-top: -13px;
+    justify-content: space-between;
+
+    /*background-color: #f4ce96;*/
+}
+
+.accountNumberType {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    /*background-color: orange;*/
+}
+
+.money {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    /*background-color: aqua;*/
+}
+
+.smallText {
+    font-size: 13px;
+}
+
+.smallerText {
+    font-size: 12px;
+}
+
+.number {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.numberPosition {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5px;
+
+
+    /*background-color: red;*/
+}

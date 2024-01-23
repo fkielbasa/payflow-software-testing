@@ -1,0 +1,57 @@
+.creditsContainer {
+    display: flex;
+    flex-flow: row wrap;
+    width: 90%;
+    height: 100%;
+}
+.creditsContainer > div {
+    flex-basis: 0;
+    flex-grow: 1;
+
+}
+.wrapper {
+    height: 90%;
+}
+
+.creditsContainer h3 {
+    margin: 10px;
+}
+
+.headerWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.headerWrapper span {
+    background-color: var(--darkBlue);
+    height: 2px;
+    width: 80%;
+}
+
+.creditsWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    gap: 10px;
+    overflow: auto;
+    height: 80%;
+}
+
+@media all and  (width < 750px){
+    .creditsContainer {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow: auto;
+        height: 90%;
+    }
+    .creditsContainer > div {
+        flex-basis: 0;
+        flex-grow: 0;
+
+    }
+    .creditsWrapper {
+        overflow: visible;
+    }
+}

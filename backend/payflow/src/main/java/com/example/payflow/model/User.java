@@ -1,5 +1,6 @@
 package com.example.payflow.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -37,7 +39,8 @@ public class User implements org.springframework.security.core.userdetails.UserD
     private String lastName;
     private String nationality;
     @Temporal(TemporalType.DATE)
-    private Date dateOfBirth;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate dateOfBirth;
     private String login;
     private String password;
 //    private String pesel;

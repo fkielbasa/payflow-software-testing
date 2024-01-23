@@ -1,41 +1,50 @@
 package com.example.payflow.service;
 
 import com.example.payflow.dto.CardDTO;
-import com.example.payflow.dto.CardDTOPost;
-import com.example.payflow.DTO.mapper.CardDTOMapper;
+import com.example.payflow.dto.mapper.CardDTOMapper;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.Card;
 import com.example.payflow.model.CardDetails;
+import com.example.payflow.model.User;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.CardDetailsRepository;
 import com.example.payflow.repository.CardRepository;
+import com.example.payflow.repository.UserRepository;
 import com.example.payflow.util.NumberGenerator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class CardService {
+
     private final CardRepository cardRepository;
     private final AccountNumberRepository accountNumberRepository;
     private final CardDetailsRepository cardDetailsRepository;
+    private final UserRepository userRepository;
     private final CardDTOMapper cardDTOMapper;
 
-    public List<CardDTO> getCardByAccountId(Long id){
-        return cardRepository.findAll().stream()
-                .filter(card -> card.getAccountNumberCard().getId().equals(id))
-                .map(card -> new CardDTO(card.getId(), card.getCardNumber(), card.getValidDate(),
-                        card.getCvv(),card.getCardDetails().isActive(),card.getCardDetails().isBlocked()))
+    public CardDTO getCardByAccountId(Long id){
+        return cardDTOMapper.apply(accountNumberRepository.findById(id).get().getCard());
+    }
+    public List<CardDTO> getCardsByUserId(Long userId) {
+        return userRepository.findById(userId)
+                .map(User::getAccountNumbers)
+                .stream()
+                .flatMap(List::stream)
+                .map(AccountNumber::getCard)
+                .filter(Objects::nonNull)
+                .map(cardDTOMapper)
                 .toList();
     }
-    public ResponseEntity<CardDTO> createCard(CardDTOPost card){
+    public CardDTO createCard(Long id){
         LocalDate currentDate = LocalDate.now();
-        Optional<AccountNumber> ac = accountNumberRepository.findById(card.getAccountId());
+        Optional<AccountNumber> ac = accountNumberRepository.findById(id);
         if (ac.isPresent()) {
             var c = Card.builder()
                     .validDate(currentDate.plusYears(4))
@@ -52,12 +61,16 @@ public class CardService {
             cardRepository.save(c);
             cardDetailsRepository.save(cd);
             CardDTO cardDTO = cardDTOMapper.apply(c);
-            return ResponseEntity.ok(cardDTO);
+            return cardDTO;
         }
-        return (ResponseEntity<CardDTO>) ResponseEntity.badRequest();
+        return null;
     }
-    public void deleteCardById(Long id) {
-        cardDetailsRepository.deleteById(id);
-        cardRepository.deleteById(id);
+    public Card removeCardById(Long id) {
+        Optional<Card> c = cardRepository.findById(id);
+        if(c.isPresent()){
+            cardRepository.deleteById(id);
+            return c.orElseThrow();
+        }
+        return null;
     }
 }

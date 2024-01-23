@@ -6,6 +6,7 @@ import com.example.payflow.dto.AccountNumberRequestDto;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.service.AccountNumberService;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.parser.HttpParser;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +28,18 @@ public class AccountNumberController {
     public List<AccountNumberDTO> getAccountNumberByUserId(@PathVariable Long id){
         return accountNumberService.getAccountNumberByUserId(id);
     }
-    @PostMapping("/number")
-    public ResponseEntity<AccountNumberDTO> addAccount(@RequestBody AccountNumberRequestDto accountNumber){
-        AccountNumberDTO ac = accountNumberService.addAccount(accountNumber);
+
+    @GetMapping("/numbers/{id}")
+    public ResponseEntity<AccountNumberDTO> getAccountNumberById(@PathVariable Long id){
+        AccountNumberDTO ac = accountNumberService.getAccountNumberById(id);
+        if (ac != null)
+            return ResponseEntity.status(HttpStatus.OK).body(ac);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PostMapping("/users/{id}/number")
+    public ResponseEntity<AccountNumberDTO> addAccount(@PathVariable Long id,@RequestBody AccountNumberRequestDto accountNumber){
+        AccountNumberDTO ac = accountNumberService.addAccount(id, accountNumber);
         if (ac != null)
             return ResponseEntity.status(HttpStatus.CREATED).body(ac);
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
