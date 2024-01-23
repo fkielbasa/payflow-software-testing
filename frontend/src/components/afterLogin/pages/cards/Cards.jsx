@@ -15,11 +15,11 @@ function Cards() {
     });
 
     const [apiCardData, setApiCardData] = useState([]);
-    
+
     useEffect(() => {
         const getCardData = async () => {
             axios
-                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
+                .get(`${BASE_URL}/api/v1/users/${user.userId}/cards`, config)
                 .then((response) => {
                     console.log('getCardData response', response.data)
                     setApiCardData(response.data);
@@ -37,30 +37,29 @@ function Cards() {
 
             <div className={styles.cardsPage}>
                 <div className={styles.cardsContainer}>
-                    <CreditCard currency={'USD'} type={'INTENSIVE'} balance={21.37}
-                                accountNumber={'3423870000441246075444'} owner={'John Johinnson'} expirationMonth={4}
-                                expirationYear={24} details={true} id={1} size={"small"} to={`/cards/$`}/>
-                    <CreditCard currency={'EUR'} type={'Karta debetowa'} balance={69.42}
-                                accountNumber={'3124150000843646841238'} owner={'John Johinnson'} expirationMonth={7}
-                                expirationYear={25} details={true} id={2} size={"small"} to={`/cards/$`}/>
-                    <CreditCard currency={'PLN'} type={'Karta kredytowa'} balance={1069.42}
-                                accountNumber={'4287931654718293458712'} owner={'John Johinnson'} expirationMonth={12}
-                                expirationYear={27} details={true} id={3} size={"small"} to={`/cards/$`}/>
-
+                    {apiCardData.map((card, index) => (
+                        <div key={index}>
+                            <CreditCard currency={card.currency} balance={card.balance}
+                                        cardNumber={card.cardNumber} owner={card.owner}
+                                        cvv={card.cvv} expiration={card.validDate}
+                                        active={card.active} blocked={card.blocked}
+                                        details={true} id={card.id} size={"small"} to={`/cards/$`}/>
+                        </div>
+                    ))}
                 </div>
-                <div className={styles.chartContainer}>
-                    <div className={styles.chartPosition}>
-                        <div className={styles.chartMargin}>
-                            <ChartComponent type={'USD'}/>
-                        </div>
-                        <div className={styles.chartMargin}>
-                            <ChartComponent type={'EUR'}/>
-                        </div>
-                        <div className={styles.chartMargin}>
-                            <ChartComponent type={'PLN'}/>
-                        </div>
-                    </div>
-                </div>
+                {/*<div className={styles.chartContainer}>*/}
+                {/*    <div className={styles.chartPosition}>*/}
+                {/*        <div className={styles.chartMargin}>*/}
+                {/*            <ChartComponent type={'USD'}/>*/}
+                {/*        </div>*/}
+                {/*        <div className={styles.chartMargin}>*/}
+                {/*            <ChartComponent type={'EUR'}/>*/}
+                {/*        </div>*/}
+                {/*        <div className={styles.chartMargin}>*/}
+                {/*            <ChartComponent type={'PLN'}/>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </animated.div>
     );

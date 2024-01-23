@@ -1,7 +1,7 @@
 .cardsPage {
     display: flex;
     flex-direction: column;
-    width: 80vw;
+    width: 65vw;
 
     /*background-color: #512486;*/
 }
@@ -10,8 +10,9 @@
     display: flex;
     flex-direction: row;
     height: 250px;
+    flex-wrap: wrap;
 
-    /*background-color: coral;*/
+    background-color: coral;
 }
 
 
