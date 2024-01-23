@@ -1,0 +1,12 @@
+.chart {
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+
+@media all and (width < 801px) {
+    .chart {
+        width: 300px;
+    }
+}

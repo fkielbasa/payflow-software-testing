@@ -16,10 +16,11 @@
 
 .transferShowFields {
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
-    max-height: 90%;
+    height: 90%;
     /*overflow-y: scroll;*/
 }
 
@@ -35,4 +36,11 @@
 
 .cellWrapper {
     width: 100%;
+}
+
+@media all and  (width < 650px){
+    .transferShowFields {
+        height: 70vh;
+        overflow: auto;
+    }
 }

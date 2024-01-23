@@ -3,7 +3,6 @@ import axios from "axios";
 import {config, user} from "../../../../config/authConfig";
 import SelectAccountNumber from "../transfers/SelectAccountNumber";
 import styles from './cantorExchange.module.css'
-import TextInput from "../../common/inputs/textInput";
 
 const CantorExchange = () => {
     const [amount, setAmount]=useState(0.0)

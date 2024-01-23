@@ -1,14 +1,10 @@
 
 .container {
     height: 100%;
-    overflow: auto;
+    /*overflow: auto;*/
 }
-
-.container > div {
-    /*margin: 0 auto;*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*!*align-items: center;*!*/
+.container h3 {
+    margin: 10px;
 }
 .formWrapper {
     display: flex;
@@ -50,11 +46,12 @@
 }
 .detailsWrapper {
     width: 80%;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .dateWrapper {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .dateWrapper p {
@@ -78,4 +75,8 @@
     border: none;
     font-weight: bold;
     cursor: pointer;
+}
+@media all and  (width < 1050px){
+
+
 }

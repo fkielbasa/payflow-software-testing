@@ -5,15 +5,18 @@ import com.example.payflow.dto.mapper.CardDTOMapper;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.Card;
 import com.example.payflow.model.CardDetails;
+import com.example.payflow.model.User;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.CardDetailsRepository;
 import com.example.payflow.repository.CardRepository;
+import com.example.payflow.repository.UserRepository;
 import com.example.payflow.util.NumberGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -23,10 +26,21 @@ public class CardService {
     private final CardRepository cardRepository;
     private final AccountNumberRepository accountNumberRepository;
     private final CardDetailsRepository cardDetailsRepository;
+    private final UserRepository userRepository;
     private final CardDTOMapper cardDTOMapper;
 
     public CardDTO getCardByAccountId(Long id){
         return cardDTOMapper.apply(accountNumberRepository.findById(id).get().getCard());
+    }
+    public List<CardDTO> getCardsByUserId(Long userId) {
+        return userRepository.findById(userId)
+                .map(User::getAccountNumbers)
+                .stream()
+                .flatMap(List::stream)
+                .map(AccountNumber::getCard)
+                .filter(Objects::nonNull)
+                .map(cardDTOMapper)
+                .toList();
     }
     public CardDTO createCard(Long id){
         LocalDate currentDate = LocalDate.now();

@@ -13,7 +13,9 @@
     height: 90%;
 }
 
-
+.creditsContainer h3 {
+    margin: 10px;
+}
 
 .headerWrapper {
     width: 100%;
@@ -37,3 +39,19 @@
     height: 80%;
 }
 
+@media all and  (width < 750px){
+    .creditsContainer {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow: auto;
+        height: 90%;
+    }
+    .creditsContainer > div {
+        flex-basis: 0;
+        flex-grow: 0;
+
+    }
+    .creditsWrapper {
+        overflow: visible;
+    }
+}
