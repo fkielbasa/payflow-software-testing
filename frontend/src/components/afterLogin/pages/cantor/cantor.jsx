@@ -1,5 +1,5 @@
 import CantorExchange from "./cantorExchange";
-import {useEffect, useMemo, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import {config} from "../../../../config/authConfig";
 import {BASE_URL} from "../../../../config/shared";
@@ -29,19 +29,26 @@ const Cantor = () => {
 
     return(
         <div className={styles.containerFluid}>
-            <div className={styles.exchangeBar}>
-                <CantorExchange />
-            </div>
-            <div className={styles.container}>
-                <div className={styles.chartWrapper}>
-                    <p>Kurs euro</p>
-                    <ExchangeChart data={dataRate} currency={"EUR"} />
+            {/*<div className={styles.imgWrapper}>*/}
+            {/*    <img src={require('../../../../assets/cantor.jpg')} alt=""/>*/}
+            {/*    <p>Najlepsze kursy tylko w naszym banku</p>*/}
+            {/*</div>*/}
+            {/*<div style={{display: 'flex'}}>*/}
+                <div className={styles.exchangeBar}>
+                    <CantorExchange/>
                 </div>
-                <div className={styles.chartWrapper}>
-                    <p>Kurs dolara</p>
-                    <ExchangeChart data={dataRate} currency={"USD"}/>
+                <div className={styles.container}>
+                    <div className={styles.chartWrapper}>
+                        <p>Kurs euro</p>
+                        <ExchangeChart data={dataRate} currency={"EUR"}/>
+                    </div>
+                    <div className={styles.chartWrapper}>
+                        <p>Kurs dolara</p>
+                        <ExchangeChart data={dataRate} currency={"USD"}/>
+                    </div>
                 </div>
-            </div>
+            {/*</div>*/}
+
         </div>
     )
 }
