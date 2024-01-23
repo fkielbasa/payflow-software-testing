@@ -54,6 +54,19 @@ public class TransferService {
                 .limit(last)
                 .toList();
     }
+    public List<TransferResultDTO> getAllTransferByUserId(Long id, int last) {
+        return transferRepository
+                .findAll()
+                .stream()
+                .filter(transfer -> transfer.getSenderAccount().getUserId().getId().equals(id)
+                                    || transfer.getReceiverAccount().getUserId().getId().equals(id)
+                )
+                .map(transferResultDTOMapper)
+                .sorted(Comparator.comparing(TransferResultDTO::date).reversed())
+                .sorted(Comparator.comparing(TransferResultDTO::id).reversed())
+                .limit(last)
+                .toList();
+    }
 
     public TransferDTO addTransferByPhoneNumber(PhoneTransferDTO phoneTransfer) {
         // searching for receiver
@@ -140,4 +153,6 @@ public class TransferService {
 
         return finalizeTransfer(newTransfer);
     }
+
+
 }
