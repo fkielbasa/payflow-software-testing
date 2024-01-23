@@ -42,7 +42,7 @@ public class TransferDetailsResultDtoMapper implements Function<Transfer ,Transf
                 transfer.getId(),
                 transfer.getTransferDate().toString(),
                 transfer.getAmount().toString(),
-                transfer.getReceiverAccount().getCurrency().toString(),
+                transfer.getSenderAccount().getCurrency().toString(),
                 transfer.getDescription(),
                 sender,
                 receiver

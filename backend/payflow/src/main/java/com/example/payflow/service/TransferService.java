@@ -111,8 +111,7 @@ public class TransferService {
         // searching for accounts
         AccountNumber sender = accountNumberRepository.findAccountNumberByNumber(transferDTO.senderAccountNumber());
         AccountNumber receiver = accountNumberRepository.findAccountNumberByNumber(transferDTO.receiverAccountNumber());
-//        AccountNumber receiver = accountNumberRepository.findById(transferDTO.receiverAccountId()).orElseThrow(EntityNotFoundException::new);
-        System.out.println("TEST" + receiver.getNumber());
+
         Transfer newTransfer =
                 Transfer.builder()
                         .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
