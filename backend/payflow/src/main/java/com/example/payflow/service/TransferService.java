@@ -54,6 +54,19 @@ public class TransferService {
                 .limit(last)
                 .toList();
     }
+    public List<TransferResultDTO> getAllTransferByUserId(Long id, int last) {
+        return transferRepository
+                .findAll()
+                .stream()
+                .filter(transfer -> transfer.getSenderAccount().getUserId().getId().equals(id)
+                                    || transfer.getReceiverAccount().getUserId().getId().equals(id)
+                )
+                .map(transferResultDTOMapper)
+                .sorted(Comparator.comparing(TransferResultDTO::date).reversed())
+                .sorted(Comparator.comparing(TransferResultDTO::id).reversed())
+                .limit(last)
+                .toList();
+    }
 
     public TransferDTO addTransferByPhoneNumber(PhoneTransferDTO phoneTransfer) {
         // searching for receiver
@@ -111,8 +124,7 @@ public class TransferService {
         // searching for accounts
         AccountNumber sender = accountNumberRepository.findAccountNumberByNumber(transferDTO.senderAccountNumber());
         AccountNumber receiver = accountNumberRepository.findAccountNumberByNumber(transferDTO.receiverAccountNumber());
-//        AccountNumber receiver = accountNumberRepository.findById(transferDTO.receiverAccountId()).orElseThrow(EntityNotFoundException::new);
-        System.out.println("TEST" + receiver.getNumber());
+
         Transfer newTransfer =
                 Transfer.builder()
                         .transferDate(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
@@ -141,4 +153,6 @@ public class TransferService {
 
         return finalizeTransfer(newTransfer);
     }
+
+
 }
