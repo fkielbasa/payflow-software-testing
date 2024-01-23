@@ -1,6 +1,6 @@
 
 .container {
-    width: 45%;
+    width: 40%;
     height: 350px;
     display: flex;
     align-items: center;
@@ -41,3 +41,8 @@
     transition: all 0.3s ease;
 }
 
+@media all and  (width < 650px){
+    .container {
+        width: 80%;
+    }
+}
