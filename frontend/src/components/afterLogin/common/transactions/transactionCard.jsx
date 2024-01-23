@@ -2,7 +2,7 @@ import styles from './transactionCard.module.css'
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaCircleMinus } from "react-icons/fa6";
 import React from "react";
-import InfoTransactionWrapper from "./InfoTransactionWrapper";
+import InfoTransactionWrapper from "./infoTransactionWrapper";
 
 const TransactionCard = (props) => {
     return(

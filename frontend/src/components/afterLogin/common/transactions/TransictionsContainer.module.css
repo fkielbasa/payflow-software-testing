@@ -190,8 +190,17 @@
 }
 
 .my-popup-content {
-    background-color: black;
-    padding: 20px;
-    border-radius: 10px;
-    width: 650px;
+   &.my-popup-content {
+       background-color: black;
+       padding: 20px;
+       border-radius: 10px;
+       width: 650px;
+   }
+}
+
+@media all and (width < 750px){
+    .my-popup-content {
+        width: 450px;
+        background-color: red;
+    }
 }
