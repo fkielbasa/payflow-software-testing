@@ -7,7 +7,7 @@ import {config} from "../../../../config/authConfig";
 import {useLocation} from "react-router-dom";
 import AccountCard from "./AccountCard";
 import AccountDetails from "./AccountDetails";
-import Popup from "reactjs-popup";
+import Card from "./NewCard";
 
 const Account = () => {
     const [accountData, setAccountData] = useState({})
@@ -19,7 +19,6 @@ const Account = () => {
     const accountId = state ? state.accountId : null;
     useEffect(() => {
             console.log("id: " + accountId);
-            console.log(localStorage)
             const getAccountDetails = () => {
                 axios
                     .get(`${BASE_URL}/api/v1/numbers/${accountId}`, config)
@@ -51,13 +50,16 @@ const Account = () => {
         const date = new Date(validDate);
         const month = date.getMonth() + 1;
         const year = date.getFullYear();
+        const formattedMonth = month < 10 ? `0${month}` : month;
 
-        setExpirationMonth(month);
+        setExpirationMonth(formattedMonth);
         setExpirationYear(year.toString().slice(2));
     };
 
     return (
-        <div className={styles.accountContainer}>
+        <div className={styles.mainContainer}>
+        <div className={styles.accountLeftContainer}>
+            <div className={styles.accountDataContainer}>
             {accountData && Object.keys(accountData).length > 0 ? (
                 <div className={styles.leftContainer}>
                     <AccountData
@@ -70,9 +72,14 @@ const Account = () => {
             ) : (
                 <p>Brak danych do wyświetlenia</p>
             )}
-
+            </div>
+            <p>TUTAJ BĘDZIE KIEDYŚ WYKRES??</p>
+            JAK BĘDZIE TO BĘDZIE
+        </div>
+        <div className={styles.accountRightContainer}>
             {cardData && Object.keys(cardData).length > 0 ? (
                 <div className={styles.rightContainer}>
+                    Karta
                     <AccountCard
                         owner={cardData.owner}
                         balance={accountData.balance}
@@ -89,9 +96,11 @@ const Account = () => {
                     />
                 </div>
             ) : (
-                <p>Brak danych do wyświetlenia</p>
+                <Card accountId={accountId}/>
             )}
         </div>
+        </div>
     );
+
 }
 export default Account

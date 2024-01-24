@@ -6,8 +6,15 @@ const AccountCard= (props) => {
     console.log(props.cardNumber)
     return(
         <div className={styles.cardBottomMargin}>
-          <CreditCard currency={props.currency} type={'Karta debetowa'} balance={props.balance}
-                      accountNumber={props.cardNumber} owner={props.owner} expirationMonth={props.month} expirationYear={props.year} cardStyle={4} details={false} id={1} size={"small"}/>
+          <CreditCard currency={props.currency}
+                      type={'Karta debetowa'}
+                      balance={props.balance}
+                      accountNumber={props.cardNumber}
+                      owner={props.owner}
+                      expirationMonth={props.month}
+                      expirationYear={props.year}
+                      cardStyle={4}
+                      details={false} id={1} size={"small"}/>
         </div>
     );
 }

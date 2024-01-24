@@ -32,16 +32,7 @@ const AccountDetails = (props) => {
     // else
     //     status = "Zablokowana"
     status = props.blocked ? "Zablokowana" : props.active ? "Aktywna" : "Nie aktywna";
-    const getStatusColor = (status) => {
-        switch (status) {
-            case true:
-                return 'green';
-            case false:
-                return 'red';
-            default:
-                return 'black';
-        }
-    }
+    const getStatusColor = (status, blocked) => blocked ? 'red' : (status ? 'green' : 'black');
     const handleActivateButtonClick = () => {
         setPopupOpen(true);
     };
@@ -49,16 +40,23 @@ const AccountDetails = (props) => {
     const handleClosePopup = () => {
         setPopupOpen(false);
     };
-    const statusColor = getStatusColor(props.active);
+    const statusColor = getStatusColor(props.active,props.blocked);
     return (
         <div className={styles.inactiveCard} >
             <div>
                 <p>Status: <span style={{color: statusColor}}>{status}</span></p>
             </div>
             {!props.active ? (
-            <CustomButton color={"green"} content={"Aktywuj kartę"} openPopUp={handleActivateButtonClick}/>
+                <CustomButton color={"green"} content={"Aktywuj kartę"} openPopUp={handleActivateButtonClick}/>
+            ) : (
+                props.blocked ? (
+                    <CustomButton color={"blue"} content={"Odblokuj kartę"} openPopUp={handleActivateButtonClick}/>
                 ) : (
-            <CustomButton color={"red"} content={"Zablokuj kartę"} openPopUp={handleActivateButtonClick}/>
+                    <div className={styles.detailsButtons}>
+                        <CustomButton color={"red"} content={"Zablokuj kartę"} openPopUp={handleActivateButtonClick}/>
+                        <CustomButton color={"blue"} content={"Zmień pin"} openPopUp={handleActivateButtonClick}/>
+                    </div>
+                )
             )}
             <Popup open={isPopupOpen} onClose={handleClosePopup} modal contentStyle={{
                 backgroundColor: 'gray',
@@ -89,13 +87,11 @@ const AccountDetails = (props) => {
                 </div>
                 <div style={{display: 'flex',justifyContent: 'center'}}>
                     <button className={styles.activateCard} onClick={changeCardPin}>
-                        Aktywuj
+                        {props.active ? "Zmień pin" : "Aktywuj"}
                     </button>
                 </div>
             </Popup>
         </div>
-
-
     );
 }
 export default AccountDetails;
