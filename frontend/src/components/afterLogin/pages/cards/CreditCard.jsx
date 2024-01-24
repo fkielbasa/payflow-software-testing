@@ -73,7 +73,7 @@ function CreditCard(props) {
                             <div className={styles.ownerText}>
                                 <p className={styles.textDecoration}>{props.owner}</p>
                             </div>
-                            <div className={styles.marginLeft}>
+                            <div>
                                 <p className={styles.textDecoration}>{formatExpirationDate(props.expiration)}</p>
                             </div>
                         </div>
@@ -96,7 +96,16 @@ function CreditCard(props) {
 
                         <div className={styles.cardSlider}></div>
                         <div className={styles.rotate}>
-                            <p className={styles.margin}>CVV: {props.cvv}</p>
+                            <p>CVV: {props.cvv}</p>
+                        </div>
+                    </div>
+                    <div className={styles.invertShadow}>
+                        <div className={styles.revertContainer}>
+                            <p className={styles.fontSize}>{cardNumberConst}</p>
+                            <p className={`${styles.textDecoration} ${styles.anotherMarginTop}`}>{props.owner}</p>
+                        </div>
+                        <div className={styles.expDateRevert}>
+                            <p className={styles.textDecoration}>{formatExpirationDate(props.expiration)}</p>
                         </div>
                     </div>
                     <div className={styles.revert}>
