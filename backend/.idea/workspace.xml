@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b750e811-3640-4781-8c5f-6eb32b63e2b2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/dto/CardDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/dto/CardDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/dto/mapper/CardDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/dto/mapper/CardDTOMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +50,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.PayflowApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature-account-page&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Filip/react/IoT-react-native/iot&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -120,12 +119,6 @@
       <workItem from="1704908264591" duration="34000" />
       <workItem from="1705144901569" duration="18222000" />
       <workItem from="1705183880160" duration="2104000" />
-      <workItem from="1705828071425" duration="5375000" />
-      <workItem from="1705926911018" duration="600000" />
-      <workItem from="1706009146612" duration="3000" />
-      <workItem from="1706024668947" duration="947000" />
-      <workItem from="1706080229436" duration="712000" />
-      <workItem from="1706104150044" duration="2031000" />
     </task>
     <servers />
   </component>

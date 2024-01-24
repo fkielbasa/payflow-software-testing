@@ -4,39 +4,44 @@
 
 .homePage {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 65vw;
 
     /*background-color: green;*/
 }
 
 .leftSitePosition {
-    width: 50%;
+    width: 65%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-
+    /*margin-top: 10px;*/
+    margin: 5px;
+    padding-top: 20px;
     /*background-color: blue;*/
 }
 
-.addAccountNumberPosition {
+.content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    /*background-color: #a63b40;*/
+    flex-direction: row;
 }
 
 .accountNumberSection {
     display: flex;
     flex-direction: row;
-    /*margin: 10px;*/
     justify-content: center;
     align-items: flex-start;
-    flex-wrap: wrap;
+
+    /*background-color: yellow;*/
+}
+
+.giveMeMargin {
+    margin-right: 10%;
 }
 
 .rightSitePosition {
-    width: 50%;
+    margin-top: 15px;
+    width: 31%;
     display: flex;
     flex-direction: column;
 
@@ -54,7 +59,6 @@
 .linkTo:hover {
     transform: scale(1.05);
     font-weight: bold;
-    /*font-size: 16px;*/
 }
 
 .sameHeight {
@@ -63,21 +67,20 @@
     justify-content: space-between;
     margin-right: 20px;
     margin-left: 20px;
+
+    /*background-color: green;*/
 }
 
-.accountNumber {
-    padding: 10px;
-    /*margin: 10px;*/
+.transactionContainer {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-top: -10px;
+    /*asdasd*/
+
+    /*background-color: red;*/
 }
 
-/*.btnColor {*/
-/*    color: #E0A96D;*/
-/*    border-color: #E0A96D;*/
-/*    border-width: 2px;*/
-/*}*/
-
-/*.btnColor:hover {*/
-/*    background-color: #E0A96D;*/
-/*    border-color: #E0A96D;*/
-/*    color: #312E31;*/
-/*}*/
+.transactionCard {
+    margin-top: -20px;
+}

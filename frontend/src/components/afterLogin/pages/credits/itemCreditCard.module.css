@@ -26,3 +26,8 @@
     color: var(--darkBlue);
     font-weight: bold;
 }
+@media all and  (width < 850px){
+    .img {
+        width: 0;
+    }
+}

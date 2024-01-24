@@ -4,7 +4,7 @@
     align-items: center;
     background-color: #f4ce96;
     border-radius: 10px;
-    width: 45%;
+    width: 40%;
     height: 350px;
     padding: 10px 10px 20px;
     margin: 10px;
@@ -52,4 +52,10 @@
 }
 .selectAccount > p {
     margin: 5px;
+}
+
+@media all and  (width < 650px){
+    .transferAccountNumberContainer {
+        width: 80%;
+    }
 }

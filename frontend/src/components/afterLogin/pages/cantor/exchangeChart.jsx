@@ -1,15 +1,16 @@
 import * as d3 from "d3";
-import {useCallback} from "react";
-
+import { useCallback } from "react";
+import styles from './exchangeChart.module.css';
 
 const ExchangeChart = ({ data, currency }) => {
-    const width = 400;
-    const height = 200;
-
     const chartRef = useCallback(
         (node) => {
             if (node && data.length > 0) {
                 const svg = d3.select(node);
+
+                const width = node.clientWidth; // Dynamically get the width of the container
+                const height = node.clientHeight; // Dynamically get the height of the container
+
 
                 const margin = { top: 20, right: 30, bottom: 30, left: 60 };
 
@@ -80,7 +81,11 @@ const ExchangeChart = ({ data, currency }) => {
         [data, currency]
     );
 
-    return <svg ref={chartRef} width={width} height={height}></svg>;
+    return (
+        <div className={styles.chartContainer}>
+            <svg ref={chartRef} className={styles.chart} />
+        </div>
+    );
 };
 
 export default ExchangeChart;

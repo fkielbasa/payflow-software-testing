@@ -3,7 +3,6 @@ import styles from "./Transfers.module.css";
 import TransferAccountNumber from "./TransfersAccountNumber";
 import Blik from "./Blik";
 import PhoneTransfer from "./PhoneTransfer";
-import CantorExchange from "../cantor/cantorExchange";
 import { useSpring, animated } from 'react-spring';
 import Alert from "../../common/alerts/alert";
 
@@ -25,13 +24,9 @@ function Transfers() {
                     <h2>Wybierz typ przelewu</h2>
                 </div>
                 <div className={styles.transferShowFields}>
-                    <div className={styles.transferWrapper}>
-                        <TransferAccountNumber/>
-                        <PhoneTransfer/>
-                    </div>
-                    <div className={styles.transferWrapper}>
-                        <Blik/>
-                    </div>
+                    <TransferAccountNumber/>
+                    <PhoneTransfer/>
+                    <Blik/>
                 </div>
             </div>
         </animated.div>

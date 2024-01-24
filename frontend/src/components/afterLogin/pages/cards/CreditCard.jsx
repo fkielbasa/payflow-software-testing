@@ -34,14 +34,12 @@ function CreditCard(props) {
     const toValue = props.to === '/cards' ? '/cards' : `/cards/${props.id}`;
 
 
-    if (props.cardStyle === 1) {
+    if (props.type === 'INTENSIVE') {
         backgroundStyles = backgroundStyles1;
-    } else if (props.cardStyle === 2) {
+    } else if (props.type === 'STANDARD') {
         backgroundStyles = backgroundStyles2;
-    } else if (props.cardStyle === 3) {
+    } else {
         backgroundStyles = backgroundStyles3;
-    } else if (props.cardStyle === 4) {
-        backgroundStyles = backgroundStyles4;
     }
 
 

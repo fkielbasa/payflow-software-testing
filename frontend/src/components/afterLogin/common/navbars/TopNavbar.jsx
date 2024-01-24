@@ -1,15 +1,16 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from './TopNavbar.module.css';
 
 import { FaUser } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { TbLogout } from "react-icons/tb";
 import { IoIosArrowDown } from "react-icons/io";
-import {TOKEN_KEY, user} from "../../../../config/authConfig";
-import {Link, useNavigate} from "react-router-dom";
+import { TOKEN_KEY, user } from "../../../../config/authConfig";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
+import { backgroundStyles2 } from '../../../utils/backgroundStyles';
 
-function Home() {
+function TopNavbar() {
     let navigate = useNavigate()
 
     const [isHover, setIsHover] = useState(false)
@@ -32,7 +33,7 @@ function Home() {
         <div className={styles.topNavbar}>
             <div>
                 <Link to="/home">
-                    <Logo/>
+                    <Logo />
                 </Link>
             </div>
             <div
@@ -41,37 +42,34 @@ function Home() {
                 onMouseLeave={handleHover}
             >
                 <div
-                    className={styles.accountDisplay}
+                    className={`${styles.accountDisplay} `}
                 >
                     <div className={styles.columnInfo}>
-                        <FaUser/>
+                        <FaUser />
                         <p>{user != null ? user.name : "string"}</p>
-                        <IoIosArrowDown/>
+                        <IoIosArrowDown />
                     </div>
                     {isHover && (
-                        <div className={styles.accountDetails}>
+                        <div className={`${styles.accountDetails}`} style={backgroundStyles2}>
                             <span></span>
                             <div
                                 className={styles.columnInfo}
                                 onClick={showSettings}
                             >
-                                {/*<IoMdSettings/>*/}
                                 <p>Konto</p>
                             </div>
                             <div
                                 className={styles.columnInfo}
                                 onClick={logout}
                             >
-                                {/*<TbLogout/>*/}
                                 <p>Wyloguj</p>
                             </div>
                         </div>
                     )}
                 </div>
-
             </div>
         </div>
     );
 }
 
-export default Home;
+export default TopNavbar;
