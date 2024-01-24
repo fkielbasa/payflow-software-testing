@@ -6,15 +6,38 @@
     /*background-color: #512486;*/
 }
 
-.cardsContainer {
-    display: flex;
-    flex-direction: row;
-    height: 250px;
-    flex-wrap: wrap;
+/*.cardsContainer {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    height: 250px;*/
+/*    flex-wrap: wrap;*/
 
-    background-color: coral;
+/*    background-color: coral;*/
+/*}*/
+
+.cardOnCard {
+    display: flex;
+    margin-bottom: -72px;
+    width: 350px;
+    position: relative;
+    transition: all 0.6s ease;
+
+    /*background-color: blue;*/
 }
 
+/*.cardOnCard:active {*/
+/*    transform: scale(1.25);*/
+/*}*/
+
+.active {
+    z-index: 2;
+    position: absolute;
+    /*padding-left: 30px;*/
+    top: 12px;
+    right: 50px;
+    transform: scale(1.25);
+
+}
 
 .chartContainer {
     display: flex;

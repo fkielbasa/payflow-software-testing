@@ -44,7 +44,12 @@ function CreditCard(props) {
 
     return (
         <div
-            style={{...backgroundStyles, transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}}
+            style={{
+                ...backgroundStyles,
+                position: 'relative',
+                zIndex: props.isClicked ? 2 : 1,
+                transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+            }}
             className={`${styles.balance} ${isHovered ? styles.hovered : ''}`}
             to={toValue}
         >
