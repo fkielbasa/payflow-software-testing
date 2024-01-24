@@ -35,7 +35,7 @@ const DropdownList = (props) => {
         <ul className={stylesDropDown.dropdownList}>
             {accountData.map((account, index) => (
                 <li key={index} onClick={() => handleAccountSelect(account.id)}>
-                    {formatAccountNumber(account.number)}
+                    {account.currency}
                 </li>
             ))}
         </ul>

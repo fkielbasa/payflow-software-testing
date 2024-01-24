@@ -24,6 +24,7 @@ import cards from "../../../../assets/navbar/cards/credit-card.svg";
 import cardsFill from "../../../../assets/navbar/cards/credit-card-fill.svg";
 import DropdownList from "./DropDown";
 import AccountData from "../../pages/account/AccountData";
+import { IoIosArrowDown } from "react-icons/io";
 
 
 
@@ -62,15 +63,17 @@ function Navbar() {
         from: {opacity: 0, transform: 'translateY(50px)'},
         to: {opacity: 1, transform: 'translateY(0)'},
     });
+    const dropdownAnimation = useSpring({
+        opacity: isDropdownOpen ? 1 : 0,
+        transform: isDropdownOpen ? 'translateY(0)' : 'translateY(10px)',
+    });
+
 
     const handleAccountSelect = () => {
-        setIsDropdownOpen(false);
+        // if (!(event.relatedTarget && event.relatedTarget.closest('.dropdownList'))) {
+            setIsDropdownOpen(false);
+
     };
-    // const logout = () => {
-    //     localStorage.clear()
-    //     navigate('/home')
-    //     window.location.reload()
-    // }
 
     const showSettings = () => {
         alert("Nie ma i nie będzie")
@@ -134,19 +137,18 @@ function Navbar() {
                                         Kantor
                                     </Link>
                                 </li>
+                                <div onMouseEnter={showDropDown} onMouseLeave={handleAccountSelect}>
                                 <li className={isAccount ? [styles.liList, styles.selected].join(" ") : styles.liList}>
-                                    <div onClick={showDropDown}
-                                         className={`${styles.aLink}`}>
                                         <AccountBalanceIcon className={styles.navImages}></AccountBalanceIcon>
                                         Rachunki
-                                    </div>
+                                    <IoIosArrowDown style={{margin:3}}/>
                                 </li>
-                                {isDropdownOpen && (
-                                    <DropdownList onAccountSelect={handleAccountSelect} status={setIsDropdownOpen} />
-                                )}
-
-
+                                    {isDropdownOpen && (
+                                        <DropdownList onAccountSelect={handleAccountSelect} status={setIsDropdownOpen}/>
+                                    )}
+                                    </div>
                             </ul>
+
                         </nav>
                     </div>
 
