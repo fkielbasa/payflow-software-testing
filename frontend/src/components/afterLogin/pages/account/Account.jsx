@@ -79,7 +79,6 @@ const Account = () => {
         <div className={styles.accountRightContainer}>
             {cardData && Object.keys(cardData).length > 0 ? (
                 <div className={styles.rightContainer}>
-                    Karta
                     <AccountCard
                         owner={cardData.owner}
                         balance={accountData.balance}

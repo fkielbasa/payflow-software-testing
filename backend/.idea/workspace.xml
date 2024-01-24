@@ -8,9 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/AccountDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/CardDetails.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/CardDetails.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

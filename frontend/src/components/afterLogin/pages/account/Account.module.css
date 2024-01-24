@@ -2,10 +2,7 @@
     display: flex;
     width: 100%;
     flex-direction: row;
-    /*flex-wrap: wrap;*/
-    /*justify-content: space-evenly;*/
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 5%;
 }
 .accountLeftContainer {
     display: flex;
@@ -20,8 +17,9 @@
     display: flex;
     width: 50%;
     height: 100%;
-    /*background-color: #8cabbe;*/
+    background-color: #65b6d5;
     flex-direction: column;
+    border-radius: 15px;
     /*flex-wrap: wrap;*/
 }
 .accountDataContainer{
@@ -53,14 +51,17 @@
     padding: 5%;
     align-items: center;
     border-radius: 15px;
-    background-color: #6eb4ec;
-}
-.cardBottomMargin{
-    margin-bottom: 20px;
+    /*background-color: #6eb4ec;*/
 }
 .inactiveCard{
     display: flex;
     flex-direction: column;
+    /*background-color: #6eb4ec;*/
+    border: 3px solid #276678;
+    margin-top: 10%;
+    border-radius: 10px;
+    padding-right: 10%;
+    padding-left: 10%;
 }
 .activateCard{
     border-radius: 10px;

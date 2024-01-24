@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react";
 import styles from './Account.module.css'
 import CreditCard from "../cards/CreditCard";
 
 const AccountCard= (props) => {
     console.log(props.cardNumber)
     return(
-        <div className={styles.cardBottomMargin}>
+        <div style={{marginLeft: 20}}>
           <CreditCard currency={props.currency}
                       type={'Karta debetowa'}
                       balance={props.balance}
