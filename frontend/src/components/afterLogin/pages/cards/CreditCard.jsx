@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import chip from "../../../../assets/transations/chip.png";
 import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 import logo from "../../../../assets/navbar/payflow.png";
+import refresh from "../../../../assets/refresh.svg";
 
 function CreditCard(props) {
     const [isHovered, setIsHovered] = useState(false);
@@ -45,12 +46,6 @@ function CreditCard(props) {
         <div
             style={{...backgroundStyles, transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}}
             className={`${styles.balance} ${isHovered ? styles.hovered : ''}`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => {
-                setIsHovered(false);
-                setIsFlipped(false); // Resetowanie obrotu po opuszczeniu myszką
-            }}
-            onClick={() => setIsFlipped(!isFlipped)} // Obracaj kartę po kliknięciu
             to={toValue}
         >
             <div className={styles.balanceText}>
@@ -58,6 +53,18 @@ function CreditCard(props) {
                     <div className={styles.textLeft}>
                         <p className={`${styles.textDecoration} ${styles.fontSize}`}>{props.currency}</p>
                         {/*<p className={styles.textDecoration}>{props.type}</p>*/}
+                    </div>
+                    <div className={styles.centerThat}>
+                        <div
+                            className={styles.otherSiteContainer}
+                            onClickCapture={() => setIsHovered(true)}
+                            onClickCapture={() => {
+                                setIsHovered(false);
+                                setIsFlipped(false);
+                            }}
+                            onClick={() => setIsFlipped(!isFlipped)}>
+                            <img className={styles.otherSite} src={refresh} alt="refresh"/>
+                        </div>
                     </div>
                     <div className={styles.textRight}>
                         <p className={`${styles.textDecoration} ${styles.fontSize} ${styles.paddingRight}`}>{currentBalanceText}</p>
@@ -92,8 +99,19 @@ function CreditCard(props) {
                         ...backgroundStyles,
                     }}
                 >
+                    <div className={styles.centerThatReverse}>
+                        <div
+                            className={styles.otherSiteContainer}
+                            onClickCapture={() => setIsHovered(false)}
+                            onClickCapture={() => {
+                                setIsHovered(true);
+                                setIsFlipped(true);
+                            }}
+                            onClick={() => setIsFlipped(!isFlipped)}>
+                            <img className={styles.otherSite} src={refresh} alt="refresh"/>
+                        </div>
+                    </div>
                     <div className={styles.revertContainer}>
-
                         <div className={styles.cardSlider}></div>
                         <div className={styles.rotate}>
                             <p>CVV: {props.cvv}</p>
