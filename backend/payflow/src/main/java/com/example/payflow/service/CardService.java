@@ -1,6 +1,7 @@
 package com.example.payflow.service;
 
 import com.example.payflow.dto.CardDTO;
+import com.example.payflow.dto.PinDTO;
 import com.example.payflow.dto.mapper.CardDTOMapper;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.Card;
@@ -66,9 +67,9 @@ public class CardService {
         }
         return null;
     }
-    public Card removeCardById(Long id) {
+    public Card removeCardById(Long id, PinDTO pin) {
         Optional<Card> c = cardRepository.findById(id);
-        if(c.isPresent()){
+        if(c.isPresent() && c.get().getCardDetails().getPin().equals(pin.getPin())){
             cardRepository.deleteById(id);
             return c.orElseThrow();
         }
