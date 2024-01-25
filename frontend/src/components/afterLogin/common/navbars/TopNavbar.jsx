@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import styles from './TopNavbar.module.css';
-
 import { FaUser } from "react-icons/fa";
-import { IoMdSettings } from "react-icons/io";
-import { TbLogout } from "react-icons/tb";
 import { IoIosArrowDown } from "react-icons/io";
 import { TOKEN_KEY, user } from "../../../../config/authConfig";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
-import { backgroundStyles2 } from '../../../utils/backgroundStyles';
+import {backgroundStyles2} from "../../../utils/backgroundStyles";
+
 
 function TopNavbar() {
     let navigate = useNavigate()
