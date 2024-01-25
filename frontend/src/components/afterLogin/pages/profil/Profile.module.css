@@ -8,9 +8,9 @@
 }
 .container {
     display: flex;
-    /*flex-wrap: wrap;*/
-    /*width: 90%;*/
-    /*overflow: auto;*/
+    flex-wrap: wrap;
+    justify-content: center;
+    max-height: 90%;
 }
 
 .cell {
@@ -40,4 +40,10 @@
 
 .correspondenceWrapper {
     background-color: darkolivegreen;
+}
+
+@media all and (width < 1850px){
+    .container {
+        overflow: auto;
+    }
 }
