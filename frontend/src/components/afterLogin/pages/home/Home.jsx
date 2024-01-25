@@ -30,9 +30,8 @@ function Home() {
     const [apiDataTransactions, setApiDataTransactions] = useState([]);
     const [apiDataAllTransactions, setApiDataAllTransactions] = useState([]);
     const [apiDataChartTransactions, setApiDataChartTransactions] = useState([]);
-    const [apiTransactionClick, setTransactionClick] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [userAccounts, setUserAccounts] = useState([]);
+    // const [userAccounts, setUserAccounts] = useState([]);
     const [selectedTransaction, setSelectedTransaction] = useState(null);
     const [receiverData, setReceiverData] = useState({});
     const [selectedAccountId, setSelectedAccountId] = useState(null); // Nowy stan dla śledzenia klikniętego konta
@@ -42,46 +41,46 @@ function Home() {
 
 
     useEffect(() => {
-        const getDataAccountNumber = async () => {
-            axios
-                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
-                .then((response) => {
-                    console.log('getDataAccountNumber response', response.data)
-                    setApiDataAccountNumber(response.data);
-                })
-                .catch((err) => {
-                    console.error(err);
-                });
-        };
-
-        const getDataAllTransactions = async () => {
-            axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers`, config)
-                .then((response) => {
-                    console.log('getDataAllTransactions response', response.data);
-                    setApiDataAllTransactions(response.data);
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-        };
-
-        const getAccountNumbers = () => {
-            axios
-                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
-                .then((response) => {
-                    setUserAccounts(response.data.map(ac => ac.id))
-                    console.log('getAccountNumbers response', response.data.map(ac => ac.id))
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
-        }
-
         getDataAccountNumber();
         getDataTransactions(user.userId);
-        getAccountNumbers()
+        // getAccountNumbers()
         getDataAllTransactions();
     }, [user.userId]);
+
+    const getDataAccountNumber = async () => {
+        axios
+            .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
+            .then((response) => {
+                console.log('getDataAccountNumber response', response.data)
+                setApiDataAccountNumber(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
+
+    const getDataAllTransactions = async () => {
+        axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers`, config)
+            .then((response) => {
+                console.log('getDataAllTransactions response', response.data);
+                setApiDataAllTransactions(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
+
+    // const getAccountNumbers = () => {
+    //     axios
+    //         .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
+    //         .then((response) => {
+    //             setUserAccounts(response.data.map(ac => ac.id))
+    //             console.log('getAccountNumbers response', response.data.map(ac => ac.id))
+    //         })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         })
+    // }
 
     const getDataTransactions = async (id) => {
         axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
@@ -116,6 +115,16 @@ function Home() {
                 console.error(err);
             })
     };
+    const checkCurrencyAvailability = async (selectedCurrency) => {
+        try {
+            const response = await axios.get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config);
+
+            return response.data.some((account) => account.currency === selectedCurrency);
+        } catch (error) {
+            console.error('API Error:', error);
+            return false;
+        }
+    };
 
     const openPopup = () => {
         setIsPopupOpen(true);
@@ -127,17 +136,6 @@ function Home() {
 
     const handleAddNumber = () => {
         closePopup();
-    };
-
-    const checkCurrencyAvailability = async (selectedCurrency) => {
-        try {
-            const response = await axios.get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config);
-
-            return response.data.some((account) => account.currency === selectedCurrency);
-        } catch (error) {
-            console.error('API Error:', error);
-            return false;
-        }
     };
 
     const handleSubmit = async (event) => {
@@ -178,17 +176,6 @@ function Home() {
         setSelectedTransaction(transaction);
         personalData(transaction.id);
     };
-
-    // const getTransactionClick = async (id) => {
-    //     axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
-    //         .then((response) => {
-    //             console.log('setTransactionClick response', response.data);
-    //             setTransactionClick(response.data);
-    //         })
-    //         .catch(err => {
-    //             console.error(err);
-    //         })
-    // };
 
     const handleCurrencyChange = (selectedCurrency) => {
         console.log('Wybrana waluta:', selectedCurrency);
@@ -252,7 +239,7 @@ function Home() {
                                 <div className={styles.transactionCard}>
                                     <TransactionCard
                                         key={index}
-                                        userSender={userAccounts.includes(transaction.senderAccountId)}
+                                        userSender={apiDataAccountNumber.includes(transaction.senderAccountId)}
                                         data={transaction}
                                         handleTransactionClick={handleTransactionClick}
                                         showAmount
