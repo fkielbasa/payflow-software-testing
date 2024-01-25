@@ -5,31 +5,58 @@ import { useSpring, animated } from 'react-spring';
 import axios from "axios";
 import { BASE_URL } from "../../../../config/shared";
 import { config, user } from "../../../../config/authConfig";
+import CardsChart from "./CardsChart";
 
 function Cards() {
     const fadeInAnimation = useSpring({
-        from: { opacity: 0, transform: 'translateY(50px)' },
-        to: { opacity: 1, transform: 'translateY(0)' },
+        from: {opacity: 0, transform: 'translateY(50px)'},
+        to: {opacity: 1, transform: 'translateY(0)'},
     });
 
     const [apiCardData, setApiCardData] = useState([]);
     const [clickedCardIndex, setClickedCardIndex] = useState(null);
+    const [apiDataChartTransactions, setApiDataChartTransactions] = useState([]);
+    const [apiDataAllTransactions, setApiDataAllTransactions] = useState([]);
+    const [selectedAccountId, setSelectedAccountId] = useState(null);
+    const [currency, setCurrency] = useState('PLN'); // Dodaj stan dla waluty
 
     useEffect(() => {
-        const getCardData = async () => {
-            axios
-                .get(`${BASE_URL}/api/v1/users/${user.userId}/cards`, config)
-                .then((response) => {
-                    console.log('getCardData response', response.data);
-                    setApiCardData(response.data);
-                })
-                .catch((err) => {
-                    console.error(err);
-                });
-        };
-
         getCardData();
     }, [user.userId]);
+
+    const getCardData = async () => {
+        axios
+            .get(`${BASE_URL}/api/v1/users/${user.userId}/cards`, config)
+            .then((response) => {
+                console.log('getCardData response', response.data);
+                setApiCardData(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
+
+    const getDataChartTransactions = async (id) => {
+        axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers`, config)
+            .then((response) => {
+                console.log('getDataAllTransactions response', response.data);
+                setApiDataChartTransactions(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
+
+    const getDataAllTransactions = async () => {
+        axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers`, config)
+            .then((response) => {
+                console.log('getDataAllTransactions response', response.data);
+                setApiDataAllTransactions(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
 
     const handleClick = (index, cardId) => {
         console.log('karta wybrana')
@@ -46,7 +73,7 @@ function Cards() {
     return (
         <animated.div style={fadeInAnimation}>
             <div className={styles.cardsPage}>
-                <div className={styles.cardsContainer}>
+                <div>
                     {apiCardData.map((card, index) => {
                         return (
                             <div
@@ -73,10 +100,14 @@ function Cards() {
                         );
                     })}
                 </div>
-                <div>
-                    {/*chart*/}
+                <div className={styles.leftSitePosition}>
+                    {/*<div className={styles.chartPosition}>*/}
+                        <CardsChart currency={currency}
+                                    transactions={selectedAccountId ? apiDataChartTransactions : apiDataAllTransactions}/>
+                    {/*</div>*/}
                 </div>
             </div>
+
         </animated.div>
     );
 }
