@@ -29,6 +29,7 @@ function Home() {
     const [apiDataAccountNumber, setApiDataAccountNumber] = useState([]);
     const [apiDataTransactions, setApiDataTransactions] = useState([]);
     const [apiDataAllTransactions, setApiDataAllTransactions] = useState([]);
+    const [apiDataChartTransactions, setApiDataChartTransactions] = useState([]);
     const [apiTransactionClick, setTransactionClick] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [userAccounts, setUserAccounts] = useState([]);
@@ -87,6 +88,17 @@ function Home() {
             .then((response) => {
                 console.log('getDataTransactions response', response.data);
                 setApiDataTransactions(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
+
+    const getDataChartTransactions = async (id) => {
+        axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers`, config)
+            .then((response) => {
+                console.log('getDataAllTransactions response', response.data);
+                setApiDataChartTransactions(response.data);
             })
             .catch(err => {
                 console.error(err);
@@ -167,16 +179,16 @@ function Home() {
         personalData(transaction.id);
     };
 
-    const getTransactionClick = async (id) => {
-        axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
-            .then((response) => {
-                console.log('setTransactionClick response', response.data);
-                setTransactionClick(response.data);
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    };
+    // const getTransactionClick = async (id) => {
+    //     axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
+    //         .then((response) => {
+    //             console.log('setTransactionClick response', response.data);
+    //             setTransactionClick(response.data);
+    //         })
+    //         .catch(err => {
+    //             console.error(err);
+    //         })
+    // };
 
     const handleCurrencyChange = (selectedCurrency) => {
         console.log('Wybrana waluta:', selectedCurrency);
@@ -185,8 +197,9 @@ function Home() {
 
     const handleAccountNumberClick = (accountData) => {
         console.log("Kliknięty id konta:", accountData.id);
-        getTransactionClick(accountData.id);
+        // getTransactionClick(accountData.id);
         getDataTransactions(accountData.id);
+        getDataChartTransactions(accountData.id);
 
         const clickedIndex = apiDataAccountNumber.findIndex(account => account.id === accountData.id);
 
@@ -224,7 +237,7 @@ function Home() {
                 <div className={styles.content}>
                     <div className={styles.leftSitePosition}>
 
-                        <TransactionChart currency={currency} transactions={selectedAccountId ? apiTransactionClick : apiDataAllTransactions} />
+                        <TransactionChart currency={currency} transactions={selectedAccountId ? apiDataChartTransactions : apiDataAllTransactions} />
 
                     </div>
                     <div className={styles.rightSitePosition}>

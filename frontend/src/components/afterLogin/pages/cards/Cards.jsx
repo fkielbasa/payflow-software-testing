@@ -1,5 +1,3 @@
-// Cards.jsx
-
 import React, { useEffect, useState } from 'react';
 import styles from './Cards.module.css';
 import CreditCard from "./CreditCard";
@@ -10,8 +8,8 @@ import { config, user } from "../../../../config/authConfig";
 
 function Cards() {
     const fadeInAnimation = useSpring({
-        from: {opacity: 0, transform: 'translateY(50px)'},
-        to: {opacity: 1, transform: 'translateY(0)'},
+        from: { opacity: 0, transform: 'translateY(50px)' },
+        to: { opacity: 1, transform: 'translateY(0)' },
     });
 
     const [apiCardData, setApiCardData] = useState([]);
@@ -37,6 +35,12 @@ function Cards() {
         console.log('karta wybrana')
         console.log('Card ID:', cardId);
         setClickedCardIndex(index);
+    }
+
+    // Sprawdzenie, czy apiCardData jest tablicą
+    if (!Array.isArray(apiCardData)) {
+        console.error('apiCardData is not an array:', apiCardData);
+        return null; // lub obsłuż błąd odpowiednio
     }
 
     return (
@@ -75,5 +79,6 @@ function Cards() {
             </div>
         </animated.div>
     );
-};
+}
+
 export default Cards;
