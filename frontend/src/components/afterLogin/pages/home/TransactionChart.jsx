@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import { backgroundStyles1 } from "../../../utils/backgroundStyles";
+import {Chart as ChartJS} from 'chart.js/auto';
+
 
 const groupAndSumTransactionsByDate = (transactions) => {
     // Filtruj transakcje do ostatniego miesiąca
@@ -59,17 +60,16 @@ const TransactionChart = ({ transactions, currency }) => {
 
     const options = {
         scales: {
-            xAxes: [
-                {
-                    type: 'time',
-                    time: {
-                        unit: 'day',
-                        displayFormats: {
-                            day: 'DD.MM.YYYY',
-                        },
-                    },
+            x: {
+                type: 'time',
+                time: {
+                    unit: 'day',
+                    tooltipFormat: 'DD.MM.YYYY',
                 },
-            ],
+            },
+            y: {
+                beginAtZero: true,
+            },
         },
     };
 

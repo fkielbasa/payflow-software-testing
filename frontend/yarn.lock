@@ -3355,6 +3355,11 @@ chart.js@^4.4.1:
   dependencies:
     "@kurkle/color" "^0.3.0"
 
+chartjs-adapter-dayjs@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/chartjs-adapter-dayjs/-/chartjs-adapter-dayjs-1.0.0.tgz#794cafb11d3715a565daae4ef99525f9ed2d763f"
+  integrity sha512-EnbVqTJGFKLpg1TROLdCEufrzbmIa2oeLGx8O2Wdjw2EoMudoOo9+YFu+6CM0Z0hQ/v3yq/e/Y6efQMu22n8Jg==
+
 check-types@^11.2.3:
   version "11.2.3"
   resolved "https://registry.npmjs.org/check-types/-/check-types-11.2.3.tgz"
@@ -4160,6 +4165,11 @@ data-urls@^2.0.0:
     abab "^2.0.3"
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
+
+dayjs@^1.11.10:
+  version "1.11.10"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
+  integrity sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==
 
 debug@2.6.9, debug@^2.6.0:
   version "2.6.9"

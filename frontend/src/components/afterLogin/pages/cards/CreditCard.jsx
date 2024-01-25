@@ -60,7 +60,10 @@ function CreditCard(props) {
                         {/*<p className={styles.textDecoration}>{props.type}</p>*/}
                     </div>
                     <div className={styles.centerThat}>
-                        <div
+
+                        {props.isClicked && (
+
+                            <div
                             className={styles.otherSiteContainer}
                             onClickCapture={() => setIsHovered(true)}
                             onClickCapture={() => {
@@ -70,6 +73,7 @@ function CreditCard(props) {
                             onClick={() => setIsFlipped(!isFlipped)}>
                             <img className={styles.otherSite} src={refresh} alt="refresh"/>
                         </div>
+                        )}
                     </div>
                     <div className={styles.textRight}>
                         <p className={`${styles.textDecoration} ${styles.fontSize} ${styles.paddingRight}`}>{currentBalanceText}</p>

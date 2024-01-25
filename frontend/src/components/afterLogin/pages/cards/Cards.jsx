@@ -10,8 +10,8 @@ import { config, user } from "../../../../config/authConfig";
 
 function Cards() {
     const fadeInAnimation = useSpring({
-        from: { opacity: 0, transform: 'translateY(50px)' },
-        to: { opacity: 1, transform: 'translateY(0)' },
+        from: {opacity: 0, transform: 'translateY(50px)'},
+        to: {opacity: 1, transform: 'translateY(0)'},
     });
 
     const [apiCardData, setApiCardData] = useState([]);
@@ -33,8 +33,9 @@ function Cards() {
         getCardData();
     }, [user.userId]);
 
-    const handleClick = (index) => {
-        console.log('klikam')
+    const handleClick = (index, cardId) => {
+        console.log('karta wybrana')
+        console.log('Card ID:', cardId);
         setClickedCardIndex(index);
     }
 
@@ -42,32 +43,37 @@ function Cards() {
         <animated.div style={fadeInAnimation}>
             <div className={styles.cardsPage}>
                 <div className={styles.cardsContainer}>
-                    {apiCardData.map((card, index) => (
-                        <div
-                            key={index}
-                            className={`${styles.cardOnCard} ${clickedCardIndex === index ? styles.active : ''}`}
-                            onClick={() => handleClick(index)}
-                        >
-                            <CreditCard
-                                currency={card.currency}
-                                balance={card.balance}
-                                cardNumber={card.cardNumber}
-                                owner={card.owner}
-                                cvv={card.cvv}
-                                expiration={card.validDate}
-                                active={card.active}
-                                blocked={card.blocked}
-                                details={false}
-                                id={card.id}
-                                size={"small"}
-                                to={`/cards/$`}
-                            />
-                        </div>
-                    ))}
+                    {apiCardData.map((card, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className={`${styles.cardOnCard} ${clickedCardIndex === index ? styles.active : ''}`}
+                                onClick={() => handleClick(index, card.id)}
+                            >
+                                <CreditCard
+                                    currency={card.currency}
+                                    balance={card.balance}
+                                    cardNumber={card.cardNumber}
+                                    owner={card.owner}
+                                    cvv={card.cvv}
+                                    expiration={card.validDate}
+                                    active={card.active}
+                                    blocked={card.blocked}
+                                    details={false}
+                                    id={card.id}
+                                    size={"small"}
+                                    to={`/cards/$`}
+                                    isClicked={clickedCardIndex === index}
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+                <div>
+                    {/*chart*/}
                 </div>
             </div>
         </animated.div>
     );
-}
-
+};
 export default Cards;
