@@ -19,10 +19,26 @@ function Cards() {
     const [apiDataAllTransactions, setApiDataAllTransactions] = useState([]);
     const [selectedAccountId, setSelectedAccountId] = useState(null);
     const [currency, setCurrency] = useState('PLN'); // Dodaj stan dla waluty
+    const [apiDataAccountNumber, setApiDataAccountNumber] = useState([]);
+
 
     useEffect(() => {
+        getDataAccountNumber();
         getCardData();
+        getDataAllTransactions();
     }, [user.userId]);
+
+    const getDataAccountNumber = async () => {
+        axios
+            .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
+            .then((response) => {
+                console.log('getDataAccountNumber response', response.data)
+                setApiDataAccountNumber(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
 
     const getCardData = async () => {
         axios
@@ -61,6 +77,8 @@ function Cards() {
     const handleClick = (index, cardId) => {
         console.log('karta wybrana')
         console.log('Card ID:', cardId);
+
+
         setClickedCardIndex(index);
     }
 
