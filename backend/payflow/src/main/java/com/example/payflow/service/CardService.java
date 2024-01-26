@@ -15,6 +15,7 @@ import com.example.payflow.util.NumberGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.sound.midi.SysexMessage;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -67,9 +68,9 @@ public class CardService {
         }
         return null;
     }
-    public Card removeCardById(Long id, PinDTO pin) {
+    public Card removeCardById(Long id, String pin) {
         Optional<Card> c = cardRepository.findById(id);
-        if(c.isPresent() && c.get().getCardDetails().getPin().equals(pin.getPin())){
+        if(c.isPresent() && c.get().getCardDetails().getPin().equals(pin)){
             cardRepository.deleteById(id);
             return c.orElseThrow();
         }

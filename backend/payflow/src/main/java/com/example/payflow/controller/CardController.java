@@ -41,7 +41,7 @@ public class CardController {
         return new ResponseEntity("Invalid data or account doesn't exist",HttpStatus.BAD_REQUEST);
     }
     @DeleteMapping("/cards/{id}")
-    public ResponseEntity<String> removeCardById(@PathVariable Long id, PinDTO pin){
+    public ResponseEntity<String> removeCardById(@PathVariable Long id, @RequestParam String pin){
         Card c = cardService.removeCardById(id, pin);
         if (c != null){
             return new ResponseEntity("Card successfully removed", HttpStatus.OK);
