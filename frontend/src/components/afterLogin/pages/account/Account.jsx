@@ -92,15 +92,17 @@ const Account = () => {
         <div className={styles.accountRightContainer}>
             {cardData && Object.keys(cardData).length > 0 ? (
                 <div className={styles.rightContainer}>
-                    <span style={{marginTop: '2%',fontSize: 24}}>Karta</span>
-                    <AccountCard
-                        owner={cardData.owner}
-                        balance={accountData.balance}
-                        currency={accountData.currency}
-                        cardNumber={cardData.cardNumber}
-                        cvv={cardData.cvv}
-                        validDate={cardData.validDate}
-                    />
+                    <span style={{marginTop: '2%'}}>Karta</span>
+                    <div className={styles.repairCard}>
+                        <AccountCard
+                            owner={cardData.owner}
+                            balance={accountData.balance}
+                            currency={accountData.currency}
+                            cardNumber={cardData.cardNumber}
+                            cvv={cardData.cvv}
+                            validDate={cardData.validDate}
+                        />
+                    </div>
                     <CardDetails
                         id={cardData.id}
                         active={cardData.active}

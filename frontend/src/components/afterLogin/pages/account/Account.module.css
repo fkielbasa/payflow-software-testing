@@ -1,12 +1,15 @@
 .mainContainer{
     display: flex;
-    width: 100%;
+    width: 65vw;
+    /*width: 100%;*/
     flex-direction: row;
-    margin-right: 3%;
+    /*margin-right: 3%;*/
+
+    /*background-color: red;*/
 }
 .accountLeftContainer {
     display: flex;
-    width: 60%;
+    width: 59%;
     align-items: center;
     /*background-color: #65b6d5;*/
     flex-direction: column;
@@ -15,7 +18,7 @@
 }
 .accountRightContainer {
     display: flex;
-    width: 40%;
+    width: 38%;
     height: 100%;
     flex-direction: column;
     border-radius: 15px;
@@ -52,6 +55,10 @@
     align-items: center;
     border-radius: 15px;
     /*background-color: #6eb4ec;*/
+}
+.repairCard {
+    background-color: red;
+    width: 100%;
 }
 .inactiveCard{
     display: flex;
