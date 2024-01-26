@@ -29,7 +29,7 @@ const groupAndSumTransactionsByDate = (transactions) => {
     return Object.values(groupedTransactions).reverse();
 };
 
-const TransactionChart = ({ transactions, currency }) => {
+const CardsChart = ({ transactions, currency }) => {
     const groupedTransactions = groupAndSumTransactionsByDate(transactions);
 
     const data = {
@@ -77,6 +77,6 @@ const TransactionChart = ({ transactions, currency }) => {
     return <Line data={data} options={options} />;
 };
 
-export default TransactionChart;
+export default CardsChart;
 
 

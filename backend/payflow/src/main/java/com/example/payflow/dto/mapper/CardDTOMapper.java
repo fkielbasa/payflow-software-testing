@@ -20,7 +20,8 @@ public class CardDTOMapper implements Function<Card, CardDTO> {
                 card.getCardDetails().isBlocked(),
                 card.getAccountNumberCard().getUserId().getFirstName() + ' ' + card.getAccountNumberCard().getUserId().getLastName(),
                 card.getAccountNumberCard().getBalance(),
-                card.getAccountNumberCard().getCurrency()
+                card.getAccountNumberCard().getCurrency(),
+                card.getAccountNumberCard().getId()
         );
     }
 }
