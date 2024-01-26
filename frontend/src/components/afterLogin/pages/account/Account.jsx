@@ -3,11 +3,12 @@ import AccountData from "./AccountData";
 import axios from "axios";
 import styles from './Account.module.css'
 import {BASE_URL} from "../../../../config/shared";
-import {config} from "../../../../config/authConfig";
+import {config, user} from "../../../../config/authConfig";
 import {useLocation} from "react-router-dom";
 import AccountCard from "./AccountCard";
-import AccountDetails from "./AccountDetails";
+import CardDetails from "./CardDetails";
 import Card from "./NewCard";
+import TransactionChart from "../home/TransactionChart";
 
 const Account = () => {
     const [accountData, setAccountData] = useState({})
@@ -15,10 +16,10 @@ const Account = () => {
     const location = useLocation();
     const [expirationMonth, setExpirationMonth] = useState(null);
     const [expirationYear, setExpirationYear] = useState(null);
+    const [apiDataTransactions, setApiDataTransactions] = useState([]);
     const { state } = location;
     const accountId = state ? state.accountId : null;
     useEffect(() => {
-            console.log("id: " + accountId);
             const getAccountDetails = () => {
                 axios
                     .get(`${BASE_URL}/api/v1/numbers/${accountId}`, config)
@@ -42,8 +43,20 @@ const Account = () => {
                             console.error(er);
                         });
             }
+        const getDataTransactions = (id) => {
+            axios
+                .get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
+                .then((response) => {
+                    console.log('getDataTransactions response', response.data);
+                    setApiDataTransactions(response.data);
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+            };
             getAccountDetails()
             getCardDetails();
+            getDataTransactions(accountId)
     }, [accountId]);
 
     const extractMonthAndYear = (validDate) => {
@@ -62,6 +75,7 @@ const Account = () => {
             <div className={styles.accountDataContainer}>
             {accountData && Object.keys(accountData).length > 0 ? (
                 <div className={styles.leftContainer}>
+                    <p style={{display: "flex",justifyContent: "center"}}>Dane rachunku</p>
                     <AccountData
                         type={accountData.accountNumberType}
                         balance={accountData.balance}
@@ -73,22 +87,21 @@ const Account = () => {
                 <p>Brak danych do wyświetlenia</p>
             )}
             </div>
-            <p>TUTAJ BĘDZIE KIEDYŚ WYKRES??</p>
-            JAK BĘDZIE TO BĘDZIE
+            <TransactionChart currency={accountData.currency} transactions={apiDataTransactions}  />
         </div>
         <div className={styles.accountRightContainer}>
             {cardData && Object.keys(cardData).length > 0 ? (
                 <div className={styles.rightContainer}>
+                    <span style={{marginTop: '2%'}}>Karta</span>
                     <AccountCard
                         owner={cardData.owner}
                         balance={accountData.balance}
                         currency={accountData.currency}
                         cardNumber={cardData.cardNumber}
                         cvv={cardData.cvv}
-                        month={expirationMonth}
-                        year={expirationYear}
+                        validDate={cardData.validDate}
                     />
-                    <AccountDetails
+                    <CardDetails
                         id={cardData.id}
                         active={cardData.active}
                         blocked={cardData.blocked}
@@ -100,6 +113,5 @@ const Account = () => {
         </div>
         </div>
     );
-
 }
 export default Account

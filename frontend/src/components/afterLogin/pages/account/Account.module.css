@@ -2,30 +2,30 @@
     display: flex;
     width: 100%;
     flex-direction: row;
-    margin-right: 5%;
+    margin-right: 3%;
 }
 .accountLeftContainer {
     display: flex;
-    width: 50%;
-    height: 50%;
+    width: 60%;
     align-items: center;
     /*background-color: #65b6d5;*/
     flex-direction: column;
+    justify-content: space-between;
     /*flex-wrap: wrap;*/
 }
 .accountRightContainer {
     display: flex;
-    width: 50%;
+    width: 40%;
     height: 100%;
-    background-color: #65b6d5;
+    border-radius: 15%;
     flex-direction: column;
     border-radius: 15px;
-    /*flex-wrap: wrap;*/
+    background-color: #8cabbe;
 }
 .accountDataContainer{
     display: flex;
     justify-content: center;
-    width: 200%;
+    width: 100%;
     /*margin-top: 5%;*/
 }
 /*.leftContainer,*/
@@ -38,17 +38,18 @@
 .leftContainer{
     /*height: 30%;*/
     padding: 2%;
-    width: 30%;
+    width: 80%;
     font-size: 22px;
     border-radius: 15px;
     justify-content: center;
-    background-color: #8cabbe;
+
+    background-color: #65b6d5;
 }
 .rightContainer{
     display: flex;
     flex-direction: column;
     font-size: 24px;
-    padding: 5%;
+    /*padding: 5%;*/
     align-items: center;
     border-radius: 15px;
     /*background-color: #6eb4ec;*/
@@ -57,6 +58,8 @@
     display: flex;
     flex-direction: column;
     /*background-color: #6eb4ec;*/
+    /*background-color: #65b6d5;*/
+
     border: 3px solid #276678;
     margin-top: 10%;
     border-radius: 10px;

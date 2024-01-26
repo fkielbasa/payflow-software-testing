@@ -8,10 +8,10 @@ const AccountCard= (props) => {
           <CreditCard currency={props.currency}
                       type={'Karta debetowa'}
                       balance={props.balance}
-                      accountNumber={props.cardNumber}
+                      cardNumber={props.cardNumber}
                       owner={props.owner}
-                      expirationMonth={props.month}
-                      expirationYear={props.year}
+                      expiration={props.validDate}
+                      cvv={props.cvv}
                       cardStyle={4}
                       details={false} id={1} size={"small"}/>
         </div>

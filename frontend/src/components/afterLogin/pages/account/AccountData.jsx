@@ -6,7 +6,7 @@ import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 const AccountData = (props) => {
     return (
     <div>
-        <p>Dane rachunku</p>
+
         <TextInputChange
             name={"Typ konta"}
             placeholder={props.type}
@@ -31,14 +31,14 @@ const AccountData = (props) => {
             clicked
             disabled
         />
-        <TextInputChange
-            name={"Waluta"}
-            placeholder={props.currency}
-            type={"text"}
-            var={"currency"}
-            clicked
-            disabled
-        />
+        {/*<TextInputChange*/}
+        {/*    name={"Waluta"}*/}
+        {/*    placeholder={props.currency}*/}
+        {/*    type={"text"}*/}
+        {/*    var={"currency"}*/}
+        {/*    clicked*/}
+        {/*    disabled*/}
+        {/*/>*/}
     </div>
 );
 }

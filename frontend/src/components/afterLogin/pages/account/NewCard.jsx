@@ -14,6 +14,7 @@ const Card = (props) => {
                 .catch((er) => {
                     console.error(er);
                 });
+            window.location.reload()
         };
 
     return (
