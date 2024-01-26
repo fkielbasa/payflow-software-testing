@@ -85,3 +85,10 @@
 .transactionCard {
     margin-top: -20px;
 }
+
+@media all and (width < 1500px) {
+    /*.content {*/
+    /*    flex-direction: column;*/
+    /*}*/
+
+}

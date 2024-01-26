@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b750e811-3640-4781-8c5f-6eb32b63e2b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/CreditCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/CreditCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/CreditCards.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/CreditCards.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/Cards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/Cards.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/EmptyAccountNumber.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/EmptyAccountNumber.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/Home.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

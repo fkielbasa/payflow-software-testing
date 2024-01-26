@@ -41,7 +41,7 @@ function Cards() {
     const getDataChartTransactions = async (id) => {
         axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers`, config)
             .then((response) => {
-                console.log('getDataAllTransactions response', response.data);
+                console.log('getDataChartTransactions response', response.data);
                 setApiDataChartTransactions(response.data);
             })
             .catch(err => {
