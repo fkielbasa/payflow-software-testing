@@ -69,10 +69,9 @@ function Navbar() {
     });
 
 
-    const handleAccountSelect = () => {
+    const hideDropDown = () => {
         // if (!(event.relatedTarget && event.relatedTarget.closest('.dropdownList'))) {
             setIsDropdownOpen(false);
-
     };
 
     const showSettings = () => {
@@ -137,16 +136,18 @@ function Navbar() {
                                         Kantor
                                     </Link>
                                 </li>
-                                <div onMouseEnter={showDropDown} onMouseLeave={handleAccountSelect}>
-                                <li className={isAccount ? [styles.liList, styles.selected].join(" ") : styles.liList}>
-                                        <AccountBalanceIcon className={styles.navImages}></AccountBalanceIcon>
-                                        Rachunki
-                                    <IoIosArrowDown style={{margin:3}}/>
-                                </li>
-                                    {isDropdownOpen && (
-                                        <DropdownList onAccountSelect={handleAccountSelect} status={setIsDropdownOpen}/>
-                                    )}
+                                <div onMouseEnter={showDropDown} onMouseLeave={hideDropDown}>
+                                    <div className={styles.aLink} >
+                                        <li className={isAccount ? [styles.liList, styles.selected].join(' ') : styles.liList}>
+                                            <AccountBalanceIcon className={styles.navImages}></AccountBalanceIcon>
+                                            Rachunki
+                                            <IoIosArrowDown style={{margin:3}}/>
+                                        </li>
                                     </div>
+                                    {isDropdownOpen && (
+                                        <DropdownList/>
+                                    )}
+                                </div>
                             </ul>
 
                         </nav>

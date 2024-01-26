@@ -44,7 +44,6 @@
     font-size: 22px;
     border-radius: 15px;
     justify-content: center;
-
     background-color: #65b6d5;
 }
 .rightContainer{
@@ -57,7 +56,6 @@
     /*background-color: #6eb4ec;*/
 }
 .repairCard {
-    background-color: red;
     width: 100%;
 }
 .inactiveCard{

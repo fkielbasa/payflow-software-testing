@@ -4,7 +4,7 @@ import CreditCard from "../cards/CreditCard";
 const AccountCard= (props) => {
     console.log(props.cardNumber)
     return(
-        <div style={{marginLeft: 20}}>
+        <div style={{padding: 10}}>
           <CreditCard currency={props.currency}
                       balance={props.balance}
                       cardNumber={props.cardNumber}

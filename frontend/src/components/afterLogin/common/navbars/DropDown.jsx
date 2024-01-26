@@ -26,8 +26,6 @@ const DropdownList = (props) => {
 
     const handleAccountSelect = (accountId) => {
         console.log(accountId)
-        props.status(false);
-        props.onAccountSelect(accountId)
         navigate('/account',{state:{accountId}})
     };
 
