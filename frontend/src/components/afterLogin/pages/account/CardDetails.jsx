@@ -69,13 +69,10 @@ const CardDetails = (props) => {
             .catch((er) => {
                 console.error(er);
             });
-        // window.location.reload()
+        window.location.reload()
     };
     status = props.blocked ? "Zablokowana" : props.active ? "Aktywna" : "Nie aktywna";
     const getStatusColor = (status, blocked) => blocked ? 'red' : (status ? 'green' : 'black');
-    const handleActivateButtonClick = () => {
-        setPopupOpen(true);
-    };
 
     const handleClosePopup = () => {
         setPopupOpen(false);

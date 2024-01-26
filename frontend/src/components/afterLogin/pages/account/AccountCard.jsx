@@ -6,14 +6,15 @@ const AccountCard= (props) => {
     return(
         <div style={{marginLeft: 20}}>
           <CreditCard currency={props.currency}
-                      type={'Karta debetowa'}
                       balance={props.balance}
                       cardNumber={props.cardNumber}
                       owner={props.owner}
                       expiration={props.validDate}
                       cvv={props.cvv}
                       cardStyle={4}
-                      details={false} id={1} size={"small"}/>
+                      details={false}
+                      isClicked={true}
+          />
         </div>
     );
 }

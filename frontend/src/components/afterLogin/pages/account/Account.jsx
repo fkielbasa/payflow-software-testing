@@ -87,12 +87,12 @@ const Account = () => {
                 <p>Brak danych do wyświetlenia</p>
             )}
             </div>
-            <TransactionChart currency={accountData.currency} transactions={apiDataTransactions}  />
+            <TransactionChart currency={accountData.currency} transactions={apiDataTransactions} />
         </div>
         <div className={styles.accountRightContainer}>
             {cardData && Object.keys(cardData).length > 0 ? (
                 <div className={styles.rightContainer}>
-                    <span style={{marginTop: '2%'}}>Karta</span>
+                    <span style={{marginTop: '2%',fontSize: 24}}>Karta</span>
                     <AccountCard
                         owner={cardData.owner}
                         balance={accountData.balance}

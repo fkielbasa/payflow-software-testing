@@ -7,7 +7,7 @@ import styles from "./Account.module.css";
 const CustomPopUp = (props) => {
     return(
         <Popup open={props.open} onClose={props.onClose} modal contentStyle={{
-            backgroundColor: 'gray',
+            backgroundColor: '#A9A9A9FF',
             padding: '20px',
             paddingBottom: 30,
             borderRadius: 10,

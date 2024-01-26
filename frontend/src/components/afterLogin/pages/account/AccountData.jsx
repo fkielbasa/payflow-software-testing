@@ -6,7 +6,6 @@ import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 const AccountData = (props) => {
     return (
     <div>
-
         <TextInputChange
             name={"Typ konta"}
             placeholder={props.type}
