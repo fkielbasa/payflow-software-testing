@@ -198,6 +198,14 @@
 .revertContainer {
     display: flex;
     flex-direction: column;
+    width: 100%;
+
+    /*background-color: blue;*/
+}
+
+.anotherRevertContainer {
+    display: flex;
+    flex-direction: row;
 }
 
 .rotate {
@@ -245,10 +253,14 @@
 .expDateRevert {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-    margin-left: 67px;
+    justify-content: space-between;
 
     /*background-color: aquamarine;*/
+}
+
+.marginExpDate {
+    margin-right: 7px;
+    margin-top: 5px;
 }
 
 /*if you gonna change anything here... good luck*/

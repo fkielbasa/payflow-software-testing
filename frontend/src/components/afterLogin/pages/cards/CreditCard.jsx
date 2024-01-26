@@ -129,14 +129,17 @@ function CreditCard(props) {
                     <div className={styles.invertShadow}>
                         <div className={styles.revertContainer}>
                             <p className={styles.fontSize}>{cardNumberConst}</p>
-                            <p className={`${styles.textDecoration} ${styles.anotherMarginTop}`}>{props.owner}</p>
+                            <div className={styles.expDateRevert}>
+                                <p className={`${styles.textDecoration} ${styles.anotherMarginTop}`}>{props.owner}</p>
+                                <div className={styles.marginExpDate}>
+                                    <p className={styles.textDecoration}>{formatExpirationDate(props.expiration)}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div className={styles.expDateRevert}>
-                            <p className={styles.textDecoration}>{formatExpirationDate(props.expiration)}</p>
-                        </div>
+
                     </div>
                     <div className={styles.revert}>
-                        <img className={styles.photo} src={logo} alt="logo"/>
+                    <img className={styles.photo} src={logo} alt="logo"/>
                     </div>
                 </div>
             )}
