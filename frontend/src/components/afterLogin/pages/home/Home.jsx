@@ -40,6 +40,7 @@ function Home() {
     const [currency, setCurrency] = useState('PLN'); // Domyślna waluta, możesz dostosować do swoich potrzeb
 
 
+
     useEffect(() => {
         getDataAccountNumber();
         getDataTransactions(user.userId);
@@ -202,6 +203,9 @@ function Home() {
 
         handleCurrencyChange(accountData.currency);
     };
+    const handleDetailsButtonClick = () => {
+        console.log("działa")
+    };
 
     return (
         <animated.div style={fadeInAnimation}>
@@ -215,6 +219,7 @@ function Home() {
                                 number={numbers.number}
                                 onClick={() => handleAccountNumberClick(numbers)}
                                 isClicked={numbers.isClicked}
+                                onDetailsButtonClick={handleDetailsButtonClick}
                             />
                         </div>
                     ))}

@@ -5,7 +5,25 @@ import { formatAccountNumber } from "../../../utils/formatAccountNumber";
 import useZoomEffect from '../../../utils/useZoomEffect';
 
 function AccountNumber(props) {
-    const [isClicked, setIsClicked] = useState(false);
+    const [showDetailsButton, setShowDetailsButton] = useState(false);
+
+    const handleDetailsButtonClick = () => {
+        props.onDetailsButtonClick();
+        console.log("click");
+    };
+
+    const handleClick = () => {
+        props.onClick(props);
+    };
+
+    useEffect(() => {
+        setShowDetailsButton(true);
+    }, [props.isClicked]);
+
+    useEffect(() => {
+        setShowDetailsButton(false);
+    }, [props.number]); // Schowaj szczegóły po zmianie numeru konta.
+
 
     // const isZoomedIn = useZoomEffect();
     // const marginStyle = isZoomedIn ? { marginTop: '0px' } : { marginTop: '15px' };
@@ -23,28 +41,27 @@ function AccountNumber(props) {
 
     const accountNumberConst = formatAccountNumber(props.number);
 
-    useEffect(() => {
-        if (isClicked) {
-            const timeoutId = setTimeout(() => {
-                setIsClicked(false);
-            }, 175);
+    // useEffect(() => {
+    //     if (isClicked) {
+    //         const timeoutId = setTimeout(() => {
+    //             setIsClicked(false);
+    //         }, 175);
+    //
+    //         return () => clearTimeout(timeoutId);
+    //     }
+    // }, [isClicked]);
 
-            return () => clearTimeout(timeoutId);
-        }
-    }, [isClicked]);
-
-    const handleClick = () => {
-        setIsClicked(true);
-        props.onClick(props);
-    };
-
+    // const handleClick = () => {
+    //     setIsClicked(true);
+    //     props.onClick(props);
+    // };
 
     return (
         <div
             className={styles.position}
             style={{
                 ...backgroundStyles,
-                transform: isClicked ? 'scale(1.05)' : 'scale(1)',
+                transform: props.isClicked ? 'scale(1.05)' : 'scale(1)',
             }}
             onClick={handleClick}
         >
@@ -62,8 +79,14 @@ function AccountNumber(props) {
                 <div className={styles.number}>
                     <p className={`${styles.textPosition} ${styles.smallText}`}> Numer konta:</p>
                     <p className={`${styles.textPosition} ${styles.smallerText} ${styles.boldedText}`}
-                       > {accountNumberConst} </p>
+                    > {accountNumberConst} </p>
                 </div>
+            </div>
+            <div
+                style={{justifyContent: "flex-end", marginTop: '5%', display: props.isClicked ? 'block' : 'none'}}
+                onClick={handleDetailsButtonClick}
+            >
+                Szczegóły
             </div>
         </div>
     );
