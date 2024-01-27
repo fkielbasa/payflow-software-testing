@@ -60,6 +60,13 @@
 @media all and (width < 1600px) {
     .containerFluid {
         overflow: auto;
+        max-height: 100%;
+    }
+
+}
+@media all and (width < 1300px) {
+    .containerFluid {
+        max-height: 80%;
     }
 
 }

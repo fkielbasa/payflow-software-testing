@@ -1,8 +1,9 @@
 .containerFluid {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 70%;
     width: 100%;
+
 }
 
 .sort {
@@ -25,6 +26,7 @@
     overflow: auto;
     width: 100%;
     height: 85%;
+    margin: 0 auto;
 }
 
 .transactionCircle {
@@ -198,9 +200,22 @@
    }
 }
 
+
+@media all and (width < 1150px){
+    .containerFluid {
+        /*height: 60%;*/
+
+    }
+}
 @media all and (width < 750px){
     .my-popup-content {
         width: 450px;
-        background-color: red;
+    }
+}
+
+@media all and (width < 600px){
+    .containerFluid {
+        height: 80vh;
+
     }
 }

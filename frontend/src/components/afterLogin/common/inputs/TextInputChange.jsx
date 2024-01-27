@@ -25,6 +25,8 @@ const TextInputChange = (props) => {
                 disabled={props.disabled}
                 step={"0.01"}
                 autoComplete="off"
+                minLength={props.minLength}
+                maxLength={props.maxLength}
             />
             <div
                 className=

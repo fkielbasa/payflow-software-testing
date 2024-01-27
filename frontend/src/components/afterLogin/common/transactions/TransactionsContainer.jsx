@@ -22,8 +22,8 @@ const TransactionsContainer = ({ maxPerPage }) => {
     const [sortByDate, setSortByDate] = useState(false)
 
     const fadeInAnimation = useSpring({
-        from: {opacity: 0, transform: 'translateY(50px)', width: '100%'},
-        to: {opacity: 1, transform: 'translateY(0)', width: '100%'},
+        from: {opacity: 0, transform: 'translateY(50px)', width: '100%', height: '95%'},
+        to: {opacity: 1, transform: 'translateY(0)', width: '100%', height: '95%'},
     });
 
 
@@ -173,7 +173,7 @@ const TransactionsContainer = ({ maxPerPage }) => {
                     ))}
 
                     <Popup open={!!selectedTransaction} onClose={closePopup}
-                           contentStyle={{backgroundColor: 'black', padding: '20px',paddingBottom: 30, borderRadius: 10, width: '650px', ...styles.myPopupContent}}
+                           contentStyle={{backgroundColor: '#28282B', padding: '20px',paddingBottom: 30, borderRadius: 10, width: '620px', ...styles.myPopupContent}}
                            className={styles.myPopupContent}
                     >
                         {selectedTransaction && JSON.stringify(personalDataTransfer) !== '{}' && (

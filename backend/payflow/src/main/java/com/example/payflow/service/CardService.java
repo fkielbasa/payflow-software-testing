@@ -1,6 +1,7 @@
 package com.example.payflow.service;
 
 import com.example.payflow.dto.CardDTO;
+import com.example.payflow.dto.PinDTO;
 import com.example.payflow.dto.mapper.CardDTOMapper;
 import com.example.payflow.model.AccountNumber;
 import com.example.payflow.model.Card;
@@ -14,6 +15,7 @@ import com.example.payflow.util.NumberGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.sound.midi.SysexMessage;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -48,7 +50,7 @@ public class CardService {
         if (ac.isPresent()) {
             var c = Card.builder()
                     .validDate(currentDate.plusYears(4))
-                    .cardNumber(NumberGenerator.generateAccountNumber())
+                    .cardNumber(NumberGenerator.generateCardNumber())
                     .cvv(NumberGenerator.generateCVV())
                     .accountNumberCard(ac.orElseThrow())
                     .build();
@@ -58,6 +60,7 @@ public class CardService {
                     .idCard(c)
                     .pin(null)
                     .build();
+            c.setCardDetails(cd);
             cardRepository.save(c);
             cardDetailsRepository.save(cd);
             CardDTO cardDTO = cardDTOMapper.apply(c);
@@ -65,9 +68,9 @@ public class CardService {
         }
         return null;
     }
-    public Card removeCardById(Long id) {
+    public Card removeCardById(Long id, String pin) {
         Optional<Card> c = cardRepository.findById(id);
-        if(c.isPresent()){
+        if(c.isPresent() && c.get().getCardDetails().getPin().equals(pin)){
             cardRepository.deleteById(id);
             return c.orElseThrow();
         }

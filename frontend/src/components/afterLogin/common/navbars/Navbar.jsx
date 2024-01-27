@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import styles from './Navbar.module.css';
+import stylesDropDown from './DropDown.module.css'
 import { useSpring, animated } from 'react-spring';
+import {BASE_URL} from "../../../../config/shared";
+import {formatAccountNumber} from "../../../utils/formatAccountNumber";
+import { MdAccountBalanceWallet } from "react-icons/md";
+import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 
 import house from "../../../../assets/navbar/home/houses.svg";
 import houseFill from "../../../../assets/navbar/home/houses-fill.svg";
@@ -17,9 +22,25 @@ import creditsFill from "../../../../assets/navbar/credits/money-bill-fill.svg";
 
 import cards from "../../../../assets/navbar/cards/credit-card.svg";
 import cardsFill from "../../../../assets/navbar/cards/credit-card-fill.svg";
+import DropdownList from "./DropDown";
+import AccountData from "../../pages/account/AccountData";
+import { IoIosArrowDown } from "react-icons/io";
+
+
+
+import settings from "../../../../assets/navbar/settings/gear.svg";
+import settingsFill from "../../../../assets/navbar/settings/gear-fill.svg";
+
+import logOut from "../../../../assets/navbar/logOut/door-open.svg";
+import logOutFill from "../../../../assets/navbar/logOut/door-open-fill.svg";
+
+import Logo from "./Logo";
+import {config, user} from "../../../../config/authConfig";
+import Account from "../../pages/account/Account";
 
 import exchange from '../../../../assets/navbar/cantor/exchange.png'
 import exchangeFilled from '../../../../assets/navbar/cantor/exchangeFilled.png'
+
 
 function Navbar() {
     const location = useLocation();
@@ -30,13 +51,38 @@ function Navbar() {
     const isCredits = location.pathname === '/credits';
     const isCards = location.pathname === '/cards';
     const isTransfers = location.pathname === '/transfers';
+
+    const isProfiles = location.pathname === '/profile';
+    const isLogOut = location.pathname === '/logOut';
+    const isAccount = location.pathname === '/account';
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const AccountBalanceIcon = isAccount ? MdAccountBalanceWallet : MdOutlineAccountBalanceWallet;
     const isCantor = location.pathname === '/cantor';
 
     const fadeInAnimation = useSpring({
         from: {opacity: 0, transform: 'translateY(50px)'},
         to: {opacity: 1, transform: 'translateY(0)'},
     });
+    const dropdownAnimation = useSpring({
+        opacity: isDropdownOpen ? 1 : 0,
+        transform: isDropdownOpen ? 'translateY(0)' : 'translateY(10px)',
+    });
 
+
+    const hideDropDown = () => {
+        // if (!(event.relatedTarget && event.relatedTarget.closest('.dropdownList'))) {
+            setIsDropdownOpen(false);
+    };
+
+    const showSettings = () => {
+        alert("Nie ma i nie będzie")
+        // Jesteś pewien??
+    }
+
+
+    const showDropDown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
 
     return (
         <animated.div style={fadeInAnimation}>
@@ -82,6 +128,7 @@ function Navbar() {
                                         Karty
                                     </Link>
                                 </li>
+
                                 <li className={isCantor ? [styles.liList, styles.selected].join(' ') : styles.liList}>
                                     <Link to="/cantor" className={`${styles.aLink} ${isCantor ? 'active' : ''}`}>
                                         <img className={styles.navImages} src={isCantor ? exchangeFilled : exchange}
@@ -89,7 +136,20 @@ function Navbar() {
                                         Kantor
                                     </Link>
                                 </li>
+                                <div onMouseEnter={showDropDown} onMouseLeave={hideDropDown}>
+                                    <div className={styles.aLink} >
+                                        <li className={isAccount ? [styles.liList, styles.selected].join(' ') : styles.liList}>
+                                            <AccountBalanceIcon className={styles.navImages}></AccountBalanceIcon>
+                                            Rachunki
+                                            <IoIosArrowDown style={{margin:3}}/>
+                                        </li>
+                                    </div>
+                                    {isDropdownOpen && (
+                                        <DropdownList/>
+                                    )}
+                                </div>
                             </ul>
+
                         </nav>
                     </div>
 

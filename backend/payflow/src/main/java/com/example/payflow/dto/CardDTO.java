@@ -30,4 +30,5 @@ public class CardDTO {
     private String owner;
     private BigDecimal balance;
     private CurrencyType currency;
+    private Long idAccountNumber;
 }

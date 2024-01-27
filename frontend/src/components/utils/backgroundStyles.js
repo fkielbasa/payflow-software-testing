@@ -1,5 +1,5 @@
 export const backgroundStyles1 = {
-    background: 'linear-gradient(55deg, rgba(22,135,167,1) 10%, rgba(39,102,120,1) 90%)'
+    background: 'linear-gradient(142deg, rgba(22, 135, 167, 1) 0%, rgba(41, 53, 86, 1) 100%)'
 };
 
 export const backgroundStyles2 = {

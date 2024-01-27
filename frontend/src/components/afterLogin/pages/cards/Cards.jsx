@@ -1,12 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Cards.module.css';
 import CreditCard from "./CreditCard";
-import ChartComponent from "./ChartComponent";
 import { useSpring, animated } from 'react-spring';
 import axios from "axios";
-import {BASE_URL} from "../../../../config/shared";
-import {config, user} from "../../../../config/authConfig";
-
+import { BASE_URL } from "../../../../config/shared";
+import { config, user } from "../../../../config/authConfig";
+import CardsChart from "./CardsChart";
 
 function Cards() {
     const fadeInAnimation = useSpring({
@@ -15,56 +14,104 @@ function Cards() {
     });
 
     const [apiCardData, setApiCardData] = useState([]);
-    
-    useEffect(() => {
-        const getCardData = async () => {
-            axios
-                .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
-                .then((response) => {
-                    console.log('getCardData response', response.data)
-                    setApiCardData(response.data);
-                })
-                .catch((err) => {
-                    console.error(err);
-                });
-        };
+    const [clickedCardIndex, setClickedCardIndex] = useState(null);
+    const [apiDataChartTransactions, setApiDataChartTransactions] = useState([]);
+    const [apiDataAllTransactions, setApiDataAllTransactions] = useState([]);
+    // const [selectedAccountId, setSelectedAccountId] = useState(null);
+    // const [currency, setCurrency] = useState('PLN'); // Dodaj stan dla waluty
 
+    useEffect(() => {
         getCardData();
+        // getDataAllTransactions();
     }, [user.userId]);
+
+
+    const getCardData = async () => {
+        axios
+            .get(`${BASE_URL}/api/v1/users/${user.userId}/cards`, config)
+            .then((response) => {
+                console.log('getCardData response', response.data);
+                setApiCardData(response.data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
+
+    const getDataChartTransactions = async (id) => {
+        axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers`, config)
+            .then((response) => {
+                console.log('getDataChartTransactions response', response.data);
+                setApiDataChartTransactions(response.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    };
+
+    // const getDataAllTransactions = async () => {
+    //     axios.get(`${BASE_URL}/api/v1/account-numbers/${user.userId}/transfers`, config)
+    //         .then((response) => {
+    //             console.log('getDataAllTransactions response', response.data);
+    //             setApiDataAllTransactions(response.data);
+    //         })
+    //         .catch(err => {
+    //             console.error(err);
+    //         })
+    // };
+
+    const handleClick = (index, card) => {
+        console.log('karta wybrana')
+        console.log('Card ID:', card.id);
+        getDataChartTransactions(card.idAccountNumber);
+
+        // setSelectedAccountId(card.idAccountNumber);
+
+        setClickedCardIndex(index);
+    }
+
+    // Sprawdzenie, czy apiCardData jest tablicą
+    if (!Array.isArray(apiCardData)) {
+        console.error('apiCardData is not an array:', apiCardData);
+        return null; // lub obsłuż błąd odpowiednio
+    }
 
     return (
         <animated.div style={fadeInAnimation}>
-
             <div className={styles.cardsPage}>
-                <div className={styles.cardsContainer}>
-                    <CreditCard currency={'USD'} type={'INTENSIVE'} balance={21.37}
-                                accountNumber={'3423870000441246075444'} owner={'John Johinnson'} expirationMonth={4}
-                                expirationYear={24} details={true} id={1} size={"small"} to={`/cards/$`}/>
-                    <CreditCard currency={'EUR'} type={'Karta debetowa'} balance={69.42}
-                                accountNumber={'3124150000843646841238'} owner={'John Johinnson'} expirationMonth={7}
-                                expirationYear={25} details={true} id={2} size={"small"} to={`/cards/$`}/>
-                    <CreditCard currency={'PLN'} type={'Karta kredytowa'} balance={1069.42}
-                                accountNumber={'4287931654718293458712'} owner={'John Johinnson'} expirationMonth={12}
-                                expirationYear={27} details={true} id={3} size={"small"} to={`/cards/$`}/>
-
-                </div>
-                <div className={styles.chartContainer}>
-                    <div className={styles.chartPosition}>
-                        <div className={styles.chartMargin}>
-                            <ChartComponent type={'USD'}/>
+                {apiCardData.map((card, index) => {
+                    return (
+                        <div
+                            key={index}
+                            className={`${styles.cardOnCard} ${clickedCardIndex === index ? styles.active : ''}`}
+                            onClick={() => handleClick(index, card)}
+                        >
+                            <CreditCard
+                                currency={card.currency}
+                                balance={card.balance}
+                                cardNumber={card.cardNumber}
+                                owner={card.owner}
+                                cvv={card.cvv}
+                                expiration={card.validDate}
+                                active={card.active}
+                                blocked={card.blocked}
+                                details={false}
+                                id={card.id}
+                                size={"small"}
+                                to={`/cards/$`}
+                                isClicked={clickedCardIndex === index}
+                            />
                         </div>
-                        <div className={styles.chartMargin}>
-                            <ChartComponent type={'EUR'}/>
-                        </div>
-                        <div className={styles.chartMargin}>
-                            <ChartComponent type={'PLN'}/>
-                        </div>
-                    </div>
+                    );
+                })}
+                <div className={styles.leftSitePosition}>
+                    {/*<CardsChart currency={currency} transactions={selectedAccountId ? apiDataChartTransactions : apiDataChartTransactions}/>*/}
+                    <CardsChart transactions={apiDataChartTransactions}/>
                 </div>
             </div>
+
         </animated.div>
     );
 }
 
 export default Cards;
-

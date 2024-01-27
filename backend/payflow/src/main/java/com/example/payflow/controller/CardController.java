@@ -1,6 +1,7 @@
 package com.example.payflow.controller;
 
 import com.example.payflow.dto.CardDTO;
+import com.example.payflow.dto.PinDTO;
 import com.example.payflow.model.Card;
 import com.example.payflow.service.CardService;
 import lombok.RequiredArgsConstructor;
@@ -40,11 +41,11 @@ public class CardController {
         return new ResponseEntity("Invalid data or account doesn't exist",HttpStatus.BAD_REQUEST);
     }
     @DeleteMapping("/cards/{id}")
-    public ResponseEntity<String> removeCardById(@PathVariable Long id){
-        Card c = cardService.removeCardById(id);
+    public ResponseEntity<String> removeCardById(@PathVariable Long id, @RequestParam String pin){
+        Card c = cardService.removeCardById(id, pin);
         if (c != null){
             return new ResponseEntity("Card successfully removed", HttpStatus.OK);
         }
-        return new ResponseEntity("Card doesn't exist.",HttpStatus.BAD_REQUEST);
+        return new ResponseEntity("Card doesn't exist or pin is incorrect",HttpStatus.BAD_REQUEST);
     }
 }

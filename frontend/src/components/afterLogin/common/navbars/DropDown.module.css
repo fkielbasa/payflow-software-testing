@@ -1,0 +1,24 @@
+.dropdownList {
+    position: relative;
+    list-style: none;
+    width:80%;
+    padding: 0;
+    margin: 0;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-top: none;
+    text-align: center;
+}
+
+.dropdownList li {
+    padding: 5px;
+    border: 1px solid #1b1d2a;
+    cursor: pointer;
+}
+
+.dropdownList li:hover {
+    background-color: #6eb4ec;
+}
+.dropdownList li:last-child {
+    /*border-bottom: none;*/
+}
