@@ -1,7 +1,7 @@
 .containerFluid {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 70%;
     width: 100%;
 
 }
@@ -200,8 +200,22 @@
    }
 }
 
+
+@media all and (width < 1150px){
+    .containerFluid {
+        /*height: 60%;*/
+
+    }
+}
 @media all and (width < 750px){
     .my-popup-content {
         width: 450px;
+    }
+}
+
+@media all and (width < 600px){
+    .containerFluid {
+        height: 80vh;
+
     }
 }

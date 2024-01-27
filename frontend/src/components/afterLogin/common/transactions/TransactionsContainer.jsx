@@ -22,8 +22,8 @@ const TransactionsContainer = ({ maxPerPage }) => {
     const [sortByDate, setSortByDate] = useState(false)
 
     const fadeInAnimation = useSpring({
-        from: {opacity: 0, transform: 'translateY(50px)', width: '100%'},
-        to: {opacity: 1, transform: 'translateY(0)', width: '100%'},
+        from: {opacity: 0, transform: 'translateY(50px)', width: '100%', height: '95%'},
+        to: {opacity: 1, transform: 'translateY(0)', width: '100%', height: '95%'},
     });
 
 
