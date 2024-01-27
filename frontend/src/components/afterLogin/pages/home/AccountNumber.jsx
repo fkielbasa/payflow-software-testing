@@ -9,7 +9,6 @@ function AccountNumber(props) {
 
     const handleDetailsButtonClick = () => {
         props.onDetailsButtonClick();
-        console.log("click");
     };
 
     const handleClick = () => {
@@ -19,11 +18,6 @@ function AccountNumber(props) {
     useEffect(() => {
         setShowDetailsButton(true);
     }, [props.isClicked]);
-
-    useEffect(() => {
-        setShowDetailsButton(false);
-    }, [props.number]); // Schowaj szczegóły po zmianie numeru konta.
-
 
     // const isZoomedIn = useZoomEffect();
     // const marginStyle = isZoomedIn ? { marginTop: '0px' } : { marginTop: '15px' };

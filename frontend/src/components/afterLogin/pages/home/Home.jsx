@@ -19,9 +19,10 @@ import EmptyAccountNumber from "./EmptyAccountNumber";
 import TransactionCard from "../../common/transactions/transactionCard";
 import { BASE_URL } from "../../../../config/shared";
 import TransactionChart from './TransactionChart';
-
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+    let navigate = useNavigate();
     const fadeInAnimation = useSpring({
         from: { opacity: 0, transform: 'translateY(50px)' },
         to: { opacity: 1, transform: 'translateY(0)' },
@@ -204,6 +205,7 @@ function Home() {
         handleCurrencyChange(accountData.currency);
     };
     const handleDetailsButtonClick = () => {
+        navigate('/account',{state:{accountId: selectedAccountId}})
         console.log("działa")
     };
 
