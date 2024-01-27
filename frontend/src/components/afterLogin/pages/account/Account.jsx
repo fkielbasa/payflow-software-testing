@@ -92,7 +92,7 @@ const Account = () => {
         <div className={styles.accountRightContainer}>
             {cardData && Object.keys(cardData).length > 0 ? (
                 <div className={styles.rightContainer}>
-                    <span style={{marginTop: '2%'}}>Karta</span>
+                    <span style={{marginTop: '2%',fontSize: 25}}>Karta</span>
                     <div className={styles.repairCard}>
                         <AccountCard
                             owner={cardData.owner}

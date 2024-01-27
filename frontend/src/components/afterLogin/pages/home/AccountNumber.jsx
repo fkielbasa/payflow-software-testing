@@ -77,10 +77,11 @@ function AccountNumber(props) {
                 </div>
             </div>
             <div
-                style={{justifyContent: "flex-end", marginTop: '5%', display: props.isClicked ? 'block' : 'none'}}
+                className={styles.cardDetails}
+                style={{display: props.isClicked ? 'flex' : 'none'}}
                 onClick={handleDetailsButtonClick}
             >
-                Szczegóły
+                Szczegóły >>
             </div>
         </div>
     );
