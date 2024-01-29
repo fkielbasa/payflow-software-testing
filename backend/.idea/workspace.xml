@@ -6,10 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b750e811-3640-4781-8c5f-6eb32b63e2b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/AccountNumber.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/AccountNumber.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/AccountNumber.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/AccountNumber.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/AccountNumberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/AccountNumberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/AddressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/BlikController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/BlikController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/CardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/CardDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/CardDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/ExchangeRateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/ExchangeRateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/LoanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/LoanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/TransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payflow/src/main/java/com/example/payflow/controller/TransferController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +59,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.PayflowApplication.executor": "Run",
-    "git-widget-placeholder": "feature-account-switch",
+    "git-widget-placeholder": "java-doc",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kubad/Documents/GitHub/payflow/frontend",
     "node.js.detected.package.eslint": "true",
