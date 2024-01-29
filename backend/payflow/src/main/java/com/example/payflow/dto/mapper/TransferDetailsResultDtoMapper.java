@@ -9,15 +9,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
 /**
- * Mapper przekształcający obiekty Transfer na obiekty TransferDetailsResultDto.
+ * Service class responsible for mapping a Transfer entity to a TransferDetailsResultDto.
+ *
+ * This class implements the Function interface for functional mapping.
  */
 @Service
 public class TransferDetailsResultDtoMapper implements Function<Transfer ,TransferDetailsResultDto> {
+
     /**
-     * Metoda przekształcająca obiekt Transfer na obiekt TransferDetailsResultDto.
+     * Maps a Transfer entity to a TransferDetailsResultDto.
      *
-     * @param transfer Obiekt Transfer.
-     * @return Obiekt TransferDetailsResultDto.
+     * @param transfer The Transfer entity to be mapped.
+     * @return TransferDetailsResultDto containing details about the transfer, sender, and receiver accounts.
      */
     @Override
     public TransferDetailsResultDto apply(Transfer transfer) {
