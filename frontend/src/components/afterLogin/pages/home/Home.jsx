@@ -32,7 +32,7 @@ function Home() {
     const [apiDataAllTransactions, setApiDataAllTransactions] = useState([]);
     const [apiDataChartTransactions, setApiDataChartTransactions] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
-    // const [userAccounts, setUserAccounts] = useState([]);
+    const [userAccounts, setUserAccounts] = useState([]);
     const [selectedTransaction, setSelectedTransaction] = useState(null);
     const [receiverData, setReceiverData] = useState({});
     const [selectedAccountId, setSelectedAccountId] = useState(null); // Nowy stan dla śledzenia klikniętego konta
@@ -45,7 +45,7 @@ function Home() {
     useEffect(() => {
         getDataAccountNumber();
         getDataTransactions(user.userId);
-        // getAccountNumbers()
+        getAccountNumbers()
         getDataAllTransactions();
     }, [user.userId]);
 
@@ -72,17 +72,17 @@ function Home() {
             })
     };
 
-    // const getAccountNumbers = () => {
-    //     axios
-    //         .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
-    //         .then((response) => {
-    //             setUserAccounts(response.data.map(ac => ac.id))
-    //             console.log('getAccountNumbers response', response.data.map(ac => ac.id))
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         })
-    // }
+    const getAccountNumbers = () => {
+        axios
+            .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
+            .then((response) => {
+                setUserAccounts(response.data.map(ac => ac.id))
+                console.log('getAccountNumbers response', response.data.map(ac => ac.id))
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 
     const getDataTransactions = async (id) => {
         axios.get(`${BASE_URL}/api/v1/account-numbers/${id}/transfers?last=5`, config)
@@ -247,7 +247,7 @@ function Home() {
                                 <div className={styles.transactionCard}>
                                     <TransactionCard
                                         key={index}
-                                        userSender={apiDataAccountNumber.includes(transaction.senderAccountId)}
+                                        userSender={userAccounts.includes(transaction.senderAccountId)}
                                         data={transaction}
                                         handleTransactionClick={handleTransactionClick}
                                         showAmount

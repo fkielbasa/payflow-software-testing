@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b750e811-3640-4781-8c5f-6eb32b63e2b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/account/Account.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/Cards.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/cards/Cards.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/AccountNumber.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/AccountNumber.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/AccountNumber.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/AccountNumber.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/afterLogin/pages/home/Home.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +54,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.PayflowApplication.executor": "Run",
-    "git-widget-placeholder": "feature-account-switch",
+    "git-widget-placeholder": "feature-frontend",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kubad/Documents/GitHub/payflow/frontend",
     "node.js.detected.package.eslint": "true",
@@ -125,6 +126,7 @@
       <workItem from="1706115177029" duration="707000" />
       <workItem from="1706188231072" duration="7287000" />
       <workItem from="1706181297770" duration="3588000" />
+      <workItem from="1706565958552" duration="1257000" />
     </task>
     <servers />
   </component>

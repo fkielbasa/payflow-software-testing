@@ -75,3 +75,31 @@
 .chartMargin {
     margin-right: 40px;
 }
+
+@media all and (width < 1250px) {
+
+    .cardOnCard {
+        margin-bottom: -100px;
+
+    }
+}
+
+@media all and (width < 850px) {
+    .cardsPage {
+        width: 70vw;
+    }
+    .cardOnCard {
+        margin-bottom: -120px;
+
+    }
+}
+
+@media all and (width < 800px) {
+    .cardsPage {
+        width: 80vw;
+    }
+    .cardOnCard {
+        margin-bottom: -140px;
+
+    }
+}
