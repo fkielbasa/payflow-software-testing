@@ -5,10 +5,20 @@ import com.example.payflow.model.Card;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
-
+/**
+ * Service class responsible for mapping a Card entity to a CardDTO.
+ *
+ * This class implements the Function interface for functional mapping.
+ */
 @Service
 public class CardDTOMapper implements Function<Card, CardDTO> {
 
+    /**
+     * Maps a Card entity to a CardDTO.
+     *
+     * @param card The Card entity to be mapped.
+     * @return CardDTO containing essential details about the card.
+     */
     @Override
     public CardDTO apply(Card card) {
         return new CardDTO(

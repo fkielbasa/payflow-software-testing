@@ -1,42 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import {Link, useLocation, useNavigate} from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link, useLocation} from 'react-router-dom';
 import styles from './Navbar.module.css';
-import stylesDropDown from './DropDown.module.css'
 import { useSpring, animated } from 'react-spring';
-import {BASE_URL} from "../../../../config/shared";
-import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 import { MdAccountBalanceWallet } from "react-icons/md";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
-
 import house from "../../../../assets/navbar/home/houses.svg";
 import houseFill from "../../../../assets/navbar/home/houses-fill.svg";
-
 import transactions from "../../../../assets/navbar/transactions/briefcase.svg";
 import transactionsFill from "../../../../assets/navbar/transactions/briefcase-fill.svg";
-
 import transfers from "../../../../assets/navbar/transfers/arrow-right.svg";
 import transfersFill from "../../../../assets/navbar/transfers/arrow-right-arrow-left.svg";
-
 import credits from "../../../../assets/navbar/credits/money-bill.svg";
 import creditsFill from "../../../../assets/navbar/credits/money-bill-fill.svg";
-
 import cards from "../../../../assets/navbar/cards/credit-card.svg";
 import cardsFill from "../../../../assets/navbar/cards/credit-card-fill.svg";
 import DropdownList from "./DropDown";
-import AccountData from "../../pages/account/AccountData";
 import { IoIosArrowDown } from "react-icons/io";
 
-
-
-import settings from "../../../../assets/navbar/settings/gear.svg";
-import settingsFill from "../../../../assets/navbar/settings/gear-fill.svg";
-
-import logOut from "../../../../assets/navbar/logOut/door-open.svg";
-import logOutFill from "../../../../assets/navbar/logOut/door-open-fill.svg";
-
-import Logo from "./Logo";
-import {config, user} from "../../../../config/authConfig";
-import Account from "../../pages/account/Account";
 
 import exchange from '../../../../assets/navbar/cantor/exchange.png'
 import exchangeFilled from '../../../../assets/navbar/cantor/exchangeFilled.png'

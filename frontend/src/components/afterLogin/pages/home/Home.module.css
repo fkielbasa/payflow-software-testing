@@ -86,9 +86,14 @@
     margin-top: -20px;
 }
 
-@media all and (width < 1500px) {
-    /*.content {*/
-    /*    flex-direction: column;*/
-    /*}*/
+@media all and (width < 850px) {
+    .homePage {
+        width: 70vw;
+    }
+}
 
+@media all and (width < 800px) {
+    .homePage {
+        width: 80vw;
+    }
 }

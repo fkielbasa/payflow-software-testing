@@ -1,7 +1,7 @@
 .containerFluid {
     display: flex;
     flex-direction: column;
-    height: 70%;
+    max-height: 100%;
     width: 100%;
 
 }
