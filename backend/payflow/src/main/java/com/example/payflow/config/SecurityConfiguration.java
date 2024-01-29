@@ -11,9 +11,14 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+<<<<<<< Updated upstream
 
 /**
  * Konfiguracja zabezpieczeń aplikacji przy użyciu Spring Security.
+=======
+/**
+ * Configuration class for security settings.
+>>>>>>> Stashed changes
  */
 @Configuration
 @EnableWebSecurity
@@ -23,6 +28,7 @@ public class SecurityConfiguration {
 
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
+<<<<<<< Updated upstream
 
     /**
      * Konfiguruje łańcuch filtrów bezpieczeństwa dla aplikacji.
@@ -30,6 +36,14 @@ public class SecurityConfiguration {
      * @param httpSecurity Obiekt konfiguracji zabezpieczeń HTTP.
      * @return Łańcuch filtrów bezpieczeństwa.
      * @throws Exception Jeśli wystąpi błąd podczas konfiguracji zabezpieczeń.
+=======
+    /**
+     * Configures security filter chain.
+     *
+     * @param httpSecurity HttpSecurity object to configure security settings
+     * @return SecurityFilterChain object representing the configured security filter chain
+     * @throws Exception If an error occurs during configuration
+>>>>>>> Stashed changes
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {

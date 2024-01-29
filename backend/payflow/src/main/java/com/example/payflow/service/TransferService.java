@@ -20,7 +20,9 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Service for handling transfer operations.
+ */
 @Service
 @RequiredArgsConstructor
 public class TransferService {
@@ -36,11 +38,23 @@ public class TransferService {
     private final TransferResultDTOMapper transferResultDTOMapper;
     private final TransferDetailsResultDtoMapper transferDetailsResultDtoMapper;
 
+    /**
+     * Retrieves details of a transfer by its identifier.
+     *
+     * @param transferId The transfer identifier.
+     * @return Details of the transfer.
+     */
     public TransferDetailsResultDto getTransferById(Long transferId) {
         Optional<Transfer> transfer = transferRepository.findById(transferId);
         return transfer.map(transferDetailsResultDtoMapper).orElse(null);
     }
-
+    /**
+     * Gets a list of the latest transfers for a given account number.
+     *
+     * @param id   The account number identifier.
+     * @param last Number of latest transfers to retrieve.
+     * @return List of the latest transfers.
+     */
     public List<TransferResultDTO> getTransfersByAccountNumberId(Long id, int last) {
         return transferRepository.findAll()
                 .stream()
@@ -54,6 +68,14 @@ public class TransferService {
                 .limit(last)
                 .toList();
     }
+
+    /**
+     * Gets a list of all transfers for a given user.
+     *
+     * @param id   The user identifier.
+     * @param last Number of latest transfers to retrieve.
+     * @return List of all transfers for the user.
+     */
     public List<TransferResultDTO> getAllTransferByUserId(Long id, int last) {
         return transferRepository
                 .findAll()
@@ -67,7 +89,12 @@ public class TransferService {
                 .limit(last)
                 .toList();
     }
-
+    /**
+     * Adds a new transfer based on the recipient's phone number.
+     *
+     * @param phoneTransfer DTO object for the transfer based on the recipient's phone number.
+     * @return DTO of the new transfer.
+     */
     public TransferDTO addTransferByPhoneNumber(PhoneTransferDTO phoneTransfer) {
         // searching for receiver
         UserDetails userDetails = userDetailsRepository.findByPhoneNumber(phoneTransfer.phoneNumber());
@@ -90,7 +117,12 @@ public class TransferService {
 
         return finalizeTransfer(newTransfer);
     }
-
+    /**
+     * Finalizes the transfer process.
+     *
+     * @param transfer The transfer object.
+     * @return DTO of the transfer.
+     */
     public TransferDTO finalizeTransfer(Transfer transfer){
         Double exchangeRate =
                 exchangeRateService.getExchangeRateBetweenCurrency(
@@ -119,7 +151,12 @@ public class TransferService {
         return transferDTOMapper.apply(transfer);
     }
 
-
+    /**
+     * Creates a new transfer.
+     *
+     * @param transferDTO DTO object of the transfer.
+     * @return DTO of the new transfer.
+     */
     public TransferDTO createTransfer(TransferDTO transferDTO) {
         // searching for accounts
         AccountNumber sender = accountNumberRepository.findAccountNumberByNumber(transferDTO.senderAccountNumber());
@@ -137,7 +174,12 @@ public class TransferService {
         return finalizeTransfer(newTransfer);
     }
 
-
+    /**
+     * Executes currency exchange between accounts.
+     *
+     * @param exchange DTO object of the currency exchange.
+     * @return
+     */
     public TransferDTO exchangeBetweenAccounts(TransferExchangeDto exchange) {
         AccountNumber sender = accountNumberRepository.findAccountNumberByNumber(exchange.fromAccount());
         AccountNumber receiver = accountNumberRepository.findAccountNumberByNumber(exchange.toAccount());

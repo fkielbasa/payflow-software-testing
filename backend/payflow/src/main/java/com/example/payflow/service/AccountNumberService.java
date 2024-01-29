@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Service handling operations on bank account numbers.
+ */
 @AllArgsConstructor
 @Service
 public class AccountNumberService {
@@ -24,21 +26,34 @@ public class AccountNumberService {
     private final AccountNumberDtoMapper accountNumberDtoMapper;
     private static final BigDecimal START_BALANCE = new BigDecimal(100);
 
+    /**
+     * Retrieves all bank account numbers.
+     *
+     * @return List of bank account numbers.
+     */
     public List<AccountNumber> getAccountNumbers() {
         return accountNumberRepository.findAll();
     }
-//    public List<AccountNumberDTO> getAccountNumberByUserId(Long id){
-//        return accountNumberRepository.findAll().stream()
-//                .filter(accountNumber -> accountNumber.getUserId().getId().equals(id))
-//                .map(accountNumberDtoMapper)
-//                .toList();
-//    }
+    /**
+     * Retrieves bank account numbers for a given user.
+     *
+     * @param id User identifier.
+     * @return List of bank account numbers for the user.
+     */
     public List<AccountNumberDTO> getAccountNumberByUserId(Long id){
         return userRepository.findById(id).get().getAccountNumbers().stream()
                 .map(accountNumberDtoMapper)
                 .toList();
     }
 
+
+    /**
+     * Adds a new bank account for a user.
+     *
+     * @param id User identifier.
+     * @param accountNumber Request object with data of the new bank account.
+     * @return DTO of the new bank account.
+     */
     public AccountNumberDTO addAccount(Long id, AccountNumberRequestDto accountNumber){
         Optional<User> u = userRepository.findById(id);
         if(u.isPresent()) {
@@ -60,7 +75,12 @@ public class AccountNumberService {
         }
         return null;
     }
-
+    /**
+     * Retrieves a bank account with the specified identifier.
+     *
+     * @param id Bank account identifier.
+     * @return DTO of the bank account.
+     */
     public AccountNumberDTO getAccountNumberById(Long id) {
         Optional<AccountNumber> ac =  accountNumberRepository.findById(id);
         if (ac.isPresent())

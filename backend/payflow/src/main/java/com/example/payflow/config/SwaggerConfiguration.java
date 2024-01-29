@@ -10,9 +10,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Arrays;
 
-
+/**
+ * Configuration class for Swagger API documentation.
+ */
 @EnableSwagger2
 public class SwaggerConfiguration {
+    /**
+     * Bean for customizing the OpenAPI specification.
+     *
+     * @return Customized OpenAPI object
+     */
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
