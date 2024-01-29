@@ -18,7 +18,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+/**
+ * Service class for managing loans.
+ */
 @AllArgsConstructor
 @Service
 public class LoanService {
@@ -27,12 +29,24 @@ public class LoanService {
     private LoanDTOMapper loanDTOMapper;
     private final AccountNumberService accountNumberService;
 
+    /**
+     * Retrieves loans associated with a specific account number.
+     *
+     * @param id Account number ID
+     * @return List of loan DTOs
+     */
     public List<LoanDTO> getLoansByAccountNumberId(Long id) {
         return accountNumberRepository.findById(id).get().getLoans()
                 .stream()
                 .map(loanDTOMapper).toList();
     }
 
+    /**
+     * Retrieves all loans associated with a user.
+     *
+     * @param id User ID
+     * @return List of loan DTOs
+     */
     public List<LoanDTO> getAllLoansByUserId(Long id) {
         List<AccountNumberDTO> numbers = accountNumberService.getAccountNumberByUserId(id);
         List<LoanDTO> loans = new ArrayList<>();
@@ -40,6 +54,13 @@ public class LoanService {
         return loans;
     }
 
+    /**
+     * Adds a new loan to an account.
+     *
+     * @param id   Account number ID
+     * @param loan Loan DTO
+     * @return Loan DTO of the added loan
+     */
     public LoanDTO addLoan(Long id,LoanDTOPost loan) {
         LocalDate currentDate = LocalDate.now();
         Optional<AccountNumber> ac = accountNumberRepository.findById(id);
@@ -62,6 +83,13 @@ public class LoanService {
         }
         return null;
     }
+
+    /**
+     * Removes a loan by its ID.
+     *
+     * @param id Loan ID
+     * @return Loan object that was removed
+     */
     public Loan removeLoanById(Long id) {
         Optional<Loan> l = loanRepository.findById(id);
         if(l.isPresent()){

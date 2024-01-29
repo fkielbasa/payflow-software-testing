@@ -3,7 +3,9 @@ package com.example.payflow.util;
 
 import java.util.Random;
 
-
+/**
+ * Utility class for generating various types of numbers.
+ */
 public class NumberGenerator {
 
     public static final int BLIK_LENGTH = 6;
@@ -15,7 +17,11 @@ public class NumberGenerator {
     private static StringBuilder stringBuilder;
 
 
-
+    /**
+     * Generates a BLIK code consisting of 6 digits.
+     *
+     * @return Generated BLIK code.
+     */
     public static String generateBlikCode(){
         random = new Random();
         stringBuilder = new StringBuilder();
@@ -25,8 +31,12 @@ public class NumberGenerator {
         }
         return stringBuilder.toString();
     }
-
-        public static String generateLogin(){
+    /**
+     * Generates a random login consisting of 8 digits.
+     *
+     * @return Generated login.
+     */
+    public static String generateLogin(){
         random = new Random();
         stringBuilder = new StringBuilder();
         for (int i = 0; i < LOGIN_LENGTH; i++) {
@@ -35,7 +45,11 @@ public class NumberGenerator {
         }
         return stringBuilder.toString();
     }
-
+    /**
+     * Generates a random account number consisting of 26 digits.
+     *
+     * @return Generated account number.
+     */
     public static String generateAccountNumber(){
         random = new Random();
         stringBuilder = new StringBuilder();
@@ -47,7 +61,11 @@ public class NumberGenerator {
         }
         return stringBuilder.toString();
     }
-
+    /**
+     * Generates a random CVV consisting of 3 digits.
+     *
+     * @return Generated CVV.
+     */
     public static String generateCVV() {
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();
@@ -58,6 +76,11 @@ public class NumberGenerator {
         }
         return stringBuilder.toString();
     }
+    /**
+     * Generates a random card number consisting of 16 digits.
+     *
+     * @return Generated card number.
+     */
     public static String generateCardNumber() {
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();
