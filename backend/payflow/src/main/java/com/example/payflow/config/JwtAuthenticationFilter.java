@@ -16,17 +16,24 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+<<<<<<< Updated upstream
 
 /**
  * Filtr do uwierzytelniania żądań przy użyciu tokenów JWT.
  */
 
+=======
+/**
+ * Filter for JWT authentication.
+ */
+>>>>>>> Stashed changes
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
+<<<<<<< Updated upstream
 
     /**
      * Filtruje żądanie w celu uwierzytelnienia przy użyciu tokenu JWT.
@@ -36,6 +43,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      * @param filterChain Łańcuch filtrów.
      * @throws ServletException Jeśli wystąpi błąd podczas przetwarzania żądania.
      * @throws IOException      Jeśli wystąpi błąd wejścia/wyjścia.
+=======
+    /**
+     * Performs the actual filter logic.
+     *
+     * @param request     HTTP servlet request
+     * @param response    HTTP servlet response
+     * @param filterChain filter chain for invoking next filters
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException      if an I/O error occurs during the filtering process
+>>>>>>> Stashed changes
      */
     @Override
     protected void doFilterInternal(
