@@ -3,7 +3,9 @@ package com.example.payflow.util;
 
 import java.util.Random;
 
-
+/**
+ * Klasa służąca do generowania różnych rodzajów numerów, takich jak BLIK, loginy, numery kont bankowych, CVV i numery kart kredytowych.
+ */
 public class NumberGenerator {
 
     public static final int BLIK_LENGTH = 6;
@@ -15,7 +17,11 @@ public class NumberGenerator {
     private static StringBuilder stringBuilder;
 
 
-
+    /**
+     * Generuje kod BLIK składający się z 6 cyfr.
+     *
+     * @return Kod BLIK.
+     */
     public static String generateBlikCode(){
         random = new Random();
         stringBuilder = new StringBuilder();
@@ -25,7 +31,11 @@ public class NumberGenerator {
         }
         return stringBuilder.toString();
     }
-
+    /**
+     * Generuje losowy login składający się z 8 cyfr.
+     *
+     * @return Losowy login.
+     */
         public static String generateLogin(){
         random = new Random();
         stringBuilder = new StringBuilder();
@@ -35,7 +45,11 @@ public class NumberGenerator {
         }
         return stringBuilder.toString();
     }
-
+    /**
+     * Generuje losowy numer konta bankowego składający się z 26 cyfr.
+     *
+     * @return Losowy numer konta bankowego.
+     */
     public static String generateAccountNumber(){
         random = new Random();
         stringBuilder = new StringBuilder();
@@ -47,7 +61,11 @@ public class NumberGenerator {
         }
         return stringBuilder.toString();
     }
-
+    /**
+     * Generuje losowy CVV (Card Verification Value) składający się z 3 cyfr.
+     *
+     * @return Losowy CVV.
+     */
     public static String generateCVV() {
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();
@@ -58,6 +76,11 @@ public class NumberGenerator {
         }
         return stringBuilder.toString();
     }
+    /**
+     * Generuje losowy numer karty kredytowej składający się z 16 cyfr.
+     *
+     * @return Losowy numer karty kredytowej.
+     */
     public static String generateCardNumber() {
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();

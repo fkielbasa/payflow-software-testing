@@ -20,6 +20,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * Serwis do obsługi tokenów JWT.
+ */
+
 @Service
 @RequiredArgsConstructor
 public class JwtService {
@@ -31,21 +35,48 @@ public class JwtService {
     @Value("${jwt.expiration}")
     private Long EXPIRATION_TIME;
 
+
+    /**
+     * Wyodrębnia nazwę użytkownika z tokena JWT.
+     *
+     * @param token Token JWT.
+     * @return Nazwa użytkownika.
+     */
     public String extractUserLogin(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
+    /**
+     * Wyodrębnia dowolny element z tokena JWT.
+     *
+     * @param token          Token JWT.
+     * @param claimsResolver Funkcja rozwiązująca elementy tokena.
+     * @param <T>            Typ elementu.
+     * @return Wyodrębniony element.
+     */
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
+    /**
+     * Generuje token JWT na podstawie szczegółów użytkownika.
+     *
+     * @param userDetails Szczegóły użytkownika.
+     * @return Wygenerowany token JWT.
+     */
     public String generateToken(
             UserDetails userDetails
     ){
         return generateToken(new HashMap<>(), userDetails);
     }
-
+    /**
+     * Generuje token JWT na podstawie dodatkowych atrybutów i szczegółów użytkownika.
+     *
+     * @param extraClaims   Dodatkowe atrybuty tokena.
+     * @param userDetails   Szczegóły użytkownika.
+     * @return Wygenerowany token JWT.
+     */
     public String generateToken(
             Map<String, Object> extraClaims,
             UserDetails userDetails
@@ -63,7 +94,13 @@ public class JwtService {
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
-
+    /**
+     * Sprawdza, czy token JWT jest ważny dla danego użytkownika.
+     *
+     * @param token        Token JWT.
+     * @param userDetails Szczegóły użytkownika.
+     * @return true, jeśli token jest ważny; w przeciwnym razie false.
+     */
     public Boolean isTokenValid(String token, UserDetails userDetails){
         final String userLogin = extractUserLogin(token);
         return (userLogin.equals(userDetails.getUsername())) && !isTokenExpired(token);

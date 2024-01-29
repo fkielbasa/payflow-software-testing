@@ -8,10 +8,17 @@ import com.example.payflow.model.Transfer;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
-
+/**
+ * Mapper przekształcający obiekty Transfer na obiekty TransferDetailsResultDto.
+ */
 @Service
 public class TransferDetailsResultDtoMapper implements Function<Transfer ,TransferDetailsResultDto> {
-
+    /**
+     * Metoda przekształcająca obiekt Transfer na obiekt TransferDetailsResultDto.
+     *
+     * @param transfer Obiekt Transfer.
+     * @return Obiekt TransferDetailsResultDto.
+     */
     @Override
     public TransferDetailsResultDto apply(Transfer transfer) {
         TransferAccountDto sender = new TransferAccountDto(
