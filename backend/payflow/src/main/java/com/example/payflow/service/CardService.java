@@ -20,7 +20,11 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
+/**
+ * Service class responsible for handling operations related to payment cards, including retrieval, creation, and removal.
+ *
+ * This service provides methods for retrieving card information, creating new cards, and removing existing cards.
+ */
 @RequiredArgsConstructor
 @Service
 public class CardService {
@@ -31,9 +35,23 @@ public class CardService {
     private final UserRepository userRepository;
     private final CardDTOMapper cardDTOMapper;
 
+    /**
+     * Retrieves card information by the account ID.
+     *
+     * @param id The ID of the account for which card information is to be retrieved.
+     * @return CardDTO representing the card information, or null if the account with the given ID is not found or has no associated card.
+     */
     public CardDTO getCardByAccountId(Long id){
         return cardDTOMapper.apply(accountNumberRepository.findById(id).get().getCard());
     }
+
+    /**
+     * Retrieves a list of card information associated with a user ID.
+     *
+     * @param userId The ID of the user for whom card information is to be retrieved.
+     * @return List of CardDTO representing the card information associated with the user, or an empty list if the user with the given ID is not found or has no associated cards.
+     */
+
     public List<CardDTO> getCardsByUserId(Long userId) {
         return userRepository.findById(userId)
                 .map(User::getAccountNumbers)
@@ -44,6 +62,13 @@ public class CardService {
                 .map(cardDTOMapper)
                 .toList();
     }
+
+    /**
+     * Creates a new card for the specified account ID.
+     *
+     * @param id The ID of the account for which a new card is to be created.
+     * @return CardDTO representing the newly created card, or null if the account with the given ID is not found.
+     */
     public CardDTO createCard(Long id){
         LocalDate currentDate = LocalDate.now();
         Optional<AccountNumber> ac = accountNumberRepository.findById(id);
@@ -68,6 +93,14 @@ public class CardService {
         }
         return null;
     }
+
+    /**
+     * Removes an existing card by its ID and PIN.
+     *
+     * @param id  The ID of the card to be removed.
+     * @param pin The PIN associated with the card for validation.
+     * @return Card entity representing the removed card, or null if the card with the given ID is not found or the provided PIN is incorrect.
+     */
     public Card removeCardById(Long id, String pin) {
         Optional<Card> c = cardRepository.findById(id);
         if(c.isPresent() && c.get().getCardDetails().getPin().equals(pin)){
