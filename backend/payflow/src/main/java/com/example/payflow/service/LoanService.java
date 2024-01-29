@@ -18,7 +18,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+/**
+ * Service class for managing loans.
+ */
 @AllArgsConstructor
 @Service
 public class LoanService {
@@ -27,6 +29,12 @@ public class LoanService {
     private LoanDTOMapper loanDTOMapper;
     private final AccountNumberService accountNumberService;
 
+    /**
+     * Retrieves loans associated with a specific account number.
+     *
+     * @param id Account number ID
+     * @return List of loan DTOs
+     */
     public List<LoanDTO> getLoansByAccountNumberId(Long id) {
         return accountNumberRepository.findById(id).get().getLoans()
                 .stream()
