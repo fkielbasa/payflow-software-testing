@@ -7,7 +7,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * Service class for sending emails.
+ */
 @Service
 @RequiredArgsConstructor
 public class MailService {
@@ -18,6 +20,13 @@ public class MailService {
     @Value("${spring.mail.username}")
     private String sender;
 
+    /**
+     * Sends a registration email to a user.
+     *
+     * @param name  User's name
+     * @param to    User's email address
+     * @param login User's login
+     */
     public void sendRegistrationMail(String name, String to, String login){
         try{
             SimpleMailMessage message = new SimpleMailMessage();

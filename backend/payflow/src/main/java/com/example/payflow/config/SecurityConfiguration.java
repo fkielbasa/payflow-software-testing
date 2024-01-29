@@ -31,7 +31,6 @@ public class SecurityConfiguration {
      * @param httpSecurity HttpSecurity object to configure security settings
      * @return SecurityFilterChain object representing the configured security filter chain
      * @throws Exception If an error occurs during configuration
->>>>>>> Stashed changes
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {

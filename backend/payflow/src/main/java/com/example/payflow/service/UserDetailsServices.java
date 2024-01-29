@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * Service class for managing user details.
+ */
+
 @RequiredArgsConstructor
 @Service
 public class UserDetailsServices {
@@ -19,10 +23,13 @@ public class UserDetailsServices {
     private final UserRepository userRepository;
 
 
-//    public UserDetails getUserDetailsById(Long id) {
-//        return userDetailsRepository.findById(id)
-//                .orElseThrow(() -> new RuntimeException("UserDetails not found"));
-//    }
+    /**
+     * Changes the email address of a user.
+     *
+     * @param id    The ID of the user.
+     * @param email The new email address.
+     * @return The updated user details if successful, or null otherwise.
+     */
     public UserDetails changeUserEmail(Long id, EmailDTO email) {
         Optional<User> user = userRepository.findById(id);
         if(user.isPresent() && isEmailValid(email.email())){
@@ -33,6 +40,14 @@ public class UserDetailsServices {
         }
         return null;
     }
+
+    /**
+     * Changes the phone number of a user.
+     *
+     * @param id     The ID of the user.
+     * @param number The new phone number.
+     * @return The updated user details if successful, or null otherwise.
+     */
     public UserDetails changeUserPhoneNumber(Long id, PhoneNumberDTO number) {
         Optional<User> user = userRepository.findById(id);
         if(user.isPresent() && isPhoneNumberValid(number.phoneNumber())){
@@ -43,9 +58,21 @@ public class UserDetailsServices {
         }
         return null;
     }
+    /**
+     * Checks if the provided email address is valid (i.e., not already in use).
+     *
+     * @param email The email address to validate.
+     * @return true if the email is valid, false otherwise.
+     */
     private boolean isEmailValid(String email){
         return !userDetailsRepository.isEmailExists(email);
     }
+    /**
+     * Checks if the provided phone number is valid (i.e., not already in use).
+     *
+     * @param number The phone number to validate.
+     * @return true if the phone number is valid, false otherwise.
+     */
     private boolean isPhoneNumberValid(String number){
         return !userDetailsRepository.isPhoneNumberExists(number);
     }

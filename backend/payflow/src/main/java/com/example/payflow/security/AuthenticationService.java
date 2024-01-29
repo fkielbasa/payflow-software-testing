@@ -111,7 +111,7 @@ public class AuthenticationService {
         accountNumberRepository.save(accountNumber);
 
         // Mail sending with login
-        //mailService.sendRegistrationMail(user.getFirstName(), userDetails.getEmail(), "userLogin");
+        mailService.sendRegistrationMail(user.getFirstName(), userDetails.getEmail(), userLogin);
 
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationRespone.builder()
