@@ -38,23 +38,35 @@ function Home() {
     const [selectedAccountId, setSelectedAccountId] = useState(null); // Nowy stan dla śledzenia klikniętego konta
     const currencyRef = useRef(null);
     const accountTypeRef = useRef(null);
-    const [currency, setCurrency] = useState('PLN'); // Domyślna waluta, możesz dostosować do swoich potrzeb
+    const [currency, setCurrency] = useState('PLN'); // Domyślna waluta, możesz dostosować do swoich potrzeb - OKEJ
+    // const [numbersId, setNumbersId] =  useState([])
 
 
+    // useEffect(() => {
+    //     getDataAccountNumber();
+    // }, []);
 
     useEffect(() => {
         getDataAccountNumber();
-        getDataTransactions(user.userId);
-        getAccountNumbers()
+        getAccountNumbers();
         getDataAllTransactions();
-    }, [user.userId]);
+    }, []);
 
-    const getDataAccountNumber = async () => {
+    useEffect(() => {
+        if (selectedAccountId) {
+            getDataTransactions(selectedAccountId);
+            getDataChartTransactions(selectedAccountId);
+            console.log("konto:" + selectedAccountId);
+        }
+    }, [selectedAccountId]);
+
+    const getDataAccountNumber =  () => {
         axios
             .get(`${BASE_URL}/api/v1/users/${user.userId}/numbers`, config)
             .then((response) => {
                 console.log('getDataAccountNumber response', response.data)
                 setApiDataAccountNumber(response.data);
+                setSelectedAccountId(response.data[0].id)
             })
             .catch((err) => {
                 console.error(err);
