@@ -41,15 +41,15 @@ MAIL_PASSWORD=
 
 ### Backend
 
-#### Run *PayflowApplication* class. File is in `./backend/payflow/src/main/java/com.example.payflow`.
+- Run *PayflowApplication* class. File is in `./backend/payflow/src/main/java/com.example.payflow`.
 
-#### Open bat file in backend directory.
+- Open bat file in backend directory.
 
 ### Frontend
 
-#### Write `npm install` then `npm start`. 
+- Write `npm install` then `npm start`. 
 
-#### If problem with charts will occurred please try this:
+If problem with charts will occurred please try this:
 
 - Remove `node_modules` and `package-lock.json` and then run `npm install`
 
@@ -61,7 +61,7 @@ MAIL_PASSWORD=
 
 orginal solution: [stackoverflow](https://stackoverflow.com/questions/71582397/eresolve-unable-to-resolve-dependency-tree-while-installing-a-pacakge)
 
-#### Open bat file in frontend directory.
+- Open bat file in frontend directory.
 
 ## Project started. What now?
 
