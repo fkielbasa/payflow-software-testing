@@ -2,8 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
-    /*height: 500px;*/
     align-items: center;
     background-color: #6eb4ec;
     border-radius: 10px;
@@ -14,6 +12,10 @@
 
 .container h3 {
     margin: 10px;
+}
+.accountsWrapper {
+    display: flex;
+    gap: 15px;
 }
 
 .submitWrapper {
@@ -50,4 +52,11 @@
 
 .errorMsg {
     text-align: center;
+}
+
+@media all and (width < 1000px){
+    .accountsWrapper {
+        flex-direction: column;
+    }
+
 }
