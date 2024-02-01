@@ -41,11 +41,6 @@ function Home() {
     const [currency, setCurrency] = useState('PLN'); // Domyślna waluta, możesz dostosować do swoich potrzeb - OKEJ
     // const [numbersId, setNumbersId] =  useState([])
 
-
-    // useEffect(() => {
-    //     getDataAccountNumber();
-    // }, []);
-
     useEffect(() => {
         getDataAccountNumber();
         getAccountNumbers();
@@ -59,6 +54,8 @@ function Home() {
             console.log("konto:" + selectedAccountId);
         }
     }, [selectedAccountId]);
+
+
 
     const getDataAccountNumber =  () => {
         axios
@@ -199,27 +196,28 @@ function Home() {
 
     const handleAccountNumberClick = (accountData) => {
         console.log("Kliknięty id konta:", accountData.id);
-        // getTransactionClick(accountData.id);
-        getDataTransactions(accountData.id);
-        getDataChartTransactions(accountData.id);
 
-        const clickedIndex = apiDataAccountNumber.findIndex(account => account.id === accountData.id);
+        if (accountData.id !== selectedAccountId) {
+            getDataTransactions(accountData.id);
+            getDataChartTransactions(accountData.id);
 
-        const updatedAccountNumbers = apiDataAccountNumber.map((account, index) => ({
-            ...account,
-            isClicked: index === clickedIndex ? !account.isClicked : false, // Odwróć stan zaznaczenia dla klikniętego konta, zachowaj dla innych
-        }));
+            const clickedIndex = apiDataAccountNumber.findIndex(account => account.id === accountData.id);
 
-        setApiDataAccountNumber(updatedAccountNumbers);
+            const updatedAccountNumbers = apiDataAccountNumber.map((account, index) => ({
+                ...account,
+                isClicked: index === clickedIndex ? !account.isClicked : false,
+            }));
 
-        setSelectedAccountId(accountData.id);
-
-        handleCurrencyChange(accountData.currency);
+            setApiDataAccountNumber(updatedAccountNumbers);
+            setSelectedAccountId(accountData.id);
+            handleCurrencyChange(accountData.currency);
+        }
     };
     const handleDetailsButtonClick = () => {
         navigate('/account',{state:{accountId: selectedAccountId}})
         console.log("działa")
     };
+    const getIsClickedValue = (index, isClicked) => isClicked || (index === 0 && !apiDataAccountNumber.some(account => account.isClicked));
 
     return (
         <animated.div style={fadeInAnimation}>
@@ -232,7 +230,7 @@ function Home() {
                                 currency={numbers.currency}
                                 number={numbers.number}
                                 onClick={() => handleAccountNumberClick(numbers)}
-                                isClicked={numbers.isClicked}
+                                isClicked={getIsClickedValue(index,numbers.isClicked)}
                                 onDetailsButtonClick={handleDetailsButtonClick}
                             />
                         </div>
