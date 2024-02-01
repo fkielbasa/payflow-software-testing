@@ -1,12 +1,14 @@
 .mainContainer{
     display: flex;
     width: 100%;
-    height: 100%;
     /*width: 100%;*/
     flex-direction: row;
     /*margin-right: 3%;*/
     overflow: auto;
     /*background-color: red;*/
+    @media (max-height: 650px ){
+        height: 95%;
+    }
 }
 .accountLeftContainer {
     display: flex;
@@ -23,7 +25,6 @@
     height: 100%;
     flex-direction: column;
     border-radius: 15px;
-
 }
 .accountDataContainer{
     display: flex;
@@ -105,11 +106,22 @@
     height: 100%;
     margin-top: 20%;
 }
-@media (max-width: 950px) {
+@media (max-width: 950px){
     .mainContainer {
         flex-direction: column;
         align-items: center;
         height: 95%;
     }
+    .accountLeftContainer{
+        width: 70%;
+    }
+    .accountRightContainer {
+        width: 60%;
+    }
+    .accountDataContainer{
+        margin-bottom: 5%;
+    }
 }
+
+
 
