@@ -67,16 +67,22 @@ const CantorExchange = () => {
                 id={"formCantor"}
                 onSubmit={exchangeBalance}
             >
-                <p>Z konta:</p>
-                <SelectAccountNumber
-                    data={data}
-                    selectedAccounts={setFromAccount}
-                />
-                <p>Na konto:</p>
-                <SelectAccountNumber
-                    data={data}
-                    selectedAccounts={setToAccount}
-                />
+                <div className={styles.accountsWrapper}>
+                    <div>
+                        <p>Z konta:</p>
+                        <SelectAccountNumber
+                            data={data}
+                            selectedAccounts={setFromAccount}
+                        />
+                    </div>
+                    <div>
+                        <p>Na konto:</p>
+                        <SelectAccountNumber
+                            data={data}
+                            selectedAccounts={setToAccount}
+                        />
+                    </div>
+                </div>
                 <p>Kwota:</p>
                 <div className={styles.inputWrapper}>
                     <input

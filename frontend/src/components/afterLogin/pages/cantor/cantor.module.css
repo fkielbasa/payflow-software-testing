@@ -1,10 +1,9 @@
 .containerFluid {
     display: flex;
     flex-direction: column;
-    /*margin: 0 auto;*/
-    justify-content: center;
-    /*align-items: center;*/
     width: 100%;
+    overflow: auto;
+    max-height: 95%;
 }
 
 .exchangeBar {
@@ -57,16 +56,16 @@
     border-radius: 10px;
 }
 
-@media all and (width < 1600px) {
-    .containerFluid {
-        overflow: auto;
-        max-height: 100%;
-    }
+/*@media all and (width < 1600px) {*/
+/*    .containerFluid {*/
+/*        overflow: auto;*/
+/*        max-height: 100%;*/
+/*    }*/
 
-}
-@media all and (width < 1300px) {
-    .containerFluid {
-        max-height: 90%;
-    }
+/*}*/
+/*@media all and (width < 1300px) {*/
+/*    .containerFluid {*/
+/*        max-height: 90%;*/
+/*    }*/
 
-}
+/*}*/

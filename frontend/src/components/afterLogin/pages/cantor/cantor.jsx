@@ -29,11 +29,6 @@ const Cantor = () => {
 
     return(
         <div className={styles.containerFluid}>
-            {/*<div className={styles.imgWrapper}>*/}
-            {/*    <img src={require('../../../../assets/cantor.jpg')} alt=""/>*/}
-            {/*    <p>Najlepsze kursy tylko w naszym banku</p>*/}
-            {/*</div>*/}
-            {/*<div style={{display: 'flex'}}>*/}
                 <div className={styles.exchangeBar}>
                     <CantorExchange/>
                 </div>
@@ -47,8 +42,6 @@ const Cantor = () => {
                         <ExchangeChart data={dataRate} currency={"USD"}/>
                     </div>
                 </div>
-            {/*</div>*/}
-
         </div>
     )
 }
