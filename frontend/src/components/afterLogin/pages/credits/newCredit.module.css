@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     max-height: 90%;
-        overflow: auto;
+    overflow: auto;
 }
 .hardText {
     margin: 5px;
@@ -81,8 +81,14 @@
     cursor: pointer;
 }
 @media all and  (width < 750px){
+    .container {
+        max-height: 110%;
+
+    }
     .formWrapper {
          overflow: visible;
+        max-height: 100%;
     }
 
 }
+
