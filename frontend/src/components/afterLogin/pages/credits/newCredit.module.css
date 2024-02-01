@@ -1,7 +1,7 @@
 
 .container {
-    height: 100%;
-    /*overflow: auto;*/
+    max-height: 90%;
+
 }
 .container h3 {
     margin: 10px;
@@ -10,8 +10,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-height: 90%;
+        overflow: auto;
 }
-
+.hardText {
+    margin: 5px;
+}
 .infoWrapper {
     display: flex;
     align-items: center;
@@ -76,7 +80,9 @@
     font-weight: bold;
     cursor: pointer;
 }
-@media all and  (width < 1050px){
-
+@media all and  (width < 750px){
+    .formWrapper {
+         overflow: visible;
+    }
 
 }
