@@ -61,14 +61,10 @@ const NewCredit = (props) => {
             toast('Pola nie mogą być puste')
             return
         }
-        // // console.log(dataAccounts)
         const account = dataAccounts.filter((a) => a.number === fromAccount)[0]
-        console.log(account)
-        // console.log(amount)
-        // console.log(INTREST_RATE)
-        // console.log(toDate)
-        const [rok, miesiac, dzien] = toDate.split('.');
-        const formattedDate = `${dzien}-${miesiac}-${rok}`;
+
+        const [dzien, miesiac, rok] = toDate.split('.');
+        const formattedDate = `${rok}-${miesiac}-${dzien < 10 ? `0${dzien}` : dzien}`;
         axios
             .post(
                 `${BASE_URL}/api/v1/numbers/${account.id}/loan`,
