@@ -22,8 +22,8 @@ public class UserDTO{
     private String login;
     private String email;
     private String phoneNumber;
-    private Address correspondenceAddress;
     private Address residentialAddress;
+    private Address correspondenceAddress;
 }
 
 

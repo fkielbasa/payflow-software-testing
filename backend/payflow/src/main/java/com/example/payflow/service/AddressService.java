@@ -38,18 +38,20 @@ public class AddressService {
                     Address a = u.getResidentialAddress();
                     a.setStreet(address.getStreet());
                     a.setHouseNumber(address.getHouseNumber());
-                    a.setHouseNumber(address.getHouseNumber());
+                    a.setApartmentNumber(address.getApartmentNumber());
                     a.setZipCode(address.getZipCode());
                     a.setCity(address.getCity());
                     a.setCountry(address.getCountry());
                     addressRepository.save(a);
+                    System.out.println(addressType + "ge");
                     return a;
                 }
                 case CORRESPONDENCE -> {
+                    System.out.println(addressType + "qweq");
                     Address a = u.getCorrespondenceAddress();
                     a.setStreet(address.getStreet());
                     a.setHouseNumber(address.getHouseNumber());
-                    a.setHouseNumber(address.getHouseNumber());
+                    a.setApartmentNumber(address.getApartmentNumber());
                     a.setZipCode(address.getZipCode());
                     a.setCity(address.getCity());
                     a.setCountry(address.getCountry());
