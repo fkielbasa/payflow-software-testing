@@ -4,6 +4,8 @@ package com.example.payflow.controller;
 import com.example.payflow.dto.AccountNumberDTO;
 import com.example.payflow.dto.AccountNumberRequestDto;
 import com.example.payflow.model.AccountNumber;
+import com.example.payflow.model.AccountNumberType;
+import com.example.payflow.model.AddressType;
 import com.example.payflow.service.AccountNumberService;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.http.parser.HttpParser;
@@ -76,5 +78,11 @@ public class AccountNumberController {
         if (ac != null)
             return ResponseEntity.status(HttpStatus.CREATED).body(ac);
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    @PatchMapping("/numbers/{id}/type")
+    public ResponseEntity<?> changeTypeOfAccount(@PathVariable Long id, @RequestParam(name = "type", required = true) AccountNumberType type){
+        accountNumberService.changeTypeOfAccount(id, type);
+        return ResponseEntity.ok(null);
     }
 }

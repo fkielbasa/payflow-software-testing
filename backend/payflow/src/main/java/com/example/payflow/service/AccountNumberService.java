@@ -4,16 +4,20 @@ import com.example.payflow.dto.AccountNumberDTO;
 import com.example.payflow.dto.AccountNumberRequestDto;
 import com.example.payflow.dto.mapper.AccountNumberDtoMapper;
 import com.example.payflow.model.AccountNumber;
+import com.example.payflow.model.AccountNumberType;
 import com.example.payflow.model.User;
 import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.UserRepository;
 import com.example.payflow.util.NumberGenerator;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 /**
  * Service handling operations on bank account numbers.
@@ -86,5 +90,14 @@ public class AccountNumberService {
         if (ac.isPresent())
             return ac.map(accountNumberDtoMapper).get();
         return null;
+    }
+
+    public void changeTypeOfAccount(Long id, AccountNumberType type) {
+        Optional<AccountNumber> ac =  accountNumberRepository.findById(id);
+        if (ac.isEmpty())
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        ac.get().setAccountType(type);
+        accountNumberRepository.save(ac.get());
+
     }
 }

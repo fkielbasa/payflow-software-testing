@@ -6,6 +6,7 @@ import axios from "axios";
 import { BASE_URL } from "../../../../config/shared";
 import { config, user } from "../../../../config/authConfig";
 import CardsChart from "./CardsChart";
+import {formatCardNumber} from "../../../utils/formatCardNumber";
 
 function Cards() {
     const fadeInAnimation = useSpring({

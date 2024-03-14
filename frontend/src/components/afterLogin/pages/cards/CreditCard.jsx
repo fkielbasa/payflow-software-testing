@@ -8,6 +8,8 @@ import chip from "../../../../assets/transations/chip.png";
 import {formatAccountNumber} from "../../../utils/formatAccountNumber";
 import logo from "../../../../assets/navbar/payflow.png";
 import refresh from "../../../../assets/refresh.svg";
+import {formatCardNumber} from "../../../utils/formatCardNumber";
+import {formatExpirationDate} from "../../../utils/formatExpirationDate";
 
 function CreditCard(props) {
     const [isHovered, setIsHovered] = useState(false);
@@ -17,14 +19,8 @@ function CreditCard(props) {
     let currentBalanceText;
     let backgroundStyles;
 
-    const formatExpirationDate = (rawDate) => {
-        const dateObject = new Date(rawDate);
-        const options = {month: '2-digit', year: '2-digit'};
-        return dateObject.toLocaleDateString('en-US', options);
-    };
-
     // account number formatting
-    const cardNumberConst = formatAccountNumber(props.cardNumber);
+    const cardNumberConst = formatCardNumber(props.cardNumber);
 
     const toValue = props.to === '/cards' ? '/cards' : `/cards/${props.id}`;
 
