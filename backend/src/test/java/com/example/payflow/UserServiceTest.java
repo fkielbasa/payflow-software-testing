@@ -39,7 +39,7 @@ class UserServiceTest {
     }
 
     @Test
-    void shouldChangeUserPasswordWhenUserExists() {
+    void changeUserPasswordWhenUserExists() {
         // Given
         Long userId = 1L;
         PasswordDTO passwordDTO = new PasswordDTO("newPassword");
@@ -54,30 +54,48 @@ class UserServiceTest {
         when(passwordEncoder.encode(passwordDTO.password())).thenReturn("encodedPassword");
         when(userDTOMapper.apply(user)).thenReturn(updatedUserDTO);
 
+        System.out.println("=== Rozpoczęcie testu 'changeUserPasswordWhenUserExists' ===");
+        System.out.println("Próba zmiany hasła dla użytkownika o ID: " + userId);
+        System.out.println("Stare hasło użytkownika: " + user.getPassword());
+        System.out.println("Nowe hasło do zakodowania: " + passwordDTO.password());
+
         // When
         UserDTO result = userService.changeUserPassword(userId, passwordDTO);
+
+        System.out.println("Hasło użytkownika zostało zakodowane.");
+        System.out.println("Nowe zakodowane hasło: " + user.getPassword());
 
         // Then
         assertNotNull(result);
         assertEquals(updatedUserDTO, result);
-        verify(userRepository).save(user); // Sprawdzenie, czy użytkownik został zapisany
-        assertEquals("encodedPassword", user.getPassword()); // Sprawdzenie, czy hasło zostało zakodowane
+        verify(userRepository).save(user);
+        assertEquals("encodedPassword", user.getPassword());
+
+        System.out.println("Użytkownik został zapisany do bazy danych z nowym hasłem.");
+        System.out.println("=== Zakończenie testu ===\n");
     }
 
     @Test
-    void shouldReturnNullWhenUserDoesNotExist() {
+    void returnNullWhenUserDoesNotExist() {
         // Given
         Long userId = 1L;
         PasswordDTO passwordDTO = new PasswordDTO("newPassword");
 
         when(userRepository.findById(userId)).thenReturn(Optional.empty());
 
+        System.out.println("=== Rozpoczęcie testu 'returnNullWhenUserDoesNotExist' ===");
+        System.out.println("Próba zmiany hasła dla nieistniejącego użytkownika o ID: " + userId);
+
         // When
         UserDTO result = userService.changeUserPassword(userId, passwordDTO);
 
         // Then
         assertNull(result);
-        verify(userRepository, never()).save(any(User.class)); // Sprawdzenie, że użytkownik nie został zapisany
-        verify(passwordEncoder, never()).encode(anyString()); // Sprawdzenie, że hasło nie zostało zakodowane
+        verify(userRepository, never()).save(any(User.class));
+        verify(passwordEncoder, never()).encode(anyString());
+
+        System.out.println("Użytkownik o ID " + userId + " nie istnieje. Zwrócono null.");
+        System.out.println("=== Zakończenie testu ===\n");
+
     }
 }
