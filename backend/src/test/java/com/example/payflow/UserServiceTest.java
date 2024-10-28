@@ -54,16 +54,8 @@ class UserServiceTest {
         when(passwordEncoder.encode(passwordDTO.password())).thenReturn("encodedPassword");
         when(userDTOMapper.apply(user)).thenReturn(updatedUserDTO);
 
-        System.out.println("=== Rozpoczęcie testu 'changeUserPasswordWhenUserExists' ===");
-        System.out.println("Próba zmiany hasła dla użytkownika o ID: " + userId);
-        System.out.println("Stare hasło użytkownika: " + user.getPassword());
-        System.out.println("Nowe hasło do zakodowania: " + passwordDTO.password());
-
         // When
         UserDTO result = userService.changeUserPassword(userId, passwordDTO);
-
-        System.out.println("Hasło użytkownika zostało zakodowane.");
-        System.out.println("Nowe zakodowane hasło: " + user.getPassword());
 
         // Then
         assertNotNull(result);
@@ -71,10 +63,10 @@ class UserServiceTest {
         verify(userRepository).save(user);
         assertEquals("encodedPassword", user.getPassword());
 
-        System.out.println("Użytkownik został zapisany do bazy danych z nowym hasłem.");
-        System.out.println("=== Zakończenie testu ===\n");
-    }
+        System.out.println("=== Test 'changeUserPasswordWhenUserExists' ended successfully ===\n");
 
+    }
+    
     @Test
     void returnNullWhenUserDoesNotExist() {
         // Given
@@ -82,9 +74,6 @@ class UserServiceTest {
         PasswordDTO passwordDTO = new PasswordDTO("newPassword");
 
         when(userRepository.findById(userId)).thenReturn(Optional.empty());
-
-        System.out.println("=== Rozpoczęcie testu 'returnNullWhenUserDoesNotExist' ===");
-        System.out.println("Próba zmiany hasła dla nieistniejącego użytkownika o ID: " + userId);
 
         // When
         UserDTO result = userService.changeUserPassword(userId, passwordDTO);
@@ -94,8 +83,7 @@ class UserServiceTest {
         verify(userRepository, never()).save(any(User.class));
         verify(passwordEncoder, never()).encode(anyString());
 
-        System.out.println("Użytkownik o ID " + userId + " nie istnieje. Zwrócono null.");
-        System.out.println("=== Zakończenie testu ===\n");
+        System.out.println("=== Test 'returnNullWhenUserDoesNotExist' ended successfully ===\n");
 
     }
 }
