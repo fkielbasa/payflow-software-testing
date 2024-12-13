@@ -39,7 +39,7 @@ class UserServiceTest {
     }
 
     @Test
-    void changeUserPasswordWhenUserExists() {
+    void Change_user_password_when_user_exists() {
         // Given
         Long userId = 1L;
         PasswordDTO passwordDTO = new PasswordDTO("newPassword");
@@ -65,7 +65,7 @@ class UserServiceTest {
     }
 
     @Test
-    void returnNullWhenUserDoesNotExist() {
+    void Return_null_when_user_does_not_exist() {
         // Given
         Long userId = 1L;
         PasswordDTO passwordDTO = new PasswordDTO("newPassword");
