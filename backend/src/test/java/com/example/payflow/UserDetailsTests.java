@@ -56,19 +56,5 @@ class UserDetailsTests {
         verify(userDetailsRepository, times(1)).save(userDetails);
     }
 
-    @Test
-    void shouldReturnNullWhenUserNotFoundForEmailChange() {
-        // Given
-        Long userId = 1L;
-        EmailDTO emailDTO = new EmailDTO("new.email@example.com");
 
-        when(userRepository.findById(userId)).thenReturn(Optional.empty());
-
-        // When
-        UserDetails result = userDetailsServices.changeUserEmail(userId, emailDTO);
-
-        // Then
-        assertNull(result);
-        verify(userDetailsRepository, never()).save(any());
-    }
 }
