@@ -1,6 +1,7 @@
 package com.example.payflow;
 
 import com.example.payflow.dto.EmailDTO;
+import com.example.payflow.dto.PhoneNumberDTO;
 import com.example.payflow.model.User;
 import com.example.payflow.model.UserDetails;
 import com.example.payflow.repository.UserDetailsRepository;
@@ -56,5 +57,25 @@ class UserDetailsTests {
         verify(userDetailsRepository, times(1)).save(userDetails);
     }
 
+    @Test
+    void shouldReturnNullWhenPhoneNumberAlreadyExists() {
+        // Given
+        Long userId = 1L;
+        String existingPhoneNumber = "1234567890";
+        PhoneNumberDTO phoneNumberDTO = new PhoneNumberDTO(existingPhoneNumber);
 
+        User user = new User();
+        UserDetails userDetails = new UserDetails();
+        user.setUserDetails(userDetails);
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(userDetailsRepository.isPhoneNumberExists(existingPhoneNumber)).thenReturn(true);
+
+        // When
+        UserDetails result = userDetailsServices.changeUserPhoneNumber(userId, phoneNumberDTO);
+
+        // Then
+        assertNull(result);
+        verify(userDetailsRepository, never()).save(any());
+    }
 }
