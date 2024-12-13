@@ -35,7 +35,7 @@ class UserDetailsTests {
     }
 
     @Test
-    void shouldChangeUserEmailWhenValid() {
+    void Should_change_user_email_when_valid() {
         // Given
         Long userId = 1L;
         String newEmail = "new.email@example.com";
@@ -58,7 +58,7 @@ class UserDetailsTests {
     }
 
     @Test
-    void shouldReturnNullWhenPhoneNumberAlreadyExists() {
+    void Should_return_null_when_phone_number_already_exists() {
         // Given
         Long userId = 1L;
         String existingPhoneNumber = "1234567890";
