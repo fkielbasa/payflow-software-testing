@@ -62,11 +62,8 @@ class UserServiceTest {
         assertEquals(updatedUserDTO, result);
         verify(userRepository).save(user);
         assertEquals("encodedPassword", user.getPassword());
-
-        System.out.println("=== Test 'changeUserPasswordWhenUserExists' ended successfully ===\n");
-
     }
-    
+
     @Test
     void returnNullWhenUserDoesNotExist() {
         // Given
@@ -82,8 +79,5 @@ class UserServiceTest {
         assertNull(result);
         verify(userRepository, never()).save(any(User.class));
         verify(passwordEncoder, never()).encode(anyString());
-
-        System.out.println("=== Test 'returnNullWhenUserDoesNotExist' ended successfully ===\n");
-
     }
 }
