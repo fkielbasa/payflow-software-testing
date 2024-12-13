@@ -34,7 +34,7 @@ public class AccountNumberServiceTests {
     private AccountNumberService accountNumberService;
 
     @Test
-    void testAddAccount() {
+    void Add_new_account_number() {
         // Given
         Long userId = 1L;
         User user = new User();
@@ -64,7 +64,7 @@ public class AccountNumberServiceTests {
     }
 
     @Test
-    void testChangeTypeOfAccount() {
+    void Change_account_number_type() {
         // Given
         Long accountId = 1L;
         AccountNumber ac = AccountNumber.builder()

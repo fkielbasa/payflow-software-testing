@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class AddressServiceTests {
+public class AddressServiceTests {
 
     @Mock
     private AddressRepository addressRepository;
