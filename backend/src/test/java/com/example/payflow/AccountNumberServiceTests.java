@@ -62,4 +62,24 @@ public class AccountNumberServiceTests {
 
         verify(accountNumberRepository).save(any(AccountNumber.class));
     }
+
+    @Test
+    void testChangeTypeOfAccount() {
+        // Given
+        Long accountId = 1L;
+        AccountNumber ac = AccountNumber.builder()
+                .id(accountId)
+                .accountType(AccountNumberType.INTENSIVE)
+                .build();
+
+        when(accountNumberRepository.findById(accountId)).thenReturn(Optional.of(ac));
+
+        // When
+        accountNumberService.changeTypeOfAccount(accountId, AccountNumberType.STANDARD);
+
+        // Then
+        assertEquals(AccountNumberType.STANDARD, ac.getAccountType());
+
+        verify(accountNumberRepository).save(ac);
+    }
 }
