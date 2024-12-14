@@ -75,5 +75,17 @@ class LoanTests {
         assertEquals(loanId, removedLoan.getId());
         verify(loanRepository, times(1)).deleteById(loanId);
     }
+    @Test
+    void Should_return_null_when_loan_to_remove_not_found() {
+        // Given
+        Long loanId = 1L;
+        when(loanRepository.findById(loanId)).thenReturn(Optional.empty());
 
+        // When
+        Loan removedLoan = loanService.removeLoanById(loanId);
+
+        // Then
+        assertNull(removedLoan);
+        verify(loanRepository, never()).deleteById(loanId);
+    }
 }
