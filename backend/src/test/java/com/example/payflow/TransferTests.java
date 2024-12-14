@@ -3,7 +3,9 @@ package com.example.payflow;
 import com.example.payflow.dto.*;
 import com.example.payflow.dto.mapper.TransferDetailsResultDtoMapper;
 import com.example.payflow.model.*;
+import com.example.payflow.repository.AccountNumberRepository;
 import com.example.payflow.repository.TransferRepository;
+import com.example.payflow.service.ExchangeRateService;
 import com.example.payflow.service.TransferService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,6 +26,12 @@ class TransferTests {
 
     @Mock
     private TransferRepository transferRepository;
+
+    @Mock
+    private AccountNumberRepository accountNumberRepository;
+
+    @Mock
+    private ExchangeRateService exchangeRateService;
 
     @Mock
     private TransferDetailsResultDtoMapper transferDetailsResultDtoMapper;
@@ -68,5 +77,44 @@ class TransferTests {
         // Then
         assertNotNull(result);
         assertEquals(expectedDto, result);
+    }
+
+    @Test
+    void Should_return_null_when_sender_has_lacking_funds() {
+        // Given
+        Transfer transfer = new Transfer();
+        AccountNumber sender = new AccountNumber(
+                1L,
+                new BigDecimal("50"),
+                AccountNumberType.STANDARD,
+                CurrencyType.PLN,
+                "12345",
+                null,
+                null,
+                null
+        );
+        AccountNumber receiver = new AccountNumber(
+                2L,
+                new BigDecimal("300"),
+                AccountNumberType.STANDARD,
+                CurrencyType.PLN,
+                "54321",
+                null,
+                null,
+                null
+        );
+        transfer.setSenderAccount(sender);
+        transfer.setReceiverAccount(receiver);
+        transfer.setAmount(new BigDecimal("100"));
+
+        when(accountNumberRepository.findById(sender.getId())).thenReturn(Optional.of(sender));
+        when(accountNumberRepository.findById(receiver.getId())).thenReturn(Optional.of(receiver));
+
+        // When
+        TransferDTO result = transferService.finalizeTransfer(transfer);
+
+        // Then
+        assertNull(result);
+        verify(transferRepository, never()).save(any());
     }
 }
