@@ -9,7 +9,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class TransactionServiceTest {
+class TransactionTests {
 
     private TransactionRepository transactionRepository;
     private TransactionService transactionService;
