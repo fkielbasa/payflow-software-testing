@@ -59,5 +59,21 @@ class LoanTests {
         verify(loanDTOMapper, times(1)).apply(loan);
     }
 
+    @Test
+    void Should_remove_loan_by_id() {
+        // Given
+        Long loanId = 1L;
+        Loan loan = Loan.builder().id(loanId).build();
+
+        when(loanRepository.findById(loanId)).thenReturn(Optional.of(loan));
+
+        // When
+        Loan removedLoan = loanService.removeLoanById(loanId);
+
+        // Then
+        assertNotNull(removedLoan);
+        assertEquals(loanId, removedLoan.getId());
+        verify(loanRepository, times(1)).deleteById(loanId);
+    }
 
 }
