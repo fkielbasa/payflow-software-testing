@@ -101,4 +101,30 @@ public class CardDetailsServiceTests {
         verify(cardRepository).findById(cardId);
         verify(cardDetailsRepository).save(cardDetails);
     }
+
+    @Test
+    void givenExistingCard_whenChangingPin_thenPinIsUpdated() {
+        // Given
+        Long cardId = 1L;
+        PinDTO pinDTO = new PinDTO("5678");
+
+        Card card = mock(Card.class);
+        CardDetails cardDetails = CardDetails.builder()
+                .active(true)
+                .pin("1234")
+                .build();
+
+        when(card.getCardDetails()).thenReturn(cardDetails);
+        when(cardRepository.findById(cardId)).thenReturn(Optional.of(card));
+        when(cardDetailsRepository.save(any(CardDetails.class))).thenReturn(cardDetails);
+
+        // When
+        PinDTO result = cardDetailsService.changePin(cardId, pinDTO);
+
+        // Then
+        assertNotNull(result);
+        assertEquals("5678", result.getPin());
+        verify(cardRepository).findById(cardId);
+        verify(cardDetailsRepository).save(cardDetails);
+    }
 }
