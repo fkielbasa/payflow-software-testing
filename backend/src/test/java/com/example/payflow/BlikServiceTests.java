@@ -9,7 +9,7 @@ public class BlikServiceTests {
     private final BlikService blikService = new BlikService();
 
     @Test
-    void Generate_random_blik_code() {
+    void givenRequestForBlikCode_whenGeneratingCode_thenRandomBlikCodeIsReturned() {
         // given
         Blik b1, b2;
 

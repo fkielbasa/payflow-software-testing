@@ -32,7 +32,7 @@ public class AddressServiceTests {
     private AddressService addressService;
 
     @Test
-    void Change_user_residential_address() {
+    void givenExistingUser_whenChangingResidentialAddress_thenAddressIsUpdated() {
         // Given
         Long userId = 1L;
         AddressType addressType = AddressType.RESIDENTIAL;

@@ -40,7 +40,7 @@ public class CardServiceTests {
 
 
     @Test
-    void Create_card_account_exists() {
+    void givenExistingAccount_whenCreatingCard_thenCardIsCreatedSuccessfully() {
         // GIVEN
         Long accountId = 1L;
         AccountNumber accountNumber = mock(AccountNumber.class);
@@ -79,9 +79,8 @@ public class CardServiceTests {
         verify(cardDTOMapper).apply(any(Card.class));
     }
 
-
     @Test
-    void Create_card_account_not_found() {
+    void givenNonExistentAccount_whenCreatingCard_thenCardCreationFails() {
         // GIVEN
         Long accountId = 1L;
         when(accountNumberRepository.findById(accountId)).thenReturn(Optional.empty());
