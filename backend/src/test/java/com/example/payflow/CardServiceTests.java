@@ -1,6 +1,5 @@
 package com.example.payflow;
 
-
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 import com.example.payflow.dto.CardDTO;
@@ -78,5 +77,22 @@ public class CardServiceTests {
         verify(cardRepository).save(any(Card.class));
         verify(cardDetailsRepository).save(any(CardDetails.class));
         verify(cardDTOMapper).apply(any(Card.class));
+    }
+
+
+    @Test
+    void Create_card_account_not_found() {
+        // GIVEN
+        Long accountId = 1L;
+        when(accountNumberRepository.findById(accountId)).thenReturn(Optional.empty());
+
+        // WHEN
+        CardDTO result = cardService.createCard(accountId);
+
+        // THEN
+        assertNull(result);
+        verify(accountNumberRepository).findById(accountId);
+        verifyNoInteractions(cardRepository);
+        verifyNoInteractions(cardDetailsRepository);
     }
 }
