@@ -54,4 +54,27 @@ public class CardDetailsServiceTests {
         verify(cardRepository).findById(cardId);
         verify(cardDetailsRepository).save(cardDetails);
     }
+    @Test
+    void givenExistingCard_whenBlocking_thenCardIsBlocked() {
+        // Given
+        Long cardId = 1L;
+
+        Card card = mock(Card.class);
+        CardDetails cardDetails = CardDetails.builder()
+                .blocked(false)
+                .build();
+
+        when(card.getCardDetails()).thenReturn(cardDetails);
+        when(cardRepository.findById(cardId)).thenReturn(Optional.of(card));
+        when(cardDetailsRepository.save(any(CardDetails.class))).thenReturn(cardDetails);
+
+        // When
+        CardDetails result = cardDetailsService.blockCard(cardId);
+
+        // Then
+        assertNotNull(result);
+        assertTrue(result.isBlocked());
+        verify(cardRepository).findById(cardId);
+        verify(cardDetailsRepository).save(cardDetails);
+    }
 }
