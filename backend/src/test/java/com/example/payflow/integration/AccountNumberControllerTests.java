@@ -53,4 +53,12 @@ public class AccountNumberControllerTests {
 
         verify(accountNumberService).changeTypeOfAccount(accountId, newType);
     }
+
+    @Test
+    void shouldReturnNotFound_whenAccountNumberNotExist() throws Exception {
+        Long accountId = 999L;
+
+        mvc.perform(get("/api/v1/numbers/{id}", accountId))
+                .andExpect(status().isNotFound());
+    }
 }
