@@ -45,7 +45,8 @@ public class SecurityConfiguration {
                                 "/v3/api-docs/**")
                         .permitAll()
                         .anyRequest()
-                        .authenticated()
+                        .permitAll()
+//                        .authenticated()
                 )
                 .cors(Customizer.withDefaults())
                 .sessionManagement(sess -> sess

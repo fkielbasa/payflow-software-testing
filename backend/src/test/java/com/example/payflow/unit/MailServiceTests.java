@@ -11,7 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class MailTests {
+class MailServiceTests {
 
     private JavaMailSender mailSender;
     private MailService mailService;
