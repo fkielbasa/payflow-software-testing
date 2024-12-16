@@ -72,5 +72,31 @@ class UserControllerTests {
                 .andExpect(content().json(objectMapper.writeValueAsString(mockUserDTO)));
     }
 
+    @Test
+    void getAllUsers_ShouldReturnListOfUsers() throws Exception {
+        Address address = new Address(2L, "Nowodąbrowska", "13", "1", "54-321", "Kraków", "POL");
+        List<UserDTO> users = Arrays.asList(
+                mockUserDTO,
+                UserDTO.builder()
+                        .id(2L)
+                        .firstName("Grzegorz")
+                        .lastName("Grzegowski")
+                        .nationality("Poland")
+                        .dateOfBirth(LocalDate.of(1985, 5, 15))
+                        .login("grzegowsky")
+                        .email("grzesiek@example.com")
+                        .phoneNumber("987654321")
+                        .residentialAddress(address)
+                        .correspondenceAddress(address)
+                        .build()
+        );
+        Mockito.when(userService.getAllUsers())
+                .thenReturn(users);
+
+        mockMvc.perform(get("/api/v1/users"))
+                .andExpect(status().isOk())
+                .andExpect(content().json(objectMapper.writeValueAsString(users)));
+    }
+
 
 }
