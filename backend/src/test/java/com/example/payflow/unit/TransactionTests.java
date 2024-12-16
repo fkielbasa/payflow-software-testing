@@ -1,4 +1,4 @@
-package com.example.payflow;
+package com.example.payflow.unit;
 
 import com.example.payflow.model.Transaction;
 import com.example.payflow.repository.TransactionRepository;
