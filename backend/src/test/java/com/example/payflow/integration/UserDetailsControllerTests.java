@@ -1,7 +1,6 @@
 package com.example.payflow.integration;
 
 import com.example.payflow.PayflowApplication;
-import com.example.payflow.controller.UserDetailsController;
 import com.example.payflow.dto.EmailDTO;
 import com.example.payflow.dto.PhoneNumberDTO;
 import com.example.payflow.model.UserDetails;
@@ -13,7 +12,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -65,5 +63,18 @@ class UserDetailsControllerTests {
                 .andExpect(content().string("Email successfully changed."));
     }
 
+    @Test
+    void changeUserPhoneNumber_ShouldReturnBadRequest_WhenPhoneNumberIsInvalid() throws Exception {
+        Mockito.when(userDetailsServices.changeUserPhoneNumber(eq(1L), any(PhoneNumberDTO.class)))
+                .thenReturn(null);
+
+        PhoneNumberDTO phoneNumberDTO = new PhoneNumberDTO("987654321");
+
+        mockMvc.perform(patch("/api/v1/user/1/phone-number")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(phoneNumberDTO)))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Invalid body or phone number already exists."));
+    }
 
 }
