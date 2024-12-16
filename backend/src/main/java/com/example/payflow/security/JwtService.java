@@ -2,17 +2,16 @@ package com.example.payflow.security;
 
 import com.example.payflow.model.User;
 import com.example.payflow.repository.UserRepository;
+import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.security.SignatureException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -121,12 +120,20 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token){
-        return Jwts
-                .parserBuilder()
-                .setSigningKey(getSignInKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+            return Jwts
+                    .parserBuilder()
+                    .setSigningKey(getSignInKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (ExpiredJwtException e) {
+            throw new RuntimeException("Token has expired", e);
+        } catch (MalformedJwtException e) {
+            throw new RuntimeException("Invalid token format", e);
+        } catch (JwtException | IllegalArgumentException e) {
+            throw new RuntimeException("Failed to parse JWT token", e);
+        }
     }
 
     private Key getSignInKey() {

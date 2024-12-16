@@ -38,14 +38,14 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/api/**",
+                                "/api/auth/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/swagger-resources/**",
                                 "/v3/api-docs/**")
                         .permitAll()
                         .anyRequest()
-                        .permitAll()
+                        .authenticated()
                 )
                 .cors(Customizer.withDefaults())
                 .sessionManagement(sess -> sess
