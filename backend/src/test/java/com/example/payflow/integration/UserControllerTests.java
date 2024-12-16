@@ -97,6 +97,17 @@ class UserControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(users)));
     }
+    @Test
+    void changeUserPassword_ShouldReturnOk_WhenPasswordIsSuccessfullyChanged() throws Exception {
+        Mockito.when(userService.changeUserPassword(eq(1L), any(PasswordDTO.class)))
+                .thenReturn(mockUserDTO);
 
+        PasswordDTO passwordDTO = new PasswordDTO("newSecurePassword123");
 
+        mockMvc.perform(patch("/api/v1/users/1/password")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(passwordDTO)))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Password successfully changed."));
+    }
 }
