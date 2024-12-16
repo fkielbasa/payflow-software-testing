@@ -61,4 +61,13 @@ public class AccountNumberControllerTests {
         mvc.perform(get("/api/v1/numbers/{id}", accountId))
                 .andExpect(status().isNotFound());
     }
+
+    @Test
+    void shouldReturnUnauthorized_whenTokenIsInvalid() throws Exception {
+        String token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwidXNlcklkIjoiMTMiLCJsb2dpbiI6IjEiLCJuYW1lIjoic3RyaW5nIiwiaWF0IjoxNzM0Mzc4ODY5LCJleHAiOjE3MzQ5ODM2Njl9.SOd7DZp8s_GxMuIi7PETqaSHrAJRvTx8tMu3396240w";
+
+        mvc.perform(get("/api/v1/numbers")
+                        .header("Authorization", token))
+                .andExpect(status().isUnauthorized());
+    }
 }
