@@ -3,6 +3,7 @@ package com.example.payflow.dto;
 import com.example.payflow.model.Address;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
+@Builder
 public class UserDTO{
     private Long id;
     private String firstName;
