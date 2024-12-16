@@ -1,4 +1,4 @@
-package com.example.payflow;
+package com.example.payflow.unit;
 
 import com.example.payflow.model.Blik;
 import com.example.payflow.service.BlikService;

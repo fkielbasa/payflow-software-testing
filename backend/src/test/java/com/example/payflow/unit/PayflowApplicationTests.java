@@ -1,4 +1,4 @@
-package com.example.payflow;
+package com.example.payflow.unit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

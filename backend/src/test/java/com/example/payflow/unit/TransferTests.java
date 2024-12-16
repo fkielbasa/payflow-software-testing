@@ -1,6 +1,9 @@
-package com.example.payflow;
+package com.example.payflow.unit;
 
-import com.example.payflow.dto.*;
+import com.example.payflow.dto.TransferAccountDto;
+import com.example.payflow.dto.TransferAddressDto;
+import com.example.payflow.dto.TransferDTO;
+import com.example.payflow.dto.TransferDetailsResultDto;
 import com.example.payflow.dto.mapper.TransferDetailsResultDtoMapper;
 import com.example.payflow.model.*;
 import com.example.payflow.repository.AccountNumberRepository;
