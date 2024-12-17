@@ -50,7 +50,7 @@ public class AuthenticationControllerTests {
 
     @Test
     void shouldReturnOkAndGetToken_whenRegisterIsSuccessful() throws Exception {
-        // When
+        // Given
         String requestBody = """
                 {
                     "login": "1",
@@ -70,12 +70,12 @@ public class AuthenticationControllerTests {
     }
     @Test
     void shouldReturnNotAcceptable_whenEmailAlreadyExists() throws Exception {
-        // given
+        // Given
         String request = requestBody + """
                 ,"password": "weirdPassword123",
                 "email": "grzechu@gmail.com"
             }""";
-        // when
+        // When
         ResultActions result = mockMvc.perform(post("/api/v1/auth/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request));
@@ -84,16 +84,19 @@ public class AuthenticationControllerTests {
     }
     @Test
     void shouldReturnNotAcceptable_whenPasswordTooShort() throws Exception {
-        // given
+        // Given
         String request = requestBody + """
                 ,"password": "short",
                 "email": "newemail@gmail.com"
             }""";
 
-        // when
-        mockMvc.perform(post("/api/v1/auth/register")
+        // When
+        ResultActions result = mockMvc.perform(post("/api/v1/auth/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(request))
-                .andExpect(status().isNotAcceptable());
+                        .content(request));
+
+        // Then
+        result.andExpect(status().isNotAcceptable());
+
     }
 }
