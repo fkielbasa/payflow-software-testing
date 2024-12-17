@@ -23,6 +23,29 @@ public class AuthenticationControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
+    String requestBody = """
+                {
+                  "firstName": "Janek",
+                  "lastName": "Down",
+                  "dateOfBirth": "1985-06-15",
+                  "nationality": "Polish",
+                  "phoneNumber": "+12123456789",
+                  "zipCode": "00-001",
+                  "city": "Warsaw",
+                  "street": "Tarnowska",
+                  "homeNumber": "10",
+                  "apartmentNumber": "5",
+                  "countryAddress": "Poland",
+                  "zipCodeCorrespondence": "00-002",
+                  "cityCorrespondence": "Warsaw",
+                  "streetCorrespondence": "Marszałkowska",
+                  "homeNumberCorrespondence": "15",
+                  "apartmentNumberCorrespondence": "10",
+                  "countryAddressCorrespondence": "Poland",
+                  "accountType": "STANDARD",
+                  "password": "weirdPassword123"
+                }
+            """;
 
 
     @Test
@@ -48,37 +71,29 @@ public class AuthenticationControllerTests {
     @Test
     void shouldReturnNotAcceptable_whenEmailAlreadyExists() throws Exception {
         // given
-        String requestBody = """
-                {
-                  "firstName": "Janek",
-                  "lastName": "Down",
-                  "dateOfBirth": "1985-06-15",
-                  "nationality": "Polish",
-                  "email": "grzechu@gmail.com",
-                  "phoneNumber": "+12123456789",
-                  "zipCode": "00-001",
-                  "city": "Warsaw",
-                  "street": "Tarnowska",
-                  "homeNumber": "10",
-                  "apartmentNumber": "5",
-                  "countryAddress": "Poland",
-                  "zipCodeCorrespondence": "00-002",
-                  "cityCorrespondence": "Warsaw",
-                  "streetCorrespondence": "Marszałkowska",
-                  "homeNumberCorrespondence": "15",
-                  "apartmentNumberCorrespondence": "10",
-                  "countryAddressCorrespondence": "Poland",
-                  "accountType": "STANDARD",
-                  "password": "weirdPassword123"
-                }
-            """;
-
+        String request = requestBody + """
+                ,"password": "weirdPassword123",
+                "email": "grzechu@gmail.com"
+            }""";
         // when
         ResultActions result = mockMvc.perform(post("/api/v1/auth/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody));
+                        .content(request));
         // Then
         result.andExpect(status().isNotAcceptable());
     }
+    @Test
+    void shouldReturnNotAcceptable_whenPasswordTooShort() throws Exception {
+        // given
+        String request = requestBody + """
+                ,"password": "short",
+                "email": "newemail@gmail.com"
+            }""";
 
+        // when
+        mockMvc.perform(post("/api/v1/auth/register")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(request))
+                .andExpect(status().isNotAcceptable());
+    }
 }
