@@ -34,7 +34,7 @@ public class CardDetailsControllerTests {
 
     @Autowired
     private ObjectMapper objectMapper;
-
+    PinDTO pin = new PinDTO("1234");
 
     @Test
     void shouldReturnNoContent_whenCardIsActivatedWithCorrectPin() throws Exception {
@@ -53,5 +53,20 @@ public class CardDetailsControllerTests {
 
         verify(cardDetailsService).activateCard(cardId, pin);
     }
+    @Test
+    void shouldReturnBadRequest_whenCardDoesNotExist() throws Exception {
+        // Given
+        Long cardId = 2137L;
 
+        when(cardDetailsService.activateCard(cardId, pin)).thenReturn(null);
+
+        // When
+        mockMvc.perform(patch("/api/v1/cards/{id}/activate", cardId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(pin)))
+        // Then:
+                .andExpect(status().isBadRequest());
+
+        verify(cardDetailsService).activateCard(cardId, pin);
+    }
 }
