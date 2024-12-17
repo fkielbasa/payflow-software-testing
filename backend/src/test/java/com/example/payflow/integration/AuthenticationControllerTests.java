@@ -9,9 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.ResultMatcher;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -25,6 +23,7 @@ public class AuthenticationControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
+
 
     @Test
     void shouldReturnOkAndGetToken_whenRegisterIsSuccessful() throws Exception {
@@ -45,6 +44,41 @@ public class AuthenticationControllerTests {
         result.andExpect(status().isOk())
                 .andExpect(jsonPath("$.token").isNotEmpty())
                 .andReturn();
+    }
+    @Test
+    void shouldReturnNotAcceptable_whenEmailAlreadyExists() throws Exception {
+        // given
+        String requestBody = """
+                {
+                  "firstName": "Janek",
+                  "lastName": "Down",
+                  "dateOfBirth": "1985-06-15",
+                  "nationality": "Polish",
+                  "email": "grzechu@gmail.com",
+                  "phoneNumber": "+12123456789",
+                  "zipCode": "00-001",
+                  "city": "Warsaw",
+                  "street": "Tarnowska",
+                  "homeNumber": "10",
+                  "apartmentNumber": "5",
+                  "countryAddress": "Poland",
+                  "zipCodeCorrespondence": "00-002",
+                  "cityCorrespondence": "Warsaw",
+                  "streetCorrespondence": "Marszałkowska",
+                  "homeNumberCorrespondence": "15",
+                  "apartmentNumberCorrespondence": "10",
+                  "countryAddressCorrespondence": "Poland",
+                  "accountType": "STANDARD",
+                  "password": "weirdPassword123"
+                }
+            """;
+
+        // when
+        ResultActions result = mockMvc.perform(post("/api/v1/auth/register")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody));
+        // Then
+        result.andExpect(status().isNotAcceptable());
     }
 
 }
