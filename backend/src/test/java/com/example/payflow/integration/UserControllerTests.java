@@ -64,16 +64,21 @@ class UserControllerTests {
 
     @Test
     void getUserById_ShouldReturnUser_WhenUserExists() throws Exception {
+        // given
         Mockito.when(userService.getUserById(eq(1L)))
                 .thenReturn(mockUserDTO);
 
-        mockMvc.perform(get("/api/v1/users/1"))
-                .andExpect(status().isOk())
+        // when
+        var resultActions = mockMvc.perform(get("/api/v1/users/1"));
+
+        // then
+        resultActions.andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(mockUserDTO)));
     }
 
     @Test
     void getAllUsers_ShouldReturnListOfUsers() throws Exception {
+        // given
         Address address = new Address(2L, "Nowodąbrowska", "13", "1", "54-321", "Kraków", "POL");
         List<UserDTO> users = Arrays.asList(
                 mockUserDTO,
@@ -93,21 +98,28 @@ class UserControllerTests {
         Mockito.when(userService.getAllUsers())
                 .thenReturn(users);
 
-        mockMvc.perform(get("/api/v1/users"))
-                .andExpect(status().isOk())
+        // when
+        var resultActions = mockMvc.perform(get("/api/v1/users"));
+
+        // then
+        resultActions.andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(users)));
     }
+
     @Test
     void changeUserPassword_ShouldReturnOk_WhenPasswordIsSuccessfullyChanged() throws Exception {
+        // given
         Mockito.when(userService.changeUserPassword(eq(1L), any(PasswordDTO.class)))
                 .thenReturn(mockUserDTO);
-
         PasswordDTO passwordDTO = new PasswordDTO("newSecurePassword123");
 
-        mockMvc.perform(patch("/api/v1/users/1/password")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(passwordDTO)))
-                .andExpect(status().isOk())
+        // when
+        var resultActions = mockMvc.perform(patch("/api/v1/users/1/password")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(passwordDTO)));
+
+        // then
+        resultActions.andExpect(status().isOk())
                 .andExpect(content().string("Password successfully changed."));
     }
 }

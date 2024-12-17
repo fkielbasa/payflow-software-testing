@@ -21,8 +21,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
@@ -51,30 +51,35 @@ class UserDetailsControllerTests {
 
     @Test
     void changeUserEmail_ShouldReturnOk_WhenEmailIsValid() throws Exception {
+        // given
         Mockito.when(userDetailsServices.changeUserEmail(eq(1L), any(EmailDTO.class)))
                 .thenReturn(mockUserDetails);
-
         EmailDTO emailDTO = new EmailDTO("new_email@example.com");
 
-        mockMvc.perform(patch("/api/v1/user/1/email")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(emailDTO)))
-                .andExpect(status().isOk())
+        // when
+        var resultActions = mockMvc.perform(patch("/api/v1/user/1/email")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(emailDTO)));
+
+        // then
+        resultActions.andExpect(status().isOk())
                 .andExpect(content().string("Email successfully changed."));
     }
 
     @Test
     void changeUserPhoneNumber_ShouldReturnBadRequest_WhenPhoneNumberIsInvalid() throws Exception {
+        // given
         Mockito.when(userDetailsServices.changeUserPhoneNumber(eq(1L), any(PhoneNumberDTO.class)))
                 .thenReturn(null);
-
         PhoneNumberDTO phoneNumberDTO = new PhoneNumberDTO("987654321");
 
-        mockMvc.perform(patch("/api/v1/user/1/phone-number")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(phoneNumberDTO)))
-                .andExpect(status().isBadRequest())
+        // when
+        var resultActions = mockMvc.perform(patch("/api/v1/user/1/phone-number")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(phoneNumberDTO)));
+
+        // then
+        resultActions.andExpect(status().isBadRequest())
                 .andExpect(content().string("Invalid body or phone number already exists."));
     }
-
 }
