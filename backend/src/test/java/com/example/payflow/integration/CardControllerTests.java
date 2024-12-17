@@ -55,4 +55,31 @@ public class CardControllerTests {
         // Then
         verify(cardRepository).deleteById(cardId);
     }
+
+    @Test
+    public void shouldReturnBadRequest_whenPinDoesNotMatch() throws Exception {
+        // Given
+        Long cardId = 1L;
+        String pin = "1234";
+        String wrongPin = "4321";
+
+        CardDetails cardDetails = CardDetails.builder()
+                .pin(pin)
+                .build();
+
+        Card card = Card.builder()
+                .id(cardId)
+                .cardDetails(cardDetails)
+                .build();
+
+        when(cardRepository.findById(cardId)).thenReturn(Optional.of(card));
+
+        // When
+        mockMvc.perform(delete("/api/v1/cards/{id}", cardId)
+                        .param("pin", wrongPin))
+                .andExpect(status().isBadRequest());
+
+        // Then
+        verify(cardRepository, never()).deleteById(any());
+    }
 }
