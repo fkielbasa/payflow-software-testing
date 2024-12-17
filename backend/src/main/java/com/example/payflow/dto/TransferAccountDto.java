@@ -1,5 +1,8 @@
 package com.example.payflow.dto;
 
+import lombok.Builder;
+
+@Builder
 public record TransferAccountDto(
         Long id,
         String firstName,
