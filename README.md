@@ -120,3 +120,66 @@
 | **Warunki początkowe** | Użytkownik jest zalogowany i znajduje się na stronie głównej.                                                        |
 | **Kroki testowe** | 1. Kliknij w wybrany rachunek. <br> 2. Kliknij w tekst “Szczegóły”.                                                |
 | **Oczekiwany rezultat** | Użytkownik zostaje przeniesiony na podstronę “rachunki”. |
+
+<br>
+
+| ID  | TC014                                                                                                                                               |
+| ----|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Tytuł** | Przejście do szczegółów rachunku z menu bocznego.                                                                                                   |
+| **Warunki początkowe** | 1. Użytkownik jest zalogowany i znajduje się na dowolnej stronie. <br> 2. Co najmniej jeden rachunek jest dostępny do wybrania w sekcji „Rachunki”. |
+| **Kroki testowe** | 1. Kliknij na sekcję „Rachunki” w menu bocznym, aby ją rozwinąć. <br> 2. Wybierz dowolny rachunek z rozwiniętej listy.                              |
+| **Oczekiwany rezultat** | Użytkownik zostaje przekierowany na stronę szczegółów wybranego rachunku.                                                                           |
+
+<br>
+
+| ID  | TC015                                                                                                                                               |
+| ----|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Tytuł** | Wykonanie przelewu na nieistniejący numer telefonu                                                                                                  |
+| **Warunki początkowe** | 1. Użytkownik jest zalogowany i znajduje się na stronie przelewów. <br> 2. Użytkownik posiada wystarczające środki na koncie do wykonania przelewu. |
+| **Kroki testowe** | 1. Wprowadź w formularzu przelewu numer telefonu, który nie istnieje w systemie. <br> 2. Wprowadź kwotę przelewu oraz opcjonalny opis. <br> 3. Kliknij przycisk „Wyślij”.     |
+| **Oczekiwany rezultat** | System wyświetla komunikat błędu: “Wysłanie przelewu nie powiodło się”.                                                               |
+
+<br>
+
+| ID  | TC016                                                                                                                                                |
+| ----|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Tytuł** | Wprowadzenie numeru telefonu w złym formacie.                                                                                                  |
+| **Warunki początkowe** | 1. Użytkownik jest zalogowany i znajduje się na stronie przelewów. <br> 2. Użytkownik posiada wystarczające środki na koncie do wykonania przelewu. |
+| **Kroki testowe** | 1. Wprowadź w formularzu przelewu numer telefonu, który zawiera inną liczbę cyfr niż 9. <br> 2. Wprowadź kwotę przelewu oraz opcjonalny opis. <br> 3. Kliknij przycisk „Wyślij”.   |
+| **Oczekiwany rezultat** | System wyświetla komunikat błędu: “Podaj dobre dane”.                                                     |
+
+<br>
+
+| ID  | TC017                                                                                                                                                                            |
+| ----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Tytuł** | Obrót karty                                                                                                                                                                      |
+| **Warunki początkowe** | 1. Użytkownik jest zalogowany i znajduje się na stronie kart. <br> 2. Użytkownik posiada przynajmniej jedną kartę.                            |
+| **Kroki testowe** | 1. Wybierz kartę. <br> 2. Kliknij w dowolnym miejscu na karcie. |
+| **Oczekiwany rezultat** | Karta obraca się o 180 stopni.                                                                                                                 |
+
+<br>
+
+| ID  | TC018                                                                                                |
+| ----|------------------------------------------------------------------------------------------------------|
+| **Tytuł** | Poprawna zmiana kodu pin karty.                                                                      |
+| **Warunki początkowe** | 1. Użytkownik jest zalogowany i znajduje się na stronie rachunki. <br> 2. Użytkownik wybrał rachunek |
+| **Kroki testowe** | 1. Kliknij w przycisk “Zmień pin” <br> 2. Wprowadź pin w alercie. <br> 3. Kliknij w przycisk “Wyślij”                           |
+| **Oczekiwany rezultat** | Pin zostaje zmieniony.                                                                    |
+
+<br>
+
+| ID  | TC019                                                                               |
+| ----|-------------------------------------------------------------------------------------|
+| **Tytuł** | Poprawne wylogowanie użytkownika.                                                   |
+| **Warunki początkowe** | Użytkownik jest zalogowany i znajduje się na dowolnej stronie.                      |
+| **Kroki testowe** | 1. Kliknij w nazwę konta. <br> 2. Kliknij w przycisk “Wyloguj” w rozwijanej liście. |
+| **Oczekiwany rezultat** | 1. Użytkownik zostaje wylogowany i przeniesiony do strony logowania. <br> 2. Token autoryzacyjny zostaje usunięty z localStorage.       |
+
+<br>
+
+| ID  | TC020                                                                                                                                    |
+| ----|------------------------------------------------------------------------------------------------------------------------------------------|
+| **Tytuł** | Próba zmiany hasła na hasło niespełniające wymogów silnego hasła.                                                                        |
+| **Warunki początkowe** | Użytkownik jest zalogowany i znajduje się w zakładce Konto.                                                                              |
+| **Kroki testowe** | 1. Podaj hasło nie zawierające:  <br> - przynajmniej osiem znaków <br> - duże i małe litery <br> - cyfry <br> - znaki specjalne <br> 2. Kliknij w przycisk “Prześlij”.  |
+| **Oczekiwany rezultat** | W zależności od wprowadzonego hasła, aplikacja wyświetla odpowiedni poziom siły podanego hasła.    |
