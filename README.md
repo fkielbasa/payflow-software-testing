@@ -1,6 +1,58 @@
-# Test Case Documentation
 
-### Testy manualne wykonane przez Jakub Dojka
+# Testowanie i Jakość Oprogramowania
+
+### Temat projektu: Aplikacja bankowa "PayFlow"
+
+### Autorzy:
+
+- Filip Kiełbasa [@fkielbasa](https://github.com/fkielbasa)
+- Jakub Dojka [@Narothe](https://github.com/Narothe)
+
+### Opis projektu:
+
+PayFlow to aplikacja bankowa umożliwiająca użytkownikom wykonywanie typowych operacji finansowych.
+
+Główne funkcjonalności:
+
+- Przelewy tradycyjne, na numer telefonu, BLIK,
+
+- Historia transakcji
+
+- Kredyty
+
+- Kantor wymiany walut
+
+- Zarządzanie rachunkami
+
+- Zarządzanie kartami
+
+- Zarządzanie kontem
+
+### Uruchomienie projektu:
+
+#### Backend (Spring Boot):
+
+- W ścieżce `\backend` uruchomić polecenie: **mvn spring-boot:run** lub uruchomić plik `\backend\start.bat`
+
+#### Frontend (ReactJS):
+
+- W ścieżce `\frontend` uruchomić polecenie **npm install**, a następnie **npm start**
+
+### Testy:
+
+#### W projekcie zaimplementowane są dwa rodzaje testów: testy jednostkowe i testy integracyjne.
+
+- [Testy integracyjne](backend/src/test/java/com/example/payflow/integration) `backend/src/test/java/com/example/payflow/integration`
+
+- [Testy jednostkowe](backend/src/test/java/com/example/payflow/unit) `backend/src/test/java/com/example/payflow/unit`
+
+### Dokumentacja API:
+
+#### Po uruchomieniu serwera dokumentacja dostępna jest pod adresem: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+### Testy manualne 
+
+#### Testy manualne wykonane przez Jakub Dojka
 
 | ID  | TC001                              |
 | ----|------------------------------------|
@@ -9,8 +61,6 @@
 | **Kroki testowe** | 1. Nie podawaj danych w formularzu. <br> 2. Kliknij "Prześlij". |
 | **Oczekiwany rezultat** | Wyświetlenie komunikatu o wymaganych do wypełnienia polach. |
 
-<br>
-
 | ID  | TC002                                                                                                                                          |
 | ----|------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Tytuł** | Powodzenie przelewu na numer konta.                                                                                                            |
@@ -18,7 +68,6 @@
 | **Kroki testowe** | 1. Wybierz konto, z którego chcesz dokonać przelew. <br> 2. Wypełnij poprawnie formularz z przelewem na numer konta. <br> 3. Kliknij “Wyślij”. |
 | **Oczekiwany rezultat** | Wyświetlenie komunikatu wysłaniu przelewu.                                                                                   |
 
-<br>
 
 | ID  | TC003                                                                                                                                          |
 | ----|------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -27,7 +76,6 @@
 | **Kroki testowe** | 1. Wybierz konto, z którego chcesz dokonać przelew. <br> 2. Wypełnij poprawnie formularz z przelewem na numer konta, jednak podając kwotę wyższą niż dostępna. <br> 3. Kliknij “Wyślij”. |
 | **Oczekiwany rezultat** | Wyświetlenie komunikatu o błędzie.                                                                                |
 
-<br>
 
 | ID  | TC004                                                                                                         |
 | ----|---------------------------------------------------------------------------------------------------------------|
@@ -36,7 +84,6 @@
 | **Kroki testowe** | 1. Kliknij na istniejący przelew.                                                                             |
 | **Oczekiwany rezultat** | Wyświetlenie szczegółów transakcji.                                                                           |
 
-<br>
 
 | ID  | TC005                                                                                                        |
 | ----|---------------------------------------------------------------------------------------------------------------|
@@ -45,7 +92,6 @@
 | **Kroki testowe** | 1. Kliknij na przycisk “Wygeneruj blik”.                                                                           |
 | **Oczekiwany rezultat** | Wygenerowanie sześciocyfrowego unikatowego numeru blik, którego ważność trwa dwie minuty.                                                                         |
 
-<br>
 
 | ID  | TC006                                                                                                      |
 | ----|---------------------------------------------------------------------------------------------------------------|
@@ -54,7 +100,6 @@
 | **Kroki testowe** | 1. Kliknij w przycisk plusa z prawej strony.                                                                         |
 | **Oczekiwany rezultat** | Wygenerowanie nowej karty z prawidłowym numerem karty, CVV, ważnością karty, środkami na koncie.                                                                       |
 
-<br>
 
 | ID  | TC007                                                                                                                                             |
 | ----|---------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -63,7 +108,6 @@
 | **Kroki testowe** | 1. Kliknij w przycisk plusa, znajdujący się w górnej sekcji głównego ekranu. <br> 2. Uzupełnij formularz o rodzaj waluty oraz typ konta. <br> 3. Kliknij w przycisk “Dodaj konto bankowe”. |
 | **Oczekiwany rezultat** | Utworzenie nowego konta bankowego o unikalnym numerze konta.                                                |
 
-<br>
 
 | ID  | TC008                                                                                                                                                                                      |
 | ----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -72,7 +116,6 @@
 | **Kroki testowe** | 1. Wybierz z listy konta bankowe, dla których chcesz dokonać wymiany walut. <br> 2. Wprowadź w formularz kwotę, którą chcesz przesłać. <br> 3. Kliknij przycisk “Prześlij”. |
 | **Oczekiwany rezultat** | Kwota została odjęta z jednego konta, wartość jej została zmieniona na walutę odpowiadającą na drugim koncie.                                                                                                                             |
 
-<br>
 
 | ID  | TC009                                                                                                                                                                      |
 | ----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -81,7 +124,6 @@
 | **Kroki testowe** | 1. Wybierz z listy konto bankowe, na które chcesz wziąć kredyt. <br> 2. Wprowadź w formularz kwotę, którą chcesz uzyskać. <br> 3. Wybierz suwakiem okres kredytu. <br> 4. Kliknij przycisk “Prześlij”. |
 | **Oczekiwany rezultat** | Kredyt został przyznany na wybrane konto bankowe. Operacja sygnalizuje powodzenie poprzez odpowiedni komunikat.                                                           |
 
-<br>
 
 | ID  | TC010                                                                                                                                                                    |
 | ----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -90,11 +132,9 @@
 | **Kroki testowe** | 1. Wybierz rachunek bankowy. <br> 2. Kliknij “Aktywuj kartę”. <br> 3. W nowe pole podaj czterocyfrowy pin do karty. <br> 4. Kliknij przycisk “Wyślij”. |
 | **Oczekiwany rezultat** | Karta zostaje aktywowana.                                                        |
 
-<br>
 
-### Testy manualne wykonane przez Filip Kiełbasa
+#### Testy manualne wykonane przez Filip Kiełbasa
 
-<br>
 
 | ID  | TC011                                                                                                                                                |
 | ----|------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -103,7 +143,6 @@
 | **Kroki testowe** | 1. Wprowadź nieprawidłowy login lub hasło <br> 2. Kliknij przycisk “Zaloguj się”|
 | **Oczekiwany rezultat** | Na ekranie pojawia się komunikat „Nieprawidłowy login lub hasło”.                                                                                                                          |
 
-<br>
 
 | ID  | TC012                                                                                                                      |
 | ----|----------------------------------------------------------------------------------------------------------------------------|
@@ -112,7 +151,6 @@
 | **Kroki testowe** | 1. Wprowadź poprawny login i hasło <br> 2. Kliknij przycisk “Zaloguj się”                                                  |
 | **Oczekiwany rezultat** | 1. Użytkownik zostaje przekierowany na stronę główną aplikacji. <br> 2. Token autoryzacji zostaje zapisany w localStorage. |
 
-<br>
 
 | ID  | TC013                                                                                                                     |
 | ----|----------------------------------------------------------------------------------------------------------------------------|
@@ -121,7 +159,6 @@
 | **Kroki testowe** | 1. Kliknij w wybrany rachunek. <br> 2. Kliknij w tekst “Szczegóły”.                                                |
 | **Oczekiwany rezultat** | Użytkownik zostaje przeniesiony na podstronę “rachunki”. |
 
-<br>
 
 | ID  | TC014                                                                                                                                               |
 | ----|-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -130,7 +167,6 @@
 | **Kroki testowe** | 1. Kliknij na sekcję „Rachunki” w menu bocznym, aby ją rozwinąć. <br> 2. Wybierz dowolny rachunek z rozwiniętej listy.                              |
 | **Oczekiwany rezultat** | Użytkownik zostaje przekierowany na stronę szczegółów wybranego rachunku.                                                                           |
 
-<br>
 
 | ID  | TC015                                                                                                                                               |
 | ----|-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -139,7 +175,6 @@
 | **Kroki testowe** | 1. Wprowadź w formularzu przelewu numer telefonu, który nie istnieje w systemie. <br> 2. Wprowadź kwotę przelewu oraz opcjonalny opis. <br> 3. Kliknij przycisk „Wyślij”.     |
 | **Oczekiwany rezultat** | System wyświetla komunikat błędu: “Wysłanie przelewu nie powiodło się”.                                                               |
 
-<br>
 
 | ID  | TC016                                                                                                                                                |
 | ----|------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -148,7 +183,6 @@
 | **Kroki testowe** | 1. Wprowadź w formularzu przelewu numer telefonu, który zawiera inną liczbę cyfr niż 9. <br> 2. Wprowadź kwotę przelewu oraz opcjonalny opis. <br> 3. Kliknij przycisk „Wyślij”.   |
 | **Oczekiwany rezultat** | System wyświetla komunikat błędu: “Podaj dobre dane”.                                                     |
 
-<br>
 
 | ID  | TC017                                                                                                                                                                            |
 | ----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -157,7 +191,6 @@
 | **Kroki testowe** | 1. Wybierz kartę. <br> 2. Kliknij w dowolnym miejscu na karcie. |
 | **Oczekiwany rezultat** | Karta obraca się o 180 stopni.                                                                                                                 |
 
-<br>
 
 | ID  | TC018                                                                                                |
 | ----|------------------------------------------------------------------------------------------------------|
@@ -166,7 +199,6 @@
 | **Kroki testowe** | 1. Kliknij w przycisk “Zmień pin” <br> 2. Wprowadź pin w alercie. <br> 3. Kliknij w przycisk “Wyślij”                           |
 | **Oczekiwany rezultat** | Pin zostaje zmieniony.                                                                    |
 
-<br>
 
 | ID  | TC019                                                                               |
 | ----|-------------------------------------------------------------------------------------|
@@ -175,7 +207,6 @@
 | **Kroki testowe** | 1. Kliknij w nazwę konta. <br> 2. Kliknij w przycisk “Wyloguj” w rozwijanej liście. |
 | **Oczekiwany rezultat** | 1. Użytkownik zostaje wylogowany i przeniesiony do strony logowania. <br> 2. Token autoryzacyjny zostaje usunięty z localStorage.       |
 
-<br>
 
 | ID  | TC020                                                                                                                                    |
 | ----|------------------------------------------------------------------------------------------------------------------------------------------|
@@ -183,3 +214,35 @@
 | **Warunki początkowe** | Użytkownik jest zalogowany i znajduje się w zakładce Konto.                                                                              |
 | **Kroki testowe** | 1. Podaj hasło nie zawierające:  <br> - przynajmniej osiem znaków <br> - duże i małe litery <br> - cyfry <br> - znaki specjalne <br> 2. Kliknij w przycisk “Prześlij”.  |
 | **Oczekiwany rezultat** | W zależności od wprowadzonego hasła, aplikacja wyświetla odpowiedni poziom siły podanego hasła.    |
+
+### Technologie użyte w projekcie:
+
+#### Backend
+
+- Spring Boot
+
+- Spring Security
+
+- Spring Data JPA
+
+- Maven
+
+- JUnit
+
+- Mockito
+
+- Swagger
+
+- PostgreSQL
+
+#### Frontend
+
+- React
+
+- Redux
+
+- Axios
+
+- Material-UI
+
+- Npm
